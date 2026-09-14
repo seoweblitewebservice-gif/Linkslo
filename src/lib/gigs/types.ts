@@ -1,0 +1,67 @@
+export type GigPackage = {
+  tier: "basic" | "standard" | "premium";
+  name: string;
+  price: number;
+  deliveryDays: number;
+  revisions: number;
+  quantity: string;
+  description: string;
+  features: string[];
+  recommended: boolean;
+};
+
+export type GigBenefit = { title: string; body: string };
+export type GigStep = { title: string; body: string };
+export type GigFaq = { question: string; answer: string };
+export type GigReview = {
+  name: string;
+  initials: string;
+  country: string;
+  rating: number;
+  date: string;
+  packageTier: string;
+  text: string;
+};
+
+export type HydratedGig = {
+  id: number;
+  slug: string;
+  title: string;
+  metaTitle: string;
+  metaDescription: string;
+  category: string;
+  subcategory: string;
+  serviceSlug: string;
+  industry: string;
+  country: string;
+  language: string;
+  objective: string;
+  summary: string;
+  description: string;
+  placement: string;
+  quality: string;
+  sellerName: string;
+  sellerHandle: string;
+  sellerInitials: string;
+  sellerCountry: string;
+  sellerLevel: string;
+  sellerBio: string;
+  sellerLanguages: string;
+  sellerResponseHours: number;
+  sellerSinceYear: number;
+  verified: boolean;
+  rating: number;
+  reviewCount: number;
+  ordersCompleted: number;
+  startingPrice: number;
+  fastestDeliveryDays: number;
+  packages: GigPackage[];
+  included: string[];
+  benefits: GigBenefit[];
+  process: GigStep[];
+  useCases: string[];
+  faqs: GigFaq[];
+  reviews: GigReview[];
+  featured: boolean;
+  createdAt: Date;
+};
