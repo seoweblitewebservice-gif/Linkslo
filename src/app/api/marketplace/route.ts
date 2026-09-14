@@ -1,25 +1,31 @@
-import { and, asc, desc, eq, gte, ilike, lte, or, sql, type SQL } from "drizzle-orm";
+import { and, asc, desc, eq, gte, ilike, isNotNull, lte, or, sql, type SQL } from "drizzle-orm";
 import { db } from "@/db";
-import { publishers } from "@/db/schema";
-import { ensureSeeded } from "@/db/seed";
+import { backlinkGigs } from "@/db/schema";
+import { ensureGigsSeeded } from "@/db/gig-seed";
 
 export const dynamic = "force-dynamic";
 
+/**
+ * Backs the "Find the right publisher" explorer with the real, price-listed
+ * guest post inventory (backlinkGigs rows with a non-null `domain`), instead
+ * of the earlier generated `publishers` demo table. Every row here is a
+ * live, purchasable gig at /marketplace/gigs/{slug}.
+ */
 const SORTS = {
-  relevance: [desc(publishers.relevance), desc(publishers.authority)],
-  "authority-desc": [desc(publishers.authority)],
-  "authority-asc": [asc(publishers.authority)],
-  "traffic-desc": [desc(publishers.organicTraffic)],
-  "price-asc": [asc(publishers.price)],
-  "price-desc": [desc(publishers.price)],
-  "delivery-asc": [asc(publishers.turnaroundDays)],
+  relevance: [sql`${backlinkGigs.authority} DESC NULLS LAST`, desc(backlinkGigs.rating)],
+  "authority-desc": [sql`${backlinkGigs.authority} DESC NULLS LAST`],
+  "authority-asc": [sql`${backlinkGigs.authority} ASC NULLS LAST`],
+  "traffic-desc": [sql`${backlinkGigs.organicTraffic} DESC NULLS LAST`],
+  "price-asc": [asc(backlinkGigs.startingPrice)],
+  "price-desc": [desc(backlinkGigs.startingPrice)],
+  "delivery-asc": [asc(backlinkGigs.fastestDeliveryDays)],
 } as const;
 
 type SortKey = keyof typeof SORTS;
 
 export async function GET(request: Request) {
   try {
-    await ensureSeeded();
+    await ensureGigsSeeded();
     const url = new URL(request.url);
     const params = url.searchParams;
 
@@ -28,7 +34,6 @@ export async function GET(request: Request) {
     const country = params.get("country") ?? "";
     const language = params.get("language") ?? "";
     const linkType = params.get("linkType") ?? "";
-    const publicationType = params.get("publicationType") ?? "";
     const minAuthority = Number(params.get("minAuthority") ?? 0);
     const minTraffic = Number(params.get("minTraffic") ?? 0);
     const maxPrice = Number(params.get("maxPrice") ?? 0);
@@ -36,32 +41,46 @@ export async function GET(request: Request) {
     const page = Math.max(Number(params.get("page") ?? 1), 1);
     const pageSize = Math.min(Math.max(Number(params.get("pageSize") ?? 12), 1), 48);
 
-    const filters: SQL[] = [];
+    const filters: SQL[] = [isNotNull(backlinkGigs.domain)];
     if (query) {
       const like = `%${query}%`;
       const search = or(
-        ilike(publishers.domain, like),
-        ilike(publishers.displayName, like),
-        ilike(publishers.industry, like),
+        ilike(backlinkGigs.domain, like),
+        ilike(backlinkGigs.title, like),
+        ilike(backlinkGigs.industry, like),
       );
       if (search) filters.push(search);
     }
-    if (industry) filters.push(eq(publishers.industry, industry));
-    if (country) filters.push(eq(publishers.country, country));
-    if (language) filters.push(eq(publishers.language, language));
-    if (linkType) filters.push(eq(publishers.linkType, linkType));
-    if (publicationType) filters.push(eq(publishers.publicationType, publicationType));
-    if (minAuthority > 0) filters.push(gte(publishers.authority, minAuthority));
-    if (minTraffic > 0) filters.push(gte(publishers.organicTraffic, minTraffic));
-    if (maxPrice > 0) filters.push(lte(publishers.price, maxPrice));
+    if (industry) filters.push(eq(backlinkGigs.industry, industry));
+    if (country) filters.push(eq(backlinkGigs.country, country));
+    if (language) filters.push(eq(backlinkGigs.language, language));
+    if (linkType) filters.push(eq(backlinkGigs.linkType, linkType));
+    if (minAuthority > 0) filters.push(gte(backlinkGigs.authority, minAuthority));
+    if (minTraffic > 0) filters.push(gte(backlinkGigs.organicTraffic, minTraffic));
+    if (maxPrice > 0) filters.push(lte(backlinkGigs.startingPrice, maxPrice));
 
-    const where = filters.length ? and(...filters) : undefined;
+    const where = and(...filters);
     const orderBy = SORTS[sort] ?? SORTS.relevance;
 
-    const [items, totals] = await Promise.all([
+    const [rows, totals] = await Promise.all([
       db
-        .select()
-        .from(publishers)
+        .select({
+          id: backlinkGigs.id,
+          slug: backlinkGigs.slug,
+          domain: backlinkGigs.domain,
+          industry: backlinkGigs.industry,
+          country: backlinkGigs.country,
+          language: backlinkGigs.language,
+          authority: backlinkGigs.authority,
+          organicTraffic: backlinkGigs.organicTraffic,
+          price: backlinkGigs.startingPrice,
+          linkType: backlinkGigs.linkType,
+          turnaroundDays: backlinkGigs.fastestDeliveryDays,
+          rating: backlinkGigs.rating,
+          reviewCount: backlinkGigs.reviewCount,
+          featured: backlinkGigs.featured,
+        })
+        .from(backlinkGigs)
         .where(where)
         .orderBy(...orderBy)
         .limit(pageSize)
@@ -69,13 +88,32 @@ export async function GET(request: Request) {
       db
         .select({
           total: sql<number>`cast(count(*) as int)`,
-          avgAuthority: sql<number>`coalesce(cast(round(avg(${publishers.authority})) as int), 0)`,
-          medianPrice: sql<number>`coalesce(cast(percentile_disc(0.5) within group (order by ${publishers.price}) as int), 0)`,
-          avgDelivery: sql<number>`coalesce(cast(round(avg(${publishers.turnaroundDays})) as int), 0)`,
+          avgAuthority: sql<number>`coalesce(cast(round(avg(${backlinkGigs.authority})) as int), 0)`,
+          medianPrice: sql<number>`coalesce(cast(percentile_disc(0.5) within group (order by ${backlinkGigs.startingPrice}) as int), 0)`,
+          avgDelivery: sql<number>`coalesce(cast(round(avg(${backlinkGigs.fastestDeliveryDays})) as int), 0)`,
         })
-        .from(publishers)
+        .from(backlinkGigs)
         .where(where),
     ]);
+
+    const items = rows.map((row) => ({
+      id: row.id,
+      slug: row.slug,
+      domain: row.domain ?? "",
+      displayName: row.domain ?? "",
+      industry: row.industry,
+      country: row.country,
+      language: row.language,
+      authority: row.authority ?? 0,
+      organicTraffic: row.organicTraffic ?? 0,
+      price: row.price,
+      linkType: row.linkType ?? "dofollow",
+      publicationType: "Guest Post",
+      turnaroundDays: row.turnaroundDays,
+      relevance: row.rating,
+      reviewCount: row.reviewCount,
+      featured: row.featured,
+    }));
 
     return Response.json({
       ok: true,

@@ -80,6 +80,12 @@ export const backlinkGigs = pgTable(
     faqs: text("faqs").notNull(),
     reviews: text("reviews").notNull(),
     featured: boolean("featured").notNull().default(false),
+    // Real, verified publisher metrics — populated only for real-domain guest post
+    // gigs (src/lib/gigs/site-generator.ts). Null for templated service gigs.
+    domain: text("domain"),
+    authority: integer("authority"),
+    organicTraffic: integer("organic_traffic"),
+    linkType: text("link_type"),
     createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
   },
   (table) => ({

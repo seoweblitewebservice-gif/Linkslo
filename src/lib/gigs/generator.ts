@@ -45,6 +45,10 @@ export type GigInsert = {
   faqs: string;
   reviews: string;
   featured: boolean;
+  domain?: string | null;
+  authority?: number | null;
+  organicTraffic?: number | null;
+  linkType?: string | null;
 };
 
 type Topic = {

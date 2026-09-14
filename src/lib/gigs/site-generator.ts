@@ -307,6 +307,10 @@ export function generateSiteGuestPostGigs(): GigInsert[] {
       faqs: JSON.stringify(faqsFor(domain, da, dr, trafficLabel, linkType, price, industry)),
       reviews: JSON.stringify(reviews),
       featured: (da ?? 0) >= 60 || index < 8,
+      domain,
+      authority: da,
+      organicTraffic: trafficMonthly,
+      linkType,
     });
   });
 

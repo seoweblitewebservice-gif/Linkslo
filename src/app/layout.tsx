@@ -12,6 +12,8 @@ import "@fontsource/plus-jakarta-sans/700.css";
 import "@fontsource/plus-jakarta-sans/800.css";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
+import { SocialSidebar } from "@/components/site/SocialSidebar";
+import { ActivityNotifications } from "@/components/site/ActivityNotifications";
 import { BRAND } from "@/lib/content";
 import { PAYPAL_SDK_SRC } from "@/lib/paypal";
 import "./globals.css";
@@ -66,6 +68,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           <Header />
           <main id="main">{children}</main>
           <Footer />
+          <SocialSidebar />
+          <ActivityNotifications />
         </body>
       </html>
     </ClerkProvider>

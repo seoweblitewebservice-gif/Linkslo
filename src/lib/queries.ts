@@ -1,7 +1,8 @@
-import { asc, desc, eq, sql } from "drizzle-orm";
+import { asc, desc, eq, isNotNull, sql } from "drizzle-orm";
 import { db } from "@/db";
 import {
   articles,
+  backlinkGigs,
   campaigns,
   caseStudies,
   faqs,
@@ -35,17 +36,19 @@ const STATIC_FACETS: Facets = {
 export async function getFacets(): Promise<Facets> {
   try {
     await ensureSeeded();
-    const [industryRows, countryRows, languageRows] = await Promise.all([
-      db.selectDistinct({ value: publishers.industry }).from(publishers).orderBy(asc(publishers.industry)),
-      db.selectDistinct({ value: publishers.country }).from(publishers).orderBy(asc(publishers.country)),
-      db.selectDistinct({ value: publishers.language }).from(publishers).orderBy(asc(publishers.language)),
+    const realOnly = isNotNull(backlinkGigs.domain);
+    const [industryRows, countryRows, languageRows, linkTypeRows] = await Promise.all([
+      db.selectDistinct({ value: backlinkGigs.industry }).from(backlinkGigs).where(realOnly).orderBy(asc(backlinkGigs.industry)),
+      db.selectDistinct({ value: backlinkGigs.country }).from(backlinkGigs).where(realOnly).orderBy(asc(backlinkGigs.country)),
+      db.selectDistinct({ value: backlinkGigs.language }).from(backlinkGigs).where(realOnly).orderBy(asc(backlinkGigs.language)),
+      db.selectDistinct({ value: backlinkGigs.linkType }).from(backlinkGigs).where(realOnly).orderBy(asc(backlinkGigs.linkType)),
     ]);
     return {
-      industries: industryRows.map((row) => row.value),
-      countries: countryRows.map((row) => row.value),
-      languages: languageRows.map((row) => row.value),
-      linkTypes: [...LINK_TYPES],
-      publicationTypes: [...PUBLICATION_TYPES],
+      industries: industryRows.map((row) => row.value).filter((v): v is string => Boolean(v)),
+      countries: countryRows.map((row) => row.value).filter((v): v is string => Boolean(v)),
+      languages: languageRows.map((row) => row.value).filter((v): v is string => Boolean(v)),
+      linkTypes: linkTypeRows.map((row) => row.value).filter((v): v is string => Boolean(v)),
+      publicationTypes: ["Guest Post"],
     };
   } catch (error) {
     console.error("facet query failed", error);

@@ -8,6 +8,7 @@ import { formatCompact, formatCurrency, formatNumber } from "@/lib/format";
 
 export type Listing = {
   id: number;
+  slug: string;
   domain: string;
   displayName: string;
   industry: string;
@@ -15,13 +16,10 @@ export type Listing = {
   language: string;
   authority: number;
   organicTraffic: number;
-  referringDomains: number;
   price: number;
   linkType: string;
   publicationType: string;
   turnaroundDays: number;
-  spamScore: number;
-  trafficTrend: number;
   relevance: number;
   featured: boolean;
 };
@@ -523,14 +521,6 @@ export function MarketplaceExplorer({
                     <span className="text-[0.82rem] font-medium text-ink-800">
                       {formatCompact(item.organicTraffic)}
                     </span>
-                    <span
-                      className={`ml-1.5 text-[0.72rem] font-semibold ${
-                        item.trafficTrend >= 0 ? "text-brand-600" : "text-rose-accent"
-                      }`}
-                    >
-                      {item.trafficTrend >= 0 ? "+" : ""}
-                      {item.trafficTrend}%
-                    </span>
                   </td>
                   <td className="px-3 py-3 text-[0.8rem] text-ink-600">
                     {COUNTRY_CODES[item.country] ?? item.country}
@@ -561,7 +551,7 @@ export function MarketplaceExplorer({
                         <Icon name="star" size={14} filled={saved.includes(item.id)} />
                       </button>
                       <Link
-                        href={`/marketplace/${encodeURIComponent(item.domain)}`}
+                        href={`/marketplace/gigs/${encodeURIComponent(item.slug)}`}
                         className="inline-flex h-8 items-center gap-1 rounded-lg border border-line px-2.5 text-[0.76rem] font-semibold text-ink-800 transition-colors group-hover:border-brand-300 group-hover:bg-brand-600 group-hover:text-white"
                       >
                         View
@@ -626,7 +616,7 @@ export function MarketplaceExplorer({
                   <Badge>{item.publicationType}</Badge>
                 </div>
                 <Link
-                  href={`/marketplace/${encodeURIComponent(item.domain)}`}
+                  href={`/marketplace/gigs/${encodeURIComponent(item.slug)}`}
                   className="inline-flex items-center gap-1 rounded-lg bg-ink-950 px-3 py-2 text-[0.78rem] font-semibold text-white"
                 >
                   View
