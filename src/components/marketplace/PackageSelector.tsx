@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { Icon } from "@/components/ui/Icon";
-import { Button } from "@/components/ui/primitives";
 import { PayPalCheckoutButton } from "@/components/forms/PayPalCheckoutButton";
 import { formatCurrency } from "@/lib/format";
 
@@ -116,18 +115,6 @@ export function PackageSelector({
           successHref={`/order/success?service=${encodeURIComponent(serviceSlug)}&tier=${encodeURIComponent(current.tier)}&amount=${current.price}`}
           className="mt-6"
         />
-        <div className="mt-3 flex items-center gap-3 text-[0.66rem] uppercase tracking-wide text-ink-300">
-          <span className="h-px flex-1 bg-line" />or<span className="h-px flex-1 bg-line" />
-        </div>
-        <Button
-          href={`/order?service=${encodeURIComponent(serviceSlug)}&tier=${encodeURIComponent(current.tier)}`}
-          variant="outline"
-          fullWidth
-          className="mt-3"
-          icon="arrow-right"
-        >
-          Submit brief first, pay after review
-        </Button>
       </div>
 
       <div className="border-t border-line bg-canvas/60 px-6 py-3.5">

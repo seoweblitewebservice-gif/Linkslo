@@ -41,6 +41,7 @@ export async function POST(request: Request) {
     const errors: Record<string, string> = {};
 
     if ((!gig && !service) || !selectedPackage) errors.package = "That gig package is no longer available.";
+    if (!paypalOrderId) errors.paypalOrderId = "Payment is required before an order can be created.";
     if (customerName.length < 2) errors.customerName = "Enter your full name.";
     if (!EMAIL_PATTERN.test(customerEmail)) errors.customerEmail = "Enter a valid work email address.";
     if (!URL_PATTERN.test(website)) errors.website = "Enter a valid website, for example company.com.";
@@ -55,7 +56,6 @@ export async function POST(request: Request) {
 
     const reference = makeReference();
     const { userId } = await auth();
-    const initialStatus = paypalOrderId ? "in_progress" : "pending_review";
 
     await db.insert(serviceOrders).values({
       reference,
@@ -75,7 +75,7 @@ export async function POST(request: Request) {
       customerEmail,
       company,
       paypalOrderId,
-      status: initialStatus,
+      status: "in_progress",
     });
 
     await sendOrderNotificationEmail({

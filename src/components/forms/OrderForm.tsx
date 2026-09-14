@@ -139,27 +139,18 @@ export function OrderForm({
         </div>
       )}
 
-      {!paypalOrderId && (
-        <div className="rounded-xl border border-line bg-canvas p-4">
-          <p className="text-[0.78rem] font-semibold text-ink-700">Prefer to pay now?</p>
-          <p className="mt-1 text-[0.76rem] leading-relaxed text-ink-500">Pay for the {pkg.name} package (${pkg.price}) with PayPal, then submit delivery details below — no separate invoice.</p>
-          <PayPalCheckoutButton
-            amount={pkg.price}
-            itemName={`${product.name} — ${pkg.name}`}
-            successHref={`/order/success?${product.kind === "gig" ? "gig" : "service"}=${encodeURIComponent(product.kind === "gig" ? product.slug : product.serviceSlug)}&tier=${pkg.tier}&amount=${pkg.price}`}
-            className="mt-3"
-          />
-          <div className="mt-3 flex items-center gap-3 text-[0.62rem] uppercase tracking-wide text-ink-300">
-            <span className="h-px flex-1 bg-line" />or submit the brief first<span className="h-px flex-1 bg-line" />
-          </div>
-        </div>
-      )}
-
       <fieldset>
         <legend className="text-[0.78rem] font-semibold uppercase tracking-[0.1em] text-ink-400">1. Choose package</legend>
         <div className="mt-3 grid gap-3 sm:grid-cols-3">
           {product.packages.map((item, index) => (
-            <button key={item.tier} type="button" onClick={() => setSelected(index)} aria-pressed={selected === index} className={`relative rounded-xl border p-4 text-left transition-all ${selected === index ? "border-brand-400 bg-brand-50 ring-1 ring-brand-200" : "border-line bg-white hover:border-ink-200"}`}>
+            <button
+              key={item.tier}
+              type="button"
+              disabled={Boolean(paypalOrderId)}
+              onClick={() => setSelected(index)}
+              aria-pressed={selected === index}
+              className={`relative rounded-xl border p-4 text-left transition-all ${selected === index ? "border-brand-400 bg-brand-50 ring-1 ring-brand-200" : "border-line bg-white hover:border-ink-200"} ${paypalOrderId ? "cursor-not-allowed opacity-60" : ""}`}
+            >
               {item.recommended && <span className="absolute right-3 top-3 rounded-full bg-brand-600 px-2 py-0.5 text-[0.56rem] font-semibold uppercase tracking-wide text-white">Popular</span>}
               <span className="block text-[0.66rem] font-semibold uppercase tracking-wide text-brand-700">{item.tier}</span>
               <span className="mt-1 block line-clamp-2 text-[0.86rem] font-semibold text-ink-950">{item.name}</span>
@@ -170,26 +161,46 @@ export function OrderForm({
         </div>
       </fieldset>
 
-      <FormSection title="2. Target details">
-        <Field label="Your website" required error={errors.website}><input value={fields.website} onChange={(event) => update("website", event.target.value)} className={inputClass("website")} placeholder="company.com" autoComplete="url" /></Field>
-        <Field label="Target page URL" required error={errors.targetUrl}><input value={fields.targetUrl} onChange={(event) => update("targetUrl", event.target.value)} className={inputClass("targetUrl")} placeholder="https://company.com/product" autoComplete="url" /></Field>
-        <Field label="Primary market" required error={errors.market}><span className="relative block"><select value={fields.market} onChange={(event) => update("market", event.target.value)} className={`${inputClass("market")} appearance-none pr-9`}><option value="">Select a market</option>{MARKETS.map((market) => <option key={market}>{market}</option>)}</select><Icon name="chevron-down" size={14} className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-ink-400" /></span></Field>
-        <Field label="Anchor preference" error={errors.anchorPreference}><input value={fields.anchorPreference} onChange={(event) => update("anchorPreference", event.target.value)} className={inputClass("anchorPreference")} placeholder="Optional — seller will review" /></Field>
-      </FormSection>
+      {!paypalOrderId && (
+        <div className="rounded-xl border border-line bg-canvas p-4">
+          <p className="text-[0.78rem] font-semibold text-ink-700">Pay to continue</p>
+          <p className="mt-1 text-[0.76rem] leading-relaxed text-ink-500">
+            Payment is required before an order is created. Pay for the {pkg.name} package ({formatCurrency(pkg.price)}) with
+            PayPal, then the delivery details form will unlock right here.
+          </p>
+          <PayPalCheckoutButton
+            amount={pkg.price}
+            itemName={`${product.name} — ${pkg.name}`}
+            successHref={`/order/success?${product.kind === "gig" ? "gig" : "service"}=${encodeURIComponent(product.kind === "gig" ? product.slug : product.serviceSlug)}&tier=${pkg.tier}&amount=${pkg.price}`}
+            className="mt-3"
+          />
+        </div>
+      )}
 
-      <FormSection title="3. Contact details">
-        <Field label="Full name" required error={errors.customerName}><input value={fields.customerName} onChange={(event) => update("customerName", event.target.value)} className={inputClass("customerName")} placeholder="Alex Moreau" autoComplete="name" /></Field>
-        <Field label="Work email" required error={errors.customerEmail}><input type="email" value={fields.customerEmail} onChange={(event) => update("customerEmail", event.target.value)} className={inputClass("customerEmail")} placeholder="alex@company.com" autoComplete="email" /></Field>
-        <Field label="Company" error={errors.company}><input value={fields.company} onChange={(event) => update("company", event.target.value)} className={inputClass("company")} placeholder="Company name" autoComplete="organization" /></Field>
-        <Field label="Notes or exclusions" error={errors.notes}><input value={fields.notes} onChange={(event) => update("notes", event.target.value)} className={inputClass("notes")} placeholder="Competitors, publishers, anchors…" /></Field>
-      </FormSection>
+      {paypalOrderId && (
+        <>
+          <FormSection title="2. Target details">
+            <Field label="Your website" required error={errors.website}><input value={fields.website} onChange={(event) => update("website", event.target.value)} className={inputClass("website")} placeholder="company.com" autoComplete="url" /></Field>
+            <Field label="Target page URL" required error={errors.targetUrl}><input value={fields.targetUrl} onChange={(event) => update("targetUrl", event.target.value)} className={inputClass("targetUrl")} placeholder="https://company.com/product" autoComplete="url" /></Field>
+            <Field label="Primary market" required error={errors.market}><span className="relative block"><select value={fields.market} onChange={(event) => update("market", event.target.value)} className={`${inputClass("market")} appearance-none pr-9`}><option value="">Select a market</option>{MARKETS.map((market) => <option key={market}>{market}</option>)}</select><Icon name="chevron-down" size={14} className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-ink-400" /></span></Field>
+            <Field label="Anchor preference" error={errors.anchorPreference}><input value={fields.anchorPreference} onChange={(event) => update("anchorPreference", event.target.value)} className={inputClass("anchorPreference")} placeholder="Optional — seller will review" /></Field>
+          </FormSection>
 
-      {message && <p role="alert" className="rounded-xl bg-[#fdf4f5] px-4 py-3 text-[0.82rem] text-rose-accent">{message}</p>}
+          <FormSection title="3. Contact details">
+            <Field label="Full name" required error={errors.customerName}><input value={fields.customerName} onChange={(event) => update("customerName", event.target.value)} className={inputClass("customerName")} placeholder="Alex Moreau" autoComplete="name" /></Field>
+            <Field label="Work email" required error={errors.customerEmail}><input type="email" value={fields.customerEmail} onChange={(event) => update("customerEmail", event.target.value)} className={inputClass("customerEmail")} placeholder="alex@company.com" autoComplete="email" /></Field>
+            <Field label="Company" error={errors.company}><input value={fields.company} onChange={(event) => update("company", event.target.value)} className={inputClass("company")} placeholder="Company name" autoComplete="organization" /></Field>
+            <Field label="Notes or exclusions" error={errors.notes}><input value={fields.notes} onChange={(event) => update("notes", event.target.value)} className={inputClass("notes")} placeholder="Competitors, publishers, anchors…" /></Field>
+          </FormSection>
 
-      <div className="flex flex-col gap-4 rounded-xl border border-line bg-canvas p-4 sm:flex-row sm:items-center sm:justify-between">
-        <div><p className="text-[0.7rem] text-ink-400">Order brief total</p><p className="font-display text-[1.35rem] font-semibold text-ink-950">{formatCurrency(pkg.price)}</p><p className="text-[0.66rem] text-ink-400">{paypalOrderId ? "Already paid via PayPal" : "Payment requested after target review"}</p></div>
-        <Button type="submit" size="lg" disabled={status === "loading"} icon="arrow-right">{status === "loading" ? "Submitting…" : paypalOrderId ? "Submit delivery details" : "Submit order brief"}</Button>
-      </div>
+          {message && <p role="alert" className="rounded-xl bg-[#fdf4f5] px-4 py-3 text-[0.82rem] text-rose-accent">{message}</p>}
+
+          <div className="flex flex-col gap-4 rounded-xl border border-line bg-canvas p-4 sm:flex-row sm:items-center sm:justify-between">
+            <div><p className="text-[0.7rem] text-ink-400">Order total</p><p className="font-display text-[1.35rem] font-semibold text-ink-950">{formatCurrency(pkg.price)}</p><p className="text-[0.66rem] text-brand-700">Already paid via PayPal</p></div>
+            <Button type="submit" size="lg" disabled={status === "loading"} icon="arrow-right">{status === "loading" ? "Submitting…" : "Submit delivery details"}</Button>
+          </div>
+        </>
+      )}
     </form>
   );
 }

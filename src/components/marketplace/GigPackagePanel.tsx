@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { Icon } from "@/components/ui/Icon";
-import { Button } from "@/components/ui/primitives";
 import { PayPalCheckoutButton } from "@/components/forms/PayPalCheckoutButton";
 import { formatCurrency } from "@/lib/format";
 import type { GigPackage } from "@/lib/gigs/types";
@@ -71,12 +70,6 @@ export function GigPackagePanel({
           successHref={`/order/success?gig=${encodeURIComponent(gigSlug)}&tier=${pkg.tier}&amount=${pkg.price}`}
           className="mt-6"
         />
-        <div className="mt-3 flex items-center gap-3 text-[0.66rem] uppercase tracking-wide text-ink-300">
-          <span className="h-px flex-1 bg-line" />or<span className="h-px flex-1 bg-line" />
-        </div>
-        <Button href={`/order?gig=${encodeURIComponent(gigSlug)}&tier=${pkg.tier}`} variant="outline" fullWidth className="mt-3" icon="arrow-right">
-          Submit brief first, pay after review
-        </Button>
       </div>
       <div className="border-t border-line bg-canvas/60 px-5 py-3">
         <p className="flex items-center justify-center gap-1.5 text-[0.7rem] font-medium text-ink-500">
