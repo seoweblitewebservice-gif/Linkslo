@@ -205,6 +205,7 @@ export const faqs = pgTable("faqs", {
 export const serviceOrders = pgTable("service_orders", {
   id: serial("id").primaryKey(),
   reference: text("reference").notNull(),
+  userId: text("user_id").notNull().default(""),
   serviceSlug: text("service_slug").notNull(),
   gigSlug: text("gig_slug").notNull().default(""),
   serviceName: text("service_name").notNull(),
@@ -219,8 +220,12 @@ export const serviceOrders = pgTable("service_orders", {
   customerName: text("customer_name").notNull(),
   customerEmail: text("customer_email").notNull(),
   company: text("company").notNull().default(""),
-  status: text("status").notNull().default("Brief review"),
+  status: text("status").notNull().default("pending_review"),
   paypalOrderId: text("paypal_order_id").notNull().default(""),
+  deliveryNote: text("delivery_note").notNull().default(""),
+  deliveryFiles: text("delivery_files").notNull().default("[]"),
+  deliveredAt: timestamp("delivered_at", { withTimezone: true }),
+  completedAt: timestamp("completed_at", { withTimezone: true }),
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
 });
 

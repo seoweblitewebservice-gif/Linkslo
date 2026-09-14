@@ -1,8 +1,10 @@
+import { auth } from "@clerk/nextjs/server";
 import { db } from "@/db";
 import { serviceOrders } from "@/db/schema";
 import { getService } from "@/lib/backlinks";
 import { EMAIL_PATTERN, normaliseDomain } from "@/lib/format";
 import { getGigBySlug } from "@/lib/gigs/data";
+import { sendOrderNotificationEmail } from "@/lib/mail";
 
 export const dynamic = "force-dynamic";
 
@@ -52,8 +54,12 @@ export async function POST(request: Request) {
     }
 
     const reference = makeReference();
+    const { userId } = await auth();
+    const initialStatus = paypalOrderId ? "in_progress" : "pending_review";
+
     await db.insert(serviceOrders).values({
       reference,
+      userId: userId ?? "",
       serviceSlug: gig?.serviceSlug ?? service!.slug,
       gigSlug: gig?.slug ?? "",
       serviceName: gig?.title ?? service!.nav,
@@ -69,11 +75,19 @@ export async function POST(request: Request) {
       customerEmail,
       company,
       paypalOrderId,
-      status: paypalOrderId
-        ? `Paid via PayPal (${paypalOrderId}) — brief received`
-        : gig
-          ? `Seller review: ${gig.sellerName}`
-          : "Brief review",
+      status: initialStatus,
+    });
+
+    await sendOrderNotificationEmail({
+      reference,
+      serviceName: gig?.title ?? service!.nav,
+      packageName: selectedPackage.name,
+      price: selectedPackage.price,
+      customerName,
+      customerEmail,
+      website,
+      targetUrl,
+      paypalOrderId,
     });
 
     return Response.json({
