@@ -19,7 +19,7 @@ export async function sendOrderNotificationEmail(order: {
   paypalOrderId: string;
 }) {
   const apiKey = process.env.RESEND_API_KEY;
-  const from = process.env.RESEND_FROM_EMAIL || "orders@linkslo.com";
+  const from = process.env.RESEND_FROM_EMAIL || "Linkslo Orders <onboarding@resend.dev>";
 
   if (!apiKey) {
     console.log(`[order email skipped — no RESEND_API_KEY set] New order ${order.reference} for ${order.serviceName}`);
