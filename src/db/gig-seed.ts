@@ -22,13 +22,18 @@ async function seedGigs() {
       .select({ count: sql<number>`cast(count(*) as int)` })
       .from(backlinkGigs);
     const firstRows = await tx
-      .select({ slug: backlinkGigs.slug })
+      .select({ slug: backlinkGigs.slug, domain: backlinkGigs.domain })
       .from(backlinkGigs)
       .orderBy(backlinkGigs.id)
       .limit(1);
     const expectedFirstSlug = generateSiteGuestPostGigs()[0]?.slug ?? generateGigRows(1)[0].slug;
 
-    if (result.count === TOTAL_GIG_COUNT && firstRows[0]?.slug === expectedFirstSlug) return;
+    // Also reseed if an older row set exists whose domain/authority columns
+    // were never backfilled (e.g. added in a later schema migration).
+    const alreadyCurrent =
+      result.count === TOTAL_GIG_COUNT && firstRows[0]?.slug === expectedFirstSlug && Boolean(firstRows[0]?.domain);
+
+    if (alreadyCurrent) return;
 
     await tx.delete(backlinkGigs);
     const rows = buildAllGigRows();
