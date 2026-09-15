@@ -54,11 +54,12 @@ type Props = {
     subcategory?: string;
     industry?: string;
     country?: string;
+    q?: string;
   }>;
 };
 
 export default async function MarketplacePage({ searchParams }: Props) {
-  const [{ view, category, subcategory, industry, country }, publisherFacets, gigFacets] = await Promise.all([
+  const [{ view, category, subcategory, industry, country, q }, publisherFacets, gigFacets] = await Promise.all([
     searchParams,
     getFacets(),
     getGigFacets(),
@@ -113,6 +114,7 @@ export default async function MarketplacePage({ searchParams }: Props) {
               initialSubcategory={subcategory ?? ""}
               initialIndustry={industry ?? ""}
               initialCountry={country ?? ""}
+              initialQuery={q ?? ""}
             />
           ) : activeView === "services" ? (
             <ServiceShop services={BACKLINK_SERVICES} />

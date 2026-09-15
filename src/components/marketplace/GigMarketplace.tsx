@@ -260,12 +260,14 @@ export function GigMarketplace({
   initialSubcategory = "",
   initialIndustry = "",
   initialCountry = "",
+  initialQuery = "",
 }: {
   facets: GigFacets;
   initialCategory?: string;
   initialSubcategory?: string;
   initialIndustry?: string;
   initialCountry?: string;
+  initialQuery?: string;
 }) {
   const [filters, setFilters] = useState<Filters>({
     ...DEFAULTS,
@@ -273,6 +275,7 @@ export function GigMarketplace({
     subcategory: initialSubcategory,
     industry: initialIndustry,
     country: initialCountry,
+    q: initialQuery,
   });
   const [items, setItems] = useState<GigCard[]>([]);
   const [total, setTotal] = useState(0);

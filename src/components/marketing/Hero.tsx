@@ -3,6 +3,7 @@ import { AreaTrend, MiniColumns, ProgressBar } from "@/components/charts/Charts"
 import { Icon } from "@/components/ui/Icon";
 import { Counter, Reveal } from "@/components/ui/motion";
 import { Badge, Button, Eyebrow, Stars } from "@/components/ui/primitives";
+import { HeroSearch } from "@/components/marketing/HeroSearch";
 import { TRUST_STATS } from "@/lib/content";
 import { formatCompact } from "@/lib/format";
 
@@ -74,6 +75,10 @@ export function Hero() {
                   Talk to a Link Strategist
                 </Button>
               </div>
+            </Reveal>
+
+            <Reveal delay={260}>
+              <HeroSearch />
             </Reveal>
 
             <Reveal delay={300}>
