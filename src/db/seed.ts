@@ -1,4 +1,4 @@
-import { sql } from "drizzle-orm";
+import { inArray, sql } from "drizzle-orm";
 import { db } from "@/db";
 import { BLOG_POSTS } from "@/db/blog-posts";
 import {
@@ -215,103 +215,15 @@ const PLACEMENT_ROWS: (typeof placements.$inferInsert)[] = [
   { campaignId: 5, domain: "juniperindex.de", anchor: "nachhaltige Möbel", targetPath: "/de/nachhaltigkeit", authority: 52, status: "Indexing", publishedOn: "2026-03-05" },
 ];
 
-const ARTICLE_ROWS: (typeof articles.$inferInsert)[] = [
-  {
-    slug: "authority-compounding-model",
-    title: "The compounding model behind durable search authority",
-    category: "Link Building",
-    excerpt:
-      "Authority is not a single number you buy. It is the accumulated result of relevance, consistency and editorial trust — here is how to model it.",
-    body: "Most teams treat authority as a metric to chase. A more useful framing is to treat it as a balance sheet: every relevant placement, every refreshed page and every earned mention adds a small amount of durable equity, while thin tactics quietly add liabilities.\n\nStart by mapping the three inputs that actually compound. The first is topical coverage — the share of your category's questions you answer credibly. The second is editorial trust, measured through the quality and independence of the publications that reference you. The third is technical reliability: crawl efficiency, page experience and internal linking that lets equity flow where it matters.\n\nWhen you model those inputs quarterly rather than weekly, the picture changes. Campaigns stop looking like isolated purchases and start looking like contributions to a portfolio. Teams that review placements against topical coverage gaps typically need fewer links to move the same commercial terms.\n\nA practical starting point: list your ten highest-intent pages, score each one on coverage, trust and technical health, then direct the next campaign at the lowest-scoring dimension instead of the loudest one.",
-    author: "Marta Ellison",
-    readingMinutes: 7,
-    publishedOn: "2026-03-12",
-    featured: true,
-  },
-  {
-    slug: "vetting-publishers-checklist",
-    title: "A practical checklist for vetting publishers before you buy",
-    category: "Link Building",
-    excerpt:
-      "Traffic screenshots are easy to fake. These eleven signals separate genuine editorial sites from low-value link farms.",
-    body: "Publisher vetting is the highest-leverage skill in link acquisition, and it is mostly unglamorous work. Begin with traffic distribution rather than traffic volume: a healthy site earns visits across hundreds of pages, not three viral posts from 2019.\n\nNext, look at the outbound pattern. Sites that publish twelve sponsored posts per week across unrelated industries are optimising for volume, not readership. Check whether commercial content is disclosed, whether authors have verifiable bylines, and whether the editorial calendar has continuity.\n\nFinally, examine relevance from the reader's perspective. If a reasonable person browsing that site would find your page useful, the placement is doing its job. If the only connection is a keyword, you are paying for a footprint rather than an endorsement.\n\nWe apply a version of this checklist to every domain in the marketplace, and we re-run it quarterly because sites change hands more often than most buyers assume.",
-    author: "Daniel Okoye",
-    readingMinutes: 6,
-    publishedOn: "2026-03-04",
-    featured: false,
-  },
-  {
-    slug: "digital-pr-without-gimmicks",
-    title: "Digital PR without gimmicks: building stories journalists actually use",
-    category: "Digital PR",
-    excerpt:
-      "Newsworthiness is a craft, not a budget line. How to source data, frame an angle and earn coverage that survives editorial review.",
-    body: "The fastest way to waste a digital PR budget is to start with the link and work backwards. Editors are not evaluating your anchor text; they are evaluating whether a story helps their readers.\n\nStrong campaigns usually begin with proprietary data: anonymised product usage, survey work with a defensible sample, or public datasets recombined in a way nobody has bothered to do. The angle should be explainable in a single sentence, and it should hold up if a sceptical reporter asks how you got the numbers.\n\nDistribution matters as much as the asset. Tiered outreach — a small exclusive window, then a wider regional push, then trade publications — usually outperforms a single mass send. Expect a meaningful share of coverage to arrive without a followed link; brand mentions still influence how models and search engines associate your name with a topic.\n\nMeasure campaigns on syndication depth, referring domain quality and assisted conversions, not on raw placement counts.",
-    author: "Sofia Lindqvist",
-    readingMinutes: 8,
-    publishedOn: "2026-02-26",
-    featured: true,
-  },
-  {
-    slug: "auditing-a-toxic-backlink-profile",
-    title: "Auditing a backlink profile without panicking about every link",
-    category: "Link Audits",
-    excerpt:
-      "Most link audits over-diagnose. A triage order for deciding what to disavow, what to reclaim and what to leave alone.",
-    body: "Most backlink audits start from the wrong assumption: that every unfamiliar link is a threat. In practice, search engines ignore the overwhelming majority of low-quality links rather than penalising the sites they point at. Treating an audit as a cleanup exercise usually wastes more time than it saves.\n\nTriage in this order. First, separate links you or a previous agency acquired from links that simply appeared. Paid placements from a network you once used are worth reviewing; scraper sites copying your content are not. Second, look for patterns rather than individual URLs — hundreds of identical anchors from one footprint matter, a single odd directory does not. Third, check what you have lost: broken references and redirected pages are a far more common cause of declining performance than anything toxic.\n\nDisavow sparingly and only where you have evidence of a deliberate scheme you cannot get removed manually. The file is a blunt instrument and over-use has cost sites real equity. In most audits we run, the recoverable value in lost and unlinked mentions exceeds anything gained by disavowing.",
-    author: "Priya Raman",
-    readingMinutes: 9,
-    publishedOn: "2026-02-14",
-    featured: false,
-  },
-  {
-    slug: "outreach-emails-that-get-replies",
-    title: "Why most outreach emails fail, and the few patterns that work",
-    category: "Outreach",
-    excerpt:
-      "Response rates collapse when every email looks the same. What actually separates a 2% campaign from a 20% one.",
-    body: "Editors receive dozens of link requests a week and almost all of them read identically: a compliment about the blog, a vague claim of relevance, a request for a link. The volume is why response rates sit in low single digits for most campaigns.\n\nThree things move the number. The first is specificity: name the article, name the paragraph, and explain what your resource adds that the current reference does not. The second is doing something for them first — reporting a broken link, correcting an outdated statistic, offering a chart they can embed. The third is brevity, because a busy editor decides within two sentences whether to keep reading.\n\nWhat does not work is volume. Sending three thousand templated emails produces a handful of low-quality placements and burns contacts you may want later. We consistently see higher returns from two hundred researched emails than from ten times that number sent blind.\n\nTrack declines as carefully as acceptances. The reasons people say no are the fastest route to improving the next campaign.",
-    author: "Marta Ellison",
-    readingMinutes: 6,
-    publishedOn: "2026-02-03",
-    featured: false,
-  },
-  {
-    slug: "brand-mentions-and-ai-answers",
-    title: "Why unlinked brand mentions matter more than they used to",
-    category: "Digital PR",
-    excerpt:
-      "Systems that summarise the web rely on how independent sources describe you. Consistency is now a link building concern.",
-    body: "Assistant-style results change the shape of discovery without changing the fundamentals. Systems that summarise the web still need sources they can parse, verify and attribute.\n\nThree things help. Be unambiguous about who you are: consistent entity information across your site, profiles and citations reduces the chance of being confused with a similarly named company. Be specific with facts: dates, figures and named methods are easier to quote than marketing adjectives. Be citable: original research, clear definitions and well-structured comparisons get referenced far more often than promotional pages.\n\nBrand mentions matter more in this environment, even without links. When multiple independent sources describe your company in similar terms, models are more likely to reproduce that description. Track how you are summarised, not only where you rank.",
-    author: "Daniel Okoye",
-    readingMinutes: 7,
-    publishedOn: "2026-01-22",
-    featured: true,
-  },
-  {
-    slug: "link-building-reports-clients-trust",
-    title: "Link building reports that clients actually trust",
-    category: "Industry News",
-    excerpt:
-      "A list of live URLs is not a report. How to connect placements, anchor distribution and referring-domain growth to outcomes.",
-    body: "Most link building reports fail for the same reason: they are delivery logs pretending to be analysis. A spreadsheet of URLs proves the links exist, but it does not explain whether the profile became more relevant, more diverse or more capable of supporting commercial pages.\n\nA report that survives client review has four layers. Start with referring-domain growth and the share that is topically relevant. Then show anchor distribution, split across brand, descriptive and exact-match phrases. Then list placements with page-level traffic, attribution and target URL. Finally connect the work to movement on the pages receiving links, while being honest that correlation is not attribution.\n\nKeep the same definitions for at least four quarters so trends remain comparable. Record metric snapshots at publication because third-party scores change constantly, and annotate removed or replaced links rather than quietly deleting them.\n\nClients trust reports they can verify. Give them live URLs, a methodology and a clear explanation of what did not work as well as what did.",
-    author: "Sofia Lindqvist",
-    readingMinutes: 5,
-    publishedOn: "2026-01-09",
-    featured: false,
-  },
-  {
-    slug: "local-link-building-multi-location",
-    title: "Local link building for multi-location businesses",
-    category: "Link Building",
-    excerpt:
-      "Sending every regional link to one homepage wastes the geographic signal. How to structure local acquisition per branch.",
-    body: "The most common mistake in multi-location link building is treating the company as one entity. Every regional newspaper mention, every chamber of commerce listing and every local sponsorship gets pointed at the homepage, and the geographic signal dissolves.\n\nStructure it per branch instead. Each location needs its own prospect list drawn from its actual catchment: the regional press, community organisations, local suppliers, event calendars and industry bodies operating in that area. Each of those links should point at that location's page, not the homepage, because that is the page a reader following the link would want.\n\nConsistency matters as much as volume here. Where business details differ between sources — an old phone number, a former address, an abbreviated street name — the value of those references is diluted. Auditing and correcting existing listings frequently produces more movement than adding new ones.\n\nRegional sources are also considerably cheaper than national placements and far harder for a competitor to replicate at scale, because the relationships are genuinely local.",
-    author: "Priya Raman",
-    readingMinutes: 6,
-    publishedOn: "2025-12-18",
-    featured: false,
-  },
+const RETIRED_ARTICLE_SLUGS = [
+  "authority-compounding-model",
+  "vetting-publishers-checklist",
+  "digital-pr-without-gimmicks",
+  "auditing-a-toxic-backlink-profile",
+  "outreach-emails-that-get-replies",
+  "brand-mentions-and-ai-answers",
+  "link-building-reports-clients-trust",
+  "local-link-building-multi-location",
 ];
 
 const CASE_STUDY_ROWS: (typeof caseStudies.$inferInsert)[] = [
@@ -401,11 +313,10 @@ const FAQ_ROWS: (typeof faqs.$inferInsert)[] = [
 let seedPromise: Promise<void> | null = null;
 
 async function runSeed() {
-  const [publisherRows, projectRows, articleRows, faqRows, caseRows, testimonialRows] =
+  const [publisherRows, projectRows, faqRows, caseRows, testimonialRows] =
     await Promise.all([
       db.select({ n: sql<number>`cast(count(*) as int)` }).from(publishers),
       db.select({ n: sql<number>`cast(count(*) as int)` }).from(projects),
-      db.select({ n: sql<number>`cast(count(*) as int)` }).from(articles),
       db.select({ n: sql<number>`cast(count(*) as int)` }).from(faqs),
       db.select({ n: sql<number>`cast(count(*) as int)` }).from(caseStudies),
       db.select({ n: sql<number>`cast(count(*) as int)` }).from(testimonials),
@@ -419,9 +330,10 @@ async function runSeed() {
     await db.insert(campaigns).values(CAMPAIGN_ROWS).onConflictDoNothing();
     await db.insert(placements).values(PLACEMENT_ROWS).onConflictDoNothing();
   }
-  if (articleRows[0].n === 0) {
-    await db.insert(articles).values(ARTICLE_ROWS).onConflictDoNothing();
-  }
+  // The original short demo articles have been retired in favour of long-form,
+  // keyword-focused posts (see blog-posts.ts). Remove them if an older seed
+  // already inserted them, and never re-insert them.
+  await db.delete(articles).where(inArray(articles.slug, RETIRED_ARTICLE_SLUGS));
   // Blog posts (batch-added over time) are inserted independently of the
   // count check above, so new posts append instead of requiring a full wipe.
   await db.insert(articles).values(BLOG_POSTS).onConflictDoNothing();
@@ -450,4 +362,4 @@ export async function ensureSeeded() {
 export const FALLBACK_FAQS = FAQ_ROWS;
 export const FALLBACK_TESTIMONIALS = TESTIMONIAL_ROWS;
 export const FALLBACK_CASE_STUDIES = CASE_STUDY_ROWS;
-export const FALLBACK_ARTICLES = [...ARTICLE_ROWS, ...BLOG_POSTS];
+export const FALLBACK_ARTICLES = BLOG_POSTS;
