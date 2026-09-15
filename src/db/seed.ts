@@ -1,5 +1,6 @@
 import { sql } from "drizzle-orm";
 import { db } from "@/db";
+import { BLOG_POSTS } from "@/db/blog-posts";
 import {
   articles,
   campaigns,
@@ -421,6 +422,9 @@ async function runSeed() {
   if (articleRows[0].n === 0) {
     await db.insert(articles).values(ARTICLE_ROWS).onConflictDoNothing();
   }
+  // Blog posts (batch-added over time) are inserted independently of the
+  // count check above, so new posts append instead of requiring a full wipe.
+  await db.insert(articles).values(BLOG_POSTS).onConflictDoNothing();
   if (faqRows[0].n === 0) {
     await db.insert(faqs).values(FAQ_ROWS).onConflictDoNothing();
   }
@@ -446,4 +450,4 @@ export async function ensureSeeded() {
 export const FALLBACK_FAQS = FAQ_ROWS;
 export const FALLBACK_TESTIMONIALS = TESTIMONIAL_ROWS;
 export const FALLBACK_CASE_STUDIES = CASE_STUDY_ROWS;
-export const FALLBACK_ARTICLES = ARTICLE_ROWS;
+export const FALLBACK_ARTICLES = [...ARTICLE_ROWS, ...BLOG_POSTS];

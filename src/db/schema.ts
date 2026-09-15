@@ -149,6 +149,7 @@ export const articles = pgTable(
     category: text("category").notNull(),
     excerpt: text("excerpt").notNull(),
     body: text("body").notNull(),
+    faqs: text("faqs").notNull().default("[]"),
     author: text("author").notNull(),
     readingMinutes: integer("reading_minutes").notNull(),
     publishedOn: text("published_on").notNull(),

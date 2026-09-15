@@ -6,6 +6,7 @@ import { PageHero } from "@/components/site/PageHero";
 import { Icon } from "@/components/ui/Icon";
 import { Button, Card } from "@/components/ui/primitives";
 import { formatDate } from "@/lib/format";
+import { renderArticleBody } from "@/lib/markdown";
 import { getArticle, getArticles } from "@/lib/queries";
 
 export const dynamic = "force-dynamic";
@@ -30,6 +31,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
+function safeParseFaqs(raw: string | undefined): { question: string; answer: string }[] {
+  if (!raw) return [];
+  try {
+    const parsed = JSON.parse(raw);
+    return Array.isArray(parsed) ? parsed : [];
+  } catch {
+    return [];
+  }
+}
+
 export default async function ArticlePage({ params }: Props) {
   const { slug } = await params;
   const article = await getArticle(slug);
@@ -37,9 +48,10 @@ export default async function ArticlePage({ params }: Props) {
 
   const all = await getArticles();
   const related = all.filter((item) => item.slug !== article.slug).slice(0, 3);
-  const paragraphs = article.body.split("\n\n");
+  const { html, toc } = renderArticleBody(article.body);
+  const faqs = safeParseFaqs(article.faqs);
 
-  const jsonLd = {
+  const jsonLd: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": "Article",
     headline: article.title,
@@ -49,9 +61,22 @@ export default async function ArticlePage({ params }: Props) {
     publisher: { "@type": "Organization", name: "Linkslo" },
   };
 
+  const faqJsonLd = faqs.length
+    ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: faqs.map((faq) => ({
+          "@type": "Question",
+          name: faq.question,
+          acceptedAnswer: { "@type": "Answer", text: faq.answer },
+        })),
+      }
+    : null;
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      {faqJsonLd && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />}
 
       <PageHero
         eyebrow={article.category}
@@ -84,29 +109,49 @@ export default async function ArticlePage({ params }: Props) {
 
       <section className="bg-white py-12 sm:py-16">
         <div className="container-x grid gap-10 lg:grid-cols-[minmax(0,1fr)_17rem] lg:gap-14">
-          <article className="max-w-2xl">
-            {paragraphs.map((paragraph, index) => (
-              <p
-                key={index}
-                className={`text-[1.02rem] leading-[1.75] text-ink-700 ${index > 0 ? "mt-5" : ""} ${
-                  index === 0 ? "text-[1.1rem] text-ink-800" : ""
-                }`}
-              >
-                {paragraph}
-              </p>
-            ))}
+          <article className="min-w-0 max-w-2xl">
+            {toc.length > 3 && (
+              <nav aria-label="Table of contents" className="mb-8 rounded-2xl border border-line bg-canvas p-5">
+                <p className="text-[0.72rem] font-semibold uppercase tracking-wide text-ink-400">On this page</p>
+                <ol className="mt-3 space-y-1.5">
+                  {toc.map((item) => (
+                    <li key={item.id} className={item.level === 3 ? "ml-4" : ""}>
+                      <a href={`#${item.id}`} className="text-[0.86rem] text-brand-700 hover:underline">
+                        {item.text}
+                      </a>
+                    </li>
+                  ))}
+                </ol>
+              </nav>
+            )}
+
+            <div className="article-content" dangerouslySetInnerHTML={{ __html: html }} />
+
+            {faqs.length > 0 && (
+              <div className="mt-10">
+                <h2 className="font-display text-[1.3rem] font-semibold text-ink-950">Frequently asked questions</h2>
+                <div className="mt-4 space-y-4">
+                  {faqs.map((faq) => (
+                    <div key={faq.question} className="rounded-xl border border-line p-4">
+                      <p className="text-[0.92rem] font-semibold text-ink-900">{faq.question}</p>
+                      <p className="mt-1.5 text-[0.88rem] leading-relaxed text-ink-600">{faq.answer}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
 
             <div className="mt-10 rounded-2xl border border-line bg-canvas p-6">
               <p className="font-display text-[1.05rem] font-semibold text-ink-950">
                 Put this into practice
               </p>
               <p className="mt-2 text-[0.9rem] leading-relaxed text-ink-500">
-                Run an Link Gap Scout analysis on one of your commercial pages, then compare the
-                content gaps against your current roadmap.
+                Browse real, price-listed guest post publishers and compare authority, traffic and turnaround
+                before you order.
               </p>
               <div className="mt-5 flex flex-wrap gap-3">
-                <Button href="/tools/link-gap-scout" icon="arrow-right">
-                  Open Link Gap Scout
+                <Button href="/marketplace" icon="arrow-right">
+                  Browse guest post sites
                 </Button>
                 <Button href="/contact" variant="outline">
                   Ask a strategist
@@ -117,7 +162,7 @@ export default async function ArticlePage({ params }: Props) {
 
           <aside className="space-y-5 lg:sticky lg:top-28 lg:self-start">
             <Card className="p-5">
-              <p className="text-[0.88rem] font-semibold text-ink-950">In this series</p>
+              <p className="text-[0.88rem] font-semibold text-ink-950">Keep reading</p>
               <ul className="mt-3 space-y-2">
                 {related.map((item) => (
                   <li key={item.slug}>
@@ -138,12 +183,12 @@ export default async function ArticlePage({ params }: Props) {
             </Card>
 
             <Card className="bg-ink-950 p-5 text-white">
-              <p className="text-[0.9rem] font-semibold">Monthly research digest</p>
+              <p className="text-[0.9rem] font-semibold">Looking for publisher placements?</p>
               <p className="mt-2 text-[0.82rem] leading-relaxed text-ink-300">
-                One email a month with new research, teardowns and product notes.
+                Compare 6,686 real guest post sites by niche, authority, traffic and price.
               </p>
-              <Button href="/login" variant="soft" fullWidth className="mt-4">
-                Create free account
+              <Button href="/marketplace" variant="soft" fullWidth className="mt-4">
+                Browse guest post sites
               </Button>
             </Card>
           </aside>
@@ -152,7 +197,7 @@ export default async function ArticlePage({ params }: Props) {
 
       <section className="border-t border-line bg-canvas py-16">
         <div className="container-x">
-          <h2 className="font-display text-[1.4rem] font-semibold text-ink-950">Keep reading</h2>
+          <h2 className="font-display text-[1.4rem] font-semibold text-ink-950">Related articles</h2>
           <div className="mt-6">
             <ArticleGrid items={related} columns={3} />
           </div>
