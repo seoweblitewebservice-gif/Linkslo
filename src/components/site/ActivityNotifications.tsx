@@ -15,9 +15,9 @@ type ActivityItem = {
   minutesAgo: number;
 };
 
-const SHOW_AFTER_MS = 6000;
-const VISIBLE_FOR_MS = 6500;
-const GAP_BETWEEN_MS = 14000;
+const SHOW_AFTER_MS = 3000;
+const VISIBLE_FOR_MS = 5000;
+const GAP_BETWEEN_MS = 5000;
 
 /**
  * Small, dismissible "recent activity" toast in the bottom-left corner.

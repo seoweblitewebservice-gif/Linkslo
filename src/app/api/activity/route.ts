@@ -37,7 +37,7 @@ export async function GET() {
       .from(backlinkGigs)
       .where(isNotNull(backlinkGigs.domain))
       .orderBy(sql`random()`)
-      .limit(12);
+      .limit(40);
 
     const items = rows.map((row, index) => ({
       id: index,
