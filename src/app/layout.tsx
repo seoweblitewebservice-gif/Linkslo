@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   description:
     "Compare backlink services, guest post opportunities and link-building packages across industries and countries, with transparent scope, pricing and delivery details.",
   applicationName: BRAND.name,
-  authors: [{ name: BRAND.legalName }],
+  authors: [{ name: BRAND.name }],
   openGraph: {
     type: "website",
     siteName: BRAND.name,
@@ -51,17 +51,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: BRAND.name,
-    legalName: BRAND.legalName,
     url: "https://www.linkslo.com",
     email: BRAND.email,
-    telephone: BRAND.phone,
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: BRAND.addressLines[0],
-      addressLocality: "Amsterdam",
-      postalCode: BRAND.addressLines[1]?.split(" ")[0],
-      addressCountry: "NL",
-    },
   };
 
   return (
