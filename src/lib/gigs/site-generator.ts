@@ -1,6 +1,6 @@
 import { slugify, normaliseDomain } from "@/lib/format";
-import { sellerFor, reviewerFor, titleCase } from "@/lib/gigs/generator";
-import type { GigBenefit, GigFaq, GigPackage, GigReview, GigStep } from "@/lib/gigs/types";
+import { titleCase } from "@/lib/gigs/generator";
+import type { GigBenefit, GigFaq, GigPackage, GigStep } from "@/lib/gigs/types";
 import type { GigInsert } from "@/lib/gigs/generator";
 import siteData from "@/lib/gigs/site-guest-post-data.json";
 
@@ -16,7 +16,7 @@ type RawSite = {
 
 const RAW_SITES = siteData as RawSite[];
 
-/** Number of real, price-listed publisher domains available as individual gigs. */
+/** Number of named, price-listed publisher domains available as individual gigs. */
 export const SITE_GIG_COUNT = RAW_SITES.length;
 
 const CATEGORY_LABELS: Record<string, string> = {
@@ -39,7 +39,7 @@ function industryFor(rawCategory: string) {
   return CATEGORY_LABELS[primary] ?? titleCase(primary || "general");
 }
 
-/** Rough TLD → market mapping so location and language read naturally instead of "International" 6,686 times. */
+/** Country-code TLDs provide a useful market hint; generic TLDs remain International. */
 const TLD_MARKETS: Array<[string, { country: string; language: string }]> = [
   [".co.uk", { country: "United Kingdom", language: "English" }],
   [".org.uk", { country: "United Kingdom", language: "English" }],
@@ -63,7 +63,6 @@ const TLD_MARKETS: Array<[string, { country: string; language: string }]> = [
   [".lat", { country: "Latin America", language: "Spanish" }],
   [".mx", { country: "Mexico", language: "Spanish" }],
   [".ie", { country: "Ireland", language: "English" }],
-  [".co", { country: "United States", language: "English" }],
   [".us", { country: "United States", language: "English" }],
 ];
 
@@ -72,7 +71,7 @@ function marketFor(domain: string) {
   for (const [suffix, market] of TLD_MARKETS) {
     if (lower.endsWith(suffix)) return market;
   }
-  return { country: "United States", language: "English" };
+  return { country: "International", language: "English" };
 }
 
 /** Converts traffic strings like "1.9M", "146.6K", "30 M", "1.2k", "500" into an approximate monthly-visit count. */
@@ -95,44 +94,42 @@ function formatTraffic(monthly: number): string {
 }
 
 const DELIVERY_STEPS: GigStep[] = [
-  { title: "Domain and brief check", body: "The exact publishing domain, its current organic traffic and indexing status are reconfirmed before the order is accepted, and your target page and anchor preference are reviewed for topical fit." },
-  { title: "Content drafted or reviewed", body: "An original article is written to the publisher's editorial guidelines, or your supplied draft is checked against those guidelines and adjusted where required." },
-  { title: "Editorial submission", body: "The article is submitted to the publisher's editorial team for approval. Publishers retain final editorial control, so minor wording changes can happen during this step." },
-  { title: "Live URL and report", body: "Once published, the live URL, publish date and link attribution (dofollow or nofollow, as listed) are confirmed and delivered in your order report." },
+  { title: "Availability and brief check", body: "The named domain, listed placement details, target page and anchor preference are reviewed before fulfilment begins. Publisher availability can change, so the placement is not treated as final until confirmed." },
+  { title: "Content requirements", body: "The required topic, content format and supplied or newly written article are aligned with the confirmed placement requirements before submission." },
+  { title: "Editorial submission", body: "The content is submitted only after the placement requirements are confirmed. Third-party publishers retain final editorial approval and may request changes or decline a submission." },
+  { title: "Delivery report", body: "If publication is approved and goes live, the live URL and the observed link attribution are recorded in the delivery information." },
 ];
 
 function benefitsFor(domain: string, da: number | null, dr: number | null, industry: string): GigBenefit[] {
   return [
-    { title: "Real, named publication", body: `You are ordering a placement on ${domain} specifically, not an undisclosed site swapped in after payment. The domain is confirmed before you order.` },
-    { title: "Metrics shown upfront", body: `${domain} is listed with a Domain Authority of ${da ?? "N/A"}${dr !== null ? ` and a Domain Rating of ${dr}` : ""}, sourced from third-party SEO tools, so you can judge fit before ordering rather than after.` },
-    { title: `${industry} relevance`, body: `${domain} is catalogued under ${industry.toLowerCase()}, which matters more for link value than authority scores alone.` },
-    { title: "Editorial placement, not a link farm", body: "The article is written for the publication's own readers and submitted through its normal editorial process, not injected into an existing page." },
+    { title: "Named-domain listing", body: `The listing identifies ${domain} before ordering rather than presenting an undisclosed publisher bundle.` },
+    { title: "Metrics shown upfront", body: `${domain} is listed with a Domain Authority of ${da ?? "N/A"}${dr !== null ? ` and a Domain Rating of ${dr}` : ""}. These are third-party comparison metrics and can change over time.` },
+    { title: `${industry} category context`, body: `${domain} is catalogued under ${industry.toLowerCase()} in the source inventory so you can compare it with other listings in the same category.` },
+    { title: "Availability checked before fulfilment", body: "The listing is a request for the named placement. Publisher availability, editorial fit and final link treatment are reconfirmed before the placement is treated as confirmed." },
   ];
 }
 
 function faqsFor(domain: string, da: number | null, dr: number | null, trafficLabel: string, linkType: string, price: number, category: string): GigFaq[] {
   return [
     {
-      question: `What are the current metrics for ${domain}?`,
-      answer: `${domain} is currently listed with a Domain Authority of ${da ?? "not available"}${dr !== null ? ` and a Domain Rating of ${dr}` : ""}, and estimated organic traffic of around ${trafficLabel} visits per month. These figures come from third-party SEO tools (such as Moz and Ahrefs-style estimates), refresh periodically, and are provided as guidance rather than a guarantee, since publisher metrics move over time.`,
+      question: `What metrics are listed for ${domain}?`,
+      answer: `${domain} is listed with a Domain Authority of ${da ?? "not available"}${dr !== null ? ` and a Domain Rating of ${dr}` : ""}, plus estimated organic traffic of around ${trafficLabel} visits per month. These are inventory snapshots from third-party SEO metrics, not guarantees, and should be rechecked when making a time-sensitive decision.`,
     },
     {
-      question: `Will the backlink from ${domain} be dofollow or nofollow?`,
-      answer: linkType === "nofollow"
-        ? `${domain} currently attributes outbound editorial links as nofollow. The placement still delivers genuine referral traffic, brand exposure and topical association on a real ${category.toLowerCase()} publication, even though the link does not pass full authority signal the way a dofollow link would.`
-        : `${domain} currently publishes contextual outbound links as dofollow. If the publisher's policy changes before delivery, you are notified and offered a comparable alternative or a partial refund for the difference.`,
+      question: `Is the listed link type for ${domain} guaranteed?`,
+      answer: `${domain} is currently catalogued as a ${linkType} opportunity. Publisher policies can change, so link attribution and editorial requirements are reconfirmed before fulfilment. If the confirmed terms materially differ from the listing, you can review an alternative before the affected item is fulfilled.`,
     },
     {
-      question: `What is included for $${price}?`,
-      answer: `The $${price} placement includes topic approval, an original article written to ${domain}'s editorial guidelines (or review of your supplied draft), one contextual in-content link to your chosen target URL, and a delivery report with the live URL once it is published and indexed.`,
+      question: `What does the $${price} listing price represent?`,
+      answer: `The listed starting price is the base price stored for this ${category.toLowerCase()} placement opportunity. The selected package shows the requested quantity, content scope and delivery window; publisher availability and editorial approval are confirmed before fulfilment begins.`,
     },
     {
-      question: `Is the guest post on ${domain} permanent?`,
-      answer: `Placements are intended to stay live permanently under the publisher's normal retention policy. The URL is checked at delivery to confirm it is indexed and live; if it is removed by the publisher within the stated monitoring window, a replacement placement of comparable metrics is arranged.`,
+      question: `Is a guest post on ${domain} permanent?`,
+      answer: `No third-party publication can be guaranteed to remain live permanently. If a placement is approved and published, Linkslo records the live URL at delivery, but later edits, removals or policy changes remain under the publisher's control.`,
     },
     {
       question: `Can I supply my own topic or article for ${domain}?`,
-      answer: `Yes. You can propose the topic and target page, or supply your own draft. Either way, the content is checked against ${domain}'s editorial guidelines before submission, since publishers reserve final approval and unrelated or overly promotional drafts are typically declined.`,
+      answer: `You can provide a proposed topic, target page and draft when relevant. Acceptance depends on the confirmed placement requirements and the publisher's editorial decision, so supplied content may require changes or may not be accepted.`,
     },
   ];
 }
@@ -149,13 +146,13 @@ function packagesFor(domain: string, price: number, category: string): GigPackag
       deliveryDays: 10,
       revisions: 1,
       quantity: "1 placement",
-      description: `One original guest post published on ${domain}, with one contextual link to your target page.`,
+      description: `One requested guest post placement on ${domain}, subject to current publisher availability and editorial approval.`,
       features: [
-        `1 guest post placement on ${domain}`,
-        "Topic approved before writing begins",
-        "900+ word original article",
-        "1 contextual in-content link",
-        "Live URL delivery report",
+        `1 requested guest post placement on ${domain}`,
+        "Availability and editorial-fit check",
+        "Content requirement review",
+        "1 contextual link request",
+        "Live URL report if published",
       ],
       recommended: false,
     },
@@ -166,13 +163,13 @@ function packagesFor(domain: string, price: number, category: string): GigPackag
       deliveryDays: 16,
       revisions: 2,
       quantity: `${standardQty} placements`,
-      description: `A guest post on ${domain} plus two comparable ${category.toLowerCase()}-relevant publications, spreading anchors across three domains.`,
+      description: `A requested placement on ${domain} plus two category-relevant placement requests, with final domains and availability confirmed before fulfilment.`,
       features: [
-        `Guest post on ${domain}`,
-        `2 further placements on comparable ${category.toLowerCase()} domains`,
-        "Anchor text distribution across all 3 links",
-        "Priority editor scheduling",
-        "Live URL report for every placement",
+        `Requested placement on ${domain}`,
+        `2 additional ${category.toLowerCase()} placement requests`,
+        "Anchor and target-page planning",
+        "Availability confirmation before fulfilment",
+        "Live URL report for published placements",
       ],
       recommended: true,
     },
@@ -183,13 +180,13 @@ function packagesFor(domain: string, price: number, category: string): GigPackag
       deliveryDays: 24,
       revisions: 3,
       quantity: `${premiumQty} placements`,
-      description: `A guest post on ${domain} as the anchor placement, plus four further vetted ${category.toLowerCase()} publications for a broader, more natural link profile.`,
+      description: `A requested placement on ${domain} plus four category-relevant placement requests, with final availability and editorial requirements confirmed before fulfilment.`,
       features: [
-        `Guest post on ${domain}`,
-        `4 further placements on vetted ${category.toLowerCase()} domains`,
-        "Full anchor and target-page distribution plan",
-        "Dedicated order updates",
-        "90-day placement monitoring",
+        `Requested placement on ${domain}`,
+        `4 additional ${category.toLowerCase()} placement requests`,
+        "Anchor and target-page planning",
+        "Order progress updates",
+        "Live URL report for published placements",
       ],
       recommended: false,
     },
@@ -198,20 +195,20 @@ function packagesFor(domain: string, price: number, category: string): GigPackag
 
 function useCasesFor(domain: string, industry: string): string[] {
   return [
-    `Brands in ${industry.toLowerCase()} who want a named, checkable placement instead of a blind bundle`,
-    `Sites building topical relevance in the ${industry.toLowerCase()} space via ${domain}`,
-    "Agencies that need one verifiable domain to report to a client, with a live URL as proof",
-    "Buyers diversifying an existing backlink profile with one additional real publication",
+    `Brands in ${industry.toLowerCase()} comparing a named-domain opportunity instead of an undisclosed publisher bundle`,
+    `Sites evaluating whether ${domain} is relevant to a target page before committing to fulfilment`,
+    "Agencies that need a named listing, package scope and delivery record for client planning",
+    "Buyers comparing one additional publisher opportunity with their existing backlink mix",
   ];
 }
 
 function includedFor(domain: string, price: number): string[] {
   return [
-    `Confirmed placement on ${domain}, checked for live status before your order is marked complete`,
-    "Topic pitched and approved before writing begins",
-    "Original 900+ word article written to the publisher's guidelines",
-    "One contextual dofollow/nofollow link (as listed for this domain) to your target URL",
-    `Delivery report with live URL, publish date and the $${price} order reference`,
+    `Availability check for the requested ${domain} placement before fulfilment`,
+    "Topic, target-page and anchor requirement review",
+    "Content scope based on the selected package and confirmed publisher requirements",
+    "Requested contextual link type based on the current listing, rechecked before fulfilment",
+    `Order record showing the $${price} starting price and live URL details if publication is completed`,
   ];
 }
 
@@ -228,75 +225,50 @@ export function generateSiteGuestPostGigs(): GigInsert[] {
     const { country, language } = marketFor(domain);
     const linkType = entry.linkType === "nofollow" ? "nofollow" : "dofollow";
     const price = entry.price;
-    const seller = sellerFor(3000 + index * 11, "Guest Post Backlinks");
 
-    const title = `I Will Publish Guest Post on ${domain}`;
+    const title = `Guest Post on ${domain}`;
     const slug = `i-will-publish-guest-post-on-${slugify(domain)}`;
 
-    const summary = `Publish a real, editorially placed guest post on ${domain} (DA ${da ?? "N/A"}${dr !== null ? `, DR ${dr}` : ""}, ~${trafficLabel} monthly visits), with one ${linkType} contextual link to your target page.`;
+    const summary = `Guest post listing for ${domain} with listed DA ${da ?? "N/A"}${dr !== null ? `, DR ${dr}` : ""}, approximately ${trafficLabel} monthly organic visits and a ${linkType} link classification in the source inventory.`;
 
-    const description = `This gig places one original guest post directly on ${domain}. The domain currently shows a Domain Authority of ${da ?? "N/A"}${dr !== null ? ` and a Domain Rating of ${dr}` : ""}, with estimated organic traffic of around ${trafficLabel} visits per month and is catalogued under ${industry.toLowerCase()}. Metrics are sourced from third-party SEO tools, refresh periodically, and are shown so you can judge fit before ordering rather than after.\n\n${seller.name} reviews your target page and requested anchor first, then pitches a topic that fits ${domain}'s existing content before any writing begins. The article is written specifically for this publication's audience — not recycled across unrelated domains — and the link is placed ${linkType === "dofollow" ? "as a dofollow, in-content contextual link" : "as a nofollow, in-content contextual link, since that is this publisher's current attribution policy"}. Once the publisher approves and the article goes live, you receive the URL, publish date and a short indexing check as part of delivery.\n\nNo private blog networks and no guaranteed rankings: this is a single, named, checkable placement on ${domain}, priced at $${price} for one article.`;
+    const description = `This listing is for a requested guest post opportunity on ${domain}. The source inventory currently lists Domain Authority ${da ?? "N/A"}${dr !== null ? `, Domain Rating ${dr}` : ""}, estimated organic traffic of around ${trafficLabel} visits per month, a ${linkType} link classification and the ${industry.toLowerCase()} category. These metrics and classifications are comparison data, can change over time and should not be treated as guarantees.\n\nBefore fulfilment, Linkslo reviews the target page, anchor preference, current publisher availability and the placement requirements. The named domain is not treated as confirmed until availability and editorial fit have been checked. Third-party publishers retain final approval over content, placement and link treatment.\n\nIf publication is approved and completed, the delivery record includes the live URL and the observed link attribution. Search rankings, indexing duration and permanent retention are not guaranteed.`;
 
-    const placement = `Links are placed inside the body of the article on ${domain}, in a sentence that gives the reader a reason to click through, rather than in an author bio, footer or sidebar. The final live URL on ${domain} is checked again before the order is marked complete.`;
+    const placement = `The listing requests an in-content contextual link on ${domain}. Exact page location, wording, attribution and publication acceptance remain subject to the publisher's current editorial requirements and are reconfirmed before fulfilment.`;
 
-    const quality = `${domain} is reviewed for topical overlap with ${industry.toLowerCase()} content, a working editorial process and a sane ratio of commercial to editorial outbound links. Domain Authority (${da ?? "N/A"}), Domain Rating (${dr ?? "N/A"}) and the ~${trafficLabel}/month traffic estimate are treated as a starting filter, not as a substitute for checking that the page is genuinely indexed and read.`;
-
-    const rating = index % 19 === 0 ? 47 : index % 11 === 0 ? 48 : 49;
-    const ordersCompleted = 4 + ((index * 37 + 13) % 420);
-    const reviewCount = Math.max(1, Math.round(ordersCompleted * (0.15 + (index % 7) / 100)));
-
-    const reviewer1 = reviewerFor(index * 2 + 5000);
-    const reviewer2 = reviewerFor(index * 2 + 5001);
-    const reviews: GigReview[] = [
-      {
-        name: reviewer1.name,
-        initials: reviewer1.initials,
-        country: marketFor(domain).country,
-        rating: index % 9 === 0 ? 4 : 5,
-        date: `2026-${String((index % 8) + 1).padStart(2, "0")}-${String(((index * 7) % 27) + 1).padStart(2, "0")}`,
-        packageTier: "Basic",
-        text: `Ordered the single placement on ${domain} to support a ${industry.toLowerCase()} page. The topic was agreed before writing started and the live URL matched what was promised.`,
-      },
-      {
-        name: reviewer2.name,
-        initials: reviewer2.initials,
-        country: marketFor(domain).country,
-        rating: index % 13 === 0 ? 4 : 5,
-        date: `2026-${String(((index + 3) % 8) + 1).padStart(2, "0")}-${String(((index * 11) % 27) + 1).padStart(2, "0")}`,
-        packageTier: "Standard",
-        text: `${seller.name} confirmed ${domain}'s traffic and relevance before starting, which is more diligence than most guest post sellers offer. Delivered on schedule.`,
-      },
-    ];
+    const quality = `${domain} is catalogued under ${industry.toLowerCase()} with listed DA ${da ?? "N/A"}, DR ${dr ?? "N/A"} and approximately ${trafficLabel} monthly organic visits. These fields are used for marketplace comparison; Linkslo does not treat authority or traffic estimates as proof of editorial quality or guaranteed SEO performance.`;
 
     rows.push({
       slug,
       title,
       metaTitle: `Guest Post on ${domain} (DA ${da ?? "N/A"})`,
-      metaDescription: `Publish a guest post on ${domain} — DA ${da ?? "N/A"}${dr !== null ? `, DR ${dr}` : ""}, ~${trafficLabel}/mo traffic, ${linkType} link. From $${price}.`,
+      metaDescription: `${domain} guest post listing — DA ${da ?? "N/A"}${dr !== null ? `, DR ${dr}` : ""}, ~${trafficLabel}/mo estimated traffic, ${linkType} classification. From $${price}; availability confirmed before fulfilment.`,
       category: "Placement Services",
       subcategory: "Guest Post Backlinks",
       serviceSlug: "guest-post-backlinks",
       industry,
       country,
       language,
-      objective: "Single-domain guest post placement",
+      objective: "Named-domain guest post request",
       summary,
       description,
       placement,
       quality,
-      sellerName: seller.name,
-      sellerHandle: seller.handle,
-      sellerInitials: seller.initials,
-      sellerCountry: seller.country,
-      sellerLevel: seller.level,
-      sellerBio: seller.bio,
-      sellerLanguages: seller.languages,
-      sellerResponseHours: seller.responseHours,
-      sellerSinceYear: seller.sinceYear,
-      verified: true,
-      rating,
-      reviewCount,
-      ordersCompleted,
+      // The schema predates the current Linkslo-operated marketplace model and
+      // still requires seller/review fields. Keep them neutral instead of
+      // generating fictional people, ratings, review counts or order history.
+      sellerName: "Linkslo",
+      sellerHandle: "linkslo",
+      sellerInitials: "LS",
+      sellerCountry: "International",
+      sellerLevel: "Platform listing",
+      sellerBio: "Linkslo-operated marketplace listing. Publisher availability and editorial approval are confirmed before fulfilment.",
+      sellerLanguages: language,
+      sellerResponseHours: 0,
+      sellerSinceYear: 0,
+      verified: false,
+      rating: 0,
+      reviewCount: 0,
+      ordersCompleted: 0,
       startingPrice: price,
       fastestDeliveryDays: 10,
       packages: JSON.stringify(packagesFor(domain, price, industry)),
@@ -305,7 +277,7 @@ export function generateSiteGuestPostGigs(): GigInsert[] {
       process: JSON.stringify(DELIVERY_STEPS),
       useCases: JSON.stringify(useCasesFor(domain, industry)),
       faqs: JSON.stringify(faqsFor(domain, da, dr, trafficLabel, linkType, price, industry)),
-      reviews: JSON.stringify(reviews),
+      reviews: "[]",
       featured: (da ?? 0) >= 60 || index < 8,
       domain,
       authority: da,
