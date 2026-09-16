@@ -7,13 +7,13 @@ import { BRAND } from "@/lib/content";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/contact" },
-  title: "Contact",
+  title: "Contact Linkslo",
   description:
-    "Talk to an Linkslo strategist about guest posts, editorial links, niche edits, digital PR or an ongoing monthly link building campaign.",
+    "Contact Linkslo about guest posts, editorial links, niche edits, digital PR, marketplace listings or an ongoing link-building campaign.",
   openGraph: {
-    title: "Contact Linkslo — Talk to a Link Building Strategist",
+    title: "Contact Linkslo — Link Building & Marketplace Support",
     description:
-      "Talk to an Linkslo strategist about guest posts, editorial links, niche edits, digital PR or an ongoing monthly link building campaign.",
+      "Contact Linkslo about backlink services, marketplace listings, order requirements or campaign planning.",
     type: "website",
   },
 };
@@ -22,20 +22,23 @@ const CONTACT_BLOCKS = [
   {
     icon: "mail" as const,
     title: "Email",
-    lines: [BRAND.email],
-    note: "Replies within one business day",
+    value: BRAND.email,
+    href: `mailto:${BRAND.email}`,
+    note: "For campaign, order and partnership questions",
   },
   {
     icon: "users" as const,
-    title: "Talk to sales",
-    lines: [BRAND.phone],
-    note: "Mon–Fri, 09:00–18:00 CET",
+    title: "Telegram",
+    value: "@SEOSERVICE9111",
+    href: "https://t.me/SEOSERVICE9111",
+    note: "Use Telegram for a quick project or order message",
   },
   {
-    icon: "pin" as const,
-    title: "Office",
-    lines: BRAND.addressLines,
-    note: "Visits by appointment",
+    icon: "message" as const,
+    title: "WhatsApp",
+    value: "+1 530 303 7330",
+    href: "https://wa.me/15303037330",
+    note: "Include your target URL and the service you are considering",
   },
 ];
 
@@ -46,8 +49,8 @@ export default function ContactPage() {
         eyebrow="Contact"
         eyebrowIcon="users"
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "Contact" }]}
-        title="Talk to a link building strategist"
-        description="Tell us the pages you want to strengthen and we will come back with an honest assessment, including whether you need us at all."
+        title="Talk to Linkslo about your link-building brief"
+        description="Share the target page, market and service you are considering. The goal is to confirm fit, scope and availability before fulfilment begins."
       />
 
       <section className="bg-canvas py-14 sm:py-18">
@@ -61,22 +64,25 @@ export default function ContactPage() {
                   <Icon name={block.icon} size={18} />
                 </span>
                 <p className="mt-3.5 text-[0.95rem] font-semibold text-ink-950">{block.title}</p>
-                {block.lines.map((line) => (
-                  <p key={line} className="text-[0.88rem] text-ink-600">
-                    {line}
-                  </p>
-                ))}
-                <p className="mt-1.5 text-[0.76rem] text-ink-400">{block.note}</p>
+                <a
+                  href={block.href}
+                  target={block.href.startsWith("http") ? "_blank" : undefined}
+                  rel={block.href.startsWith("http") ? "noreferrer noopener" : undefined}
+                  className="mt-1 inline-block text-[0.88rem] font-medium text-brand-700 hover:underline"
+                >
+                  {block.value}
+                </a>
+                <p className="mt-1.5 text-[0.76rem] leading-relaxed text-ink-400">{block.note}</p>
               </Card>
             ))}
 
             <Card className="bg-ink-950 p-6 text-white">
-              <p className="font-display text-[1.05rem] font-semibold">What happens next</p>
+              <p className="font-display text-[1.05rem] font-semibold">What to include in your message</p>
               <ol className="mt-4 space-y-3 text-[0.86rem] text-ink-200">
                 {[
-                  "We review your current backlink profile and target pages before the call.",
-                  "A 30-minute conversation about objectives, constraints and timing.",
-                  "A written recommendation with indicative scope and budget ranges.",
+                  "The website or target page you want to strengthen.",
+                  "The link type, market or publisher option you are considering.",
+                  "Your preferred anchor text, timing and any placement constraints.",
                 ].map((step, index) => (
                   <li key={step} className="flex gap-3">
                     <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-500/20 text-[0.72rem] font-semibold text-brand-300">
@@ -86,6 +92,9 @@ export default function ContactPage() {
                   </li>
                 ))}
               </ol>
+              <p className="mt-4 text-[0.76rem] leading-relaxed text-ink-400">
+                Publisher availability and third-party editorial approval can change, so suitability is confirmed before a placement is treated as final.
+              </p>
             </Card>
           </aside>
         </div>
