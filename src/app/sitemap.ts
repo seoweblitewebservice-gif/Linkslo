@@ -14,8 +14,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     getCaseStudies(),
     getGigSitemapRows(),
   ]);
-  const now = new Date();
 
+  // Keep only public, indexable routes in the sitemap. Authentication/account
+  // and checkout routes are intentionally excluded because their page metadata
+  // marks them noindex.
   const staticRoutes = [
     "",
     "/backlinks",
@@ -26,13 +28,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/resources",
     "/case-studies",
     "/tools/link-gap-scout",
-    "/dashboard",
     "/about",
     "/contact",
-    "/login",
   ].map((path) => ({
     url: `${BASE}${path}`,
-    lastModified: now,
     changeFrequency: "weekly" as const,
     priority: path === "" ? 1 : path === "/backlinks" ? 0.95 : 0.8,
   }));
@@ -41,19 +40,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...staticRoutes,
     ...BACKLINK_SERVICES.map((service) => ({
       url: `${BASE}/backlinks/${service.slug}`,
-      lastModified: now,
       changeFrequency: "weekly" as const,
       priority: 0.9,
     })),
     ...INDUSTRY_PAGES.map((industry) => ({
       url: `${BASE}/backlinks/industry/${industry.slug}`,
-      lastModified: now,
       changeFrequency: "monthly" as const,
       priority: 0.75,
     })),
     ...COUNTRY_PAGES.map((country) => ({
       url: `${BASE}/backlinks/country/${country.slug}`,
-      lastModified: now,
       changeFrequency: "monthly" as const,
       priority: 0.75,
     })),
@@ -65,7 +61,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })),
     ...caseStudies.map((study) => ({
       url: `${BASE}/case-studies/${study.slug}`,
-      lastModified: now,
       changeFrequency: "monthly" as const,
       priority: 0.6,
     })),
@@ -77,7 +72,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })),
     ...Object.keys(LEGAL_PAGES).map((slug) => ({
       url: `${BASE}/legal/${slug}`,
-      lastModified: now,
       changeFrequency: "yearly" as const,
       priority: 0.3,
     })),
