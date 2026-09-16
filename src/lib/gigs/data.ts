@@ -1,4 +1,4 @@
-import { asc, desc, eq } from "drizzle-orm";
+import { asc, desc, eq, isNotNull } from "drizzle-orm";
 import { db } from "@/db";
 import { backlinkGigs, type BacklinkGig } from "@/db/schema";
 import { ensureGigsSeeded } from "@/db/gig-seed";
@@ -82,8 +82,12 @@ export async function getFeaturedMarketplaceGigs(limit = 6) {
 
 export async function getGigSitemapRows() {
   await ensureGigsSeeded();
+  // Only named-domain guest-post inventory is currently eligible for XML
+  // sitemap discovery. Generic generated marketplace variants remain
+  // browseable internally but are not proactively submitted to search engines.
   return db
     .select({ slug: backlinkGigs.slug, createdAt: backlinkGigs.createdAt })
     .from(backlinkGigs)
+    .where(isNotNull(backlinkGigs.domain))
     .orderBy(asc(backlinkGigs.id));
 }
