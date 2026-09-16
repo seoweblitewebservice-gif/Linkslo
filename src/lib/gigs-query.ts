@@ -37,6 +37,86 @@ function parsePackages(value: string) {
   }
 }
 
+const TLD_MARKETS: Array<[string, string]> = [
+  [".co.uk", "United Kingdom"],
+  [".org.uk", "United Kingdom"],
+  [".uk", "United Kingdom"],
+  [".com.au", "Australia"],
+  [".net.au", "Australia"],
+  [".au", "Australia"],
+  [".com.in", "India"],
+  [".co.in", "India"],
+  [".org.in", "India"],
+  [".in", "India"],
+  [".ca", "Canada"],
+  [".de", "Germany"],
+  [".fr", "France"],
+  [".es", "Spain"],
+  [".it", "Italy"],
+  [".pt", "Portugal"],
+  [".nl", "Netherlands"],
+  [".br", "Brazil"],
+  [".pk", "Pakistan"],
+  [".lat", "Latin America"],
+  [".mx", "Mexico"],
+  [".ie", "Ireland"],
+  [".us", "United States"],
+];
+
+function publicCountry(domain: string | null, storedCountry: string) {
+  if (!domain) return storedCountry;
+  const lower = domain.toLowerCase();
+  for (const [suffix, country] of TLD_MARKETS) {
+    if (lower.endsWith(suffix)) return country;
+  }
+  // Generic TLDs such as .com/.org/.net do not establish a publisher's
+  // physical market. Avoid presenting them as US-based without evidence.
+  return "International";
+}
+
+function countryFilter(country: string): SQL {
+  if (country === "United States") {
+    return sql`(
+      (${backlinkGigs.domain} is null and ${backlinkGigs.country} = ${country})
+      or lower(${backlinkGigs.domain}) like '%.us'
+    )`;
+  }
+
+  if (country === "International") {
+    return sql`(
+      ${backlinkGigs.country} = ${country}
+      or (
+        ${backlinkGigs.domain} is not null
+        and lower(${backlinkGigs.domain}) not like '%.co.uk'
+        and lower(${backlinkGigs.domain}) not like '%.org.uk'
+        and lower(${backlinkGigs.domain}) not like '%.uk'
+        and lower(${backlinkGigs.domain}) not like '%.com.au'
+        and lower(${backlinkGigs.domain}) not like '%.net.au'
+        and lower(${backlinkGigs.domain}) not like '%.au'
+        and lower(${backlinkGigs.domain}) not like '%.com.in'
+        and lower(${backlinkGigs.domain}) not like '%.co.in'
+        and lower(${backlinkGigs.domain}) not like '%.org.in'
+        and lower(${backlinkGigs.domain}) not like '%.in'
+        and lower(${backlinkGigs.domain}) not like '%.ca'
+        and lower(${backlinkGigs.domain}) not like '%.de'
+        and lower(${backlinkGigs.domain}) not like '%.fr'
+        and lower(${backlinkGigs.domain}) not like '%.es'
+        and lower(${backlinkGigs.domain}) not like '%.it'
+        and lower(${backlinkGigs.domain}) not like '%.pt'
+        and lower(${backlinkGigs.domain}) not like '%.nl'
+        and lower(${backlinkGigs.domain}) not like '%.br'
+        and lower(${backlinkGigs.domain}) not like '%.pk'
+        and lower(${backlinkGigs.domain}) not like '%.lat'
+        and lower(${backlinkGigs.domain}) not like '%.mx'
+        and lower(${backlinkGigs.domain}) not like '%.ie'
+        and lower(${backlinkGigs.domain}) not like '%.us'
+      )
+    )`;
+  }
+
+  return eq(backlinkGigs.country, country);
+}
+
 export async function queryGigs(params: GigQueryParams) {
   await ensureGigsSeeded();
 
@@ -69,7 +149,7 @@ export async function queryGigs(params: GigQueryParams) {
   if (category) filters.push(eq(backlinkGigs.category, category));
   if (subcategory) filters.push(eq(backlinkGigs.subcategory, subcategory));
   if (industry) filters.push(eq(backlinkGigs.industry, industry));
-  if (country) filters.push(eq(backlinkGigs.country, country));
+  if (country) filters.push(countryFilter(country));
   if (language) filters.push(eq(backlinkGigs.language, language));
   if (maxPrice > 0) filters.push(lte(backlinkGigs.startingPrice, maxPrice));
   if (maxDelivery > 0) filters.push(lte(backlinkGigs.fastestDeliveryDays, maxDelivery));
@@ -112,7 +192,11 @@ export async function queryGigs(params: GigQueryParams) {
   ]);
 
   return {
-    items: rows.map((row) => ({ ...row, packages: parsePackages(row.packages) })),
+    items: rows.map((row) => ({
+      ...row,
+      country: publicCountry(row.domain, row.country),
+      packages: parsePackages(row.packages),
+    })),
     page,
     pageSize,
     total: totals[0]?.total ?? 0,
