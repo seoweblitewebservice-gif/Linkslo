@@ -7,9 +7,9 @@ import { GigMarketplace } from "@/components/marketplace/GigMarketplace";
 import { PageHero } from "@/components/site/PageHero";
 import { Icon } from "@/components/ui/Icon";
 import { Reveal } from "@/components/ui/motion";
-import { Badge, Button, Card, SectionHeading, Stars } from "@/components/ui/primitives";
+import { Badge, Button, Card, SectionHeading } from "@/components/ui/primitives";
 import { INDUSTRY_PAGES, getIndustry, getRelatedServices, startingPrice } from "@/lib/backlinks";
-import { formatCurrency, formatDate } from "@/lib/format";
+import { formatCurrency } from "@/lib/format";
 import { getGigFacets } from "@/lib/gigs/data";
 import { queryGigs } from "@/lib/gigs-query";
 
@@ -79,13 +79,13 @@ export default async function IndustryPage({ params }: Props) {
         <div className="container-x">
           <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
             <div>
-              <Badge tone="brand">100+ industry gigs</Badge>
+              <Badge tone="brand">Industry marketplace</Badge>
               <h2 className="mt-3 font-display text-[1.5rem] font-semibold text-ink-950">
-                Hire a {industry.name.toLowerCase()} backlink specialist
+                Compare backlink packages for {industry.name.toLowerCase()} websites
               </h2>
               <p className="mt-2 max-w-2xl text-[0.9rem] leading-relaxed text-ink-500">
-                Compare specialists across guest posts, editorial links, niche edits, outreach,
-                PR and recurring campaigns created specifically for {industry.name.toLowerCase()} websites.
+                Browse guest posts, editorial links, niche edits, outreach, PR and recurring campaign
+                options matched to {industry.name.toLowerCase()} websites.
               </p>
             </div>
             <Button href={`/marketplace?industry=${encodeURIComponent(industry.name)}`} variant="outline" icon="arrow-right" className="shrink-0">
@@ -174,29 +174,6 @@ export default async function IndustryPage({ params }: Props) {
                   topic: industry.name,
                 }))}
               />
-            </div>
-
-            <div>
-              <h2 className="mb-4 font-display text-[1.3rem] font-semibold text-ink-950">
-                What {industry.name.toLowerCase()} clients say
-              </h2>
-              <ul className="grid gap-3 sm:grid-cols-2">
-                {industry.reviews.map((review) => (
-                  <li key={review.name}>
-                    <Card className="h-full p-5">
-                      <Stars rating={review.rating} size={13} />
-                      <p className="mt-3 text-[0.88rem] leading-relaxed text-ink-600">“{review.text}”</p>
-                      <div className="mt-4 border-t border-line pt-3">
-                        <p className="text-[0.84rem] font-semibold text-ink-950">{review.name}</p>
-                        <p className="text-[0.74rem] text-ink-400">
-                          {review.role}, {review.country} · {formatDate(review.date)}
-                        </p>
-                        <Badge className="mt-2">{review.tier}</Badge>
-                      </div>
-                    </Card>
-                  </li>
-                ))}
-              </ul>
             </div>
           </div>
 
