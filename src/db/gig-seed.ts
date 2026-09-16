@@ -6,32 +6,49 @@ import { SITE_GIG_COUNT, generateSiteGuestPostGigs } from "@/lib/gigs/site-gener
 
 let gigSeedPromise: Promise<void> | null = null;
 
-/** Total catalogue size: the templated service gigs plus one real, price-listed gig per publisher domain. */
+/** Total catalogue size: the templated service gigs plus one named-domain guest-post listing per source domain. */
 const TOTAL_GIG_COUNT = GIG_COUNT + SITE_GIG_COUNT;
 
 function buildAllGigRows() {
-  // Real per-domain guest post gigs are seeded first so their ids stay low and stable.
+  // Named-domain guest post listings are seeded first so their ids stay low and stable.
   return [...generateSiteGuestPostGigs(), ...generateGigRows(GIG_COUNT)];
 }
 
 async function seedGigs() {
   await db.transaction(async (tx) => {
-    // Serialises seeding across Next build workers and concurrent cold starts.
+    // Serialises seeding across concurrent cold starts.
     await tx.execute(sql`select pg_advisory_xact_lock(22002026)`);
     const [result] = await tx
       .select({ count: sql<number>`cast(count(*) as int)` })
       .from(backlinkGigs);
     const firstRows = await tx
-      .select({ slug: backlinkGigs.slug, domain: backlinkGigs.domain })
+      .select({
+        slug: backlinkGigs.slug,
+        domain: backlinkGigs.domain,
+        sellerName: backlinkGigs.sellerName,
+        rating: backlinkGigs.rating,
+        reviewCount: backlinkGigs.reviewCount,
+        ordersCompleted: backlinkGigs.ordersCompleted,
+        verified: backlinkGigs.verified,
+      })
       .from(backlinkGigs)
       .orderBy(backlinkGigs.id)
       .limit(1);
     const expectedFirstSlug = generateSiteGuestPostGigs()[0]?.slug ?? generateGigRows(1)[0].slug;
 
-    // Also reseed if an older row set exists whose domain/authority columns
-    // were never backfilled (e.g. added in a later schema migration).
+    // The seed sentinel intentionally includes the neutral Linkslo-operated values.
+    // This forces older databases containing generated seller identities, ratings,
+    // review counts or order history to refresh once after the cleanup release.
+    const first = firstRows[0];
     const alreadyCurrent =
-      result.count === TOTAL_GIG_COUNT && firstRows[0]?.slug === expectedFirstSlug && Boolean(firstRows[0]?.domain);
+      result.count === TOTAL_GIG_COUNT &&
+      first?.slug === expectedFirstSlug &&
+      Boolean(first?.domain) &&
+      first?.sellerName === "Linkslo" &&
+      first?.rating === 0 &&
+      first?.reviewCount === 0 &&
+      first?.ordersCompleted === 0 &&
+      first?.verified === false;
 
     if (alreadyCurrent) return;
 
@@ -44,7 +61,7 @@ async function seedGigs() {
   });
 }
 
-/** Keeps the catalogue at exactly GIG_COUNT templated gigs plus SITE_GIG_COUNT real per-domain guest post gigs. */
+/** Keeps the catalogue aligned with the current generated data model. */
 export async function ensureGigsSeeded() {
   if (!gigSeedPromise) {
     gigSeedPromise = seedGigs().catch((error) => {
