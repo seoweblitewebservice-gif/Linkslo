@@ -261,6 +261,7 @@ export function GigMarketplace({
   initialIndustry = "",
   initialCountry = "",
   initialQuery = "",
+  initialData,
 }: {
   facets: GigFacets;
   initialCategory?: string;
@@ -268,6 +269,8 @@ export function GigMarketplace({
   initialIndustry?: string;
   initialCountry?: string;
   initialQuery?: string;
+  /** Server-fetched first page, so crawlers and no-JS clients see real gigs immediately instead of an empty "Updating…" state. */
+  initialData?: { items: GigCard[]; total: number; summary: { avgRating: number; totalOrders: number; medianPrice: number; verifiedSellers: number } };
 }) {
   const [filters, setFilters] = useState<Filters>({
     ...DEFAULTS,
@@ -277,14 +280,15 @@ export function GigMarketplace({
     country: initialCountry,
     q: initialQuery,
   });
-  const [items, setItems] = useState<GigCard[]>([]);
-  const [total, setTotal] = useState(0);
-  const [summary, setSummary] = useState({ avgRating: 0, totalOrders: 0, medianPrice: 0, verifiedSellers: 0 });
+  const [items, setItems] = useState<GigCard[]>(initialData?.items ?? []);
+  const [total, setTotal] = useState(initialData?.total ?? 0);
+  const [summary, setSummary] = useState(initialData?.summary ?? { avgRating: 0, totalOrders: 0, medianPrice: 0, verifiedSellers: 0 });
   const [page, setPage] = useState(1);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(!initialData);
   const [mobileFilters, setMobileFilters] = useState(false);
   const [saved, setSaved] = useState<number[]>([]);
   const requestId = useRef(0);
+  const skippedFirstFetch = useRef(false);
   const pageSize = 24;
 
   const update = useCallback(<K extends keyof Filters>(key: K, value: Filters[K]) => {
@@ -293,6 +297,10 @@ export function GigMarketplace({
   }, []);
 
   useEffect(() => {
+    if (initialData && !skippedFirstFetch.current) {
+      skippedFirstFetch.current = true;
+      return;
+    }
     const controller = new AbortController();
     const id = ++requestId.current;
     const timer = setTimeout(async () => {
@@ -322,6 +330,8 @@ export function GigMarketplace({
       clearTimeout(timer);
       controller.abort();
     };
+    // initialData is intentionally read only once via the skippedFirstFetch ref guard above.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filters, page]);
 
   const activeCount = useMemo(

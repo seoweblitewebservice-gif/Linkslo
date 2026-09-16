@@ -11,6 +11,7 @@ import { Badge, Button, Card, SectionHeading, Stars } from "@/components/ui/prim
 import { COUNTRY_PAGES, getCountry, getRelatedServices, startingPrice } from "@/lib/backlinks";
 import { formatCurrency, formatDate } from "@/lib/format";
 import { getGigFacets } from "@/lib/gigs/data";
+import { queryGigs } from "@/lib/gigs-query";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -40,6 +41,7 @@ export default async function CountryBacklinkPage({ params }: Props) {
   const services = getRelatedServices(country.recommendedServices);
   const others = COUNTRY_PAGES.filter((item) => item.slug !== country.slug);
   const gigFacets = await getGigFacets();
+  const gigInitialData = await queryGigs({ country: country.country, pageSize: 24 });
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -91,7 +93,7 @@ export default async function CountryBacklinkPage({ params }: Props) {
             </Button>
           </div>
           <div className="mt-8">
-            <GigMarketplace facets={gigFacets} initialCountry={country.country} />
+            <GigMarketplace facets={gigFacets} initialCountry={country.country} initialData={gigInitialData} />
           </div>
         </div>
       </section>

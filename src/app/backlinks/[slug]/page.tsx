@@ -19,6 +19,7 @@ import {
 import { formatCurrency, formatDate } from "@/lib/format";
 import { getGigFacets } from "@/lib/gigs/data";
 import { GIG_TOPICS } from "@/lib/gigs/generator";
+import { queryGigs } from "@/lib/gigs-query";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -53,6 +54,7 @@ export default async function BacklinkServicePage({ params }: Props) {
   const related = getRelatedServices(service.related);
   const rating = averageRating(service);
   const gigFacets = await getGigFacets();
+  const gigInitialData = await queryGigs({ category: service.nav, pageSize: 24 });
   const topicNames = Array.from(
     new Set(
       GIG_TOPICS.filter((topic) => topic.service.slug === service.slug).map(
@@ -149,7 +151,7 @@ export default async function BacklinkServicePage({ params }: Props) {
             </Button>
           </div>
           <div className="mt-8">
-            <GigMarketplace facets={gigFacets} initialCategory={service.nav} />
+            <GigMarketplace facets={gigFacets} initialCategory={service.nav} initialData={gigInitialData} />
           </div>
         </div>
       </section>

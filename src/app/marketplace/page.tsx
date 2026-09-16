@@ -9,6 +9,7 @@ import { Reveal } from "@/components/ui/motion";
 import { Button, SectionHeading } from "@/components/ui/primitives";
 import { BACKLINK_SERVICES } from "@/lib/backlinks";
 import { getGigFacets } from "@/lib/gigs/data";
+import { queryGigs } from "@/lib/gigs-query";
 import { queryMarketplaceListings } from "@/lib/marketplace-query";
 import { getFacets } from "@/lib/queries";
 
@@ -73,6 +74,17 @@ export default async function MarketplacePage({ searchParams }: Props) {
   ]);
   const activeView = view === "services" ? "services" : view === "publishers" ? "publishers" : "gigs";
   const publisherInitialData = activeView === "publishers" ? await queryMarketplaceListings({ pageSize: 12 }) : undefined;
+  const gigInitialData =
+    activeView === "gigs"
+      ? await queryGigs({
+          category: category || undefined,
+          subcategory: subcategory || undefined,
+          industry: industry || undefined,
+          country: country || undefined,
+          q: q || undefined,
+          pageSize: 24,
+        })
+      : undefined;
   const standards = activeView === "gigs" ? GIG_STANDARDS : activeView === "services" ? SERVICE_STANDARDS : PUBLISHER_STANDARDS;
 
   const headline =
@@ -123,6 +135,7 @@ export default async function MarketplacePage({ searchParams }: Props) {
               initialIndustry={industry ?? ""}
               initialCountry={country ?? ""}
               initialQuery={q ?? ""}
+              initialData={gigInitialData}
             />
           ) : activeView === "services" ? (
             <ServiceShop services={BACKLINK_SERVICES} />

@@ -11,6 +11,7 @@ import { Badge, Button, Card, SectionHeading, Stars } from "@/components/ui/prim
 import { INDUSTRY_PAGES, getIndustry, getRelatedServices, startingPrice } from "@/lib/backlinks";
 import { formatCurrency, formatDate } from "@/lib/format";
 import { getGigFacets } from "@/lib/gigs/data";
+import { queryGigs } from "@/lib/gigs-query";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -40,6 +41,7 @@ export default async function IndustryPage({ params }: Props) {
   const services = getRelatedServices(industry.recommendedServices);
   const others = INDUSTRY_PAGES.filter((item) => item.slug !== industry.slug);
   const gigFacets = await getGigFacets();
+  const gigInitialData = await queryGigs({ industry: industry.name, pageSize: 24 });
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -91,7 +93,7 @@ export default async function IndustryPage({ params }: Props) {
             </Button>
           </div>
           <div className="mt-8">
-            <GigMarketplace facets={gigFacets} initialIndustry={industry.name} />
+            <GigMarketplace facets={gigFacets} initialIndustry={industry.name} initialData={gigInitialData} />
           </div>
         </div>
       </section>
