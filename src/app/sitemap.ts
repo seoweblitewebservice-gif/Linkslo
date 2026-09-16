@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { LEGAL_PAGES } from "@/lib/content";
 import { BACKLINK_SERVICES, COUNTRY_PAGES, INDUSTRY_PAGES } from "@/lib/backlinks";
-import { getArticles, getCaseStudies } from "@/lib/queries";
+import { getArticles } from "@/lib/queries";
 import { getGigSitemapRows } from "@/lib/gigs/data";
 
 const BASE = "https://www.linkslo.com";
@@ -9,15 +9,14 @@ const BASE = "https://www.linkslo.com";
 export const dynamic = "force-dynamic";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const [articles, caseStudies, gigs] = await Promise.all([
+  const [articles, gigs] = await Promise.all([
     getArticles(),
-    getCaseStudies(),
     getGigSitemapRows(),
   ]);
 
-  // Keep only public, indexable routes in the sitemap. Authentication/account
-  // and checkout routes are intentionally excluded because their page metadata
-  // marks them noindex.
+  // Keep only public, indexable routes in the sitemap. Authentication/account,
+  // checkout and demonstration/sample routes are excluded because they are
+  // intentionally noindex.
   const staticRoutes = [
     "",
     "/backlinks",
@@ -26,8 +25,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/marketplace",
     "/pricing",
     "/resources",
-    "/case-studies",
-    "/tools/link-gap-scout",
     "/about",
     "/contact",
   ].map((path) => ({
@@ -56,11 +53,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...articles.map((article) => ({
       url: `${BASE}/resources/${article.slug}`,
       lastModified: new Date(article.publishedOn),
-      changeFrequency: "monthly" as const,
-      priority: 0.6,
-    })),
-    ...caseStudies.map((study) => ({
-      url: `${BASE}/case-studies/${study.slug}`,
       changeFrequency: "monthly" as const,
       priority: 0.6,
     })),
