@@ -5,7 +5,7 @@ import { Badge, Button, Eyebrow } from "@/components/ui/primitives";
 import { HeroSearch } from "@/components/marketing/HeroSearch";
 import { TRUST_STATS } from "@/lib/content";
 import { BACKLINK_SERVICES } from "@/lib/backlinks";
-import { formatCurrency, formatNumber } from "@/lib/format";
+import { formatCurrency } from "@/lib/format";
 
 const PREVIEW_SERVICES = BACKLINK_SERVICES.slice(0, 6);
 
