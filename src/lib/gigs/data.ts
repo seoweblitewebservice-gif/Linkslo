@@ -19,9 +19,45 @@ function parseJson<T>(value: string, fallback: T): T {
   }
 }
 
+const TLD_MARKETS: Array<[string, string]> = [
+  [".co.uk", "United Kingdom"],
+  [".org.uk", "United Kingdom"],
+  [".uk", "United Kingdom"],
+  [".com.au", "Australia"],
+  [".net.au", "Australia"],
+  [".au", "Australia"],
+  [".com.in", "India"],
+  [".co.in", "India"],
+  [".org.in", "India"],
+  [".in", "India"],
+  [".ca", "Canada"],
+  [".de", "Germany"],
+  [".fr", "France"],
+  [".es", "Spain"],
+  [".it", "Italy"],
+  [".pt", "Portugal"],
+  [".nl", "Netherlands"],
+  [".br", "Brazil"],
+  [".pk", "Pakistan"],
+  [".lat", "Latin America"],
+  [".mx", "Mexico"],
+  [".ie", "Ireland"],
+  [".us", "United States"],
+];
+
+function publicCountry(domain: string | null, storedCountry: string) {
+  if (!domain) return storedCountry;
+  const lower = domain.toLowerCase();
+  for (const [suffix, country] of TLD_MARKETS) {
+    if (lower.endsWith(suffix)) return country;
+  }
+  return "International";
+}
+
 export function hydrateGig(row: BacklinkGig): HydratedGig {
   return {
     ...row,
+    country: publicCountry(row.domain, row.country),
     packages: parseJson<GigPackage[]>(row.packages, []),
     included: parseJson<string[]>(row.included, []),
     benefits: parseJson<GigBenefit[]>(row.benefits, []),
@@ -65,7 +101,7 @@ export async function getGigFacets() {
     categories: categories.map((row) => row.value),
     subcategories: subcategories.map((row) => row.value),
     industries: industries.map((row) => row.value),
-    countries: countries.map((row) => row.value),
+    countries: Array.from(new Set([...countries.map((row) => row.value), "International"])).sort(),
     languages: languages.map((row) => row.value),
   };
 }
