@@ -8,15 +8,14 @@ import { FaqAccordion } from "@/components/marketing/SocialProof";
 import { PageHero } from "@/components/site/PageHero";
 import { Icon } from "@/components/ui/Icon";
 import { Reveal } from "@/components/ui/motion";
-import { Badge, Button, Card, SectionHeading, Stars } from "@/components/ui/primitives";
+import { Badge, Button, Card, SectionHeading } from "@/components/ui/primitives";
 import {
   BACKLINK_SERVICES,
-  averageRating,
   getRelatedServices,
   getService,
   startingPrice,
 } from "@/lib/backlinks";
-import { formatCurrency, formatDate } from "@/lib/format";
+import { formatCurrency } from "@/lib/format";
 import { getGigFacets } from "@/lib/gigs/data";
 import { GIG_TOPICS } from "@/lib/gigs/generator";
 import { queryGigs } from "@/lib/gigs-query";
@@ -41,7 +40,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: service.metaTitle,
     description: service.metaDescription,
-        alternates: { canonical: `/backlinks/${service.slug}` },
+    alternates: { canonical: `/backlinks/${service.slug}` },
     openGraph: { title: service.metaTitle, description: service.metaDescription, type: "website" },
   };
 }
@@ -52,7 +51,6 @@ export default async function BacklinkServicePage({ params }: Props) {
   if (!service) notFound();
 
   const related = getRelatedServices(service.related);
-  const rating = averageRating(service);
   const gigFacets = await getGigFacets();
   const gigInitialData = await queryGigs({ category: service.nav, pageSize: 24 });
   const topicNames = Array.from(
@@ -71,13 +69,8 @@ export default async function BacklinkServicePage({ params }: Props) {
         name: service.h1,
         description: service.metaDescription,
         serviceType: service.nav,
-        provider: { "@type": "Organization", name: "Linkslo" },
+        provider: { "@type": "Organization", name: "Linkslo", url: "https://www.linkslo.com" },
         areaServed: "Worldwide",
-        aggregateRating: {
-          "@type": "AggregateRating",
-          ratingValue: rating.toFixed(1),
-          reviewCount: String(service.reviews.length),
-        },
         offers: service.packages.map((pkg) => ({
           "@type": "Offer",
           name: pkg.name,
@@ -115,13 +108,8 @@ export default async function BacklinkServicePage({ params }: Props) {
         <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
           <div className="flex flex-wrap gap-3">
             <Button href="/contact" icon="arrow-right">Request this service</Button>
-            <Button href="/marketplace" variant="outline">See publishers</Button>
+            <Button href="/marketplace" variant="outline">Browse marketplace</Button>
           </div>
-          <span className="inline-flex items-center gap-2 text-[0.82rem] text-ink-500">
-            <Stars rating={rating} size={14} />
-            <strong className="text-ink-900">{rating.toFixed(1)}</strong>
-            ({service.reviews.length} reviews)
-          </span>
           <span className="text-[0.82rem] text-ink-500">
             From <strong className="text-ink-900">{formatCurrency(startingPrice(service))}</strong>
           </span>
@@ -132,13 +120,13 @@ export default async function BacklinkServicePage({ params }: Props) {
         <div className="container-x">
           <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
             <div>
-              <Badge tone="brand">100 specialist gigs</Badge>
+              <Badge tone="brand">Service marketplace</Badge>
               <h2 className="mt-3 font-display text-[1.55rem] font-semibold text-ink-950">
-                Compare {service.nav.toLowerCase()} sellers and packages
+                Compare {service.nav.toLowerCase()} packages and delivery options
               </h2>
               <p className="mt-2 max-w-2xl text-[0.92rem] leading-relaxed text-ink-500">
-                Browse 100 gigs in this service category. Filter by topic, industry, country,
-                language, delivery time, rating and affordable starting price.
+                Browse matching marketplace listings by topic, industry, country, language,
+                delivery time and starting price.
               </p>
             </div>
             <Button
@@ -159,7 +147,6 @@ export default async function BacklinkServicePage({ params }: Props) {
       <section className="bg-canvas py-12 sm:py-16">
         <div className="container-x grid gap-8 lg:grid-cols-[minmax(0,1.35fr)_23rem] lg:items-start">
           <div className="space-y-6">
-            {/* Overview */}
             <Card className="p-6 sm:p-8">
               <h2 className="font-display text-[1.35rem] font-semibold text-ink-950">
                 What this service is
@@ -183,7 +170,7 @@ export default async function BacklinkServicePage({ params }: Props) {
                     Browse every topic in this category
                   </p>
                   <p className="mt-1 text-[0.76rem] text-ink-400">
-                    Each topic opens matching seller gigs with Basic, Standard and Premium packages.
+                    Each topic opens matching marketplace listings with Basic, Standard and Premium packages.
                   </p>
                   <div className="mt-3 flex flex-wrap gap-2">
                     {topicNames.map((topic) => (
@@ -200,7 +187,6 @@ export default async function BacklinkServicePage({ params }: Props) {
               )}
             </Card>
 
-            {/* What you receive */}
             <Card className="p-6 sm:p-8">
               <h2 className="font-display text-[1.35rem] font-semibold text-ink-950">
                 What you receive
@@ -215,7 +201,6 @@ export default async function BacklinkServicePage({ params }: Props) {
               </ul>
             </Card>
 
-            {/* Benefits */}
             <Card className="p-6 sm:p-8">
               <h2 className="font-display text-[1.35rem] font-semibold text-ink-950">Key benefits</h2>
               <div className="mt-5 grid gap-5 sm:grid-cols-2">
@@ -231,7 +216,6 @@ export default async function BacklinkServicePage({ params }: Props) {
               </div>
             </Card>
 
-            {/* Placement + quality */}
             <div className="grid gap-6 sm:grid-cols-2">
               <Card className="p-6">
                 <h2 className="flex items-center gap-2 font-display text-[1.1rem] font-semibold text-ink-950">
@@ -249,7 +233,6 @@ export default async function BacklinkServicePage({ params }: Props) {
               </Card>
             </div>
 
-            {/* Process */}
             <Card className="p-6 sm:p-8">
               <h2 className="font-display text-[1.35rem] font-semibold text-ink-950">
                 How ordering works
@@ -269,7 +252,6 @@ export default async function BacklinkServicePage({ params }: Props) {
               </ol>
             </Card>
 
-            {/* Use cases */}
             <Card className="p-6 sm:p-8">
               <h2 className="font-display text-[1.35rem] font-semibold text-ink-950">
                 Who this suits
@@ -284,7 +266,6 @@ export default async function BacklinkServicePage({ params }: Props) {
               </ul>
             </Card>
 
-            {/* Package comparison */}
             <div>
               <h2 className="mb-4 font-display text-[1.35rem] font-semibold text-ink-950">
                 Compare the three packages
@@ -324,7 +305,6 @@ export default async function BacklinkServicePage({ params }: Props) {
               </div>
             </div>
 
-            {/* FAQ */}
             <div id="faq">
               <h2 className="mb-4 font-display text-[1.35rem] font-semibold text-ink-950">
                 {service.nav} questions
@@ -338,46 +318,8 @@ export default async function BacklinkServicePage({ params }: Props) {
                 }))}
               />
             </div>
-
-            {/* Reviews */}
-            <div>
-              <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
-                <h2 className="font-display text-[1.35rem] font-semibold text-ink-950">
-                  Customer reviews
-                </h2>
-                <span className="inline-flex items-center gap-2 text-[0.82rem] text-ink-500">
-                  <Stars rating={rating} size={14} />
-                  {rating.toFixed(1)} from {service.reviews.length} verified buyers
-                </span>
-              </div>
-              <ul className="space-y-3">
-                {service.reviews.map((review) => (
-                  <li key={review.name}>
-                    <Card className="p-5">
-                      <div className="flex items-start gap-3">
-                        <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-ink-100 text-[0.68rem] font-semibold text-ink-700">
-                          {review.name.split(" ").map((part) => part[0]).join("").slice(0, 2)}
-                        </span>
-                        <div className="flex-1">
-                          <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-                            <p className="text-[0.86rem] font-semibold text-ink-950">{review.name}</p>
-                            <Stars rating={review.rating} size={12} />
-                            <span className="text-[0.72rem] text-ink-400">
-                              {review.role}, {review.country} · {formatDate(review.date)}
-                            </span>
-                          </div>
-                          <p className="mt-2 text-[0.88rem] leading-relaxed text-ink-600">“{review.text}”</p>
-                          <Badge className="mt-3">{review.tier}</Badge>
-                        </div>
-                      </div>
-                    </Card>
-                  </li>
-                ))}
-              </ul>
-            </div>
           </div>
 
-          {/* Sidebar */}
           <aside className="space-y-5 lg:sticky lg:top-24">
             <PackageSelector
               packages={service.packages.map((pkg, index) => ({
