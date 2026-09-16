@@ -44,7 +44,7 @@ export async function getRelatedMarketplaceGigs(gig: HydratedGig, limit = 4) {
     .select()
     .from(backlinkGigs)
     .where(eq(backlinkGigs.category, gig.category))
-    .orderBy(desc(backlinkGigs.rating), desc(backlinkGigs.ordersCompleted))
+    .orderBy(desc(backlinkGigs.featured), asc(backlinkGigs.startingPrice), desc(backlinkGigs.id))
     .limit(limit + 1);
   return rows
     .filter((row) => row.id !== gig.id)
@@ -75,7 +75,7 @@ export async function getFeaturedMarketplaceGigs(limit = 6) {
   const rows = await db
     .select()
     .from(backlinkGigs)
-    .orderBy(desc(backlinkGigs.featured), desc(backlinkGigs.rating), desc(backlinkGigs.ordersCompleted))
+    .orderBy(desc(backlinkGigs.featured), asc(backlinkGigs.startingPrice), desc(backlinkGigs.id))
     .limit(limit);
   return rows.map(hydrateGig);
 }
