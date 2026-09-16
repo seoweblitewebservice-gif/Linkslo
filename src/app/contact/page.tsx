@@ -34,7 +34,7 @@ const CONTACT_BLOCKS = [
     note: "Use Telegram for a quick project or order message",
   },
   {
-    icon: "message" as const,
+    icon: "users" as const,
     title: "WhatsApp",
     value: "+1 530 303 7330",
     href: "https://wa.me/15303037330",
