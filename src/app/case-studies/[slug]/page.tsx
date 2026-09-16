@@ -16,12 +16,17 @@ type Props = { params: Promise<{ slug: string }> };
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const study = await getCaseStudy(slug);
-  if (!study) return { title: "Case study not found", robots: { index: false, follow: true } };
+  if (!study) return { title: "Sample scenario not found", robots: { index: false, follow: true } };
   return {
-    title: `${study.company} — ${study.headline}`,
-    description: study.startingPoint,
+    title: `Sample scenario — ${study.headline}`,
+    description: `Representative demonstration scenario: ${study.startingPoint}`,
     alternates: { canonical: `/case-studies/${study.slug}` },
-    openGraph: { title: `${study.company} — ${study.headline}`, description: study.startingPoint, type: "article" },
+    robots: { index: false, follow: true },
+    openGraph: {
+      title: `Sample scenario — ${study.headline}`,
+      description: "Representative link-building scenario using demonstration data rather than client results.",
+      type: "article",
+    },
   };
 }
 
@@ -43,11 +48,11 @@ export default async function CaseStudyPage({ params }: Props) {
     <>
       <PageHero
         tone="dark"
-        eyebrow={`${study.industry} · ${study.market}`}
+        eyebrow={`Sample scenario · ${study.industry} · ${study.market}`}
         eyebrowIcon="chart"
         breadcrumbs={[
           { label: "Home", href: "/" },
-          { label: "Case Studies", href: "/case-studies" },
+          { label: "Sample Scenarios", href: "/case-studies" },
           { label: study.company },
         ]}
         title={study.headline}
@@ -69,24 +74,22 @@ export default async function CaseStudyPage({ params }: Props) {
         <div className="container-x grid gap-10 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,0.75fr)] lg:gap-14">
           <div className="space-y-8">
             <div>
-              <h2 className="font-display text-[1.35rem] font-semibold text-ink-950">The situation</h2>
+              <h2 className="font-display text-[1.35rem] font-semibold text-ink-950">Scenario starting point</h2>
               <p className="mt-3 text-[1rem] leading-relaxed text-ink-600">{study.startingPoint}</p>
             </div>
             <div>
-              <h2 className="font-display text-[1.35rem] font-semibold text-ink-950">What we did</h2>
+              <h2 className="font-display text-[1.35rem] font-semibold text-ink-950">Example strategy</h2>
               <p className="mt-3 text-[1rem] leading-relaxed text-ink-600">{study.strategy}</p>
             </div>
             <div>
-              <h2 className="font-display text-[1.35rem] font-semibold text-ink-950">The outcome</h2>
+              <h2 className="font-display text-[1.35rem] font-semibold text-ink-950">Illustrative outcome</h2>
               <p className="mt-3 text-[1rem] leading-relaxed text-ink-600">{study.outcome}</p>
             </div>
 
             <Card className="overflow-hidden">
               <div className="flex items-center justify-between border-b border-line px-5 py-4">
-                <p className="text-[0.9rem] font-semibold text-ink-950">
-                  Monthly organic sessions (indexed)
-                </p>
-                <span className="text-[0.74rem] text-ink-400">{study.durationMonths}-month view</span>
+                <p className="text-[0.9rem] font-semibold text-ink-950">Illustrative monthly organic sessions</p>
+                <span className="text-[0.74rem] text-ink-400">{study.durationMonths}-month sample</span>
               </div>
               <div className="h-56 p-4">
                 <AreaTrend values={parseSeries(study.series)} uid={`study-${study.id}`} height={200} width={720} showDots />
@@ -99,54 +102,32 @@ export default async function CaseStudyPage({ params }: Props) {
                 Sample data notice
               </p>
               <p className="mt-2 text-[0.86rem] leading-relaxed text-ink-500">
-                This case study uses representative demonstration figures. It illustrates the
-                structure of a programme and the pace of typical movement rather than a specific
-                client&apos;s confidential results.
+                This page uses representative demonstration figures. It illustrates a possible programme structure and reporting format rather than a specific client&apos;s results. Rankings and traffic are not guaranteed.
               </p>
             </div>
           </div>
 
           <aside className="space-y-5 lg:sticky lg:top-28 lg:self-start">
             <Card className="p-6">
-              <p className="text-[0.72rem] uppercase tracking-wide text-ink-400">Engagement</p>
-              <p className="mt-1 font-display text-[1.15rem] font-semibold text-ink-950">
-                {study.company}
-              </p>
+              <p className="text-[0.72rem] uppercase tracking-wide text-ink-400">Sample profile</p>
+              <p className="mt-1 font-display text-[1.15rem] font-semibold text-ink-950">{study.company}</p>
               <ul className="mt-4 space-y-2.5 text-[0.87rem] text-ink-600">
-                <li className="flex justify-between">
-                  <span>Industry</span>
-                  <span className="font-medium text-ink-900">{study.industry}</span>
-                </li>
-                <li className="flex justify-between">
-                  <span>Market</span>
-                  <span className="font-medium text-ink-900">{study.market}</span>
-                </li>
-                <li className="flex justify-between">
-                  <span>Duration</span>
-                  <span className="font-medium text-ink-900">{study.durationMonths} months</span>
-                </li>
+                <li className="flex justify-between"><span>Industry</span><span className="font-medium text-ink-900">{study.industry}</span></li>
+                <li className="flex justify-between"><span>Market</span><span className="font-medium text-ink-900">{study.market}</span></li>
+                <li className="flex justify-between"><span>Duration</span><span className="font-medium text-ink-900">{study.durationMonths} months</span></li>
               </ul>
-              <Button href="/contact" fullWidth className="mt-5" icon="arrow-right">
-                Discuss a similar programme
-              </Button>
+              <Button href="/contact" fullWidth className="mt-5" icon="arrow-right">Discuss your own brief</Button>
             </Card>
 
             {others.length > 0 && (
               <Card className="p-6">
-                <p className="text-[0.92rem] font-semibold text-ink-950">More case studies</p>
+                <p className="text-[0.92rem] font-semibold text-ink-950">More sample scenarios</p>
                 <ul className="mt-3 space-y-2">
                   {others.map((item) => (
                     <li key={item.slug}>
-                      <a
-                        href={`/case-studies/${item.slug}`}
-                        className="block rounded-xl border border-line px-3.5 py-2.5 transition-colors hover:border-brand-200 hover:bg-brand-50/40"
-                      >
-                        <span className="block text-[0.72rem] uppercase tracking-wide text-ink-400">
-                          {item.industry}
-                        </span>
-                        <span className="mt-0.5 block text-[0.85rem] font-medium leading-snug text-ink-900">
-                          {item.headline}
-                        </span>
+                      <a href={`/case-studies/${item.slug}`} className="block rounded-xl border border-line px-3.5 py-2.5 transition-colors hover:border-brand-200 hover:bg-brand-50/40">
+                        <span className="block text-[0.72rem] uppercase tracking-wide text-ink-400">{item.industry}</span>
+                        <span className="mt-0.5 block text-[0.85rem] font-medium leading-snug text-ink-900">{item.headline}</span>
                       </a>
                     </li>
                   ))}
@@ -161,10 +142,10 @@ export default async function CaseStudyPage({ params }: Props) {
         <div className="container-x grid gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-14">
           <Reveal>
             <SectionHeading
-              eyebrow="Your turn"
+              eyebrow="Your brief"
               eyebrowIcon="spark"
-              title="Tell us where you are starting from"
-              description="Send a short brief and we will tell you what a realistic twelve months could look like — including whether you need us at all."
+              title="Plan from your real starting point"
+              description="Share your target page, market and constraints so the recommendation can be based on your actual campaign rather than sample figures."
             />
           </Reveal>
           <Reveal delay={100}>
