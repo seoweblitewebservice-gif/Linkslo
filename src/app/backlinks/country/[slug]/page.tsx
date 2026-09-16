@@ -7,9 +7,9 @@ import { GigMarketplace } from "@/components/marketplace/GigMarketplace";
 import { PageHero } from "@/components/site/PageHero";
 import { Icon } from "@/components/ui/Icon";
 import { Reveal } from "@/components/ui/motion";
-import { Badge, Button, Card, SectionHeading, Stars } from "@/components/ui/primitives";
+import { Badge, Button, Card, SectionHeading } from "@/components/ui/primitives";
 import { COUNTRY_PAGES, getCountry, getRelatedServices, startingPrice } from "@/lib/backlinks";
-import { formatCurrency, formatDate } from "@/lib/format";
+import { formatCurrency } from "@/lib/format";
 import { getGigFacets } from "@/lib/gigs/data";
 import { queryGigs } from "@/lib/gigs-query";
 
@@ -71,7 +71,7 @@ export default async function CountryBacklinkPage({ params }: Props) {
       >
         <div className="flex flex-wrap gap-3">
           <Button href="/contact" icon="arrow-right">Plan a {country.country} campaign</Button>
-          <Button href="/marketplace" variant="outline">Filter publishers by market</Button>
+          <Button href="/marketplace" variant="outline">Browse marketplace</Button>
         </div>
       </PageHero>
 
@@ -79,13 +79,13 @@ export default async function CountryBacklinkPage({ params }: Props) {
         <div className="container-x">
           <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
             <div>
-              <Badge tone="brand">200+ market gigs</Badge>
+              <Badge tone="brand">Country marketplace</Badge>
               <h2 className="mt-3 font-display text-[1.5rem] font-semibold text-ink-950">
-                Hire a backlink specialist for {country.country}
+                Compare backlink packages for {country.country}
               </h2>
               <p className="mt-2 max-w-2xl text-[0.9rem] leading-relaxed text-ink-500">
-                Compare {country.language.toLowerCase()} backlink gigs across all service types,
-                industries, seller levels and package sizes for this market.
+                Compare {country.language.toLowerCase()} marketplace listings across service types,
+                industries, delivery windows and package sizes for this market.
               </p>
             </div>
             <Button href={`/marketplace?country=${encodeURIComponent(country.country)}`} variant="outline" icon="arrow-right" className="shrink-0">
@@ -164,29 +164,6 @@ export default async function CountryBacklinkPage({ params }: Props) {
                 }))}
               />
             </div>
-
-            <div>
-              <h2 className="mb-4 font-display text-[1.3rem] font-semibold text-ink-950">
-                Feedback from this market
-              </h2>
-              <ul className="grid gap-3 sm:grid-cols-2">
-                {country.reviews.map((review) => (
-                  <li key={review.name}>
-                    <Card className="h-full p-5">
-                      <Stars rating={review.rating} size={13} />
-                      <p className="mt-3 text-[0.88rem] leading-relaxed text-ink-600">“{review.text}”</p>
-                      <div className="mt-4 border-t border-line pt-3">
-                        <p className="text-[0.84rem] font-semibold text-ink-950">{review.name}</p>
-                        <p className="text-[0.74rem] text-ink-400">
-                          {review.role}, {review.country} · {formatDate(review.date)}
-                        </p>
-                        <Badge className="mt-2">{review.tier}</Badge>
-                      </div>
-                    </Card>
-                  </li>
-                ))}
-              </ul>
-            </div>
           </div>
 
           <aside className="space-y-5 lg:sticky lg:top-24">
@@ -200,7 +177,7 @@ export default async function CountryBacklinkPage({ params }: Props) {
                   <p className="text-[0.72rem] text-ink-400">{country.language}</p>
                 </div>
               </div>
-              <p className="mt-4 text-[0.88rem] font-semibold text-ink-950">Best services here</p>
+              <p className="mt-4 text-[0.88rem] font-semibold text-ink-950">Recommended services</p>
               <ul className="mt-3 space-y-2">
                 {services.map((service) => (
                   <li key={service.slug}>
