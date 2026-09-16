@@ -10,13 +10,14 @@ export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/case-studies" },
-  title: "Case studies",
+  title: "Sample Link Building Scenarios",
   description:
-    "Representative Linkslo engagements showing strategy, duration and measured change in traffic, keywords and referring domains.",
+    "Representative link-building scenarios showing how a campaign can be structured over time. Figures are sample data for demonstration, not client results.",
+  robots: { index: false, follow: true },
   openGraph: {
-    title: "Linkslo Case Studies — Real Link Building Results",
+    title: "Sample Link Building Scenarios | Linkslo",
     description:
-      "Representative Linkslo engagements showing strategy, duration and measured change in traffic, keywords and referring domains.",
+      "Representative link-building scenarios using clearly labelled sample data for demonstration.",
     type: "website",
   },
 };
@@ -27,11 +28,11 @@ export default async function CaseStudiesPage() {
   return (
     <>
       <PageHero
-        eyebrow="Case studies"
+        eyebrow="Sample scenarios"
         eyebrowIcon="chart"
-        breadcrumbs={[{ label: "Home", href: "/" }, { label: "Case Studies" }]}
-        title="Programmes, not one-off wins"
-        description="Each example below uses clearly labelled sample data. We show the strategy and the shape of the result, including how long it actually took."
+        breadcrumbs={[{ label: "Home", href: "/" }, { label: "Sample Scenarios" }]}
+        title="How a link-building programme can develop over time"
+        description="Every example below uses representative sample data. These pages illustrate campaign structure and reporting format rather than claiming confidential client results."
       >
         <div className="flex flex-wrap gap-3">
           <Button href="/contact" icon="arrow-right">
@@ -55,14 +56,13 @@ export default async function CaseStudiesPage() {
                 </span>
                 <div>
                   <p className="text-[0.98rem] font-semibold text-ink-950">
-                    A note on how we present results
+                    Sample data only
                   </p>
                   <p className="mt-2 max-w-3xl text-[0.9rem] leading-relaxed text-ink-500">
-                    The figures on this page are representative sample data used for demonstration.
-                    Real engagements vary widely by category, starting position and market maturity,
-                    and organic performance depends on many factors outside any provider&apos;s
-                    control. We never present a single strong month as a programme outcome, and we
-                    do not promise ranking positions.
+                    The figures on this page are representative demonstration data. Real campaigns
+                    vary by category, starting position, content quality, technical SEO, competition
+                    and market conditions. Linkslo does not promise ranking positions or a specific
+                    traffic outcome.
                   </p>
                 </div>
               </div>
