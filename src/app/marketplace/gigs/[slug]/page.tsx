@@ -5,8 +5,8 @@ import { GigPackagePanel } from "@/components/marketplace/GigPackagePanel";
 import { FaqAccordion } from "@/components/marketing/SocialProof";
 import { PageHero } from "@/components/site/PageHero";
 import { Icon } from "@/components/ui/Icon";
-import { Badge, Button, Card, Stars } from "@/components/ui/primitives";
-import { formatCurrency, formatDate, formatNumber } from "@/lib/format";
+import { Badge, Button, Card } from "@/components/ui/primitives";
+import { formatCurrency } from "@/lib/format";
 import { getGigBySlug, getRelatedMarketplaceGigs } from "@/lib/gigs/data";
 
 export const dynamic = "force-dynamic";
@@ -16,12 +16,19 @@ type Props = { params: Promise<{ slug: string }> };
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const gig = await getGigBySlug(slug);
-  if (!gig) return { title: "Backlink gig not found" };
+  if (!gig) return { title: "Backlink gig not found", robots: { index: false, follow: true } };
+
+  const isNamedPublisherListing = Boolean(gig.domain);
+
   return {
     title: gig.metaTitle,
     description: gig.metaDescription,
     alternates: { canonical: `/marketplace/gigs/${gig.slug}` },
     openGraph: { title: gig.metaTitle, description: gig.metaDescription, type: "website" },
+    // Only named-publisher listings are submitted for organic indexing. Generic
+    // generated marketplace variants remain browseable but do not compete as
+    // thousands of near-template landing pages in search.
+    robots: { index: isNamedPublisherListing, follow: true },
   };
 }
 
@@ -30,6 +37,13 @@ export default async function MarketplaceGigPage({ params }: Props) {
   const gig = await getGigBySlug(slug);
   if (!gig) notFound();
   const related = await getRelatedMarketplaceGigs(gig, 4);
+
+  // Older seeded records include demonstration seller identities in their copy.
+  // Keep the useful service/domain detail while presenting delivery truthfully as
+  // a Linkslo-operated listing rather than implying a verified third-party seller.
+  const publicDescription = gig.description
+    .split(gig.sellerName)
+    .join("The Linkslo delivery team");
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -40,11 +54,10 @@ export default async function MarketplaceGigPage({ params }: Props) {
         description: gig.metaDescription,
         serviceType: gig.subcategory,
         areaServed: gig.country,
-        provider: { "@type": "Person", name: gig.sellerName },
-        aggregateRating: {
-          "@type": "AggregateRating",
-          ratingValue: (gig.rating / 10).toFixed(1),
-          reviewCount: String(gig.reviewCount),
+        provider: {
+          "@type": "Organization",
+          name: "Linkslo",
+          url: "https://www.linkslo.com",
         },
         offers: gig.packages.map((pkg) => ({
           "@type": "Offer",
@@ -80,24 +93,19 @@ export default async function MarketplaceGigPage({ params }: Props) {
         title={gig.title}
         description={gig.summary}
       >
-        <div className="flex flex-wrap items-center gap-x-5 gap-y-3">
-          <div className="flex items-center gap-2.5">
-            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-ink-950 text-[0.72rem] font-semibold text-white">{gig.sellerInitials}</span>
-            <span>
-              <span className="flex items-center gap-1.5 text-[0.84rem] font-semibold text-ink-950">
-                {gig.sellerName} {gig.verified && <Icon name="shield" size={14} className="text-brand-600" />}
-              </span>
-              <span className="block text-[0.7rem] text-ink-400">{gig.sellerLevel} · {gig.sellerCountry}</span>
-            </span>
-          </div>
-          <span className="hidden h-8 w-px bg-line sm:block" />
-          <span className="inline-flex items-center gap-2 text-[0.78rem] text-ink-500">
-            <Stars rating={gig.rating / 10} size={14} />
-            <strong className="text-ink-900">{(gig.rating / 10).toFixed(1)}</strong>
-            ({formatNumber(gig.reviewCount)})
+        <div className="flex flex-wrap items-center gap-2.5 text-[0.78rem] text-ink-600">
+          <Badge tone="brand">{gig.domain ? "Named publisher listing" : "Marketplace service"}</Badge>
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-line bg-white px-3 py-1.5">
+            <Icon name="globe" size={13} className="text-brand-600" />
+            {gig.country} · {gig.language}
           </span>
-          <span className="text-[0.78rem] text-ink-500"><strong className="text-ink-900">{formatNumber(gig.ordersCompleted)}</strong> orders</span>
-          <span className="inline-flex items-center gap-1 text-[0.78rem] text-ink-500"><Icon name="clock" size={13} />Replies in ~{gig.sellerResponseHours}h</span>
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-line bg-white px-3 py-1.5">
+            <Icon name="clock" size={13} className="text-brand-600" />
+            From {gig.fastestDeliveryDays} days
+          </span>
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-line bg-white px-3 py-1.5 font-semibold text-ink-900">
+            From {formatCurrency(gig.startingPrice)}
+          </span>
         </div>
       </PageHero>
 
@@ -112,7 +120,7 @@ export default async function MarketplaceGigPage({ params }: Props) {
                   <div className="flex items-start justify-between gap-4">
                     <span className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/20 bg-white/10 backdrop-blur-sm"><Icon name="link" size={24} /></span>
                     <div className="flex flex-wrap justify-end gap-2">
-                      <Badge tone="brand">Verified seller</Badge>
+                      <Badge tone="brand">Quality-reviewed scope</Badge>
                       <span className="rounded-full border border-white/20 bg-white/10 px-2.5 py-1 text-[0.68rem] font-semibold">{gig.language}</span>
                     </div>
                   </div>
@@ -127,7 +135,7 @@ export default async function MarketplaceGigPage({ params }: Props) {
 
             <Card className="p-6 sm:p-8">
               <h2 className="font-display text-[1.25rem] font-semibold text-ink-950">About this backlink gig</h2>
-              {gig.description.split("\n\n").map((paragraph, index) => (
+              {publicDescription.split("\n\n").map((paragraph, index) => (
                 <p key={index} className="mt-4 text-[0.94rem] leading-[1.75] text-ink-600">{paragraph}</p>
               ))}
               <dl className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
@@ -180,7 +188,7 @@ export default async function MarketplaceGigPage({ params }: Props) {
             </div>
 
             <Card className="p-6 sm:p-8">
-              <h2 className="font-display text-[1.25rem] font-semibold text-ink-950">How the seller delivers</h2>
+              <h2 className="font-display text-[1.25rem] font-semibold text-ink-950">How delivery works</h2>
               <ol className="mt-5 space-y-5">
                 {gig.process.map((step, index) => (
                   <li key={step.title} className="flex gap-4">
@@ -215,36 +223,20 @@ export default async function MarketplaceGigPage({ params }: Props) {
               <h2 className="mb-4 font-display text-[1.25rem] font-semibold text-ink-950">Questions about this gig</h2>
               <FaqAccordion items={gig.faqs.map((faq, index) => ({ id: index + 1, question: faq.question, answer: faq.answer, topic: gig.subcategory }))} />
             </section>
-
-            <section>
-              <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
-                <h2 className="font-display text-[1.25rem] font-semibold text-ink-950">Buyer reviews</h2>
-                <span className="inline-flex items-center gap-2 text-[0.78rem] text-ink-500"><Stars rating={gig.rating / 10} size={13} />{(gig.rating / 10).toFixed(1)} from {formatNumber(gig.reviewCount)} reviews</span>
-              </div>
-              <ul className="space-y-3">
-                {gig.reviews.map((review) => (
-                  <li key={review.name}><Card className="p-5"><div className="flex gap-3"><span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-ink-100 text-[0.67rem] font-semibold text-ink-700">{review.initials}</span><div className="flex-1"><div className="flex flex-wrap items-center gap-x-3 gap-y-1"><p className="text-[0.82rem] font-semibold text-ink-950">{review.name}</p><Stars rating={review.rating} size={11} /><span className="text-[0.68rem] text-ink-400">{review.country} · {formatDate(review.date)}</span></div><p className="mt-2 text-[0.84rem] leading-relaxed text-ink-600">“{review.text}”</p><Badge className="mt-3">{review.packageTier}</Badge></div></div></Card></li>
-                ))}
-              </ul>
-              <p className="mt-3 text-[0.68rem] text-ink-400">Representative marketplace reviews are used in this demonstration catalogue.</p>
-            </section>
           </div>
 
           <aside className="space-y-5 lg:sticky lg:top-24">
             <GigPackagePanel gigSlug={gig.slug} title={gig.title} packages={gig.packages} />
             <Card className="p-5">
-              <h2 className="font-display text-[1rem] font-semibold text-ink-950">About the seller</h2>
-              <div className="mt-4 flex items-center gap-3">
-                <span className="flex h-12 w-12 items-center justify-center rounded-full bg-ink-950 text-[0.78rem] font-semibold text-white">{gig.sellerInitials}</span>
-                <div><p className="flex items-center gap-1 text-[0.86rem] font-semibold text-ink-950">{gig.sellerName}<Icon name="shield" size={13} className="text-brand-600" /></p><p className="text-[0.7rem] text-ink-400">@{gig.sellerHandle}</p></div>
-              </div>
-              <p className="mt-3 text-[0.8rem] leading-relaxed text-ink-500">{gig.sellerBio}</p>
-              <dl className="mt-4 grid grid-cols-2 gap-3 border-t border-line pt-4">
-                <div><dt className="text-[0.62rem] uppercase tracking-wide text-ink-400">Member since</dt><dd className="text-[0.82rem] font-semibold text-ink-900">{gig.sellerSinceYear}</dd></div>
-                <div><dt className="text-[0.62rem] uppercase tracking-wide text-ink-400">Languages</dt><dd className="text-[0.76rem] font-semibold text-ink-900">{gig.sellerLanguages}</dd></div>
-                <div><dt className="text-[0.62rem] uppercase tracking-wide text-ink-400">Response</dt><dd className="text-[0.82rem] font-semibold text-ink-900">~{gig.sellerResponseHours}h</dd></div>
-                <div><dt className="text-[0.62rem] uppercase tracking-wide text-ink-400">Level</dt><dd className="text-[0.76rem] font-semibold text-ink-900">{gig.sellerLevel}</dd></div>
-              </dl>
+              <h2 className="font-display text-[1rem] font-semibold text-ink-950">Order support</h2>
+              <p className="mt-3 text-[0.8rem] leading-relaxed text-ink-500">
+                Linkslo reviews the target URL, anchor preference and placement fit before fulfilment. Publisher availability and final editorial approval are confirmed during the order process.
+              </p>
+              <ul className="mt-4 space-y-2 text-[0.78rem] text-ink-600">
+                <li className="flex gap-2"><Icon name="check" size={14} className="mt-0.5 shrink-0 text-brand-600" />Target-page and anchor review</li>
+                <li className="flex gap-2"><Icon name="check" size={14} className="mt-0.5 shrink-0 text-brand-600" />Placement feasibility confirmation</li>
+                <li className="flex gap-2"><Icon name="check" size={14} className="mt-0.5 shrink-0 text-brand-600" />Live URL delivery reporting</li>
+              </ul>
             </Card>
             <Card className="p-5">
               <p className="text-[0.88rem] font-semibold text-ink-950">Service foundation</p>
@@ -260,7 +252,17 @@ export default async function MarketplaceGigPage({ params }: Props) {
           <div className="container-x">
             <div className="flex items-end justify-between gap-4"><div><p className="text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-brand-700">Similar gigs</p><h2 className="mt-1 font-display text-[1.35rem] font-semibold text-ink-950">More {gig.category.toLowerCase()} offers</h2></div><Button href={`/marketplace?category=${encodeURIComponent(gig.category)}`} variant="outline" icon="arrow-right">Browse category</Button></div>
             <div className="mt-7 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-              {related.map((item) => <Link key={item.id} href={`/marketplace/gigs/${item.slug}`} className="card-hover flex flex-col rounded-2xl border border-line bg-white p-5 shadow-soft"><div className="flex items-center justify-between"><span className="flex h-9 w-9 items-center justify-center rounded-full bg-ink-950 text-[0.62rem] font-semibold text-white">{item.sellerInitials}</span><Badge tone="brand">{(item.rating / 10).toFixed(1)} ★</Badge></div><h3 className="mt-4 line-clamp-3 font-display text-[0.9rem] font-semibold leading-snug text-ink-950">{item.title}</h3><p className="mt-2 text-[0.7rem] text-ink-400">{item.sellerName} · {item.country}</p><div className="mt-auto flex items-end justify-between border-t border-line pt-4"><span className="text-[0.68rem] text-ink-400">From</span><span className="font-display text-[0.95rem] font-semibold text-ink-950">{formatCurrency(item.startingPrice)}</span></div></Link>)}
+              {related.map((item) => (
+                <Link key={item.id} href={`/marketplace/gigs/${item.slug}`} className="card-hover flex flex-col rounded-2xl border border-line bg-white p-5 shadow-soft">
+                  <div className="flex items-center justify-between gap-3">
+                    <span className="flex h-9 w-9 items-center justify-center rounded-full bg-ink-950 text-white"><Icon name="link" size={15} /></span>
+                    <Badge tone="brand">{item.country}</Badge>
+                  </div>
+                  <h3 className="mt-4 line-clamp-3 font-display text-[0.9rem] font-semibold leading-snug text-ink-950">{item.title}</h3>
+                  <p className="mt-2 text-[0.7rem] text-ink-400">{item.subcategory}</p>
+                  <div className="mt-auto flex items-end justify-between border-t border-line pt-4"><span className="text-[0.68rem] text-ink-400">From</span><span className="font-display text-[0.95rem] font-semibold text-ink-950">{formatCurrency(item.startingPrice)}</span></div>
+                </Link>
+              ))}
             </div>
           </div>
         </section>
