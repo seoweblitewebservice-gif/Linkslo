@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     template: `%s · ${BRAND.name}`,
   },
   description:
-    "Browse 8,886 backlink gigs from 160 verified specialists, including 6,686 real named guest post publishers. Compare Basic, Standard and Premium packages across guest posts, niche edits, editorial links, digital PR, industries and countries.",
+    "Compare backlink services, guest post opportunities and link-building packages across industries and countries, with transparent scope, pricing and delivery details.",
   applicationName: BRAND.name,
   authors: [{ name: BRAND.legalName }],
   openGraph: {
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     siteName: BRAND.name,
     title: `${BRAND.name} — Backlink & Link Building Services`,
     description:
-      "Compare backlink specialists, service categories, industries and countries with transparent packages and no private blog networks.",
+      "Compare backlink services, service categories, industries and countries with transparent packages and documented delivery details.",
     locale: "en_US",
   },
   twitter: {
@@ -54,7 +54,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     name: BRAND.name,
     legalName: BRAND.legalName,
     url: "https://www.linkslo.com",
-    logo: "https://www.linkslo.com/favicon.svg",
     email: BRAND.email,
     telephone: BRAND.phone,
     address: {
@@ -64,12 +63,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       postalCode: BRAND.addressLines[1]?.split(" ")[0],
       addressCountry: "NL",
     },
-    sameAs: [
-      "https://www.linkedin.com",
-      "https://x.com",
-      "https://youtube.com",
-      "https://github.com",
-    ],
   };
 
   return (
