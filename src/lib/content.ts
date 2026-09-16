@@ -45,13 +45,13 @@ export const PRIMARY_NAV: NavGroup[] = [
       {
         heading: "Placements",
         items: [
-          { label: "Browse 8,886 Gigs", href: "/marketplace", description: "Compare sellers and 3 packages", icon: "users" },
-          { label: "Guest Post Sites (6,686)", href: "/marketplace?category=Placement%20Services&subcategory=Guest%20Post%20Backlinks", description: "Named domains with real DA, DR, traffic & price", icon: "quill" },
+          { label: "Browse Marketplace", href: "/marketplace", description: "Compare scope, price and delivery", icon: "users" },
+          { label: "Guest Post Sites", href: "/marketplace?category=Placement%20Services&subcategory=Guest%20Post%20Backlinks", description: "Named domains with listed metrics and price", icon: "quill" },
           ...serviceNav([
-          "guest-post-backlinks",
-          "editorial-backlinks",
-          "contextual-backlinks",
-          "niche-edit-backlinks",
+            "guest-post-backlinks",
+            "editorial-backlinks",
+            "contextual-backlinks",
+            "niche-edit-backlinks",
             "premium-link-building",
             "authority-backlinks",
           ]),
@@ -151,8 +151,8 @@ export const PRIMARY_NAV: NavGroup[] = [
       },
     ],
     feature: {
-      title: "Native writers in 15 languages",
-      body: "We never translate. Every market gets content written by someone who works in that language daily.",
+      title: "Plan by target market",
+      body: "Use the country guides to compare language, publisher landscape and recommended service types before ordering.",
       href: "/backlinks/country/international",
       cta: "See international link building",
     },
@@ -168,7 +168,7 @@ export const PRIMARY_NAV: NavGroup[] = [
         items: [
           { label: "Link building blog", href: "/resources", description: "Guides, research and teardowns", icon: "document" },
           { label: "Case studies", href: "/case-studies", description: "Sample campaign outcomes", icon: "chart" },
-          { label: "Link Gap Scout", href: "/tools/link-gap-scout", description: "Free backlink gap analysis", icon: "compass" },
+          { label: "Link Gap Scout", href: "/tools/link-gap-scout", description: "Backlink gap planning tool", icon: "compass" },
         ],
       },
       {
@@ -184,69 +184,69 @@ export const PRIMARY_NAV: NavGroup[] = [
 ];
 
 export const TRUST_STATS = [
-  { value: 4.9, suffix: "/5", label: "Average gig rating", detail: "Seller and package-level feedback" },
-  { value: 8886, suffix: "", label: "Backlink gigs", detail: "Every legitimate link category" },
-  { value: 160, suffix: "", label: "Verified specialists", detail: "Identity and process reviewed" },
-  { value: 6600, suffix: "", label: "Package options", detail: "Basic, Standard and Premium" },
-  { value: 38, suffix: "", label: "Markets served", detail: "15 native content languages" },
+  { value: BACKLINK_SERVICES.length, suffix: "", label: "Service categories", detail: "Placement, outreach, PR and strategy options" },
+  { value: 3, suffix: "", label: "Package tiers", detail: "Clear scope, price and delivery per service" },
+  { value: INDUSTRY_PAGES.length, suffix: "", label: "Industry guides", detail: "Sector-specific link building guidance" },
+  { value: COUNTRY_PAGES.length, suffix: "", label: "Country guides", detail: "Market and language-specific planning" },
+  { value: 0, suffix: "", label: "PBN services", detail: "Private blog network services are not offered" },
 ];
 
 export const BENEFITS = [
   {
     icon: "shield" as GlyphName,
-    title: "Publishers screened by people",
-    body: "Every domain passes an eleven-point review covering traffic distribution, outbound behaviour, editorial continuity and disclosure practice.",
+    title: "Quality checks before fulfilment",
+    body: "The target page, requested anchor and placement fit are reviewed before fulfilment begins.",
   },
   {
     icon: "target" as GlyphName,
     title: "Relevance before raw metrics",
-    body: "We score topical fit against your subject and market, so a mid-authority niche publication can outrank a generic high-DR listing.",
+    body: "Topical fit, market and page context are considered alongside third-party authority and traffic estimates.",
   },
   {
     icon: "chart" as GlyphName,
-    title: "Metrics you can verify",
-    body: "Traffic, referring domains and trend data are refreshed continuously and shown before checkout, with no screenshots or hidden estimates.",
+    title: "Metrics shown with context",
+    body: "Named publisher listings show the available authority, traffic, link-type and price fields so you can compare options before ordering.",
   },
   {
     icon: "users" as GlyphName,
-    title: "Every campaign reviewed by a human",
-    body: "A strategist checks anchor distribution, destination pages and publication mix before anything goes live.",
+    title: "Brief reviewed before delivery",
+    body: "Campaign requirements are checked for target-page fit, anchor choice and delivery feasibility before work starts.",
   },
   {
     icon: "layers" as GlyphName,
-    title: "One workspace for every client",
-    body: "Projects, budgets, approvals and link reports stay separated per brand, with permissions for internal and freelance teams.",
+    title: "Order tracking in one workspace",
+    body: "Account tools keep order requirements, status and delivered URLs together for easier campaign tracking.",
   },
   {
     icon: "clock" as GlyphName,
-    title: "No PBNs, ever",
-    body: "We do not build or sell private blog networks. Every link comes from a publication that exists for its readers first.",
+    title: "No PBN services",
+    body: "Linkslo does not offer private blog network packages as part of the marketplace or direct service catalogue.",
   },
 ];
 
 export const PROCESS_STEPS = [
   {
     number: "01",
-    title: "Add your website",
-    body: "Connect a domain and we pull baseline authority, referring domains and anchor distribution into your workspace within minutes.",
+    title: "Choose a service or listing",
+    body: "Browse by link type, industry, market, package scope, price and delivery window.",
     icon: "globe" as GlyphName,
   },
   {
     number: "02",
-    title: "Choose your link objective",
-    body: "Pick what the quarter should achieve: commercial page authority, topical coverage, local visibility or brand citations.",
+    title: "Share your target page",
+    body: "Provide the destination URL, anchor preference and any campaign constraints needed to review fit.",
     icon: "target" as GlyphName,
   },
   {
     number: "03",
-    title: "Select placements or brief us",
-    body: "Filter the publisher marketplace yourself, or hand the objective to a strategist and approve a proposed link plan.",
+    title: "Confirm feasibility",
+    body: "Linkslo reviews the brief and confirms placement feasibility or recommends a more suitable option where necessary.",
     icon: "filter" as GlyphName,
   },
   {
     number: "04",
-    title: "Track every live link",
-    body: "Watch placements go live, monitor anchor ratios and export link reports your stakeholders can actually read.",
+    title: "Receive delivery details",
+    body: "Completed work is reported with the relevant live URL and order information available in your workspace.",
     icon: "chart" as GlyphName,
   },
 ];
@@ -256,14 +256,14 @@ export const PRICING_PLANS = [
     name: "Self-Serve",
     price: "€0",
     cadence: "platform fee",
-    summary: "Browse publishers and order individual placements with transparent per-link pricing.",
+    summary: "Browse marketplace listings and order individual packages with transparent pricing.",
     highlight: false,
     features: [
-      "Full publisher marketplace access",
-      "Live authority and traffic data",
-      "1 project workspace",
-      "Standard link reporting",
-      "Email support within 24h",
+      "Marketplace browsing",
+      "Package pricing and delivery details",
+      "Order requirement submission",
+      "Order status tracking",
+      "Email support",
     ],
     cta: { label: "Sign in to get started", href: "/login" },
   },
@@ -271,15 +271,15 @@ export const PRICING_PLANS = [
     name: "Growth",
     price: "€349",
     cadence: "per month",
-    summary: "For in-house teams running continuous link acquisition across several pages.",
+    summary: "For in-house teams planning ongoing link acquisition across several pages.",
     highlight: true,
     features: [
       "Everything in Self-Serve",
-      "10 project workspaces",
-      "Anchor distribution management",
-      "Link Gap Scout unlimited scans",
-      "Scheduled PDF and CSV reporting",
-      "Named link strategist",
+      "Additional project organisation",
+      "Campaign planning support",
+      "Link Gap Scout access",
+      "Reporting support",
+      "Priority support",
     ],
     cta: { label: "Sign in to get started", href: "/login" },
   },
@@ -287,146 +287,48 @@ export const PRICING_PLANS = [
     name: "Agency",
     price: "€890",
     cadence: "per month",
-    summary: "Multi-client link building with white-labelled reporting and team permissions.",
+    summary: "For teams coordinating link-building work across multiple client projects.",
     highlight: false,
     features: [
       "Everything in Growth",
-      "Unlimited client workspaces",
-      "White-label link reports",
-      "Role-based team permissions",
-      "Volume placement pricing",
-      "Priority publisher sourcing",
+      "Multi-project organisation",
+      "Client-oriented reporting support",
+      "Team workflow support",
+      "Volume planning",
+      "Priority sourcing support",
     ],
     cta: { label: "Talk to sales", href: "/contact" },
   },
 ];
 
-export const FOOTER_COLUMNS = [
-  {
-    heading: "Backlink Services",
-    links: [
-      { label: "Guest Post Backlinks", href: "/backlinks/guest-post-backlinks" },
-      { label: "Editorial Backlinks", href: "/backlinks/editorial-backlinks" },
-      { label: "Contextual Backlinks", href: "/backlinks/contextual-backlinks" },
-      { label: "Niche Edit Backlinks", href: "/backlinks/niche-edit-backlinks" },
-      { label: "Authority Backlinks", href: "/backlinks/authority-backlinks" },
-      { label: "Premium Link Building", href: "/backlinks/premium-link-building" },
-    ],
-  },
-  {
-    heading: "Outreach & PR",
-    links: [
-      { label: "Digital PR Backlinks", href: "/backlinks/digital-pr-backlinks" },
-      { label: "Press Release Links", href: "/backlinks/press-release-news-backlinks" },
-      { label: "Resource Link Building", href: "/backlinks/resource-link-building" },
-      { label: "Broken Link Building", href: "/backlinks/broken-link-building" },
-      { label: "Brand & Entity Links", href: "/backlinks/brand-entity-link-building" },
-    ],
-  },
-  {
-    heading: "By Industry",
-    links: [
-      { label: "SaaS Backlinks", href: "/backlinks/industry/saas" },
-      { label: "Finance Backlinks", href: "/backlinks/industry/finance" },
-      { label: "E-commerce Backlinks", href: "/backlinks/industry/ecommerce" },
-      { label: "Health Backlinks", href: "/backlinks/industry/health" },
-      { label: "All industries", href: "/backlinks/industry" },
-    ],
-  },
-  {
-    heading: "By Country",
-    links: [
-      { label: "USA Backlinks", href: "/backlinks/country/usa" },
-      { label: "UK Backlinks", href: "/backlinks/country/uk" },
-      { label: "German Backlinks", href: "/backlinks/country/germany" },
-      { label: "International", href: "/backlinks/country/international" },
-      { label: "All countries", href: "/backlinks/country" },
-    ],
-  },
-  {
-    heading: "Company",
-    links: [
-      { label: "Marketplace", href: "/marketplace" },
-      { label: "Pricing", href: "/pricing" },
-      { label: "Blog", href: "/resources" },
-      { label: "Case Studies", href: "/case-studies" },
-      { label: "About", href: "/about" },
-      { label: "Contact", href: "/contact" },
-    ],
-  },
-  {
-    heading: "Legal",
-    links: [
-      { label: "Privacy", href: "/legal/privacy" },
-      { label: "Terms", href: "/legal/terms" },
-      { label: "Cookies", href: "/legal/cookies" },
-      { label: "Legal Notice", href: "/legal/notice" },
-    ],
-  },
-];
-
-export const LEGAL_PAGES: Record<
-  string,
-  { title: string; updated: string; intro: string; sections: { heading: string; body: string }[] }
-> = {
+export const LEGAL_PAGES: Record<string, { title: string; updated: string; sections: { heading: string; body: string[] }[] }> = {
   privacy: {
     title: "Privacy Policy",
-    updated: "2 March 2026",
-    intro:
-      "This policy explains what personal data Linkslo collects when you use our website, publisher marketplace and link reporting tools, why we collect it, and the choices you have.",
+    updated: "September 2026",
     sections: [
-      { heading: "Data we collect", body: "Account details you provide (name, work email, company, billing address), the domains and target URLs you add to a workspace, campaign and order records, support correspondence, and technical data such as IP address, device type and pages visited. We do not buy personal data from third-party brokers." },
-      { heading: "Why we process it", body: "To operate your account and deliver ordered placements, to produce the link reporting you request, to prevent fraud and abuse, to meet accounting and tax obligations, and, where you have opted in, to send research and product updates. Marketing emails always include a one-click unsubscribe." },
-      { heading: "Sharing", body: "We share the minimum necessary data with payment processors, hosting and analytics providers, and publishers who need a destination URL to fulfil a placement. Each processor operates under a written agreement. We never sell personal data." },
-      { heading: "Retention", body: "Account and campaign records are retained for the life of the account plus seven years where invoicing law requires it. Analytics data is aggregated after 14 months. You may request deletion of non-statutory records at any time." },
-      { heading: "Your rights", body: "Under the GDPR and equivalent laws you can request access, correction, deletion, restriction, portability, or object to processing. Write to the contact address below and we will respond within 30 days." },
+      { heading: "Information we collect", body: ["We collect information you provide when creating an account, submitting an order, contacting support or using interactive tools on Linkslo."] },
+      { heading: "How we use information", body: ["We use account and order information to operate the service, fulfil requests, provide support, maintain security and improve the product."] },
+      { heading: "Data retention", body: ["We retain information only as long as reasonably necessary for service delivery, legal obligations, dispute resolution and legitimate business records."] },
+      { heading: "Your choices", body: ["You may contact us to request access, correction or deletion of personal information, subject to applicable legal and record-keeping requirements."] },
     ],
   },
   terms: {
     title: "Terms of Service",
-    updated: "2 March 2026",
-    intro:
-      "These terms govern access to the Linkslo platform, marketplace placements and link building services. By creating an account you agree to them.",
+    updated: "September 2026",
     sections: [
-      { heading: "Accounts", body: "You are responsible for the accuracy of account information and for activity carried out under your credentials. Agency accounts may create client workspaces provided the agency remains responsible for those clients' use of the platform." },
-      { heading: "Placement orders", body: "Prices shown at checkout are final for that order. Delivery windows are estimates based on each publisher's editorial calendar. If a publisher cannot fulfil an order, we offer a comparable alternative or a full refund of that item." },
-      { heading: "Content and placements", body: "Content produced by Linkslo transfers to you on publication. Publishers retain editorial control over their own sites. We do not control third-party editorial decisions and we do not promise specific ranking positions, traffic figures or metric increases." },
-      { heading: "Acceptable use", body: "The platform may not be used for content that is unlawful, deceptive, or that a reasonable publisher would consider harmful. We do not provide private blog networks, automated link generation or any service designed to disguise paid placement as independent endorsement." },
-      { heading: "Liability", body: "Our aggregate liability for any claim is limited to the fees paid for the specific service giving rise to the claim in the preceding twelve months. Nothing in these terms limits liability that cannot lawfully be limited." },
+      { heading: "Service scope", body: ["Linkslo provides link-building marketplace listings, direct service packages, campaign planning tools and order management features."] },
+      { heading: "Publisher approval", body: ["Publisher availability and editorial approval can change. An order does not guarantee publication on a third-party website until availability and editorial fit are confirmed."] },
+      { heading: "Search results", body: ["Search rankings, traffic growth and other SEO outcomes depend on many factors outside Linkslo's control and are not guaranteed."] },
+      { heading: "Acceptable use", body: ["You must not use the service for unlawful activity, deceptive content, malware, abuse or attempts to interfere with the service or third-party websites."] },
     ],
   },
-  cookies: {
-    title: "Cookie Notice",
-    updated: "2 March 2026",
-    intro: "We use a deliberately small number of cookies. Non-essential cookies are only set after you accept them.",
+  refunds: {
+    title: "Refund Policy",
+    updated: "September 2026",
     sections: [
-      { heading: "Essential", body: "Session, authentication and security cookies that keep you signed in and protect forms from abuse. These cannot be switched off without breaking the product." },
-      { heading: "Preferences", body: "Stores interface choices such as saved marketplace filters, table density and report defaults. Removing them resets your view to defaults." },
-      { heading: "Analytics", body: "Aggregated, IP-truncated usage measurement that tells us which pages and features are used. Data is not shared with advertising networks." },
-      { heading: "Managing cookies", body: "You can change your choice at any time from the cookie link in the footer, or clear cookies in your browser settings. Blocking essential cookies will prevent sign-in." },
-    ],
-  },
-  notice: {
-    title: "Legal Notice",
-    updated: "2 March 2026",
-    intro: "Company information published in accordance with European e-commerce disclosure requirements.",
-    sections: [
-      { heading: "Company", body: "Linkslo Technologies B.V., registered in Amsterdam, The Netherlands. Chamber of Commerce registration 87-4429-116. VAT NL004429116B01." },
-      { heading: "Registered office", body: "Kalverstraat 112, 1012 PK Amsterdam, The Netherlands." },
-      { heading: "Contact", body: "Email team@linkslo.com. Telephone +44 20 7946 0812. Responses within one business day, Monday to Friday." },
-      { heading: "Dispute resolution", body: "The European Commission provides an online dispute resolution platform for consumers. We are not obliged to participate in consumer arbitration proceedings but will always attempt direct resolution first." },
-      { heading: "Sample data disclosure", body: "Case studies, dashboard figures and demonstration statistics shown on this website use representative sample data and are labelled as such." },
+      { heading: "Before fulfilment", body: ["If a selected placement cannot be fulfilled as described, we may offer an appropriate alternative or refund the affected undelivered item."] },
+      { heading: "After delivery", body: ["Completed services are generally not refundable once the agreed deliverable has been provided, except where required by law or where the delivered item materially differs from the confirmed order scope."] },
+      { heading: "Contact", body: ["Contact support with the order reference and relevant details so the request can be reviewed."] },
     ],
   },
 };
-
-export const RESOURCE_CATEGORIES = [
-  "Link Building",
-  "Guest Posting",
-  "Digital PR",
-  "Outreach",
-  "Anchor Text",
-  "Link Audits",
-  "Case Studies",
-  "Industry News",
-];
