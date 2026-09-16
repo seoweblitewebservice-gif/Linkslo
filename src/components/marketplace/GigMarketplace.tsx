@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Icon } from "@/components/ui/Icon";
-import { Badge } from "@/components/ui/primitives";
 import { formatCurrency, formatNumber } from "@/lib/format";
 import type { GigPackage } from "@/lib/gigs/types";
 
@@ -26,20 +25,16 @@ type GigCard = {
   language: string;
   objective: string;
   summary: string;
-  sellerName: string;
-  sellerHandle: string;
-  sellerInitials: string;
-  sellerCountry: string;
-  sellerLevel: string;
-  sellerResponseHours: number;
-  verified: boolean;
-  rating: number;
-  reviewCount: number;
-  ordersCompleted: number;
   startingPrice: number;
   fastestDeliveryDays: number;
   packages: GigPackage[];
   featured: boolean;
+  domain: string | null;
+};
+
+type MarketplaceSummary = {
+  medianPrice: number;
+  namedPublishers: number;
 };
 
 type Filters = {
@@ -49,11 +44,8 @@ type Filters = {
   industry: string;
   country: string;
   language: string;
-  sellerLevel: string;
   maxPrice: number;
   maxDelivery: number;
-  minRating: number;
-  verified: boolean;
   sort: string;
 };
 
@@ -64,23 +56,17 @@ const DEFAULTS: Filters = {
   industry: "",
   country: "",
   language: "",
-  sellerLevel: "",
   maxPrice: 0,
   maxDelivery: 0,
-  minRating: 0,
-  verified: false,
   sort: "recommended",
 };
 
-const LEVELS = ["Level One", "Level Two", "Top Rated", "Pro Verified"];
 const SORTS = [
   ["recommended", "Recommended"],
-  ["bestselling", "Best selling"],
-  ["rating-desc", "Highest rated"],
   ["price-asc", "Price: low to high"],
   ["price-desc", "Price: high to low"],
   ["delivery-asc", "Fastest delivery"],
-  ["newest", "Newest arrivals"],
+  ["newest", "Newest listings"],
 ] as const;
 
 const COVER_STYLES = [
@@ -125,15 +111,7 @@ function SelectFilter({
   );
 }
 
-function GigCardView({
-  gig,
-  saved,
-  onSave,
-}: {
-  gig: GigCard;
-  saved: boolean;
-  onSave: () => void;
-}) {
+function GigCardView({ gig, saved, onSave }: { gig: GigCard; saved: boolean; onSave: () => void }) {
   const [tierIndex, setTierIndex] = useState(1);
   const pkg = gig.packages[tierIndex] ?? gig.packages[0];
   const cover = COVER_STYLES[gig.id % COVER_STYLES.length];
@@ -149,8 +127,7 @@ function GigCardView({
         <div
           className="absolute inset-0 opacity-10"
           style={{
-            backgroundImage:
-              "linear-gradient(to right,#fff 1px,transparent 1px),linear-gradient(to bottom,#fff 1px,transparent 1px)",
+            backgroundImage: "linear-gradient(to right,#fff 1px,transparent 1px),linear-gradient(to bottom,#fff 1px,transparent 1px)",
             backgroundSize: "30px 30px",
           }}
         />
@@ -160,11 +137,9 @@ function GigCardView({
             <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/20 bg-white/10 backdrop-blur-sm">
               <Icon name={gig.category.includes("PR") || gig.category.includes("News") ? "megaphone" : gig.category.includes("Local") ? "pin" : gig.category.includes("Strategy") || gig.category.includes("Competitor") ? "compass" : "link"} size={20} />
             </span>
-            {gig.featured && (
-              <span className="rounded-full border border-white/20 bg-white/15 px-2.5 py-1 text-[0.62rem] font-semibold uppercase tracking-wide backdrop-blur-sm">
-                Featured
-              </span>
-            )}
+            <span className="rounded-full border border-white/20 bg-white/15 px-2.5 py-1 text-[0.62rem] font-semibold uppercase tracking-wide backdrop-blur-sm">
+              {gig.domain ? "Named site" : gig.featured ? "Featured" : gig.country}
+            </span>
           </div>
           <div>
             <p className="text-[0.63rem] font-semibold uppercase tracking-[0.14em] text-white/70">{gig.category}</p>
@@ -175,24 +150,19 @@ function GigCardView({
 
       <div className="flex flex-1 flex-col p-5">
         <div className="flex items-center gap-2.5">
-          <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-ink-950 text-[0.68rem] font-semibold text-white">
-            {gig.sellerInitials}
+          <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-ink-950 text-white">
+            <Icon name={gig.domain ? "globe" : "link"} size={15} />
           </span>
           <div className="min-w-0 flex-1">
-            <p className="flex items-center gap-1 truncate text-[0.8rem] font-semibold text-ink-900">
-              {gig.sellerName}
-              {gig.verified && <Icon name="shield" size={13} className="shrink-0 text-brand-600" />}
-            </p>
-            <p className="truncate text-[0.68rem] text-ink-400">{gig.sellerLevel} · {gig.sellerCountry}</p>
+            <p className="truncate text-[0.8rem] font-semibold text-ink-900">{gig.domain ?? gig.industry}</p>
+            <p className="truncate text-[0.68rem] text-ink-400">{gig.country} · {gig.language}</p>
           </div>
           <button
             type="button"
             onClick={onSave}
             aria-pressed={saved}
             aria-label={`${saved ? "Remove" : "Save"} ${gig.title}`}
-            className={`flex h-8 w-8 items-center justify-center rounded-full border transition-colors ${
-              saved ? "border-brand-300 bg-brand-50 text-brand-700" : "border-line text-ink-400 hover:border-brand-200 hover:text-brand-700"
-            }`}
+            className={`flex h-8 w-8 items-center justify-center rounded-full border transition-colors ${saved ? "border-brand-300 bg-brand-50 text-brand-700" : "border-line text-ink-400 hover:border-brand-200 hover:text-brand-700"}`}
           >
             <Icon name="star" size={14} filled={saved} />
           </button>
@@ -203,14 +173,9 @@ function GigCardView({
         </h2>
         <p className="mt-2 line-clamp-2 text-[0.79rem] leading-relaxed text-ink-500">{gig.summary}</p>
 
-        <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-[0.7rem]">
-          <span className="inline-flex items-center gap-1 font-semibold text-ink-900">
-            <Icon name="star" size={12} filled className="text-amber-accent" />
-            {(gig.rating / 10).toFixed(1)}
-            <span className="font-normal text-ink-400">({formatNumber(gig.reviewCount)})</span>
-          </span>
-          <span className="text-ink-400">{formatNumber(gig.ordersCompleted)} orders</span>
-          <span className="inline-flex items-center gap-1 text-ink-400"><Icon name="clock" size={11} />~{gig.sellerResponseHours}h</span>
+        <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-[0.7rem] text-ink-400">
+          <span className="inline-flex items-center gap-1"><Icon name="clock" size={11} />From {gig.fastestDeliveryDays} days</span>
+          <span>{gig.objective}</span>
         </div>
 
         {pkg && (
@@ -223,9 +188,7 @@ function GigCardView({
                   role="tab"
                   aria-selected={tierIndex === index}
                   onClick={() => setTierIndex(index)}
-                  className={`rounded-lg px-1 py-1.5 text-[0.67rem] font-semibold capitalize transition-colors ${
-                    tierIndex === index ? "bg-white text-ink-950 shadow-sm" : "text-ink-400 hover:text-ink-700"
-                  }`}
+                  className={`rounded-lg px-1 py-1.5 text-[0.67rem] font-semibold capitalize transition-colors ${tierIndex === index ? "bg-white text-ink-950 shadow-sm" : "text-ink-400 hover:text-ink-700"}`}
                 >
                   {item.tier}
                 </button>
@@ -243,7 +206,7 @@ function GigCardView({
 
         <div className="mt-auto grid grid-cols-[1fr_auto] gap-2 border-t border-line pt-4">
           <Link href={`/marketplace/gigs/${gig.slug}`} className="inline-flex h-9 items-center justify-center rounded-lg border border-line px-3 text-[0.75rem] font-semibold text-ink-700 transition-colors hover:border-brand-300 hover:text-brand-800">
-            View gig
+            View details
           </Link>
           <Link href={`/order?gig=${gig.slug}&tier=${pkg?.tier ?? "standard"}`} className="inline-flex h-9 items-center justify-center gap-1.5 rounded-lg bg-ink-950 px-3.5 text-[0.75rem] font-semibold text-white transition-colors hover:bg-brand-700">
             Continue <Icon name="arrow-right" size={13} />
@@ -269,8 +232,7 @@ export function GigMarketplace({
   initialIndustry?: string;
   initialCountry?: string;
   initialQuery?: string;
-  /** Server-fetched first page, so crawlers and no-JS clients see real gigs immediately instead of an empty "Updating…" state. */
-  initialData?: { items: GigCard[]; total: number; summary: { avgRating: number; totalOrders: number; medianPrice: number; verifiedSellers: number } };
+  initialData?: { items: GigCard[]; total: number; summary: MarketplaceSummary };
 }) {
   const [filters, setFilters] = useState<Filters>({
     ...DEFAULTS,
@@ -282,7 +244,7 @@ export function GigMarketplace({
   });
   const [items, setItems] = useState<GigCard[]>(initialData?.items ?? []);
   const [total, setTotal] = useState(initialData?.total ?? 0);
-  const [summary, setSummary] = useState(initialData?.summary ?? { avgRating: 0, totalOrders: 0, medianPrice: 0, verifiedSellers: 0 });
+  const [summary, setSummary] = useState<MarketplaceSummary>(initialData?.summary ?? { medianPrice: 0, namedPublishers: 0 });
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(!initialData);
   const [mobileFilters, setMobileFilters] = useState(false);
@@ -306,20 +268,18 @@ export function GigMarketplace({
     const timer = setTimeout(async () => {
       setLoading(true);
       const params = new URLSearchParams({ page: String(page), pageSize: String(pageSize), sort: filters.sort });
-      for (const key of ["q", "category", "subcategory", "industry", "country", "language", "sellerLevel"] as const) {
+      for (const key of ["q", "category", "subcategory", "industry", "country", "language"] as const) {
         if (filters[key]) params.set(key, filters[key]);
       }
       if (filters.maxPrice) params.set("maxPrice", String(filters.maxPrice));
       if (filters.maxDelivery) params.set("maxDelivery", String(filters.maxDelivery));
-      if (filters.minRating) params.set("minRating", String(filters.minRating));
-      if (filters.verified) params.set("verified", "true");
       try {
         const response = await fetch(`/api/gigs?${params}`, { signal: controller.signal });
-        const data = (await response.json()) as { items?: GigCard[]; total?: number; summary?: typeof summary };
+        const data = (await response.json()) as { items?: GigCard[]; total?: number; summary?: MarketplaceSummary };
         if (requestId.current !== id) return;
         setItems(data.items ?? []);
         setTotal(data.total ?? 0);
-        setSummary(data.summary ?? { avgRating: 0, totalOrders: 0, medianPrice: 0, verifiedSellers: 0 });
+        setSummary(data.summary ?? { medianPrice: 0, namedPublishers: 0 });
       } catch (error) {
         if ((error as Error).name !== "AbortError") console.error(error);
       } finally {
@@ -339,27 +299,14 @@ export function GigMarketplace({
     [filters],
   );
   const totalPages = Math.max(1, Math.ceil(total / pageSize));
-  const visibleSubcategories = facets.subcategories;
 
   const filterPanel = (
     <div className="space-y-5">
       <SelectFilter label="Service category" value={filters.category} options={facets.categories} placeholder="All categories" onChange={(value) => update("category", value)} />
-      <SelectFilter label="Specific service" value={filters.subcategory} options={visibleSubcategories} placeholder="All service types" onChange={(value) => update("subcategory", value)} />
+      <SelectFilter label="Specific service" value={filters.subcategory} options={facets.subcategories} placeholder="All service types" onChange={(value) => update("subcategory", value)} />
       <SelectFilter label="Industry" value={filters.industry} options={facets.industries} placeholder="All industries" onChange={(value) => update("industry", value)} />
       <SelectFilter label="Target country" value={filters.country} options={facets.countries} placeholder="All countries" onChange={(value) => update("country", value)} />
       <SelectFilter label="Content language" value={filters.language} options={facets.languages} placeholder="Any language" onChange={(value) => update("language", value)} />
-      <SelectFilter label="Seller level" value={filters.sellerLevel} options={LEVELS} placeholder="Any level" onChange={(value) => update("sellerLevel", value)} />
-
-      <div>
-        <p className="mb-1.5 text-[0.69rem] font-semibold uppercase tracking-[0.1em] text-ink-400">Minimum rating</p>
-        <div className="grid grid-cols-3 gap-1.5">
-          {[0, 48, 49].map((rating) => (
-            <button key={rating} type="button" onClick={() => update("minRating", rating)} className={`rounded-lg border px-1.5 py-1.5 text-[0.72rem] font-medium ${filters.minRating === rating ? "border-brand-300 bg-brand-50 text-brand-800" : "border-line bg-white text-ink-600"}`}>
-              {rating ? `${(rating / 10).toFixed(1)}+ ★` : "Any"}
-            </button>
-          ))}
-        </div>
-      </div>
 
       <label className="block">
         <span className="mb-1.5 flex justify-between text-[0.69rem] font-semibold uppercase tracking-[0.1em] text-ink-400">
@@ -377,14 +324,6 @@ export function GigMarketplace({
         </div>
       </div>
 
-      <label className="flex cursor-pointer items-center justify-between rounded-xl border border-line bg-canvas px-3.5 py-3">
-        <span>
-          <span className="block text-[0.8rem] font-semibold text-ink-900">Verified sellers only</span>
-          <span className="block text-[0.65rem] text-ink-400">Identity and delivery process reviewed</span>
-        </span>
-        <input type="checkbox" checked={filters.verified} onChange={(event) => update("verified", event.target.checked)} className="h-4 w-4 accent-brand-600" />
-      </label>
-
       <button type="button" onClick={() => { setFilters(DEFAULTS); setPage(1); }} className="inline-flex items-center gap-1.5 text-[0.78rem] font-semibold text-ink-500 hover:text-brand-700">
         <Icon name="close" size={13} /> Reset all filters {activeCount > 0 && `(${activeCount})`}
       </button>
@@ -394,7 +333,7 @@ export function GigMarketplace({
   return (
     <div>
       <div className="no-scrollbar flex gap-2 overflow-x-auto pb-1">
-        <button type="button" onClick={() => update("category", "")} className={`shrink-0 rounded-full border px-3.5 py-2 text-[0.78rem] font-semibold ${!filters.category ? "border-ink-950 bg-ink-950 text-white" : "border-line bg-white text-ink-600"}`}>All gigs</button>
+        <button type="button" onClick={() => update("category", "")} className={`shrink-0 rounded-full border px-3.5 py-2 text-[0.78rem] font-semibold ${!filters.category ? "border-ink-950 bg-ink-950 text-white" : "border-line bg-white text-ink-600"}`}>All listings</button>
         {facets.categories.slice(0, 12).map((category) => (
           <button key={category} type="button" onClick={() => update("category", filters.category === category ? "" : category)} className={`shrink-0 rounded-full border px-3.5 py-2 text-[0.78rem] font-semibold transition-colors ${filters.category === category ? "border-brand-300 bg-brand-50 text-brand-800" : "border-line bg-white text-ink-600 hover:border-ink-200"}`}>{category}</button>
         ))}
@@ -405,7 +344,7 @@ export function GigMarketplace({
           <div className="sticky top-24 rounded-2xl border border-line bg-white p-5 shadow-soft">
             <div className="mb-4 flex items-center gap-2">
               <Icon name="sliders" size={17} className="text-brand-600" />
-              <h2 className="text-[0.9rem] font-semibold text-ink-950">Filter backlink gigs</h2>
+              <h2 className="text-[0.9rem] font-semibold text-ink-950">Filter marketplace</h2>
             </div>
             {filterPanel}
           </div>
@@ -415,15 +354,15 @@ export function GigMarketplace({
           <div className="rounded-2xl border border-line bg-white p-4 shadow-soft">
             <div className="flex flex-col gap-3 sm:flex-row">
               <label className="relative flex-1">
-                <span className="sr-only">Search backlink gigs</span>
+                <span className="sr-only">Search marketplace listings</span>
                 <Icon name="search" size={17} className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-ink-400" />
-                <input type="search" value={filters.q} onChange={(event) => update("q", event.target.value)} placeholder="Search 8,886 gigs by service, niche, country or seller…" className="h-11 w-full rounded-xl border border-line bg-canvas pl-10 pr-3 text-[0.86rem] hover:border-ink-200 focus:border-brand-400 focus:bg-white" />
+                <input type="search" value={filters.q} onChange={(event) => update("q", event.target.value)} placeholder="Search by service, niche, country or language…" className="h-11 w-full rounded-xl border border-line bg-canvas pl-10 pr-3 text-[0.86rem] hover:border-ink-200 focus:border-brand-400 focus:bg-white" />
               </label>
               <button type="button" onClick={() => setMobileFilters((value) => !value)} className="inline-flex h-11 items-center justify-center gap-2 rounded-xl border border-line px-3.5 text-[0.8rem] font-semibold text-ink-700 lg:hidden">
                 <Icon name="filter" size={15} /> Filters {activeCount > 0 && <span className="rounded-full bg-brand-600 px-1.5 text-[0.64rem] text-white">{activeCount}</span>}
               </button>
               <label className="relative sm:w-48">
-                <span className="sr-only">Sort gigs</span>
+                <span className="sr-only">Sort listings</span>
                 <select value={filters.sort} onChange={(event) => update("sort", event.target.value)} className="h-11 w-full appearance-none rounded-xl border border-line bg-white pl-3 pr-8 text-[0.8rem] font-medium text-ink-800">
                   {SORTS.map(([value, label]) => <option key={value} value={value}>{label}</option>)}
                 </select>
@@ -432,10 +371,8 @@ export function GigMarketplace({
             </div>
             {mobileFilters && <div className="mt-4 animate-fade-scale rounded-xl border border-line bg-canvas p-4 lg:hidden">{filterPanel}</div>}
             <div className="mt-3 flex flex-wrap gap-x-5 gap-y-1 border-t border-line pt-3 text-[0.74rem] text-ink-500">
-              <span><strong className="text-ink-950">{formatNumber(total)}</strong> gigs</span>
-              <span><strong className="text-ink-950">{summary.verifiedSellers}</strong> verified specialists</span>
-              <span><strong className="text-ink-950">{summary.avgRating.toFixed(1)}/5</strong> average rating</span>
-              <span><strong className="text-ink-950">{formatNumber(summary.totalOrders)}</strong> completed orders</span>
+              <span><strong className="text-ink-950">{formatNumber(total)}</strong> marketplace listings</span>
+              {summary.namedPublishers > 0 && <span><strong className="text-ink-950">{formatNumber(summary.namedPublishers)}</strong> named publisher listings</span>}
               <span>Median from <strong className="text-ink-950">{formatCurrency(summary.medianPrice)}</strong></span>
               {loading && <span className="font-medium text-brand-700">Updating…</span>}
             </div>
@@ -454,14 +391,14 @@ export function GigMarketplace({
           {!items.length && !loading && (
             <div className="mt-5 rounded-2xl border border-dashed border-line bg-white p-12 text-center">
               <span className="mx-auto flex h-11 w-11 items-center justify-center rounded-xl bg-ink-50 text-ink-400"><Icon name="search" size={20} /></span>
-              <h2 className="mt-4 font-display text-[1.05rem] font-semibold text-ink-950">No gigs match those filters</h2>
+              <h2 className="mt-4 font-display text-[1.05rem] font-semibold text-ink-950">No listings match those filters</h2>
               <p className="mt-1 text-[0.84rem] text-ink-500">Try a broader category, country or budget range.</p>
             </div>
           )}
 
-          <nav aria-label="Gig pagination" className="mt-7 flex flex-col gap-3 rounded-2xl border border-line bg-white px-4 py-3 shadow-soft sm:flex-row sm:items-center sm:justify-between">
+          <nav aria-label="Marketplace pagination" className="mt-7 flex flex-col gap-3 rounded-2xl border border-line bg-white px-4 py-3 shadow-soft sm:flex-row sm:items-center sm:justify-between">
             <p className="text-[0.78rem] text-ink-500">
-              Page <strong className="text-ink-900">{page}</strong> of {totalPages} · showing {items.length} of {formatNumber(total)} gigs
+              Page <strong className="text-ink-900">{page}</strong> of {totalPages} · showing {items.length} of {formatNumber(total)} listings
             </p>
             <div className="flex items-center gap-2">
               <button type="button" disabled={page <= 1} onClick={() => setPage((value) => Math.max(1, value - 1))} className="h-9 rounded-lg border border-line px-3 text-[0.78rem] font-semibold text-ink-700 disabled:opacity-40">Previous</button>
@@ -469,10 +406,6 @@ export function GigMarketplace({
               <button type="button" disabled={page >= totalPages} onClick={() => setPage((value) => Math.min(totalPages, value + 1))} className="h-9 rounded-lg border border-line px-3 text-[0.78rem] font-semibold text-ink-700 disabled:opacity-40">Next</button>
             </div>
           </nav>
-
-          <p className="mt-3 text-center text-[0.68rem] text-ink-400">
-            Seller profiles, order counts and reviews are representative marketplace data in this demonstration environment.
-          </p>
         </div>
       </div>
     </div>
