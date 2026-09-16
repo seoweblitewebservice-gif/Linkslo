@@ -9,15 +9,22 @@ import { Reveal } from "@/components/ui/motion";
 import { Button, SectionHeading } from "@/components/ui/primitives";
 import { BACKLINK_SERVICES } from "@/lib/backlinks";
 import { getGigFacets } from "@/lib/gigs/data";
+import { queryMarketplaceListings } from "@/lib/marketplace-query";
 import { getFacets } from "@/lib/queries";
 
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "8,886 Backlink Gigs | Link Building Marketplace",
+  title: "Buy Backlinks: Browse 8,886 Vetted Gigs",
   description:
     "Browse 8,886 backlink service gigs, including 6,686 real named guest post publishers with listed price and traffic, plus editorial links, niche edits, digital PR, industries and countries. Compare verified sellers and three packages.",
   alternates: { canonical: "/marketplace" },
+  openGraph: {
+    title: "Buy Backlinks: Browse 8,886 Vetted Gigs | Linkslo",
+    description:
+      "Browse 8,886 backlink service gigs, including 6,686 real named guest post publishers with listed price and traffic. Compare verified sellers and three packages.",
+    type: "website",
+  },
 };
 
 const GIG_STANDARDS = [
@@ -65,6 +72,7 @@ export default async function MarketplacePage({ searchParams }: Props) {
     getGigFacets(),
   ]);
   const activeView = view === "services" ? "services" : view === "publishers" ? "publishers" : "gigs";
+  const publisherInitialData = activeView === "publishers" ? await queryMarketplaceListings({ pageSize: 12 }) : undefined;
   const standards = activeView === "gigs" ? GIG_STANDARDS : activeView === "services" ? SERVICE_STANDARDS : PUBLISHER_STANDARDS;
 
   const headline =
@@ -119,7 +127,7 @@ export default async function MarketplacePage({ searchParams }: Props) {
           ) : activeView === "services" ? (
             <ServiceShop services={BACKLINK_SERVICES} />
           ) : (
-            <MarketplaceExplorer facets={publisherFacets} variant="full" />
+            <MarketplaceExplorer facets={publisherFacets} variant="full" initialData={publisherInitialData} />
           )}
         </div>
       </section>

@@ -12,6 +12,12 @@ export const metadata: Metadata = {
   title: "Pricing",
   description:
     "Transparent platform plans and per-placement marketplace pricing. Browse for free, upgrade when you need multiple workspaces or white-labelled reporting.",
+  openGraph: {
+    title: "Linkslo Pricing — Platform Plans & Marketplace Rates",
+    description:
+      "Transparent platform plans and per-placement marketplace pricing. Browse for free, upgrade when you need multiple workspaces or white-labelled reporting.",
+    type: "website",
+  },
 };
 
 export default function PricingPage() {

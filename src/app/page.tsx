@@ -8,6 +8,7 @@ import { FinalCta, HowItWorks, ServicesGrid, WhyChooseUs } from "@/components/ma
 import { ArticleGrid, CaseStudyGrid } from "@/components/marketing/Showcase";
 import { FaqAccordion, TestimonialCarousel } from "@/components/marketing/SocialProof";
 import { MarketplaceExplorer } from "@/components/marketplace/MarketplaceExplorer";
+import { queryMarketplaceListings } from "@/lib/marketplace-query";
 import { Icon } from "@/components/ui/Icon";
 import { Reveal } from "@/components/ui/motion";
 import { Button, SectionHeading } from "@/components/ui/primitives";
@@ -69,7 +70,7 @@ export const metadata: Metadata = {
 };
 
 export default async function HomePage() {
-  const [facets, workspace, caseStudies, testimonials, faqs, articles, featuredGigs] = await Promise.all([
+  const [facets, workspace, caseStudies, testimonials, faqs, articles, featuredGigs, publisherPreview] = await Promise.all([
     getFacets(),
     getWorkspaceData(),
     getCaseStudies(),
@@ -77,6 +78,7 @@ export default async function HomePage() {
     getFaqs(),
     getArticles(4),
     getFeaturedMarketplaceGigs(6),
+    queryMarketplaceListings({ pageSize: 6 }),
   ]);
 
   const jsonLd = {
@@ -86,7 +88,7 @@ export default async function HomePage() {
         "@type": "Organization",
         name: BRAND.name,
         legalName: `${BRAND.legalName} B.V.`,
-        url: "https://linkslo.com",
+        url: "https://www.linkslo.com",
         email: BRAND.email,
         foundingDate: String(BRAND.foundedYear),
         address: {
@@ -240,7 +242,7 @@ export default async function HomePage() {
 
           <Reveal delay={100}>
             <div className="mt-10">
-              <MarketplaceExplorer facets={facets} variant="preview" />
+              <MarketplaceExplorer facets={facets} variant="preview" initialData={publisherPreview} />
             </div>
           </Reveal>
 

@@ -170,20 +170,24 @@ export function MarketplaceExplorer({
   facets,
   variant = "full",
   initialFilters,
+  initialData,
 }: {
   facets: Facets;
   variant?: "full" | "preview";
   initialFilters?: Partial<Filters>;
+  /** Server-fetched first page, so crawlers and no-JS clients see real results immediately instead of an empty "Updating…" state. */
+  initialData?: { items: Listing[]; total: number; summary: { avgAuthority: number; medianPrice: number; avgDelivery: number } };
 }) {
   const [filters, setFilters] = useState<Filters>({ ...DEFAULTS, ...initialFilters });
-  const [items, setItems] = useState<Listing[]>([]);
-  const [total, setTotal] = useState(0);
-  const [summary, setSummary] = useState({ avgAuthority: 0, medianPrice: 0, avgDelivery: 0 });
+  const [items, setItems] = useState<Listing[]>(initialData?.items ?? []);
+  const [total, setTotal] = useState(initialData?.total ?? 0);
+  const [summary, setSummary] = useState(initialData?.summary ?? { avgAuthority: 0, medianPrice: 0, avgDelivery: 0 });
   const [page, setPage] = useState(1);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(!initialData);
   const [panelOpen, setPanelOpen] = useState(false);
   const [saved, setSaved] = useState<number[]>([]);
   const requestId = useRef(0);
+  const skippedFirstFetch = useRef(false);
 
   const pageSize = variant === "preview" ? 6 : 12;
 
@@ -193,6 +197,10 @@ export function MarketplaceExplorer({
   }, []);
 
   useEffect(() => {
+    if (initialData && !skippedFirstFetch.current) {
+      skippedFirstFetch.current = true;
+      return;
+    }
     const controller = new AbortController();
     const id = requestId.current + 1;
     requestId.current = id;
@@ -238,6 +246,8 @@ export function MarketplaceExplorer({
       clearTimeout(timer);
       controller.abort();
     };
+    // initialData is intentionally read only once via the skippedFirstFetch ref guard above.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filters, page, pageSize]);
 
   const activeCount = useMemo(

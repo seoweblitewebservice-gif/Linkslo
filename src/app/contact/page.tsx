@@ -10,6 +10,12 @@ export const metadata: Metadata = {
   title: "Contact",
   description:
     "Talk to an Linkslo strategist about guest posts, editorial links, niche edits, digital PR or an ongoing monthly link building campaign.",
+  openGraph: {
+    title: "Contact Linkslo — Talk to a Link Building Strategist",
+    description:
+      "Talk to an Linkslo strategist about guest posts, editorial links, niche edits, digital PR or an ongoing monthly link building campaign.",
+    type: "website",
+  },
 };
 
 const CONTACT_BLOCKS = [

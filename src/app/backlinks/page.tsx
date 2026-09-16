@@ -20,6 +20,12 @@ export const metadata: Metadata = {
   title: "Backlink Services | All Link Building Types",
   description:
     "Every backlink service in one place: guest posts, editorial links, niche edits, contextual links, digital PR, resource links, local citations and monthly campaigns.",
+  openGraph: {
+    title: "Backlink Services | All Link Building Types",
+    description:
+      "Every backlink service in one place: guest posts, editorial links, niche edits, contextual links, digital PR, resource links, local citations and monthly campaigns.",
+    type: "website",
+  },
 };
 
 export default function BacklinksHubPage() {

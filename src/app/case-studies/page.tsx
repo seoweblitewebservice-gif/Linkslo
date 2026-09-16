@@ -13,6 +13,12 @@ export const metadata: Metadata = {
   title: "Case studies",
   description:
     "Representative Linkslo engagements showing strategy, duration and measured change in traffic, keywords and referring domains.",
+  openGraph: {
+    title: "Linkslo Case Studies — Real Link Building Results",
+    description:
+      "Representative Linkslo engagements showing strategy, duration and measured change in traffic, keywords and referring domains.",
+    type: "website",
+  },
 };
 
 export default async function CaseStudiesPage() {

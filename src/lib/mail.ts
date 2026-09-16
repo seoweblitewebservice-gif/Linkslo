@@ -37,7 +37,7 @@ export async function sendOrderNotificationEmail(order: {
       <p><strong>Website:</strong> ${order.website}</p>
       <p><strong>Target URL:</strong> ${order.targetUrl}</p>
       <p><strong>PayPal order ID:</strong> ${order.paypalOrderId || "— (brief submitted, not yet paid)"}</p>
-      <p style="margin-top:20px"><a href="https://linkslo.com/dashboard/admin">Open in admin dashboard</a></p>
+      <p style="margin-top:20px"><a href="https://www.linkslo.com/dashboard/admin">Open in admin dashboard</a></p>
     </div>
   `;
 

@@ -28,7 +28,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: country.metaTitle,
     description: country.metaDescription,
-    keywords: country.keywords,
     alternates: { canonical: `/backlinks/country/${country.slug}` },
   };
 }

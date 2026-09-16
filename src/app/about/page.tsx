@@ -10,6 +10,12 @@ export const metadata: Metadata = {
   title: "About",
   description:
     "Linkslo is an Amsterdam-based backlink and link building company working exclusively on off-page authority for in-house teams and agencies.",
+  openGraph: {
+    title: `About ${BRAND.name} — Backlink & Link Building Company`,
+    description:
+      "Linkslo is an Amsterdam-based backlink and link building company working exclusively on off-page authority for in-house teams and agencies.",
+    type: "website",
+  },
 };
 
 const PRINCIPLES = [

@@ -4,7 +4,7 @@ import { BACKLINK_SERVICES, COUNTRY_PAGES, INDUSTRY_PAGES } from "@/lib/backlink
 import { getArticles, getCaseStudies } from "@/lib/queries";
 import { getGigSitemapRows } from "@/lib/gigs/data";
 
-const BASE = "https://linkslo.com";
+const BASE = "https://www.linkslo.com";
 
 export const dynamic = "force-dynamic";
 

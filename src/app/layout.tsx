@@ -19,37 +19,25 @@ import { PAYPAL_SDK_SRC } from "@/lib/paypal";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://linkslo.com"),
+  metadataBase: new URL("https://www.linkslo.com"),
   title: {
-    default: `${BRAND.name} — 8,886 Backlink Gigs & Link Building Marketplace`,
+    default: `${BRAND.name} — Backlink & Link Building Services`,
     template: `%s · ${BRAND.name}`,
   },
   description:
     "Browse 8,886 backlink gigs from 160 verified specialists, including 6,686 real named guest post publishers. Compare Basic, Standard and Premium packages across guest posts, niche edits, editorial links, digital PR, industries and countries.",
-  keywords: [
-    "backlink services",
-    "link building services",
-    "guest post backlinks",
-    "niche edit backlinks",
-    "editorial backlinks",
-    "digital PR backlinks",
-    "backlink marketplace",
-  ],
   applicationName: BRAND.name,
   authors: [{ name: BRAND.legalName }],
   openGraph: {
     type: "website",
     siteName: BRAND.name,
-    title: `${BRAND.name} — 8,886 backlink gigs, three packages each`,
+    title: `${BRAND.name} — Backlink & Link Building Services`,
     description:
       "Compare backlink specialists, service categories, industries and countries with transparent packages and no private blog networks.",
-    locale: "en_GB",
+    locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: `${BRAND.name} — Backlink & link building services`,
-    description:
-      "Screened publishers, verifiable metrics, and every campaign reviewed by a person before it goes live.",
   },
   robots: { index: true, follow: true },
 };
@@ -60,10 +48,38 @@ export const viewport: Viewport = {
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
+  const organizationJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: BRAND.name,
+    legalName: BRAND.legalName,
+    url: "https://www.linkslo.com",
+    logo: "https://www.linkslo.com/favicon.svg",
+    email: BRAND.email,
+    telephone: BRAND.phone,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: BRAND.addressLines[0],
+      addressLocality: "Amsterdam",
+      postalCode: BRAND.addressLines[1]?.split(" ")[0],
+      addressCountry: "NL",
+    },
+    sameAs: [
+      "https://www.linkedin.com",
+      "https://x.com",
+      "https://youtube.com",
+      "https://github.com",
+    ],
+  };
+
   return (
     <ClerkProvider>
       <html lang="en">
         <body className="min-h-screen bg-white text-ink-900 antialiased">
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+          />
           <Script src={PAYPAL_SDK_SRC} strategy="afterInteractive" />
           <Header />
           <main id="main">{children}</main>

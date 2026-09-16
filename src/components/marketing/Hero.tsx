@@ -55,6 +55,9 @@ export function Hero() {
                     />
                   </svg>
                 </span>
+                <span className="mt-2 block text-[clamp(1.1rem,2.2vw,1.4rem)] font-medium text-ink-500">
+                  Backlink services &amp; link building marketplace
+                </span>
               </h1>
             </Reveal>
 

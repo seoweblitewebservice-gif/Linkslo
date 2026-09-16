@@ -10,6 +10,12 @@ export const metadata: Metadata = {
   title: "Link Gap Scout | Free Backlink Gap Analysis",
   description:
     "Enter a domain and target keyword to estimate your backlink gap, see competing domains, content angles and matched publishers for link acquisition.",
+  openGraph: {
+    title: "Link Gap Scout | Free Backlink Gap Analysis",
+    description:
+      "Enter a domain and target keyword to estimate your backlink gap, see competing domains, content angles and matched publishers for link acquisition.",
+    type: "website",
+  },
 };
 
 const STEPS = [

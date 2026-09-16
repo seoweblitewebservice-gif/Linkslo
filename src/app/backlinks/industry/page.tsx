@@ -11,6 +11,12 @@ export const metadata: Metadata = {
   title: "Backlinks by Industry | Sector Link Building",
   description:
     "Backlink services for 18 industries including SaaS, finance, crypto, e-commerce, health, legal and travel. Sector-specific publishers, anchors and opportunities.",
+  openGraph: {
+    title: "Backlinks by Industry | Sector Link Building",
+    description:
+      "Backlink services for 18 industries including SaaS, finance, crypto, e-commerce, health, legal and travel. Sector-specific publishers, anchors and opportunities.",
+    type: "website",
+  },
 };
 
 export default function IndustryIndexPage() {

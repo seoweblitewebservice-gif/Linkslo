@@ -16,6 +16,12 @@ export const metadata: Metadata = {
   title: "SEO knowledge hub",
   description:
     "Guides, research and practitioner notes on guest posting, digital PR, publisher vetting, outreach, anchor text and link audits.",
+  openGraph: {
+    title: "SEO Knowledge Hub | Linkslo Resources",
+    description:
+      "Guides, research and practitioner notes on guest posting, digital PR, publisher vetting, outreach, anchor text and link audits.",
+    type: "website",
+  },
 };
 
 type Props = { searchParams: Promise<{ category?: string }> };

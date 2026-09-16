@@ -20,7 +20,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: gig.metaTitle,
     description: gig.metaDescription,
-    keywords: [gig.subcategory, gig.category, `${gig.industry} backlinks`, `${gig.country} backlinks`],
     alternates: { canonical: `/marketplace/gigs/${gig.slug}` },
     openGraph: { title: gig.metaTitle, description: gig.metaDescription, type: "website" },
   };

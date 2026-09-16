@@ -40,8 +40,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: service.metaTitle,
     description: service.metaDescription,
-    keywords: service.keywords,
-    alternates: { canonical: `/backlinks/${service.slug}` },
+        alternates: { canonical: `/backlinks/${service.slug}` },
     openGraph: { title: service.metaTitle, description: service.metaDescription, type: "website" },
   };
 }

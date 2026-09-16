@@ -11,6 +11,12 @@ export const metadata: Metadata = {
   title: "Backlinks by Country | International Link Building",
   description:
     "Country-specific backlink services for the USA, UK, Canada, Australia, Germany, France, Spain, Italy, Netherlands, India and international campaigns.",
+  openGraph: {
+    title: "Backlinks by Country | International Link Building",
+    description:
+      "Country-specific backlink services for the USA, UK, Canada, Australia, Germany, France, Spain, Italy, Netherlands, India and international campaigns.",
+    type: "website",
+  },
 };
 
 export default function CountryIndexPage() {

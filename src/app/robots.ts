@@ -9,7 +9,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/api/"],
       },
     ],
-    sitemap: "https://linkslo.com/sitemap.xml",
-    host: "https://linkslo.com",
+    sitemap: "https://www.linkslo.com/sitemap.xml",
+    host: "https://www.linkslo.com",
   };
 }
