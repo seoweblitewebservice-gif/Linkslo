@@ -3,6 +3,7 @@ import { db } from "@/db";
 import { backlinkGigs } from "@/db/schema";
 import { ensureGigsSeeded } from "@/db/gig-seed";
 import type { GigPackage } from "@/lib/gigs/types";
+import { publicGigTitle } from "@/lib/gigs/public-title";
 
 /** Shared query for server-rendered and client-filtered marketplace listings. */
 const SORTS = {
@@ -69,8 +70,6 @@ function publicCountry(domain: string | null, storedCountry: string) {
   for (const [suffix, country] of TLD_MARKETS) {
     if (lower.endsWith(suffix)) return country;
   }
-  // Generic TLDs such as .com/.org/.net do not establish a publisher's
-  // physical market. Avoid presenting them as US-based without evidence.
   return "International";
 }
 
@@ -192,11 +191,21 @@ export async function queryGigs(params: GigQueryParams) {
   ]);
 
   return {
-    items: rows.map((row) => ({
-      ...row,
-      country: publicCountry(row.domain, row.country),
-      packages: parsePackages(row.packages),
-    })),
+    items: rows.map((row) => {
+      const resolvedCountry = publicCountry(row.domain, row.country);
+      return {
+        ...row,
+        title: publicGigTitle({
+          domain: row.domain,
+          subcategory: row.subcategory,
+          category: row.category,
+          industry: row.industry,
+          country: resolvedCountry,
+        }),
+        country: resolvedCountry,
+        packages: parsePackages(row.packages),
+      };
+    }),
     page,
     pageSize,
     total: totals[0]?.total ?? 0,
