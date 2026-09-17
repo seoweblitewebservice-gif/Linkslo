@@ -293,17 +293,17 @@ const TESTIMONIAL_ROWS: (typeof testimonials.$inferInsert)[] = [
 ];
 
 const FAQ_ROWS: (typeof faqs.$inferInsert)[] = [
-  { question: "What does Linkslo actually do?", answer: "We build backlinks, and nothing else. That covers guest posts, editorial placements, niche edits, contextual links, digital PR, resource and broken link outreach, local citations and ongoing monthly campaigns. You can order individual placements from the publisher marketplace or brief a strategist to run the campaign for you.", topic: "Services", sortOrder: 1 },
-  { question: "How are websites evaluated before they are listed?", answer: "Every domain passes a multi-stage review: traffic distribution across pages rather than a single spike, keyword relevance to the stated category, outbound linking behaviour, editorial continuity, author transparency and disclosure practices. We re-score listings on a rolling quarterly cycle and remove domains whose quality drifts.", topic: "Quality", sortOrder: 2 },
-  { question: "How does a link campaign actually work?", answer: "You add a website, choose the target pages and market, then either select publishers yourself or brief our team. We confirm relevance, produce or review the content, agree anchors against your existing distribution, coordinate publication with the editor, and record every live URL in your workspace with its metrics and date.", topic: "Campaigns", sortOrder: 3 },
-  { question: "How long do placements usually take?", answer: "Most marketplace orders publish within seven to twenty-one days, depending on the publication's editorial calendar. Each listing shows its own estimated delivery window. Digital PR campaigns run longer because outreach, story development and journalist review add time.", topic: "Delivery", sortOrder: 4 },
-  { question: "Can agencies manage multiple clients in one account?", answer: "Yes. Agency workspaces support unlimited client projects, separate budgets, per-project permissions and white-labelled reports. Team members can be scoped to individual clients so freelancers only see what they need to.", topic: "Agencies", sortOrder: 5 },
-  { question: "Is reporting included?", answer: "Reporting is part of every plan. You get live campaign status, published URL logs with authority and traffic figures, anchor text distribution, month-over-month referring domain growth, and scheduled PDF or CSV exports. Reports can carry your own logo on agency plans.", topic: "Reporting", sortOrder: 6 },
-  { question: "Do you sell PBN links?", answer: "No, and we will not under any label. Private blog networks depend on hiding ownership from search engines, which makes them a liability the moment the footprint is recognised. Every link we place comes from a site that exists for its readers and would still exist if link buyers disappeared tomorrow.", topic: "Quality", sortOrder: 7 },
-  { question: "Which countries and languages are supported?", answer: "We currently work across 38 markets with native-language inventory in fifteen languages, concentrated in Europe and North America with growing coverage in Australia and Latin America. If a market is missing, our sourcing team can usually build inventory for it within a few weeks.", topic: "Coverage", sortOrder: 8 },
-  { question: "How does billing work?", answer: "Marketplace orders are charged per placement, with the price locked at checkout. Subscription plans are billed monthly or annually and include platform access, reporting and support hours. All invoices are VAT-compliant and downloadable from the billing area.", topic: "Billing", sortOrder: 9 },
-  { question: "Does a high DA or DR mean a good backlink?", answer: "Not on its own. DA, DR, Trust Flow and Citation Flow are third-party estimates from tool vendors, not signals search engines publish, and they can be inflated by buying cheap links. We use them to filter out obviously weak sites, then judge relevance, genuine traffic and editorial quality separately before recommending anything.", topic: "Quality", sortOrder: 10 },
-  { question: "Can I pause or cancel a campaign?", answer: "You can pause a campaign at any time before content is submitted to a publisher, and unused budget stays in your account. Once an editor has scheduled a placement, that item is committed — but the rest of the campaign can still be paused or redirected.", topic: "Billing", sortOrder: 11 },
+  { question: "What does Linkslo actually do?", answer: "Linkslo provides backlink and publisher-placement services, including guest posts, contextual links, digital PR, resource outreach and local citation support. Availability and final editorial approval depend on the specific service and publisher.", topic: "Services", sortOrder: 1 },
+  { question: "How are websites evaluated before they are listed?", answer: "Listings are reviewed using available metrics, topic fit and publication context. Third-party metrics can change and do not guarantee quality or performance, so each opportunity should still be checked for relevance before ordering.", topic: "Quality", sortOrder: 2 },
+  { question: "How does a link campaign actually work?", answer: "You choose a service or listing, provide the target URL and campaign requirements, and Linkslo reviews fit and availability before fulfilment. Publisher approval and live placement remain subject to the third party involved.", topic: "Campaigns", sortOrder: 3 },
+  { question: "How long do placements usually take?", answer: "Delivery time depends on the service, publisher and editorial schedule. The relevant service or package page shows the estimated delivery window before ordering where available.", topic: "Delivery", sortOrder: 4 },
+  { question: "Can agencies manage multiple client orders?", answer: "Agency teams can place and track orders for different client campaigns. Keep target pages, anchors and requirements clearly separated so reporting remains easy to audit.", topic: "Agencies", sortOrder: 5 },
+  { question: "What reporting is provided?", answer: "Order and delivery information includes the relevant service, target details and delivered placement information available for that order. Linkslo does not guarantee ranking or traffic outcomes from a placement.", topic: "Reporting", sortOrder: 6 },
+  { question: "Do you sell PBN links?", answer: "Service availability is shown in the current Linkslo catalog. Before ordering any link type, review the service scope and decide whether the tactic fits your own search and risk policies.", topic: "Quality", sortOrder: 7 },
+  { question: "Which countries and languages are supported?", answer: "Country and language coverage depends on the current marketplace and service inventory. Use the country pages and marketplace filters to see what is currently represented.", topic: "Coverage", sortOrder: 8 },
+  { question: "How does billing work?", answer: "Prices are shown on the relevant service or listing before checkout. Package scope and delivery details should be reviewed before placing an order.", topic: "Billing", sortOrder: 9 },
+  { question: "Does a high DA or DR mean a good backlink?", answer: "No. DA and DR are third-party comparison metrics, not Google scores. Relevance, page context, real audience signals and editorial quality should be reviewed alongside metrics.", topic: "Quality", sortOrder: 10 },
+  { question: "Can I pause or cancel a campaign?", answer: "Cancellation or changes depend on the order stage and whether fulfilment has already begun with a third-party publisher. Contact support as early as possible if requirements change.", topic: "Billing", sortOrder: 11 },
 ];
 
 /* -------------------------------------------------------------------------- */
@@ -330,13 +330,28 @@ async function runSeed() {
     await db.insert(campaigns).values(CAMPAIGN_ROWS).onConflictDoNothing();
     await db.insert(placements).values(PLACEMENT_ROWS).onConflictDoNothing();
   }
-  // The original short demo articles have been retired in favour of long-form,
-  // keyword-focused posts (see blog-posts.ts). Remove them if an older seed
-  // already inserted them, and never re-insert them.
   await db.delete(articles).where(inArray(articles.slug, RETIRED_ARTICLE_SLUGS));
-  // Blog posts (batch-added over time) are inserted independently of the
-  // count check above, so new posts append instead of requiring a full wipe.
-  await db.insert(articles).values(BLOG_POSTS).onConflictDoNothing();
+
+  for (const post of BLOG_POSTS) {
+    await db
+      .insert(articles)
+      .values(post)
+      .onConflictDoUpdate({
+        target: articles.slug,
+        set: {
+          title: post.title,
+          category: post.category,
+          excerpt: post.excerpt,
+          body: post.body ?? "",
+          faqs: post.faqs ?? "[]",
+          author: post.author,
+          readingMinutes: post.readingMinutes,
+          publishedOn: post.publishedOn,
+          featured: post.featured ?? false,
+        },
+      });
+  }
+
   if (faqRows[0].n === 0) {
     await db.insert(faqs).values(FAQ_ROWS).onConflictDoNothing();
   }
@@ -348,7 +363,6 @@ async function runSeed() {
   }
 }
 
-/** Idempotent, memoised seeding so a fresh database fills itself on first use. */
 export async function ensureSeeded() {
   if (!seedPromise) {
     seedPromise = runSeed().catch((error) => {
