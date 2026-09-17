@@ -5,9 +5,19 @@ import { PageHero } from "@/components/site/PageHero";
 import { Icon } from "@/components/ui/Icon";
 import { Reveal } from "@/components/ui/motion";
 import { Badge, Button, Card } from "@/components/ui/primitives";
-import { RESOURCE_CATEGORIES } from "@/lib/content";
 import { formatDate } from "@/lib/format";
 import { getArticles } from "@/lib/queries";
+
+const RESOURCE_CATEGORIES = [
+  "Link Building",
+  "Guest Posting",
+  "Digital PR",
+  "Outreach",
+  "Anchor Text",
+  "Link Audits",
+  "Case Studies",
+  "Industry News",
+] as const;
 
 export const dynamic = "force-dynamic";
 
@@ -29,7 +39,7 @@ type Props = { searchParams: Promise<{ category?: string }> };
 export default async function ResourcesPage({ searchParams }: Props) {
   const { category } = await searchParams;
   const all = await getArticles();
-  const active = category && RESOURCE_CATEGORIES.includes(category) ? category : "";
+  const active = category && RESOURCE_CATEGORIES.includes(category as (typeof RESOURCE_CATEGORIES)[number]) ? category : "";
   const filtered = active ? all.filter((article) => article.category === active) : all;
   const [lead, ...rest] = filtered;
 
