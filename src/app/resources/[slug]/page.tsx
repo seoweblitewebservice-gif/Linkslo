@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArticleGrid } from "@/components/marketing/Showcase";
+import { ArticleCover, ArticleGrid } from "@/components/marketing/Showcase";
+import { PageHero } from "@/components/site/PageHero";
 import { Icon } from "@/components/ui/Icon";
-import { Button } from "@/components/ui/primitives";
+import { Button, Card } from "@/components/ui/primitives";
 import { formatDate } from "@/lib/format";
 import { renderArticleBody } from "@/lib/markdown";
 import { getArticle, getArticles } from "@/lib/queries";
@@ -11,6 +12,37 @@ import { getArticle, getArticles } from "@/lib/queries";
 export const dynamic = "force-dynamic";
 
 type Props = { params: Promise<{ slug: string }> };
+
+type Reference = { label: string; href: string; note: string };
+
+const GOOGLE_SEARCH_ESSENTIALS: Reference = {
+  label: "Google Search Essentials",
+  href: "https://developers.google.com/search/docs/essentials",
+  note: "Google's baseline guidance for creating search-friendly websites.",
+};
+const GOOGLE_SPAM_POLICIES: Reference = {
+  label: "Google Search spam policies",
+  href: "https://developers.google.com/search/docs/essentials/spam-policies",
+  note: "Useful context when evaluating manipulative link patterns and scaled tactics.",
+};
+const GOOGLE_LINK_QUALIFICATION: Reference = {
+  label: "Qualify outbound links",
+  href: "https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links",
+  note: "Google's documentation on rel=sponsored, rel=nofollow and user-generated links.",
+};
+const FTC_ENDORSEMENTS: Reference = {
+  label: "FTC endorsements, influencers and reviews guidance",
+  href: "https://www.ftc.gov/business-guidance/advertising-marketing/endorsements-influencers-reviews",
+  note: "Disclosure guidance for paid endorsements, sponsored relationships and reviews.",
+};
+
+function referencesFor(category: string): Reference[] {
+  if (category === "Guest Posting") return [GOOGLE_LINK_QUALIFICATION, GOOGLE_SPAM_POLICIES, FTC_ENDORSEMENTS];
+  if (category === "Link Building" || category === "Anchor Text" || category === "Link Audits") return [GOOGLE_SEARCH_ESSENTIALS, GOOGLE_SPAM_POLICIES, GOOGLE_LINK_QUALIFICATION];
+  if (category === "Outreach" || category === "Digital PR") return [FTC_ENDORSEMENTS, GOOGLE_LINK_QUALIFICATION];
+  if (category === "Technical SEO" || category === "Local SEO") return [GOOGLE_SEARCH_ESSENTIALS, GOOGLE_SPAM_POLICIES];
+  return [GOOGLE_SEARCH_ESSENTIALS];
+}
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
@@ -25,7 +57,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: article.title,
       description: article.excerpt,
       publishedTime: article.publishedOn,
-      authors: [article.author],
+      authors: ["Linkslo Editorial Team"],
     },
   };
 }
@@ -40,16 +72,6 @@ function safeParseFaqs(raw: string | undefined): { question: string; answer: str
   }
 }
 
-function initials(name: string) {
-  return name
-    .split(" ")
-    .filter(Boolean)
-    .slice(0, 3)
-    .map((part) => part[0])
-    .join("")
-    .toUpperCase();
-}
-
 export default async function ArticlePage({ params }: Props) {
   const { slug } = await params;
   const article = await getArticle(slug);
@@ -62,6 +84,7 @@ export default async function ArticlePage({ params }: Props) {
   const { html, toc } = renderArticleBody(article.body);
   const faqs = safeParseFaqs(article.faqs);
   const quickSections = toc.filter((item) => item.level === 2).slice(0, 3);
+  const references = referencesFor(article.category);
 
   const jsonLd: Record<string, unknown> = {
     "@context": "https://schema.org",
@@ -69,7 +92,7 @@ export default async function ArticlePage({ params }: Props) {
     headline: article.title,
     description: article.excerpt,
     datePublished: article.publishedOn,
-    author: { "@type": article.author === "Linkslo Editorial Team" ? "Organization" : "Person", name: article.author },
+    author: { "@type": "Organization", name: "Linkslo Editorial Team" },
     publisher: { "@type": "Organization", name: "Linkslo", url: "https://www.linkslo.com" },
     mainEntityOfPage: `https://www.linkslo.com/resources/${article.slug}`,
   };
@@ -91,47 +114,35 @@ export default async function ArticlePage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       {faqJsonLd && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />}
 
-      <header className="relative overflow-hidden border-b border-cyan-300/20 bg-gradient-to-br from-[#0872b8] via-[#0794d0] to-[#18b5e8] text-white">
-        <div className="absolute -right-10 -top-16 select-none font-display text-[12rem] font-black leading-none text-white/[0.08]" aria-hidden="true">“</div>
-        <div className="container-x relative py-12 sm:py-16 lg:py-20">
-          <div className="mx-auto max-w-3xl">
-            <nav className="flex flex-wrap items-center gap-2 text-[0.73rem] font-medium text-white/70" aria-label="Breadcrumb">
-              <Link href="/" className="hover:text-white">Home</Link>
-              <span>/</span>
-              <Link href="/resources" className="hover:text-white">Resources</Link>
-              <span>/</span>
-              <Link href={`/resources?category=${encodeURIComponent(article.category)}`} className="hover:text-white">{article.category}</Link>
-            </nav>
-
-            <p className="mt-7 text-[0.72rem] font-semibold uppercase tracking-[0.15em] text-cyan-100">{article.category}</p>
-            <h1 className="mt-3 max-w-[19ch] font-display text-[clamp(2rem,5vw,3.8rem)] font-bold leading-[1.02] tracking-[-0.035em] text-white">
-              {article.title}
-            </h1>
-            <p className="mt-5 max-w-2xl text-[1rem] leading-7 text-white/80 sm:text-[1.06rem]">
-              {article.excerpt}
-            </p>
-
-            <div className="mt-7 flex flex-wrap items-center gap-x-5 gap-y-3 text-[0.78rem] text-white/80">
-              <span className="inline-flex items-center gap-2.5">
-                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-emerald-400 text-[0.65rem] font-bold text-emerald-950">
-                  {initials(article.author)}
-                </span>
-                <span>
-                  <strong className="block text-white">{article.author}</strong>
-                  <span className="text-[0.67rem] text-white/60">Linkslo editorial</span>
-                </span>
-              </span>
-              <span className="inline-flex items-center gap-1.5"><Icon name="document" size={13} />{formatDate(article.publishedOn)}</span>
-              <span className="inline-flex items-center gap-1.5"><Icon name="clock" size={13} />{article.readingMinutes} min read</span>
-            </div>
-          </div>
+      <PageHero
+        eyebrow={article.category}
+        eyebrowIcon="document"
+        breadcrumbs={[
+          { label: "Home", href: "/" },
+          { label: "Resources", href: "/resources" },
+          { label: article.category, href: `/resources?category=${encodeURIComponent(article.category)}` },
+        ]}
+        title={article.title}
+        description={article.excerpt}
+      >
+        <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-[0.78rem] text-ink-500">
+          <span className="inline-flex items-center gap-2">
+            <span className="flex h-8 w-8 items-center justify-center rounded-full bg-brand-100 text-[0.62rem] font-bold text-brand-800">LE</span>
+            <strong className="font-semibold text-ink-800">Linkslo Editorial Team</strong>
+          </span>
+          <span>{formatDate(article.publishedOn)}</span>
+          <span className="inline-flex items-center gap-1.5"><Icon name="clock" size={13} />{article.readingMinutes} min read</span>
         </div>
-      </header>
+      </PageHero>
 
-      <main className="bg-[#f6f8fb] py-10 sm:py-14 lg:py-16">
+      <main className="bg-canvas py-10 sm:py-14 lg:py-16">
         <div className="container-x">
           <article className="mx-auto max-w-3xl">
-            <section className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm sm:p-6" aria-labelledby="article-in-short">
+            <Card className="overflow-hidden p-0">
+              <ArticleCover item={article} />
+            </Card>
+
+            <section className="mt-6 rounded-2xl border border-line bg-white p-5 shadow-sm sm:p-6" aria-labelledby="article-in-short">
               <div className="flex items-center gap-2">
                 <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-amber-50 text-amber-600"><Icon name="spark" size={14} /></span>
                 <h2 id="article-in-short" className="font-display text-[0.98rem] font-semibold text-ink-950">In short</h2>
@@ -141,7 +152,7 @@ export default async function ArticlePage({ params }: Props) {
                 <ul className="mt-4 space-y-2">
                   {quickSections.map((item) => (
                     <li key={item.id} className="flex gap-2.5 text-[0.84rem] leading-6 text-ink-600">
-                      <span className="mt-[0.62rem] h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-500" />
+                      <span className="mt-[0.62rem] h-1.5 w-1.5 shrink-0 rounded-full bg-brand-600" />
                       <a href={`#${item.id}`} className="hover:text-brand-700 hover:underline">{item.text}</a>
                     </li>
                   ))}
@@ -149,7 +160,7 @@ export default async function ArticlePage({ params }: Props) {
               )}
             </section>
 
-            <div className="article-content mt-10 rounded-none bg-transparent" dangerouslySetInnerHTML={{ __html: html }} />
+            <div className="article-content mt-10" dangerouslySetInnerHTML={{ __html: html }} />
 
             {faqs.length > 0 && (
               <section className="mt-12" aria-labelledby="article-faqs">
@@ -168,23 +179,31 @@ export default async function ArticlePage({ params }: Props) {
               </section>
             )}
 
-            <section className="mt-10 flex items-center gap-4 rounded-2xl border border-slate-200 bg-white p-5 sm:p-6" aria-label="About the author">
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-emerald-400 text-[0.72rem] font-bold text-emerald-950">
-                {initials(article.author)}
-              </span>
+            <section className="mt-10 rounded-2xl border border-line bg-white p-5 sm:p-6" aria-labelledby="useful-references">
+              <p className="text-[0.68rem] font-semibold uppercase tracking-[0.13em] text-brand-700">External reading</p>
+              <h2 id="useful-references" className="mt-1 font-display text-[1.15rem] font-semibold text-ink-950">Useful references</h2>
+              <p className="mt-2 text-[0.82rem] leading-6 text-ink-500">These are primary or regulator sources worth checking when a decision depends on search policy, disclosure or link treatment.</p>
+              <ul className="mt-4 space-y-3">
+                {references.map((reference) => (
+                  <li key={reference.href} className="rounded-xl bg-canvas p-4">
+                    <a href={reference.href} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-[0.86rem] font-semibold text-brand-700 hover:underline">{reference.label}<Icon name="arrow-up-right" size={13} /></a>
+                    <p className="mt-1 text-[0.78rem] leading-5 text-ink-500">{reference.note}</p>
+                  </li>
+                ))}
+              </ul>
+            </section>
+
+            <section className="mt-6 flex items-center gap-4 rounded-2xl border border-line bg-white p-5 sm:p-6" aria-label="About the author">
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-brand-100 text-[0.7rem] font-bold text-brand-800">LE</span>
               <div>
-                <p className="font-display text-[0.95rem] font-semibold text-ink-950">{article.author}</p>
-                <p className="mt-1 text-[0.78rem] leading-5 text-ink-500">
-                  Research-led writing for Linkslo about link building, publisher evaluation, outreach and practical SEO decisions.
-                </p>
+                <p className="font-display text-[0.95rem] font-semibold text-ink-950">Linkslo Editorial Team</p>
+                <p className="mt-1 text-[0.78rem] leading-5 text-ink-500">Practical guides on publisher evaluation, outreach, link building and the decisions that sit behind a sustainable campaign.</p>
               </div>
             </section>
 
-            <section className="mt-5 rounded-2xl bg-[#07111f] p-6 text-white shadow-lg sm:p-7">
+            <section className="mt-5 rounded-2xl bg-ink-950 p-6 text-white shadow-lg sm:p-7">
               <p className="font-display text-[1.05rem] font-semibold">Want to compare relevant options?</p>
-              <p className="mt-2 max-w-xl text-[0.84rem] leading-6 text-slate-300">
-                Browse current backlink services and marketplace listings, compare scope and pricing, then choose only the placements that make sense for your page.
-              </p>
+              <p className="mt-2 max-w-xl text-[0.84rem] leading-6 text-ink-300">Browse current backlink services and marketplace listings, compare scope and pricing, then choose only the placements that make sense for your page.</p>
               <div className="mt-5 flex flex-wrap gap-3">
                 <Button href="/marketplace" icon="arrow-right">Browse marketplace</Button>
                 <Button href="/backlinks" variant="soft">View backlink services</Button>
@@ -198,15 +217,10 @@ export default async function ArticlePage({ params }: Props) {
         <div className="container-x">
           <div className="mx-auto max-w-5xl">
             <div className="flex items-end justify-between gap-4">
-              <div>
-                <p className="text-[0.7rem] font-semibold uppercase tracking-[0.13em] text-brand-700">Related reading</p>
-                <h2 className="mt-1 font-display text-[1.45rem] font-semibold text-ink-950">Keep reading</h2>
-              </div>
+              <div><p className="text-[0.68rem] font-semibold uppercase tracking-[0.13em] text-brand-700">Related reading</p><h2 className="mt-1 font-display text-[1.45rem] font-semibold text-ink-950">Keep reading</h2></div>
               <Link href="/resources" className="text-[0.78rem] font-semibold text-brand-700 hover:underline">All articles →</Link>
             </div>
-            <div className="mt-6">
-              <ArticleGrid items={related} columns={3} />
-            </div>
+            <div className="mt-6"><ArticleGrid items={related} columns={3} /></div>
           </div>
         </div>
       </section>
