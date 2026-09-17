@@ -27,6 +27,9 @@ export const metadata: Metadata = {
     "Compare backlink services, guest post opportunities and link-building packages across industries and countries, with transparent scope, pricing and delivery details.",
   applicationName: BRAND.name,
   authors: [{ name: BRAND.name }],
+  verification: {
+    google: "LQzmGTCMcchihYnjzHkVH9NlUCAuT5pfk79_M9lrPvQ",
+  },
   openGraph: {
     type: "website",
     siteName: BRAND.name,
