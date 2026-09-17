@@ -6,6 +6,7 @@ import { ToolRunner } from "@/components/seo-tools/ToolRunner";
 import { PageHero } from "@/components/site/PageHero";
 import { getSeoTool, SEO_TOOLS } from "@/lib/seo-tools/catalog";
 import { getSeoToolEditorial } from "@/lib/seo-tools/editorial";
+import { getSeoToolDepth } from "@/lib/seo-tools/depth";
 
 export const dynamicParams = false;
 
@@ -38,7 +39,8 @@ export default async function SeoToolPage({ params }: Props) {
   const tool = getSeoTool(slug);
   if (!tool) notFound();
   const editorial = getSeoToolEditorial(tool);
-  if (!editorial) notFound();
+  const depth = getSeoToolDepth(tool);
+  if (!editorial || !depth) notFound();
   const related = tool.related.map((item) => getSeoTool(item)).filter(Boolean);
 
   const faqJsonLd = {
@@ -87,12 +89,23 @@ export default async function SeoToolPage({ params }: Props) {
           <ToolRunner tool={tool} />
 
           <article className="mx-auto max-w-3xl pb-6 pt-10 sm:pt-14">
+            <section className="rounded-2xl border border-brand-200 bg-brand-50/70 p-5 sm:p-6" aria-labelledby="quick-answer-heading">
+              <p className="text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-brand-700">Quick answer</p>
+              <h2 id="quick-answer-heading" className="mt-1 font-display text-[1.2rem] font-semibold text-ink-950">What this tool is useful for</h2>
+              <p className="mt-3 text-[0.92rem] leading-7 text-ink-700">{depth.quickAnswer}</p>
+            </section>
+
             <Section title={`What is ${tool.name}?`}><p>{editorial.definition}</p><p>{editorial.whyItMatters}</p></Section>
             <Section title={`How to use the ${tool.name}`}><ol className="space-y-3">{editorial.howToUse.map((item, index) => <li key={item} className="flex gap-3"><span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-brand-100 text-xs font-bold text-brand-800">{index + 1}</span><span>{item}</span></li>)}</ol></Section>
             <Section title="Understanding the results"><ul className="space-y-3">{editorial.interpretation.map((item) => <li key={item} className="flex gap-2.5"><span className="mt-[0.65rem] h-1.5 w-1.5 shrink-0 rounded-full bg-brand-600" /><span>{item}</span></li>)}</ul></Section>
             <Section title="Common problems"><ul className="space-y-3">{editorial.commonProblems.map((item) => <li key={item} className="flex gap-2.5"><span className="mt-[0.65rem] h-1.5 w-1.5 shrink-0 rounded-full bg-amber-500" /><span>{item}</span></li>)}</ul></Section>
             <Section title="How to fix them"><ul className="space-y-3">{editorial.fixes.map((item) => <li key={item} className="flex gap-2.5"><span className="mt-[0.65rem] h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-500" /><span>{item}</span></li>)}</ul></Section>
             <Section title={`${tool.primaryEntity} best practices`}><ul className="space-y-3">{editorial.bestPractices.map((item) => <li key={item} className="flex gap-2.5"><span className="mt-[0.65rem] h-1.5 w-1.5 shrink-0 rounded-full bg-brand-600" /><span>{item}</span></li>)}</ul></Section>
+
+            <Section title="Professional SEO notes"><p>{depth.professionalNotes}</p></Section>
+
+            <Section title="Direct answers"><div className="grid gap-3">{depth.aeos.map((item) => <div key={item.question} className="rounded-2xl border border-line bg-white p-5"><h3 className="font-display text-[0.98rem] font-semibold text-ink-950">{item.question}</h3><p className="mt-2 text-[0.88rem] leading-7 text-ink-600">{item.answer}</p></div>)}</div></Section>
+
             <Section title="Practical example"><div className="rounded-2xl border border-line bg-white p-5 text-ink-700">{editorial.example}</div></Section>
             <Section title="What this tool cannot tell you"><p>{editorial.limitations}</p></Section>
 
