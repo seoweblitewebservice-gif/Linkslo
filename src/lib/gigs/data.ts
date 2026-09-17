@@ -2,6 +2,7 @@ import { asc, desc, eq, isNotNull } from "drizzle-orm";
 import { db } from "@/db";
 import { backlinkGigs, type BacklinkGig } from "@/db/schema";
 import { ensureGigsSeeded } from "@/db/gig-seed";
+import { publicGigMetaTitle, publicGigTitle } from "@/lib/gigs/public-title";
 import type {
   GigBenefit,
   GigFaq,
@@ -55,9 +56,20 @@ function publicCountry(domain: string | null, storedCountry: string) {
 }
 
 export function hydrateGig(row: BacklinkGig): HydratedGig {
+  const country = publicCountry(row.domain, row.country);
+  const titleInput = {
+    domain: row.domain,
+    subcategory: row.subcategory,
+    category: row.category,
+    industry: row.industry,
+    country,
+  };
+
   return {
     ...row,
-    country: publicCountry(row.domain, row.country),
+    title: publicGigTitle(titleInput),
+    metaTitle: publicGigMetaTitle(titleInput),
+    country,
     packages: parseJson<GigPackage[]>(row.packages, []),
     included: parseJson<string[]>(row.included, []),
     benefits: parseJson<GigBenefit[]>(row.benefits, []),
@@ -118,9 +130,6 @@ export async function getFeaturedMarketplaceGigs(limit = 6) {
 
 export async function getGigSitemapRows() {
   await ensureGigsSeeded();
-  // Only named-domain guest-post inventory is currently eligible for XML
-  // sitemap discovery. Generic generated marketplace variants remain
-  // browseable internally but are not proactively submitted to search engines.
   return db
     .select({ slug: backlinkGigs.slug, createdAt: backlinkGigs.createdAt })
     .from(backlinkGigs)
