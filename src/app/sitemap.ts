@@ -3,6 +3,7 @@ import { LEGAL_PAGES } from "@/lib/content";
 import { BACKLINK_SERVICES, COUNTRY_PAGES, INDUSTRY_PAGES } from "@/lib/backlinks";
 import { getArticles } from "@/lib/queries";
 import { getGigSitemapRows } from "@/lib/gigs/data";
+import { SEO_TOOLS } from "@/lib/seo-tools/catalog";
 
 const BASE = "https://www.linkslo.com";
 
@@ -41,6 +42,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   return [
     ...staticRoutes,
+    ...SEO_TOOLS.map((tool) => ({
+      url: `${BASE}/${tool.slug}/`,
+      changeFrequency: "monthly" as const,
+      priority: 0.72,
+    })),
     ...BACKLINK_SERVICES.map((service) => ({
       url: `${BASE}/backlinks/${service.slug}`,
       changeFrequency: "weekly" as const,
