@@ -11,13 +11,19 @@ export function generateStaticParams() {
   return Object.keys(LEGAL_PAGES).map((slug) => ({ slug }));
 }
 
+function pageDescription(slug: string) {
+  const page = LEGAL_PAGES[slug];
+  if (!page) return "";
+  return page.sections[0]?.body[0] ?? `${page.title} for Linkslo.`;
+}
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const page = LEGAL_PAGES[slug];
   if (!page) return { title: "Not found", robots: { index: false, follow: true } };
   return {
     title: page.title,
-    description: page.intro,
+    description: pageDescription(slug),
     alternates: { canonical: `/legal/${slug}` },
     robots: { index: true, follow: true },
   };
@@ -35,7 +41,7 @@ export default async function LegalPage({ params }: Props) {
         eyebrowIcon="document"
         breadcrumbs={[{ label: "Home", href: "/" }, { label: page.title }]}
         title={page.title}
-        description={page.intro}
+        description={pageDescription(slug)}
       />
 
       <section className="bg-canvas py-14 sm:py-18">
@@ -46,7 +52,13 @@ export default async function LegalPage({ params }: Props) {
                 <h2 className="font-display text-[1.15rem] font-semibold text-ink-950">
                   {index + 1}. {section.heading}
                 </h2>
-                <p className="mt-3 text-[0.95rem] leading-relaxed text-ink-600">{section.body}</p>
+                <div className="mt-3 space-y-3">
+                  {section.body.map((paragraph) => (
+                    <p key={paragraph} className="text-[0.95rem] leading-relaxed text-ink-600">
+                      {paragraph}
+                    </p>
+                  ))}
+                </div>
               </Card>
             ))}
           </div>
@@ -55,17 +67,12 @@ export default async function LegalPage({ params }: Props) {
             <Card className="p-5">
               <p className="text-[0.72rem] uppercase tracking-wide text-ink-400">Last updated</p>
               <p className="text-[0.92rem] font-semibold text-ink-950">{page.updated}</p>
-              <p className="mt-4 text-[0.72rem] uppercase tracking-wide text-ink-400">Controller</p>
-              <p className="text-[0.88rem] text-ink-700">{BRAND.legalName} B.V.</p>
-              {BRAND.addressLines.map((line) => (
-                <p key={line} className="text-[0.85rem] text-ink-500">
-                  {line}
-                </p>
-              ))}
+              <p className="mt-4 text-[0.72rem] uppercase tracking-wide text-ink-400">Service</p>
+              <p className="text-[0.88rem] text-ink-700">{BRAND.name}</p>
               <p className="mt-4 text-[0.72rem] uppercase tracking-wide text-ink-400">Questions</p>
-              <Link href="/contact" className="text-[0.88rem] font-semibold text-brand-700 hover:underline">
+              <a href={`mailto:${BRAND.email}`} className="text-[0.88rem] font-semibold text-brand-700 hover:underline">
                 {BRAND.email}
-              </Link>
+              </a>
 
               <ul className="mt-5 space-y-1.5 border-t border-line pt-4">
                 {Object.entries(LEGAL_PAGES).map(([key, value]) => (
