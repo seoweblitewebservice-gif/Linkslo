@@ -9,8 +9,9 @@ import { BLOG_POSTS_BATCH_07 } from "@/db/blog-posts-batch-07";
 import { BLOG_POSTS_BATCH_08 } from "@/db/blog-posts-batch-08";
 import { BLOG_POSTS_BATCH_09 } from "@/db/blog-posts-batch-09";
 import { BLOG_POSTS_BATCH_10 } from "@/db/blog-posts-batch-10";
+import { BLOG_EXPANSIONS_01 } from "@/db/blog-expansions-01";
 
-export const BLOG_POSTS = [
+const ALL_BLOG_POSTS = [
   ...CORE_BLOG_POSTS,
   ...BLOG_POSTS_BATCH_01,
   ...BLOG_POSTS_BATCH_02,
@@ -23,3 +24,9 @@ export const BLOG_POSTS = [
   ...BLOG_POSTS_BATCH_09,
   ...BLOG_POSTS_BATCH_10,
 ];
+
+export const BLOG_POSTS = ALL_BLOG_POSTS.map((post) => ({
+  ...post,
+  author: "Linkslo Editorial Team",
+  body: `${post.body ?? ""}${BLOG_EXPANSIONS_01[post.slug] ?? ""}`,
+}));
