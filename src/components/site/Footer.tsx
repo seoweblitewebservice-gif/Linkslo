@@ -2,7 +2,70 @@ import Link from "next/link";
 import { LogoMark } from "@/components/brand/Logo";
 import { NewsletterForm } from "@/components/site/NewsletterForm";
 import { Icon } from "@/components/ui/Icon";
-import { BRAND, FOOTER_COLUMNS } from "@/lib/content";
+import { BRAND } from "@/lib/content";
+
+const FOOTER_COLUMNS = [
+  {
+    heading: "Backlink Services",
+    links: [
+      { label: "Guest Post Backlinks", href: "/backlinks/guest-post-backlinks" },
+      { label: "Editorial Backlinks", href: "/backlinks/editorial-backlinks" },
+      { label: "Contextual Backlinks", href: "/backlinks/contextual-backlinks" },
+      { label: "Niche Edit Backlinks", href: "/backlinks/niche-edit-backlinks" },
+      { label: "Authority Backlinks", href: "/backlinks/authority-backlinks" },
+      { label: "Premium Link Building", href: "/backlinks/premium-link-building" },
+    ],
+  },
+  {
+    heading: "Outreach & PR",
+    links: [
+      { label: "Digital PR Backlinks", href: "/backlinks/digital-pr-backlinks" },
+      { label: "Press Release Links", href: "/backlinks/press-release-news-backlinks" },
+      { label: "Resource Link Building", href: "/backlinks/resource-link-building" },
+      { label: "Broken Link Building", href: "/backlinks/broken-link-building" },
+      { label: "Brand & Entity Links", href: "/backlinks/brand-entity-link-building" },
+    ],
+  },
+  {
+    heading: "By Industry",
+    links: [
+      { label: "SaaS Backlinks", href: "/backlinks/industry/saas" },
+      { label: "Finance Backlinks", href: "/backlinks/industry/finance" },
+      { label: "E-commerce Backlinks", href: "/backlinks/industry/ecommerce" },
+      { label: "Health Backlinks", href: "/backlinks/industry/health" },
+      { label: "All industries", href: "/backlinks/industry" },
+    ],
+  },
+  {
+    heading: "By Country",
+    links: [
+      { label: "USA Backlinks", href: "/backlinks/country/usa" },
+      { label: "UK Backlinks", href: "/backlinks/country/uk" },
+      { label: "German Backlinks", href: "/backlinks/country/germany" },
+      { label: "International", href: "/backlinks/country/international" },
+      { label: "All countries", href: "/backlinks/country" },
+    ],
+  },
+  {
+    heading: "Company",
+    links: [
+      { label: "Marketplace", href: "/marketplace" },
+      { label: "Pricing", href: "/pricing" },
+      { label: "Blog", href: "/resources" },
+      { label: "Sample scenarios", href: "/case-studies" },
+      { label: "About", href: "/about" },
+      { label: "Contact", href: "/contact" },
+    ],
+  },
+  {
+    heading: "Legal",
+    links: [
+      { label: "Privacy", href: "/legal/privacy" },
+      { label: "Terms", href: "/legal/terms" },
+      { label: "Refunds", href: "/legal/refunds" },
+    ],
+  },
+] as const;
 
 export function Footer() {
   const year = new Date().getFullYear();
