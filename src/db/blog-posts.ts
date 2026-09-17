@@ -13,6 +13,7 @@ import { BLOG_EXPANSIONS_01 } from "@/db/blog-expansions-01";
 import { BLOG_EXPANSIONS_02 } from "@/db/blog-expansions-02";
 import { BLOG_EXPANSIONS_03 } from "@/db/blog-expansions-03";
 import { BLOG_EXPANSIONS_04 } from "@/db/blog-expansions-04";
+import { BLOG_EXPANSIONS_05 } from "@/db/blog-expansions-05";
 
 const ALL_BLOG_POSTS = [
   ...CORE_BLOG_POSTS,
@@ -33,6 +34,7 @@ const EXPANSIONS: Record<string, string> = {
   ...BLOG_EXPANSIONS_02,
   ...BLOG_EXPANSIONS_03,
   ...BLOG_EXPANSIONS_04,
+  ...BLOG_EXPANSIONS_05,
 };
 
 function countWords(markdown: string) {
