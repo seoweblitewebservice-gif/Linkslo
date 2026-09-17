@@ -27,10 +27,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/resources",
     "/about",
     "/contact",
+    "/tools",
+    "/tools/guest-post-pricing-calculator",
+    "/tools/anchor-text-ratio-checker",
+    "/tools/link-building-budget-calculator",
+    "/tools/outreach-email-generator",
+    "/tools/da-vs-dr-checker",
   ].map((path) => ({
     url: `${BASE}${path}`,
     changeFrequency: "weekly" as const,
-    priority: path === "" ? 1 : path === "/backlinks" ? 0.95 : 0.8,
+    priority: path === "" ? 1 : path === "/backlinks" ? 0.95 : path.startsWith("/tools/") ? 0.7 : 0.8,
   }));
 
   return [

@@ -168,7 +168,7 @@ export const PRIMARY_NAV: NavGroup[] = [
         items: [
           { label: "Link building blog", href: "/resources", description: "Guides, research and teardowns", icon: "document" },
           { label: "Case studies", href: "/case-studies", description: "Sample campaign outcomes", icon: "chart" },
-          { label: "Link Gap Scout", href: "/tools/link-gap-scout", description: "Backlink gap planning tool", icon: "compass" },
+          { label: "Free tools", href: "/tools", description: "Calculators, checkers & generators", icon: "sliders" },
         ],
       },
       {
