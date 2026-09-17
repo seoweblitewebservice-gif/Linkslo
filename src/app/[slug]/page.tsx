@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ToolRunner } from "@/components/seo-tools/ToolRunner";
 import { PageHero } from "@/components/site/PageHero";
 import { getSeoTool, SEO_TOOLS } from "@/lib/seo-tools/catalog";
-import { getToolEditorial } from "@/lib/seo-tools/content";
+import { getSeoToolEditorial } from "@/lib/seo-tools/editorial";
 
 export const dynamicParams = false;
 
@@ -28,7 +29,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-function Section({ title, children }: { title: string; children: React.ReactNode }) {
+function Section({ title, children }: { title: string; children: ReactNode }) {
   return <section className="mt-10"><h2 className="font-display text-[1.45rem] font-semibold tracking-tight text-ink-950">{title}</h2><div className="mt-4 space-y-4 text-[0.94rem] leading-7 text-ink-600">{children}</div></section>;
 }
 
@@ -36,7 +37,7 @@ export default async function SeoToolPage({ params }: Props) {
   const { slug } = await params;
   const tool = getSeoTool(slug);
   if (!tool) notFound();
-  const editorial = getToolEditorial(tool);
+  const editorial = getSeoToolEditorial(tool);
   if (!editorial) notFound();
   const related = tool.related.map((item) => getSeoTool(item)).filter(Boolean);
 
