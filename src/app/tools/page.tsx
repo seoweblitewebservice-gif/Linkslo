@@ -2,103 +2,58 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHero } from "@/components/site/PageHero";
 import { Icon, type GlyphName } from "@/components/ui/Icon";
-import { Reveal } from "@/components/ui/motion";
+import { ToolDirectory } from "@/components/seo-tools/ToolDirectory";
+import { SEO_TOOLS, SEO_TOOL_CATEGORIES } from "@/lib/seo-tools/catalog";
 
 export const metadata: Metadata = {
-  title: "Free Link Building & SEO Tools",
-  description:
-    "Free calculators and checkers for guest post pricing, anchor text ratios, link building budgets, outreach emails and DA vs DR — built by the Linkslo team.",
+  title: "50 Free Technical SEO Tools",
+  description: "Use 50 practical technical SEO tools for robots.txt, canonicals, hreflang, redirects, sitemaps, schema, links, metadata and SERP previews.",
   alternates: { canonical: "/tools" },
+  robots: { index: true, follow: true },
   openGraph: {
-    title: "Free Link Building & SEO Tools | Linkslo",
-    description:
-      "Free calculators and checkers for guest post pricing, anchor text ratios, link building budgets, outreach emails and DA vs DR.",
+    title: "50 Free Technical SEO Tools | Linkslo",
+    description: "Practical SEO checkers, validators, generators and page-analysis tools with transparent results and no fake metrics.",
     type: "website",
   },
 };
 
-const TOOLS: { slug: string; icon: GlyphName; name: string; description: string; badge?: string }[] = [
-  {
-    slug: "guest-post-pricing-calculator",
-    icon: "wallet",
-    name: "Guest Post Pricing Calculator",
-    description: "Enter a site's authority, traffic and niche to get a fair price range before you order or quote a placement.",
-  },
-  {
-    slug: "anchor-text-ratio-checker",
-    icon: "chart",
-    name: "Anchor Text Ratio Checker",
-    description: "Paste your backlink anchor list to see your branded, exact-match, partial-match and generic split at a glance.",
-  },
-  {
-    slug: "link-building-budget-calculator",
-    icon: "sliders",
-    name: "Link Building Budget Calculator",
-    description: "Turn a monthly budget into a realistic placement count and tier split across guest posts and niche edits.",
-  },
-  {
-    slug: "outreach-email-generator",
-    icon: "mail",
-    name: "Guest Post Outreach Email Generator",
-    description: "Answer four quick questions to generate a ready-to-edit outreach email for pitching a publisher.",
-  },
-  {
-    slug: "da-vs-dr-checker",
-    icon: "gauge",
-    name: "DA vs DR Explained",
-    description: "See how Domain Authority and Domain Rating differ, what each is good for, and where both fall short.",
-  },
-  {
-    slug: "link-gap-scout",
-    icon: "compass",
-    name: "Link Gap Scout (Demo)",
-    description: "A representative walkthrough of how a competitor backlink-gap review is structured, using illustrative figures.",
-    badge: "Demo",
-  },
+const LINK_BUILDING_TOOLS: { slug: string; icon: GlyphName; name: string; description: string; badge?: string }[] = [
+  { slug: "guest-post-pricing-calculator", icon: "wallet", name: "Guest Post Pricing Calculator", description: "Estimate a practical placement price range from the inputs you provide." },
+  { slug: "anchor-text-ratio-checker", icon: "chart", name: "Anchor Text Ratio Checker", description: "Review a pasted anchor list across branded, exact, partial and generic groups." },
+  { slug: "link-building-budget-calculator", icon: "sliders", name: "Link Building Budget Calculator", description: "Turn a monthly budget into a transparent placement planning estimate." },
+  { slug: "outreach-email-generator", icon: "mail", name: "Guest Post Outreach Email Generator", description: "Build a ready-to-edit outreach draft from your own campaign details." },
+  { slug: "da-vs-dr-checker", icon: "gauge", name: "DA vs DR Explained", description: "Compare how third-party authority metrics differ and where both have limitations." },
+  { slug: "link-gap-scout", icon: "compass", name: "Link Gap Scout", description: "Illustrative competitor-gap workflow with clearly labeled demonstration figures.", badge: "Demo" },
 ];
 
 export default function ToolsPage() {
-  return (
-    <>
-      <PageHero
-        eyebrow="Free tools"
-        eyebrowIcon="sliders"
-        breadcrumbs={[{ label: "Home", href: "/" }, { label: "Tools" }]}
-        title="Free link building & SEO tools"
-        description="Small, focused calculators built from the same pricing and quality logic Linkslo uses internally — no signup required."
-      />
+  return <>
+    <PageHero
+      eyebrow="SEO tools"
+      eyebrowIcon="sliders"
+      breadcrumbs={[{ label: "Home", href: "/" }, { label: "Tools" }]}
+      title="Practical technical SEO tools"
+      description="Check crawl controls, canonicals, redirects, sitemaps, structured data, links, metadata and search previews with transparent logic instead of invented SEO scores."
+    >
+      <div className="flex flex-wrap gap-2 text-xs text-ink-500"><span className="rounded-full border border-line bg-white px-3 py-1.5">50 technical SEO tools</span><span className="rounded-full border border-line bg-white px-3 py-1.5">No paid SEO API required</span><span className="rounded-full border border-line bg-white px-3 py-1.5">No fake traffic or ranking data</span></div>
+    </PageHero>
 
-      <section className="bg-canvas py-12 sm:py-16">
-        <div className="container-x">
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {TOOLS.map((tool, index) => (
-              <Reveal key={tool.slug} delay={index * 60}>
-                <Link
-                  href={`/tools/${tool.slug}`}
-                  className="card-hover flex h-full flex-col rounded-2xl border border-line bg-white p-6"
-                >
-                  <div className="flex items-center justify-between">
-                    <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-50 text-brand-700">
-                      <Icon name={tool.icon} size={19} />
-                    </span>
-                    {tool.badge && (
-                      <span className="rounded-full bg-canvas px-2.5 py-1 text-[0.66rem] font-semibold uppercase tracking-wide text-ink-400">
-                        {tool.badge}
-                      </span>
-                    )}
-                  </div>
-                  <p className="mt-4 font-display text-[1.05rem] font-semibold text-ink-950">{tool.name}</p>
-                  <p className="mt-2 flex-1 text-[0.87rem] leading-relaxed text-ink-500">{tool.description}</p>
-                  <span className="mt-4 inline-flex items-center gap-1.5 text-[0.82rem] font-semibold text-brand-700">
-                    Open tool
-                    <Icon name="arrow-right" size={14} />
-                  </span>
-                </Link>
-              </Reveal>
-            ))}
-          </div>
+    <section className="bg-canvas py-12 sm:py-16">
+      <div className="container-x">
+        <ToolDirectory tools={SEO_TOOLS} categories={SEO_TOOL_CATEGORIES} />
+      </div>
+    </section>
+
+    <section className="border-t border-line bg-white py-12 sm:py-16">
+      <div className="container-x">
+        <div className="mb-6 max-w-2xl"><p className="text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-brand-700">Link building utilities</p><h2 className="mt-1 font-display text-2xl font-semibold text-ink-950">Existing Linkslo campaign tools</h2><p className="mt-2 text-sm leading-6 text-ink-500">These six utilities remain separate from the 50 technical SEO tools above, so there are no duplicate routes or renamed copies.</p></div>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {LINK_BUILDING_TOOLS.map((tool) => <Link key={tool.slug} href={`/tools/${tool.slug}`} className="group flex h-full flex-col rounded-2xl border border-line bg-canvas p-5 transition hover:border-brand-300 hover:shadow-soft">
+            <div className="flex items-center justify-between"><span className="flex h-9 w-9 items-center justify-center rounded-xl bg-white text-brand-700"><Icon name={tool.icon} size={17} /></span>{tool.badge && <span className="rounded-full bg-white px-2.5 py-1 text-[0.63rem] font-semibold uppercase tracking-wide text-ink-400">{tool.badge}</span>}</div>
+            <h3 className="mt-4 font-display text-base font-semibold text-ink-950 group-hover:text-brand-700">{tool.name}</h3><p className="mt-2 flex-1 text-[0.82rem] leading-6 text-ink-500">{tool.description}</p><span className="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-brand-700">Open tool <Icon name="arrow-right" size={13} /></span>
+          </Link>)}
         </div>
-      </section>
-    </>
-  );
+      </div>
+    </section>
+  </>;
 }
