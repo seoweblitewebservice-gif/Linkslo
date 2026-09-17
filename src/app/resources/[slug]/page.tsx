@@ -121,7 +121,7 @@ export default async function ArticlePage({ params }: Props) {
                   <span className="text-[0.67rem] text-white/60">Linkslo editorial</span>
                 </span>
               </span>
-              <span className="inline-flex items-center gap-1.5"><Icon name="calendar" size={13} />{formatDate(article.publishedOn)}</span>
+              <span className="inline-flex items-center gap-1.5"><Icon name="document" size={13} />{formatDate(article.publishedOn)}</span>
               <span className="inline-flex items-center gap-1.5"><Icon name="clock" size={13} />{article.readingMinutes} min read</span>
             </div>
           </div>
