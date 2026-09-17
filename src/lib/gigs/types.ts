@@ -63,5 +63,9 @@ export type HydratedGig = {
   faqs: GigFaq[];
   reviews: GigReview[];
   featured: boolean;
+  domain: string | null;
+  authority: number | null;
+  organicTraffic: number | null;
+  linkType: string | null;
   createdAt: Date;
 };
