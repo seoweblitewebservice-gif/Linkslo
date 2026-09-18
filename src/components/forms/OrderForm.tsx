@@ -116,7 +116,7 @@ export function OrderForm({
         <p className="mt-2 font-mono text-[0.78rem] font-semibold tracking-wide text-brand-700">{reference}</p>
         <p className="mx-auto mt-3 max-w-md text-[0.9rem] leading-relaxed text-ink-600">{message}</p>
         <div className="mt-6 flex flex-wrap justify-center gap-3">
-          <Button href="/dashboard" icon="arrow-right">Open dashboard</Button>
+          <Button href="/track-order" icon="arrow-right">Track this order</Button>
           <Button href="/marketplace" variant="outline">Browse more gigs</Button>
         </div>
       </div>
@@ -134,7 +134,7 @@ export function OrderForm({
           <div>
             <p className="text-[0.86rem] font-semibold text-brand-900">Payment confirmed via PayPal</p>
             <p className="mt-0.5 font-mono text-[0.7rem] text-brand-700">Order ID: {paypalOrderId}</p>
-            <p className="mt-1 text-[0.76rem] leading-relaxed text-brand-800">Just fill in the delivery details below so the seller can start work.</p>
+            <p className="mt-1 text-[0.76rem] leading-relaxed text-brand-800">Just fill in the delivery details below so the order can be processed.</p>
           </div>
         </div>
       )}
@@ -183,7 +183,7 @@ export function OrderForm({
             <Field label="Your website" required error={errors.website}><input value={fields.website} onChange={(event) => update("website", event.target.value)} className={inputClass("website")} placeholder="company.com" autoComplete="url" /></Field>
             <Field label="Target page URL" required error={errors.targetUrl}><input value={fields.targetUrl} onChange={(event) => update("targetUrl", event.target.value)} className={inputClass("targetUrl")} placeholder="https://company.com/product" autoComplete="url" /></Field>
             <Field label="Primary market" required error={errors.market}><span className="relative block"><select value={fields.market} onChange={(event) => update("market", event.target.value)} className={`${inputClass("market")} appearance-none pr-9`}><option value="">Select a market</option>{MARKETS.map((market) => <option key={market}>{market}</option>)}</select><Icon name="chevron-down" size={14} className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-ink-400" /></span></Field>
-            <Field label="Anchor preference" error={errors.anchorPreference}><input value={fields.anchorPreference} onChange={(event) => update("anchorPreference", event.target.value)} className={inputClass("anchorPreference")} placeholder="Optional — seller will review" /></Field>
+            <Field label="Anchor preference" error={errors.anchorPreference}><input value={fields.anchorPreference} onChange={(event) => update("anchorPreference", event.target.value)} className={inputClass("anchorPreference")} placeholder="Optional — we will review" /></Field>
           </FormSection>
 
           <FormSection title="3. Contact details">
