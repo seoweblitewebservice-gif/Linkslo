@@ -109,10 +109,27 @@ export default async function ArticlePage({ params }: Props) {
       }
     : null;
 
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://www.linkslo.com" },
+      { "@type": "ListItem", position: 2, name: "Resources", item: "https://www.linkslo.com/resources" },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: article.category,
+        item: `https://www.linkslo.com/resources?category=${encodeURIComponent(article.category)}`,
+      },
+      { "@type": "ListItem", position: 4, name: article.title, item: `https://www.linkslo.com/resources/${article.slug}` },
+    ],
+  };
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       {faqJsonLd && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
 
       <PageHero
         eyebrow={article.category}

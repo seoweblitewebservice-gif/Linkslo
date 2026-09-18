@@ -75,6 +75,20 @@ export default async function MarketplaceGigPage({ params }: Props) {
           acceptedAnswer: { "@type": "Answer", text: faq.answer },
         })),
       },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: "https://www.linkslo.com" },
+          { "@type": "ListItem", position: 2, name: "Marketplace", item: "https://www.linkslo.com/marketplace" },
+          {
+            "@type": "ListItem",
+            position: 3,
+            name: gig.category,
+            item: `https://www.linkslo.com/marketplace?category=${encodeURIComponent(gig.category)}`,
+          },
+          { "@type": "ListItem", position: 4, name: gig.title, item: `https://www.linkslo.com/marketplace/gigs/${gig.slug}` },
+        ],
+      },
     ],
   };
 

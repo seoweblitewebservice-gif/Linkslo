@@ -87,6 +87,14 @@ export default async function BacklinkServicePage({ params }: Props) {
           acceptedAnswer: { "@type": "Answer", text: faq.answer },
         })),
       },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: "https://www.linkslo.com" },
+          { "@type": "ListItem", position: 2, name: "Backlink Services", item: "https://www.linkslo.com/backlinks" },
+          { "@type": "ListItem", position: 3, name: service.nav, item: `https://www.linkslo.com/backlinks/${service.slug}` },
+        ],
+      },
     ],
   };
 

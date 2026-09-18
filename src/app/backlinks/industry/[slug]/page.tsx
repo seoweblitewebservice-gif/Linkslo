@@ -53,9 +53,21 @@ export default async function IndustryPage({ params }: Props) {
     })),
   };
 
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://www.linkslo.com" },
+      { "@type": "ListItem", position: 2, name: "Backlink Services", item: "https://www.linkslo.com/backlinks" },
+      { "@type": "ListItem", position: 3, name: "By Industry", item: "https://www.linkslo.com/backlinks/industry" },
+      { "@type": "ListItem", position: 4, name: industry.name, item: `https://www.linkslo.com/backlinks/industry/${industry.slug}` },
+    ],
+  };
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
 
       <PageHero
         eyebrow={`${industry.name} link building`}
