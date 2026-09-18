@@ -4,8 +4,8 @@ import { Button } from "@/components/ui/primitives";
 
 const LINKS = [
   { label: "Marketplace", href: "/marketplace" },
-  { label: "SEO Services", href: "/services" },
-  { label: "Link Gap Scout", href: "/tools/link-gap-scout" },
+  { label: "Backlink Services", href: "/backlinks" },
+  { label: "Free SEO Tools", href: "/tools" },
   { label: "Knowledge hub", href: "/resources" },
   { label: "Pricing", href: "/pricing" },
   { label: "Contact", href: "/contact" },
