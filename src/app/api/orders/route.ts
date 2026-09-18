@@ -1,4 +1,3 @@
-import { auth } from "@clerk/nextjs/server";
 import { db } from "@/db";
 import { serviceOrders } from "@/db/schema";
 import { getService } from "@/lib/backlinks";
@@ -55,11 +54,10 @@ export async function POST(request: Request) {
     }
 
     const reference = makeReference();
-    const { userId } = await auth();
 
     await db.insert(serviceOrders).values({
       reference,
-      userId: userId ?? "",
+      userId: "",
       serviceSlug: gig?.serviceSlug ?? service!.slug,
       gigSlug: gig?.slug ?? "",
       serviceName: gig?.title ?? service!.nav,
@@ -93,11 +91,7 @@ export async function POST(request: Request) {
     return Response.json({
       ok: true,
       reference,
-      message: paypalOrderId
-        ? `Payment confirmed. ${gig ? gig.sellerName : "A link strategist"} will start work on this brief shortly.`
-        : gig
-          ? `${gig.sellerName} will review the target page and confirm package fit before payment.`
-          : "A link strategist will review the target page and confirm fit before payment.",
+      message: `Payment confirmed. Your order is now being processed. Save reference ${reference} and use it with ${customerEmail} on the Track Order page.`,
     });
   } catch (error) {
     console.error("backlink order failed", error);
