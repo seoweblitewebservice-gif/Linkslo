@@ -1,17 +1,11 @@
-import { currentUser } from "@clerk/nextjs/server";
 import { eq } from "drizzle-orm";
 import { db } from "@/db";
 import { serviceOrders } from "@/db/schema";
-import { ADMIN_EMAIL, isOrderStatus, type DeliveryFile } from "@/lib/orders";
-
-async function requireAdmin() {
-  const user = await currentUser();
-  const email = user?.primaryEmailAddress?.emailAddress?.toLowerCase() ?? "";
-  return email === ADMIN_EMAIL.toLowerCase();
-}
+import { isAdminSession } from "@/lib/admin-auth";
+import { isOrderStatus, type DeliveryFile } from "@/lib/orders";
 
 export async function PATCH(request: Request, { params }: { params: Promise<{ id: string }> }) {
-  if (!(await requireAdmin())) return Response.json({ ok: false }, { status: 403 });
+  if (!(await isAdminSession())) return Response.json({ ok: false }, { status: 403 });
 
   const { id } = await params;
   const orderId = Number(id);
