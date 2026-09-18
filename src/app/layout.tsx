@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import Script from "next/script";
-import { ClerkProvider } from "@clerk/nextjs";
 import "@fontsource/inter/400.css";
 import "@fontsource/inter/500.css";
 import "@fontsource/inter/600.css";
@@ -59,20 +58,18 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   };
 
   return (
-    <ClerkProvider>
-      <html lang="en">
-        <body className="min-h-screen bg-white text-ink-900 antialiased">
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
-          />
-          <Script src={PAYPAL_SDK_SRC} strategy="afterInteractive" />
-          <Header />
-          <main id="main">{children}</main>
-          <Footer />
-          <SocialSidebar />
-        </body>
-      </html>
-    </ClerkProvider>
+    <html lang="en">
+      <body className="min-h-screen bg-white text-ink-900 antialiased">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+        />
+        <Script src={PAYPAL_SDK_SRC} strategy="afterInteractive" />
+        <Header />
+        <main id="main">{children}</main>
+        <Footer />
+        <SocialSidebar />
+      </body>
+    </html>
   );
 }
