@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useUser } from "@clerk/nextjs";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Logo } from "@/components/brand/Logo";
 import { Icon } from "@/components/ui/Icon";
@@ -11,7 +10,6 @@ import { PRIMARY_NAV } from "@/lib/content";
 
 export function Header() {
   const pathname = usePathname();
-  const { user, isSignedIn, isLoaded } = useUser();
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileSection, setMobileSection] = useState<string | null>(null);
@@ -128,26 +126,9 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-2">
-          {isLoaded && isSignedIn && user ? (
-            <Link
-              href="/dashboard"
-              className="flex items-center gap-2 rounded-full border border-line bg-white py-1 pl-1 pr-3 transition-colors hover:border-ink-200"
-            >
-              {user.imageUrl ? (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img src={user.imageUrl} alt={user.fullName ?? "Account"} className="h-7 w-7 rounded-full" referrerPolicy="no-referrer" />
-              ) : (
-                <span className="flex h-7 w-7 items-center justify-center rounded-full bg-ink-950 text-[0.62rem] font-semibold text-white">
-                  {(user.fullName ?? user.primaryEmailAddress?.emailAddress ?? "U").slice(0, 1).toUpperCase()}
-                </span>
-              )}
-              <span className="hidden text-[0.82rem] font-semibold text-ink-800 sm:inline">Dashboard</span>
-            </Link>
-          ) : (
-            <Button href="/login" size="sm" icon="arrow-right">
-              Login
-            </Button>
-          )}
+          <Button href="/track-order" size="sm" icon="arrow-right">
+            Track Order
+          </Button>
           <button
             type="button"
             onClick={() => setMobileOpen((value) => !value)}
@@ -161,7 +142,6 @@ export function Header() {
         </div>
       </div>
 
-      {/* Desktop mega menu */}
       {PRIMARY_NAV.filter((item) => item.columns).map((item) => {
         const open = openMenu === item.label;
         if (!open) return null;
@@ -219,9 +199,7 @@ export function Header() {
                       <div className="ink-aurora absolute inset-0 opacity-90" />
                       <div className="relative">
                         <p className="font-display text-lg font-semibold">{item.feature.title}</p>
-                        <p className="mt-2 text-[0.85rem] leading-relaxed text-ink-200">
-                          {item.feature.body}
-                        </p>
+                        <p className="mt-2 text-[0.85rem] leading-relaxed text-ink-200">{item.feature.body}</p>
                         <Link
                           href={item.feature.href}
                           className="mt-4 inline-flex items-center gap-1.5 text-[0.85rem] font-semibold text-brand-300 hover:text-brand-200"
@@ -239,7 +217,6 @@ export function Header() {
         );
       })}
 
-      {/* Mobile navigation */}
       {mobileOpen && (
         <div
           id="mobile-nav"
@@ -275,11 +252,7 @@ export function Header() {
                         className={`text-ink-400 transition-transform duration-250 ${open ? "rotate-180" : ""}`}
                       />
                     </button>
-                    <div
-                      className={`grid transition-all duration-300 ease-out ${
-                        open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
-                      }`}
-                    >
+                    <div className={`grid transition-all duration-300 ease-out ${open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
                       <div className="overflow-hidden">
                         <ul className="space-y-0.5 pb-3 pl-3">
                           {item.columns.flatMap((column) => column.items).map((link) => (
@@ -302,17 +275,11 @@ export function Header() {
             </nav>
 
             <div className="mt-auto flex flex-col gap-3 pb-8">
-              {isLoaded && isSignedIn && user ? (
-                <Button href="/dashboard" size="lg" fullWidth icon="arrow-right">
-                  Open dashboard
-                </Button>
-              ) : (
-                <Button href="/login" size="lg" fullWidth icon="arrow-right">
-                  Login
-                </Button>
-              )}
+              <Button href="/track-order" size="lg" fullWidth icon="arrow-right">
+                Track your order
+              </Button>
               <p className="text-center text-[0.78rem] text-ink-400">
-                Sign in with Google · No card required
+                No account or registration required
               </p>
             </div>
           </div>
