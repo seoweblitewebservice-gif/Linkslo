@@ -1,1 +1,2 @@
-Redeploy trigger after admin login and delivery dashboard setup — 2026-09-18 22:12 IST
+Production redeploy trigger for indexing fixes — 2026-09-19 16:33 IST
+Includes public X-Robots-Tag index/follow, robots.txt and sitemap.xml fixes.
