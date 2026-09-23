@@ -11,6 +11,13 @@ const CATEGORY_DESCRIPTIONS: Record<SeoToolCategory, string> = {
   "Structured Data": "Validate JSON-LD and generate factual Schema.org markup.",
   "On-Page SEO": "Links, headings, images, metadata and URL structure checks.",
   "Social & SERP": "Open Graph, X Cards, robots directives and search-snippet previews.",
+  "Keyword & Content": "Keyword usage, readability, content structure and semantic outline helpers.",
+  "Local SEO": "Local business signals, NAP, citations, maps and location-page guidance.",
+  "Performance": "Page weight, Core Web Vitals hints, caching, images and mobile performance.",
+  "Link Analysis": "Internal links, anchors, broken links and link-structure analysis.",
+  "Mobile & Accessibility": "Mobile usability, accessibility and inclusive on-page checks.",
+  "Security & HTTPS": "HTTPS, security headers and safe-crawling related signals.",
+  "E-commerce SEO": "Product pages, commerce schema and store-focused SEO checks.",
 };
 
 export function ToolDirectory({ tools, categories }: { tools: SeoToolDefinition[]; categories: SeoToolCategory[] }) {
