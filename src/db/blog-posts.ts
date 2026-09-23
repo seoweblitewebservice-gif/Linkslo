@@ -10,6 +10,7 @@ import { BLOG_POSTS_BATCH_08 } from "@/db/blog-posts-batch-08";
 import { BLOG_POSTS_BATCH_09 } from "@/db/blog-posts-batch-09";
 import { BLOG_POSTS_BATCH_10 } from "@/db/blog-posts-batch-10";
 import { BLOG_POSTS_BATCH_11 } from "@/db/blog-posts-batch-11";
+import { BLOG_POSTS_BATCH_12 } from "@/db/blog-posts-batch-12";
 import { BLOG_EXPANSIONS_01 } from "@/db/blog-expansions-01";
 import { BLOG_EXPANSIONS_02 } from "@/db/blog-expansions-02";
 import { BLOG_EXPANSIONS_03 } from "@/db/blog-expansions-03";
@@ -29,6 +30,7 @@ const ALL_BLOG_POSTS = [
   ...BLOG_POSTS_BATCH_09,
   ...BLOG_POSTS_BATCH_10,
   ...BLOG_POSTS_BATCH_11,
+  ...BLOG_POSTS_BATCH_12,
 ];
 
 const EXPANSIONS: Record<string, string> = {
