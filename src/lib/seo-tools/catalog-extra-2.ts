@@ -1,1 +1,0 @@
-export const EXTRA_SEO_TOOLS_2: any[] = [];
