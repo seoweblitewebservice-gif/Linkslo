@@ -1,4 +1,5 @@
 import { REST_SEO_TOOLS } from "./catalog-rest";
+import { EXTRA_SEO_TOOLS_1 } from "./catalog-extra-1";
 
 export type SeoToolCategory =
   | "Technical SEO"
@@ -472,6 +473,7 @@ const SEO_TOOLS_CORE: SeoToolDefinition[] = [
 export const SEO_TOOLS: SeoToolDefinition[] = [
   ...SEO_TOOLS_CORE,
   ...(REST_SEO_TOOLS as SeoToolDefinition[]),
+  ...(EXTRA_SEO_TOOLS_1 as SeoToolDefinition[]),
 ];
 
 export const SEO_TOOL_BY_SLUG = new Map(SEO_TOOLS.map((tool) => [tool.slug, tool]));
