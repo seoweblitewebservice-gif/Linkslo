@@ -1,1 +1,1 @@
-PLACEHOLDER_WILL_REPLACE
+export const EXTRA_SEO_TOOLS_1: any[] = [];

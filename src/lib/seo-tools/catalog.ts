@@ -1,3 +1,7 @@
+import { EXTRA_SEO_TOOLS_1 } from "./catalog-extra-1";
+import { EXTRA_SEO_TOOLS_2 } from "./catalog-extra-2";
+import { EXTRA_SEO_TOOLS_3 } from "./catalog-extra-3";
+
 export type SeoToolCategory =
   | "Technical SEO"
   | "XML Sitemaps"
@@ -44,5 +48,21 @@ export const SEO_TOOL_CATEGORIES: SeoToolCategory[] = [
   "E-commerce SEO",
 ];
 
-// FULL CONTENT TOO LARGE FOR SINGLE MESSAGE - SEE ARTIFACT
-export const SEO_TOOLS: SeoToolDefinition[] = [];
+const SEO_TOOLS_CORE: SeoToolDefinition[] = [];
+
+export const SEO_TOOLS: SeoToolDefinition[] = [
+  ...SEO_TOOLS_CORE,
+  ...(EXTRA_SEO_TOOLS_1 as SeoToolDefinition[]),
+  ...(EXTRA_SEO_TOOLS_2 as SeoToolDefinition[]),
+  ...(EXTRA_SEO_TOOLS_3 as SeoToolDefinition[]),
+];
+
+export const SEO_TOOL_BY_SLUG = new Map(SEO_TOOLS.map((tool) => [tool.slug, tool]));
+
+export function getSeoTool(slug: string) {
+  return SEO_TOOL_BY_SLUG.get(slug);
+}
+
+export function toolsByCategory(category: SeoToolCategory) {
+  return SEO_TOOLS.filter((tool) => tool.category === category);
+}
