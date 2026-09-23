@@ -1,9 +1,18 @@
+import { REST_SEO_TOOLS } from "./catalog-rest";
+
 export type SeoToolCategory =
   | "Technical SEO"
   | "XML Sitemaps"
   | "Structured Data"
   | "On-Page SEO"
-  | "Social & SERP";
+  | "Social & SERP"
+  | "Keyword & Content"
+  | "Local SEO"
+  | "Performance"
+  | "Link Analysis"
+  | "Mobile & Accessibility"
+  | "Security & HTTPS"
+  | "E-commerce SEO";
 
 export type SeoToolMode = "url" | "text" | "generator" | "preview";
 
@@ -28,9 +37,16 @@ export const SEO_TOOL_CATEGORIES: SeoToolCategory[] = [
   "Structured Data",
   "On-Page SEO",
   "Social & SERP",
+  "Keyword & Content",
+  "Local SEO",
+  "Performance",
+  "Link Analysis",
+  "Mobile & Accessibility",
+  "Security & HTTPS",
+  "E-commerce SEO",
 ];
 
-export const SEO_TOOLS: SeoToolDefinition[] = [
+const SEO_TOOLS_CORE: SeoToolDefinition[] = [
   {
     slug: "robots-txt-tester",
     name: "Robots.txt Tester",
@@ -451,6 +467,11 @@ export const SEO_TOOLS: SeoToolDefinition[] = [
     placeholder: "Site name and homepage URL",
     related: ["organization-schema-generator", "schema-validator"],
   },
+];
+
+export const SEO_TOOLS: SeoToolDefinition[] = [
+  ...SEO_TOOLS_CORE,
+  ...(REST_SEO_TOOLS as SeoToolDefinition[]),
 ];
 
 export const SEO_TOOL_BY_SLUG = new Map(SEO_TOOLS.map((tool) => [tool.slug, tool]));
