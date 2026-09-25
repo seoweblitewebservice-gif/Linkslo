@@ -2,6 +2,7 @@ import { REST_SEO_TOOLS } from "./catalog-rest";
 import { EXTRA_SEO_TOOLS_1 } from "./catalog-extra-1";
 import { EXTRA_SEO_TOOLS_2 } from "./catalog-extra-2";
 import { EXTRA_SEO_TOOLS_3 } from "./catalog-extra-3";
+import { SEO_TOOLS_CORE } from "./catalog-core";
 
 export type SeoToolCategory =
   | "Technical SEO"
@@ -49,11 +50,8 @@ export const SEO_TOOL_CATEGORIES: SeoToolCategory[] = [
   "E-commerce SEO",
 ];
 
-// Core technical tools are defined in catalog-core.ts to keep this file small and safe to update.
-import { SEO_TOOLS_CORE } from "./catalog-core";
-
 export const SEO_TOOLS: SeoToolDefinition[] = [
-  ...SEO_TOOLS_CORE,
+  ...(SEO_TOOLS_CORE as unknown as SeoToolDefinition[]),
   ...(REST_SEO_TOOLS as SeoToolDefinition[]),
   ...(EXTRA_SEO_TOOLS_1 as SeoToolDefinition[]),
   ...(EXTRA_SEO_TOOLS_2 as SeoToolDefinition[]),
