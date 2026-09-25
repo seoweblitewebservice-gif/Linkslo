@@ -93,7 +93,12 @@ function pairLines(value: string) {
 }
 
 function validHttpUrl(value: string) {
-  try { const u = new URL(value); return u.protocol === "http:" || u.protocol === "https:"; } catch { return false; }
+  try {
+    const u = new URL(value);
+    return u.protocol === "http:" || u.protocol === "https:";
+  } catch {
+    return false;
+  }
 }
 
 function json(value: unknown) {
@@ -114,93 +119,211 @@ function generate(slug: string, values: Record<string, string>) {
       return lines.join("\n");
     }
     case "canonical-tag-generator": {
-      const url = values.url?.trim(); if (!validHttpUrl(url || "")) throw new Error("Enter an absolute http:// or https:// canonical URL.");
-      return `<link rel="canonical" href="${(url || "").replace(/"/g, """)}" />`;
+      const url = values.url?.trim();
+      if (!validHttpUrl(url || "")) throw new Error("Enter an absolute http:// or https:// canonical URL.");
+      const safeUrl = (url || "").replace(/"/g, "'");
+      return "<link rel=\"canonical\" href=\"" + safeUrl + "\" />";
     }
     case "hreflang-generator": {
-      const rows = pairLines(values.pairs || ""); if (!rows.length) throw new Error("Add at least one language and URL pair.");
-      return rows.map(([code, url]) => {
-        if (!/^(?:x-default|[a-zA-Z]{2,3}(?:-[a-zA-Z]{2})?)$/.test(code)) throw new Error(`Review hreflang code: ${code}`);
-        if (!validHttpUrl(url)) throw new Error(`Review URL for ${code}.`);
-        return `<link rel="alternate" hreflang="${code}" href="${url}" />`;
-      }).join("\n");
+      const rows = pairLines(values.pairs || "");
+      if (!rows.length) throw new Error("Add at least one language and URL pair.");
+      return rows
+        .map(([code, url]) => {
+          if (!/^(?:x-default|[a-zA-Z]{2,3}(?:-[a-zA-Z]{2})?)$/.test(code)) throw new Error(`Review hreflang code: ${code}`);
+          if (!validHttpUrl(url)) throw new Error(`Review URL for ${code}.`);
+          return '<link rel="alternate" hreflang="' + code + '" href="' + url + '" />';
+        })
+        .join("\n");
     }
     case "sitemap-generator": {
-      const urls = splitLines(values.urls || ""); if (!urls.length) throw new Error("Add at least one URL.");
-      urls.forEach((u) => { if (!validHttpUrl(u)) throw new Error(`Invalid URL: ${u}`); });
-      const escaped = (v: string) => v.replace(/&/g, "&").replace(/</g, "<").replace(/>/g, ">").replace(/"/g, """);
-      return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map((u) => `  <url>\n    <loc>${escaped(u)}</loc>\n  </url>`).join("\n")}\n</urlset>`;
+      const urls = splitLines(values.urls || "");
+      if (!urls.length) throw new Error("Add at least one URL.");
+      urls.forEach((u) => {
+        if (!validHttpUrl(u)) throw new Error(`Invalid URL: ${u}`);
+      });
+      const escaped = (v: string) =>
+        v.replace(/&/g, "&").replace(/</g, "<").replace(/>/g, ">").replace(/"/g, """);
+      return (
+        '<?xml version="1.0" encoding="UTF-8"?>\n' +
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
+        urls.map((u) => "  <url>\n    <loc>" + escaped(u) + "</loc>\n  </url>").join("\n") +
+        "\n</urlset>"
+      );
     }
     case "schema-markup-generator": {
       if (!values.type?.trim()) throw new Error("Enter a Schema.org type.");
       const out: Record<string, string> = { "@context": "https://schema.org", "@type": values.type.trim() };
-      if (values.name?.trim()) out.name = values.name.trim(); if (values.url?.trim()) out.url = values.url.trim(); if (values.description?.trim()) out.description = values.description.trim();
+      if (values.name?.trim()) out.name = values.name.trim();
+      if (values.url?.trim()) out.url = values.url.trim();
+      if (values.description?.trim()) out.description = values.description.trim();
       return json(out);
     }
     case "faq-schema-generator": {
-      const rows = pairLines(values.pairs || "").filter(([q, a]) => q && a); if (!rows.length) throw new Error("Add at least one question and answer separated by |.");
-      return json({ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: rows.map(([q, a]) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })) });
+      const rows = pairLines(values.pairs || "").filter(([q, a]) => q && a);
+      if (!rows.length) throw new Error("Add at least one question and answer separated by |.");
+      return json({
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: rows.map(([q, a]) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })),
+      });
     }
     case "article-schema-generator": {
       if (!values.headline?.trim() || !values.url?.trim()) throw new Error("Headline and article URL are required.");
-      const out: Record<string, unknown> = { "@context": "https://schema.org", "@type": "Article", headline: values.headline.trim(), mainEntityOfPage: values.url.trim() };
-      if (values.author?.trim()) out.author = { "@type": "Person", name: values.author.trim() }; if (values.datePublished?.trim()) out.datePublished = values.datePublished.trim(); if (values.dateModified?.trim()) out.dateModified = values.dateModified.trim();
+      const out: Record<string, unknown> = {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        headline: values.headline.trim(),
+        mainEntityOfPage: values.url.trim(),
+      };
+      if (values.author?.trim()) out.author = { "@type": "Person", name: values.author.trim() };
+      if (values.datePublished?.trim()) out.datePublished = values.datePublished.trim();
+      if (values.dateModified?.trim()) out.dateModified = values.dateModified.trim();
       return json(out);
     }
     case "organization-schema-generator": {
       if (!values.name?.trim() || !values.url?.trim()) throw new Error("Organization name and URL are required.");
-      const out: Record<string, unknown> = { "@context": "https://schema.org", "@type": "Organization", name: values.name.trim(), url: values.url.trim() };
-      if (values.logo?.trim()) out.logo = values.logo.trim(); if (values.phone?.trim()) out.telephone = values.phone.trim(); return json(out);
+      const out: Record<string, unknown> = {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        name: values.name.trim(),
+        url: values.url.trim(),
+      };
+      if (values.logo?.trim()) out.logo = values.logo.trim();
+      if (values.phone?.trim()) out.telephone = values.phone.trim();
+      return json(out);
     }
     case "breadcrumb-schema-generator": {
-      const rows = pairLines(values.pairs || "").filter(([n, u]) => n && u); if (!rows.length) throw new Error("Add breadcrumb label and URL pairs.");
-      rows.forEach(([, u]) => { if (!validHttpUrl(u)) throw new Error(`Invalid breadcrumb URL: ${u}`); });
-      return json({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: rows.map(([name, item], i) => ({ "@type": "ListItem", position: i + 1, name, item })) });
+      const rows = pairLines(values.pairs || "").filter(([n, u]) => n && u);
+      if (!rows.length) throw new Error("Add breadcrumb label and URL pairs.");
+      rows.forEach(([, u]) => {
+        if (!validHttpUrl(u)) throw new Error(`Invalid breadcrumb URL: ${u}`);
+      });
+      return json({
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: rows.map(([name, item], i) => ({ "@type": "ListItem", position: i + 1, name, item })),
+      });
     }
     case "local-business-schema-generator": {
       if (!values.name?.trim() || !values.url?.trim()) throw new Error("Business name and URL are required.");
-      return json({ "@context": "https://schema.org", "@type": "LocalBusiness", name: values.name.trim(), url: values.url.trim(), ...(values.phone?.trim() ? { telephone: values.phone.trim() } : {}), address: { "@type": "PostalAddress", ...(values.street?.trim() ? { streetAddress: values.street.trim() } : {}), ...(values.city?.trim() ? { addressLocality: values.city.trim() } : {}), ...(values.region?.trim() ? { addressRegion: values.region.trim() } : {}), ...(values.postal?.trim() ? { postalCode: values.postal.trim() } : {}), ...(values.country?.trim() ? { addressCountry: values.country.trim() } : {}) } });
+      return json({
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        name: values.name.trim(),
+        url: values.url.trim(),
+        ...(values.phone?.trim() ? { telephone: values.phone.trim() } : {}),
+        address: {
+          "@type": "PostalAddress",
+          ...(values.street?.trim() ? { streetAddress: values.street.trim() } : {}),
+          ...(values.city?.trim() ? { addressLocality: values.city.trim() } : {}),
+          ...(values.region?.trim() ? { addressRegion: values.region.trim() } : {}),
+          ...(values.postal?.trim() ? { postalCode: values.postal.trim() } : {}),
+          ...(values.country?.trim() ? { addressCountry: values.country.trim() } : {}),
+        },
+      });
     }
     case "website-schema-generator": {
       if (!values.name?.trim() || !values.url?.trim()) throw new Error("Website name and homepage URL are required.");
-      const out: Record<string, unknown> = { "@context": "https://schema.org", "@type": "WebSite", name: values.name.trim(), url: values.url.trim() };
-      if (values.search?.trim()) out.potentialAction = { "@type": "SearchAction", target: values.search.trim(), "query-input": "required name=search_term_string" }; return json(out);
+      const out: Record<string, unknown> = {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        name: values.name.trim(),
+        url: values.url.trim(),
+      };
+      if (values.search?.trim()) {
+        out.potentialAction = {
+          "@type": "SearchAction",
+          target: values.search.trim(),
+          "query-input": "required name=search_term_string",
+        };
+      }
+      return json(out);
     }
     case "video-schema-generator": {
-      if (!values.name?.trim() || !values.description?.trim() || !values.thumbnail?.trim() || !values.uploadDate?.trim()) throw new Error("Video title, description, thumbnail and upload date are required.");
-      return json({ "@context": "https://schema.org", "@type": "VideoObject", name: values.name.trim(), description: values.description.trim(), thumbnailUrl: values.thumbnail.trim(), uploadDate: values.uploadDate.trim(), ...(values.contentUrl?.trim() ? { contentUrl: values.contentUrl.trim() } : {}) });
+      if (!values.name?.trim() || !values.description?.trim() || !values.thumbnail?.trim() || !values.uploadDate?.trim()) {
+        throw new Error("Video title, description, thumbnail and upload date are required.");
+      }
+      return json({
+        "@context": "https://schema.org",
+        "@type": "VideoObject",
+        name: values.name.trim(),
+        description: values.description.trim(),
+        thumbnailUrl: values.thumbnail.trim(),
+        uploadDate: values.uploadDate.trim(),
+        ...(values.contentUrl?.trim() ? { contentUrl: values.contentUrl.trim() } : {}),
+      });
     }
     case "meta-robots-generator": {
-      const directives = (values.directives || "").split(",").map((v) => v.trim()).filter(Boolean); if (!directives.length) throw new Error("Enter at least one robots directive.");
-      return `<meta name="robots" content="${directives.join(", ")}" />`;
+      const directives = (values.directives || "").split(",").map((v) => v.trim()).filter(Boolean);
+      if (!directives.length) throw new Error("Enter at least one robots directive.");
+      return '<meta name="robots" content="' + directives.join(", ") + '" />';
     }
     case "content-outline-generator": {
       const topic = values.topic?.trim() || "Your topic";
-      return `# ${topic}\n\n## Introduction\n- Problem and why it matters\n- Who this guide is for\n\n## Core concepts\n- Definition\n- Key terms\n\n## Step-by-step process\n1. Step one\n2. Step two\n3. Step three\n\n## Common mistakes\n- Mistake and fix\n\n## FAQ\n- Question one\n- Question two\n\n## Next actions\n- Practical checklist`;
+      return (
+        "# " +
+        topic +
+        "\n\n## Introduction\n- Problem and why it matters\n- Who this guide is for\n\n## Core concepts\n- Definition\n- Key terms\n\n## Step-by-step process\n1. Step one\n2. Step two\n3. Step three\n\n## Common mistakes\n- Mistake and fix\n\n## FAQ\n- Question one\n- Question two\n\n## Next actions\n- Practical checklist"
+      );
     }
     case "faq-section-generator":
     case "local-faq-generator": {
       const topic = values.topic?.trim() || "this service";
-      return [`What is ${topic}?`, `Who is ${topic} for?`, `How does ${topic} work?`, `How long does ${topic} take?`, `What does ${topic} cost?`].map((q, i) => `Q${i + 1}. ${q}\nA${i + 1}. Write a clear, specific answer in plain language.`).join("\n\n");
+      return [
+        "What is " + topic + "?",
+        "Who is " + topic + " for?",
+        "How does " + topic + " work?",
+        "How long does " + topic + " take?",
+        "What does " + topic + " cost?",
+      ]
+        .map((q, i) => "Q" + (i + 1) + ". " + q + "\nA" + (i + 1) + ". Write a clear, specific answer in plain language.")
+        .join("\n\n");
     }
     case "howto-outline-generator": {
       const topic = values.topic?.trim() || "complete this task";
-      return `# How to ${topic}\n\n## Before you start\n- Requirements\n- Tools needed\n\n## Steps\n1. Prepare\n2. Execute\n3. Verify\n\n## Troubleshooting\n- Common issue and fix\n\n## Checklist\n- [ ] Done criteria`;
+      return (
+        "# How to " +
+        topic +
+        "\n\n## Before you start\n- Requirements\n- Tools needed\n\n## Steps\n1. Prepare\n2. Execute\n3. Verify\n\n## Troubleshooting\n- Common issue and fix\n\n## Checklist\n- [ ] Done criteria"
+      );
     }
     case "comparison-page-outline-generator":
-      return `# Option A vs Option B\n\n## Quick summary\n## Who each option is for\n## Feature comparison table\n## Pricing considerations\n## Pros and cons\n## Recommendation scenarios\n## FAQ`;
+      return "# Option A vs Option B\n\n## Quick summary\n## Who each option is for\n## Feature comparison table\n## Pricing considerations\n## Pros and cons\n## Recommendation scenarios\n## FAQ";
     case "service-area-page-outline-generator":
-      return `# Service in [City]\n\n## Local introduction\n## Services offered\n## Why local customers choose us\n## Process\n## Service areas\n## Reviews / proof\n## FAQ\n## Contact CTA`;
+      return "# Service in [City]\n\n## Local introduction\n## Services offered\n## Why local customers choose us\n## Process\n## Service areas\n## Reviews / proof\n## FAQ\n## Contact CTA";
     case "local-citation-checklist":
     case "mobile-performance-checklist":
     case "performance-budget-generator": {
       const items =
         slug === "local-citation-checklist"
-          ? ["Google Business Profile", "Apple Business Connect", "Bing Places", "Primary industry directory", "Local chamber listing", "Consistent NAP on website footer", "Consistent NAP on contact page"]
+          ? [
+              "Google Business Profile",
+              "Apple Business Connect",
+              "Bing Places",
+              "Primary industry directory",
+              "Local chamber listing",
+              "Consistent NAP on website footer",
+              "Consistent NAP on contact page",
+            ]
           : slug === "mobile-performance-checklist"
-            ? ["Responsive layout", "Tap targets large enough", "Compress hero images", "Defer non-critical scripts", "Avoid intrusive interstitials", "Test on a mid-tier phone"]
-            : ["HTML budget", "CSS budget", "JS budget", "Image budget", "Font budget", "Third-party script budget", "Total page weight target"];
-      return items.map((item, i) => `${i + 1}. [ ] ${item}`).join("\n");
+            ? [
+                "Responsive layout",
+                "Tap targets large enough",
+                "Compress hero images",
+                "Defer non-critical scripts",
+                "Avoid intrusive interstitials",
+                "Test on a mid-tier phone",
+              ]
+            : [
+                "HTML budget",
+                "CSS budget",
+                "JS budget",
+                "Image budget",
+                "Font budget",
+                "Third-party script budget",
+                "Total page weight target",
+              ];
+      return items.map((item, i) => i + 1 + ". [ ] " + item).join("\n");
     }
     default:
       return values.topic?.trim() || values.text?.trim() || "Add the required fields and generate again.";
@@ -213,7 +336,11 @@ function localValidate(slug: string, value: string): ApiResult {
 
 function pixelWidth(text: string, font = "20px Arial") {
   if (typeof document === "undefined") return 0;
-  const canvas = document.createElement("canvas"); const ctx = canvas.getContext("2d"); if (!ctx) return 0; ctx.font = font; return Math.round(ctx.measureText(text).width);
+  const canvas = document.createElement("canvas");
+  const ctx = canvas.getContext("2d");
+  if (!ctx) return 0;
+  ctx.font = font;
+  return Math.round(ctx.measureText(text).width);
 }
 
 function statusClasses(status: Check["status"]) {
@@ -223,7 +350,9 @@ function statusClasses(status: Check["status"]) {
   return "border-sky-200 bg-sky-50 text-sky-950";
 }
 
-function label(status: Check["status"]) { return status === "pass" ? "Passed" : status === "warning" ? "Warning" : status === "error" ? "Error" : "Information"; }
+function label(status: Check["status"]) {
+  return status === "pass" ? "Passed" : status === "warning" ? "Warning" : status === "error" ? "Error" : "Information";
+}
 
 export function ToolRunner({ tool }: { tool: SeoToolDefinition }) {
   const [url, setUrl] = useState("");
@@ -238,29 +367,58 @@ export function ToolRunner({ tool }: { tool: SeoToolDefinition }) {
   const [error, setError] = useState("");
 
   async function run() {
-    setError(""); setResult(null); setOutput("");
+    setError("");
+    setResult(null);
+    setOutput("");
     try {
       if (tool.mode === "url") {
         if (!url.trim()) throw new Error("Enter a URL first.");
         setLoading(true);
-        const response = await fetch("/api/seo-tools/analyze", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ tool: tool.slug, url: url.trim(), userAgent }) });
-        const data = await response.json() as ApiResult;
+        const response = await fetch("/api/seo-tools/analyze", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({ tool: tool.slug, url: url.trim(), userAgent }),
+        });
+        const data = (await response.json()) as ApiResult;
         if (!response.ok || data.error) throw new Error(data.error || "The analysis failed.");
         setResult(data);
       } else if (tool.mode === "text") {
         if (!text.trim()) throw new Error("Paste the text you want to analyze.");
         setResult(localValidate(tool.slug, text));
       } else if (tool.mode === "preview") {
-        if (tool.slug === "seo-snippet-preview") { setOutput("preview"); }
-        else {
+        if (tool.slug === "seo-snippet-preview") {
+          setOutput("preview");
+        } else {
           const width = pixelWidth(values.text || "", tool.slug === "serp-title-pixel-checker" ? "20px Arial" : "14px Arial");
-          setResult({ checks: [{ status: "info", label: "Estimated rendered width", detail: `${width}px. This is an approximation based on browser canvas text measurement, not a guaranteed search-engine cutoff.`, value: width }, { status: width > (tool.slug === "serp-title-pixel-checker" ? 600 : 920) ? "warning" : "pass", label: "Practical review", detail: width > (tool.slug === "serp-title-pixel-checker" ? 600 : 920) ? "The text is relatively wide and may be more likely to truncate or be rewritten depending on device and query." : "The estimated width is within a commonly workable desktop range, but search engines can still rewrite snippets." }] });
+          setResult({
+            checks: [
+              {
+                status: "info",
+                label: "Estimated rendered width",
+                detail:
+                  width +
+                  "px. This is an approximation based on browser canvas text measurement, not a guaranteed search-engine cutoff.",
+                value: width,
+              },
+              {
+                status: width > (tool.slug === "serp-title-pixel-checker" ? 600 : 920) ? "warning" : "pass",
+                label: "Practical review",
+                detail:
+                  width > (tool.slug === "serp-title-pixel-checker" ? 600 : 920)
+                    ? "The text is relatively wide and may be more likely to truncate or be rewritten depending on device and query."
+                    : "The estimated width is within a commonly workable desktop range, but search engines can still rewrite snippets.",
+              },
+            ],
+          });
         }
       } else {
         setOutput(generate(tool.slug, values));
       }
-    } catch (e) { setError(e instanceof Error ? e.message : "Something went wrong."); }
-    finally { setLoading(false); }
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Something went wrong.");
+    } finally {
+      setLoading(false);
+    }
   }
 
   const checks = result?.checks ?? [];
@@ -268,22 +426,114 @@ export function ToolRunner({ tool }: { tool: SeoToolDefinition }) {
   return (
     <section className="rounded-3xl border border-line bg-white p-5 shadow-soft sm:p-7" aria-labelledby="tool-interface-heading">
       <div className="flex flex-wrap items-start justify-between gap-4">
-        <div><p className="text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-brand-700">Live tool</p><h2 id="tool-interface-heading" className="mt-1 font-display text-xl font-semibold text-ink-950">{tool.name}</h2><p className="mt-2 max-w-2xl text-sm leading-6 text-ink-500">Results come from the input you provide. The tool does not invent traffic, rankings, backlinks or index status.</p></div>
+        <div>
+          <p className="text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-brand-700">Live tool</p>
+          <h2 id="tool-interface-heading" className="mt-1 font-display text-xl font-semibold text-ink-950">
+            {tool.name}
+          </h2>
+          <p className="mt-2 max-w-2xl text-sm leading-6 text-ink-500">
+            Results come from the input you provide. The tool does not invent traffic, rankings, backlinks or index status.
+          </p>
+        </div>
         <span className="rounded-full border border-line bg-canvas px-3 py-1.5 text-xs font-semibold text-ink-600">No paid SEO API required</span>
       </div>
 
       <div className="mt-6 space-y-4">
-        {tool.mode === "url" && <>
-          <label className="block"><span className="mb-1.5 block text-sm font-semibold text-ink-800">{tool.inputLabel}</span><input value={url} onChange={(e) => setUrl(e.target.value)} placeholder={tool.placeholder} inputMode="url" className="h-12 w-full rounded-xl border border-line bg-white px-4 text-sm outline-none focus:border-brand-400 focus:ring-2 focus:ring-brand-100" /></label>
-          {tool.slug.includes("robots-txt") && <label className="block"><span className="mb-1.5 block text-sm font-semibold text-ink-800">User-agent (optional)</span><input value={userAgent} onChange={(e) => setUserAgent(e.target.value)} className="h-11 w-full rounded-xl border border-line bg-white px-4 text-sm outline-none focus:border-brand-400 focus:ring-2 focus:ring-brand-100" /></label>}
-        </>}
-        {tool.mode === "text" && <label className="block"><span className="mb-1.5 block text-sm font-semibold text-ink-800">{tool.inputLabel}</span><textarea value={text} onChange={(e) => setText(e.target.value)} placeholder={tool.placeholder} rows={10} className="w-full rounded-xl border border-line bg-white px-4 py-3 text-sm outline-none focus:border-brand-400 focus:ring-2 focus:ring-brand-100" /></label>}
-        {(tool.mode === "generator" || tool.mode === "preview") && <div className="grid gap-4 sm:grid-cols-2">{fields.map((field) => <label key={field.key} className={field.multiline ? "sm:col-span-2 block" : "block"}><span className="mb-1.5 block text-sm font-semibold text-ink-800">{field.label}</span>{field.multiline ? <textarea value={values[field.key] ?? ""} onChange={(e) => setValues((prev) => ({ ...prev, [field.key]: e.target.value }))} placeholder={field.placeholder} rows={5} className="w-full rounded-xl border border-line bg-white px-4 py-3 text-sm outline-none focus:border-brand-400 focus:ring-2 focus:ring-brand-100" /> : <input value={values[field.key] ?? ""} onChange={(e) => setValues((prev) => ({ ...prev, [field.key]: e.target.value }))} placeholder={field.placeholder} className="h-11 w-full rounded-xl border border-line bg-white px-4 text-sm outline-none focus:border-brand-400 focus:ring-2 focus:ring-brand-100" />}</label>)}</div>}
-        <div className="flex flex-wrap gap-3"><button type="button" onClick={run} disabled={loading} className="inline-flex h-11 items-center justify-center rounded-full bg-brand-600 px-5 text-sm font-semibold text-white transition hover:bg-brand-700 disabled:opacity-60">{loading ? "Working…" : tool.actionLabel}</button></div>
+        {tool.mode === "url" && (
+          <>
+            <label className="block">
+              <span className="mb-1.5 block text-sm font-semibold text-ink-800">{tool.inputLabel}</span>
+              <input
+                value={url}
+                onChange={(e) => setUrl(e.target.value)}
+                placeholder={tool.placeholder}
+                inputMode="url"
+                className="h-12 w-full rounded-xl border border-line bg-white px-4 text-sm outline-none focus:border-brand-400 focus:ring-2 focus:ring-brand-100"
+              />
+            </label>
+            {tool.slug.includes("robots-txt") && (
+              <label className="block">
+                <span className="mb-1.5 block text-sm font-semibold text-ink-800">User-agent (optional)</span>
+                <input
+                  value={userAgent}
+                  onChange={(e) => setUserAgent(e.target.value)}
+                  className="h-11 w-full rounded-xl border border-line bg-white px-4 text-sm outline-none focus:border-brand-400 focus:ring-2 focus:ring-brand-100"
+                />
+              </label>
+            )}
+          </>
+        )}
+        {tool.mode === "text" && (
+          <label className="block">
+            <span className="mb-1.5 block text-sm font-semibold text-ink-800">{tool.inputLabel}</span>
+            <textarea
+              value={text}
+              onChange={(e) => setText(e.target.value)}
+              placeholder={tool.placeholder}
+              rows={10}
+              className="w-full rounded-xl border border-line bg-white px-4 py-3 text-sm outline-none focus:border-brand-400 focus:ring-2 focus:ring-brand-100"
+            />
+          </label>
+        )}
+        {(tool.mode === "generator" || tool.mode === "preview") && (
+          <div className="grid gap-4 sm:grid-cols-2">
+            {fields.map((field) => (
+              <label key={field.key} className={field.multiline ? "sm:col-span-2 block" : "block"}>
+                <span className="mb-1.5 block text-sm font-semibold text-ink-800">{field.label}</span>
+                {field.multiline ? (
+                  <textarea
+                    value={values[field.key] ?? ""}
+                    onChange={(e) => setValues((prev) => ({ ...prev, [field.key]: e.target.value }))}
+                    placeholder={field.placeholder}
+                    rows={5}
+                    className="w-full rounded-xl border border-line bg-white px-4 py-3 text-sm outline-none focus:border-brand-400 focus:ring-2 focus:ring-brand-100"
+                  />
+                ) : (
+                  <input
+                    value={values[field.key] ?? ""}
+                    onChange={(e) => setValues((prev) => ({ ...prev, [field.key]: e.target.value }))}
+                    placeholder={field.placeholder}
+                    className="h-11 w-full rounded-xl border border-line bg-white px-4 text-sm outline-none focus:border-brand-400 focus:ring-2 focus:ring-brand-100"
+                  />
+                )}
+              </label>
+            ))}
+          </div>
+        )}
+        <div className="flex flex-wrap gap-3">
+          <button
+            type="button"
+            onClick={run}
+            disabled={loading}
+            className="inline-flex h-11 items-center justify-center rounded-full bg-brand-600 px-5 text-sm font-semibold text-white transition hover:bg-brand-700 disabled:opacity-60"
+          >
+            {loading ? "Working…" : tool.actionLabel}
+          </button>
+        </div>
         {error && <p className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800">{error}</p>}
-        {checks.length > 0 && <div className="grid gap-3">{checks.map((check) => <div key={`${check.label}-${check.detail}`} className={`rounded-2xl border px-4 py-3 ${statusClasses(check.status)}`}><div className="flex items-center justify-between gap-3"><p className="font-semibold">{check.label}</p><span className="text-[0.7rem] font-bold uppercase tracking-wide">{label(check.status)}</span></div><p className="mt-1 text-sm leading-6 opacity-90">{check.detail}</p></div>)}</div>}
-        {output && output !== "preview" && <pre className="overflow-x-auto rounded-2xl border border-line bg-canvas p-4 text-[0.82rem] leading-6 text-ink-800">{output}</pre>}
-        {output === "preview" && <div className="rounded-2xl border border-line bg-canvas p-5"><p className="text-[0.75rem] text-ink-500">{values.url || "example.com"}</p><p className="mt-1 text-[1.15rem] font-medium text-[#1a0dab]">{values.title || "Page title"}</p><p className="mt-1 text-sm leading-6 text-ink-600">{values.description || "Meta description preview"}</p></div>}
+        {checks.length > 0 && (
+          <div className="grid gap-3">
+            {checks.map((check) => (
+              <div key={check.label + check.detail} className={"rounded-2xl border px-4 py-3 " + statusClasses(check.status)}>
+                <div className="flex items-center justify-between gap-3">
+                  <p className="font-semibold">{check.label}</p>
+                  <span className="text-[0.7rem] font-bold uppercase tracking-wide">{label(check.status)}</span>
+                </div>
+                <p className="mt-1 text-sm leading-6 opacity-90">{check.detail}</p>
+              </div>
+            ))}
+          </div>
+        )}
+        {output && output !== "preview" && (
+          <pre className="overflow-x-auto rounded-2xl border border-line bg-canvas p-4 text-[0.82rem] leading-6 text-ink-800">{output}</pre>
+        )}
+        {output === "preview" && (
+          <div className="rounded-2xl border border-line bg-canvas p-5">
+            <p className="text-[0.75rem] text-ink-500">{values.url || "example.com"}</p>
+            <p className="mt-1 text-[1.15rem] font-medium text-[#1a0dab]">{values.title || "Page title"}</p>
+            <p className="mt-1 text-sm leading-6 text-ink-600">{values.description || "Meta description preview"}</p>
+          </div>
+        )}
       </div>
     </section>
   );
