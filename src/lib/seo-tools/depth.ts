@@ -5,6 +5,7 @@ import { SITEMAP_TOOL_DEPTH } from "@/lib/seo-tools/depth-sitemaps";
 import { STRUCTURED_TOOL_DEPTH } from "@/lib/seo-tools/depth-structured";
 import { ONPAGE_TOOL_DEPTH } from "@/lib/seo-tools/depth-onpage";
 import { SOCIAL_TOOL_DEPTH } from "@/lib/seo-tools/depth-social";
+import { EXTRA_TOOL_DEPTH } from "@/lib/seo-tools/depth-extra";
 
 const ALL_TOOL_DEPTH: Record<string, ToolDepth> = {
   ...TECHNICAL_TOOL_DEPTH,
@@ -12,6 +13,7 @@ const ALL_TOOL_DEPTH: Record<string, ToolDepth> = {
   ...STRUCTURED_TOOL_DEPTH,
   ...ONPAGE_TOOL_DEPTH,
   ...SOCIAL_TOOL_DEPTH,
+  ...EXTRA_TOOL_DEPTH,
 };
 
 export function getSeoToolDepth(tool: SeoToolDefinition) {

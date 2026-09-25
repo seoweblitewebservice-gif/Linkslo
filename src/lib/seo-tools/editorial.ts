@@ -5,6 +5,7 @@ import { SITEMAP_TOOL_EDITORIAL } from "@/lib/seo-tools/content-sitemaps";
 import { STRUCTURED_TOOL_EDITORIAL } from "@/lib/seo-tools/content-structured";
 import { ONPAGE_TOOL_EDITORIAL } from "@/lib/seo-tools/content-onpage";
 import { SOCIAL_TOOL_EDITORIAL } from "@/lib/seo-tools/content-social";
+import { EXTRA_TOOL_EDITORIAL } from "@/lib/seo-tools/content-extra";
 
 const ALL_TOOL_EDITORIAL: Record<string, ToolEditorial> = {
   ...TECHNICAL_TOOL_EDITORIAL,
@@ -12,6 +13,7 @@ const ALL_TOOL_EDITORIAL: Record<string, ToolEditorial> = {
   ...STRUCTURED_TOOL_EDITORIAL,
   ...ONPAGE_TOOL_EDITORIAL,
   ...SOCIAL_TOOL_EDITORIAL,
+  ...EXTRA_TOOL_EDITORIAL,
 };
 
 export function getSeoToolEditorial(tool: SeoToolDefinition) {
