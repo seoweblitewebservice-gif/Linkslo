@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import type { SeoToolDefinition } from "@/lib/seo-tools/catalog";
+import { analyzeTextTool } from "@/components/seo-tools/local-text-tools";
 
 type Check = { status: "pass" | "warning" | "error" | "info"; label: string; detail: string; value?: unknown };
 type ApiResult = { checks?: Check[]; error?: string; [key: string]: unknown };
@@ -68,7 +69,16 @@ const fieldsBySlug: Record<string, Field[]> = {
     { key: "description", label: "Description", placeholder: "Check a page's canonical tag and identify common canonicalization problems.", multiline: true },
   ],
   "serp-title-pixel-checker": [{ key: "text", label: "Title text", placeholder: "Canonical URL Checker - Test Canonical Tags" }],
-  "meta-description-pixel-checker": [{ key: "text", label: "Description text", placeholder: "Check a page's canonical tag, preferred URL and common canonical conflicts." , multiline: true}],
+  "meta-description-pixel-checker": [{ key: "text", label: "Description text", placeholder: "Check a page's canonical tag, preferred URL and common canonical conflicts.", multiline: true }],
+  "content-outline-generator": [{ key: "topic", label: "Topic", placeholder: "How to check canonical tags" }],
+  "faq-section-generator": [{ key: "topic", label: "Topic", placeholder: "XML sitemaps" }],
+  "local-faq-generator": [{ key: "topic", label: "Local topic", placeholder: "emergency plumbing in Austin" }],
+  "howto-outline-generator": [{ key: "topic", label: "Task", placeholder: "migrate a WordPress site" }],
+  "comparison-page-outline-generator": [{ key: "topic", label: "Comparison", placeholder: "Ahrefs vs Semrush" }],
+  "service-area-page-outline-generator": [{ key: "topic", label: "City + service", placeholder: "Roof repair in Denver" }],
+  "local-citation-checklist": [{ key: "topic", label: "Business type", placeholder: "Dental clinic", defaultValue: "Local business" }],
+  "mobile-performance-checklist": [{ key: "topic", label: "Page type", placeholder: "Product page", defaultValue: "Landing page" }],
+  "performance-budget-generator": [{ key: "topic", label: "Site type", placeholder: "Content site", defaultValue: "Marketing site" }],
 };
 
 function splitLines(value: string) {
@@ -104,8 +114,8 @@ function generate(slug: string, values: Record<string, string>) {
       return lines.join("\n");
     }
     case "canonical-tag-generator": {
-      const url = values.url?.trim(); if (!validHttpUrl(url)) throw new Error("Enter an absolute http:// or https:// canonical URL.");
-      return `<link rel="canonical" href="${url.replace(/"/g, "&quot;")}" />`;
+      const url = values.url?.trim(); if (!validHttpUrl(url || "")) throw new Error("Enter an absolute http:// or https:// canonical URL.");
+      return `<link rel="canonical" href="${(url || "").replace(/"/g, """)}" />`;
     }
     case "hreflang-generator": {
       const rows = pairLines(values.pairs || ""); if (!rows.length) throw new Error("Add at least one language and URL pair.");
@@ -118,7 +128,7 @@ function generate(slug: string, values: Record<string, string>) {
     case "sitemap-generator": {
       const urls = splitLines(values.urls || ""); if (!urls.length) throw new Error("Add at least one URL.");
       urls.forEach((u) => { if (!validHttpUrl(u)) throw new Error(`Invalid URL: ${u}`); });
-      const escaped = (v: string) => v.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+      const escaped = (v: string) => v.replace(/&/g, "&").replace(/</g, "<").replace(/>/g, ">").replace(/"/g, """);
       return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map((u) => `  <url>\n    <loc>${escaped(u)}</loc>\n  </url>`).join("\n")}\n</urlset>`;
     }
     case "schema-markup-generator": {
@@ -164,24 +174,41 @@ function generate(slug: string, values: Record<string, string>) {
       const directives = (values.directives || "").split(",").map((v) => v.trim()).filter(Boolean); if (!directives.length) throw new Error("Enter at least one robots directive.");
       return `<meta name="robots" content="${directives.join(", ")}" />`;
     }
-    default: return "";
+    case "content-outline-generator": {
+      const topic = values.topic?.trim() || "Your topic";
+      return `# ${topic}\n\n## Introduction\n- Problem and why it matters\n- Who this guide is for\n\n## Core concepts\n- Definition\n- Key terms\n\n## Step-by-step process\n1. Step one\n2. Step two\n3. Step three\n\n## Common mistakes\n- Mistake and fix\n\n## FAQ\n- Question one\n- Question two\n\n## Next actions\n- Practical checklist`;
+    }
+    case "faq-section-generator":
+    case "local-faq-generator": {
+      const topic = values.topic?.trim() || "this service";
+      return [`What is ${topic}?`, `Who is ${topic} for?`, `How does ${topic} work?`, `How long does ${topic} take?`, `What does ${topic} cost?`].map((q, i) => `Q${i + 1}. ${q}\nA${i + 1}. Write a clear, specific answer in plain language.`).join("\n\n");
+    }
+    case "howto-outline-generator": {
+      const topic = values.topic?.trim() || "complete this task";
+      return `# How to ${topic}\n\n## Before you start\n- Requirements\n- Tools needed\n\n## Steps\n1. Prepare\n2. Execute\n3. Verify\n\n## Troubleshooting\n- Common issue and fix\n\n## Checklist\n- [ ] Done criteria`;
+    }
+    case "comparison-page-outline-generator":
+      return `# Option A vs Option B\n\n## Quick summary\n## Who each option is for\n## Feature comparison table\n## Pricing considerations\n## Pros and cons\n## Recommendation scenarios\n## FAQ`;
+    case "service-area-page-outline-generator":
+      return `# Service in [City]\n\n## Local introduction\n## Services offered\n## Why local customers choose us\n## Process\n## Service areas\n## Reviews / proof\n## FAQ\n## Contact CTA`;
+    case "local-citation-checklist":
+    case "mobile-performance-checklist":
+    case "performance-budget-generator": {
+      const items =
+        slug === "local-citation-checklist"
+          ? ["Google Business Profile", "Apple Business Connect", "Bing Places", "Primary industry directory", "Local chamber listing", "Consistent NAP on website footer", "Consistent NAP on contact page"]
+          : slug === "mobile-performance-checklist"
+            ? ["Responsive layout", "Tap targets large enough", "Compress hero images", "Defer non-critical scripts", "Avoid intrusive interstitials", "Test on a mid-tier phone"]
+            : ["HTML budget", "CSS budget", "JS budget", "Image budget", "Font budget", "Third-party script budget", "Total page weight target"];
+      return items.map((item, i) => `${i + 1}. [ ] ${item}`).join("\n");
+    }
+    default:
+      return values.topic?.trim() || values.text?.trim() || "Add the required fields and generate again.";
   }
 }
 
 function localValidate(slug: string, value: string): ApiResult {
-  if (slug === "json-ld-validator" || slug === "schema-validator") {
-    try {
-      const parsed = JSON.parse(value);
-      const checks: Check[] = [{ status: "pass", label: "Valid JSON", detail: "The supplied text parses as JSON." }];
-      const items = Array.isArray(parsed) ? parsed : [parsed];
-      const contexts = items.filter((x) => x && typeof x === "object" && "@context" in x).length;
-      const types = items.flatMap((x) => x && typeof x === "object" && "@type" in x ? [String((x as Record<string, unknown>)["@type"])] : []);
-      checks.push({ status: contexts ? "pass" : "warning", label: "@context", detail: contexts ? "A linked-data @context was detected." : "No @context field was detected." });
-      checks.push({ status: types.length ? "pass" : "warning", label: "@type", detail: types.length ? `Detected type${types.length === 1 ? "" : "s"}: ${types.join(", ")}` : "No @type field was detected." });
-      return { checks, parsed };
-    } catch (error) { return { checks: [{ status: "error", label: "Invalid JSON", detail: error instanceof Error ? error.message : "The JSON could not be parsed." }] }; }
-  }
-  return { checks: [] };
+  return analyzeTextTool(slug, value);
 }
 
 function pixelWidth(text: string, font = "20px Arial") {
@@ -221,7 +248,8 @@ export function ToolRunner({ tool }: { tool: SeoToolDefinition }) {
         if (!response.ok || data.error) throw new Error(data.error || "The analysis failed.");
         setResult(data);
       } else if (tool.mode === "text") {
-        if (!text.trim()) throw new Error("Paste the markup you want to validate."); setResult(localValidate(tool.slug, text));
+        if (!text.trim()) throw new Error("Paste the text you want to analyze.");
+        setResult(localValidate(tool.slug, text));
       } else if (tool.mode === "preview") {
         if (tool.slug === "seo-snippet-preview") { setOutput("preview"); }
         else {
@@ -247,22 +275,16 @@ export function ToolRunner({ tool }: { tool: SeoToolDefinition }) {
       <div className="mt-6 space-y-4">
         {tool.mode === "url" && <>
           <label className="block"><span className="mb-1.5 block text-sm font-semibold text-ink-800">{tool.inputLabel}</span><input value={url} onChange={(e) => setUrl(e.target.value)} placeholder={tool.placeholder} inputMode="url" className="h-12 w-full rounded-xl border border-line bg-white px-4 text-sm outline-none focus:border-brand-400 focus:ring-2 focus:ring-brand-100" /></label>
-          {tool.slug === "robots-txt-tester" && <label className="block max-w-sm"><span className="mb-1.5 block text-sm font-semibold text-ink-800">Crawler / user-agent</span><input value={userAgent} onChange={(e) => setUserAgent(e.target.value)} className="h-11 w-full rounded-xl border border-line px-4 text-sm outline-none focus:border-brand-400" /></label>}
+          {tool.slug.includes("robots-txt") && <label className="block"><span className="mb-1.5 block text-sm font-semibold text-ink-800">User-agent (optional)</span><input value={userAgent} onChange={(e) => setUserAgent(e.target.value)} className="h-11 w-full rounded-xl border border-line bg-white px-4 text-sm outline-none focus:border-brand-400 focus:ring-2 focus:ring-brand-100" /></label>}
         </>}
-        {tool.mode === "text" && <label className="block"><span className="mb-1.5 block text-sm font-semibold text-ink-800">{tool.inputLabel}</span><textarea value={text} onChange={(e) => setText(e.target.value)} placeholder={tool.placeholder} rows={12} className="w-full rounded-xl border border-line bg-white p-4 font-mono text-xs leading-6 outline-none focus:border-brand-400 focus:ring-2 focus:ring-brand-100" /></label>}
-        {(tool.mode === "generator" || tool.mode === "preview") && <div className="grid gap-4 sm:grid-cols-2">{fields.map((field) => <label key={field.key} className={field.multiline ? "block sm:col-span-2" : "block"}><span className="mb-1.5 block text-sm font-semibold text-ink-800">{field.label}</span>{field.multiline ? <textarea rows={5} value={values[field.key] ?? ""} onChange={(e) => setValues((v) => ({ ...v, [field.key]: e.target.value }))} placeholder={field.placeholder} className="w-full rounded-xl border border-line p-4 text-sm leading-6 outline-none focus:border-brand-400 focus:ring-2 focus:ring-brand-100" /> : <input value={values[field.key] ?? ""} onChange={(e) => setValues((v) => ({ ...v, [field.key]: e.target.value }))} placeholder={field.placeholder} className="h-12 w-full rounded-xl border border-line px-4 text-sm outline-none focus:border-brand-400 focus:ring-2 focus:ring-brand-100" />}</label>)}</div>}
-
-        <button onClick={run} disabled={loading} className="inline-flex min-h-11 items-center justify-center rounded-xl bg-ink-950 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-brand-700 disabled:cursor-wait disabled:opacity-60">{loading ? "Analyzing…" : tool.actionLabel}</button>
-        {error && <div role="alert" className="rounded-xl border border-red-200 bg-red-50 p-4 text-sm leading-6 text-red-900"><strong>Could not run the tool.</strong> {error}</div>}
+        {tool.mode === "text" && <label className="block"><span className="mb-1.5 block text-sm font-semibold text-ink-800">{tool.inputLabel}</span><textarea value={text} onChange={(e) => setText(e.target.value)} placeholder={tool.placeholder} rows={10} className="w-full rounded-xl border border-line bg-white px-4 py-3 text-sm outline-none focus:border-brand-400 focus:ring-2 focus:ring-brand-100" /></label>}
+        {(tool.mode === "generator" || tool.mode === "preview") && <div className="grid gap-4 sm:grid-cols-2">{fields.map((field) => <label key={field.key} className={field.multiline ? "sm:col-span-2 block" : "block"}><span className="mb-1.5 block text-sm font-semibold text-ink-800">{field.label}</span>{field.multiline ? <textarea value={values[field.key] ?? ""} onChange={(e) => setValues((prev) => ({ ...prev, [field.key]: e.target.value }))} placeholder={field.placeholder} rows={5} className="w-full rounded-xl border border-line bg-white px-4 py-3 text-sm outline-none focus:border-brand-400 focus:ring-2 focus:ring-brand-100" /> : <input value={values[field.key] ?? ""} onChange={(e) => setValues((prev) => ({ ...prev, [field.key]: e.target.value }))} placeholder={field.placeholder} className="h-11 w-full rounded-xl border border-line bg-white px-4 text-sm outline-none focus:border-brand-400 focus:ring-2 focus:ring-brand-100" />}</label>)}</div>}
+        <div className="flex flex-wrap gap-3"><button type="button" onClick={run} disabled={loading} className="inline-flex h-11 items-center justify-center rounded-full bg-brand-600 px-5 text-sm font-semibold text-white transition hover:bg-brand-700 disabled:opacity-60">{loading ? "Working…" : tool.actionLabel}</button></div>
+        {error && <p className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800">{error}</p>}
+        {checks.length > 0 && <div className="grid gap-3">{checks.map((check) => <div key={`${check.label}-${check.detail}`} className={`rounded-2xl border px-4 py-3 ${statusClasses(check.status)}`}><div className="flex items-center justify-between gap-3"><p className="font-semibold">{check.label}</p><span className="text-[0.7rem] font-bold uppercase tracking-wide">{label(check.status)}</span></div><p className="mt-1 text-sm leading-6 opacity-90">{check.detail}</p></div>)}</div>}
+        {output && output !== "preview" && <pre className="overflow-x-auto rounded-2xl border border-line bg-canvas p-4 text-[0.82rem] leading-6 text-ink-800">{output}</pre>}
+        {output === "preview" && <div className="rounded-2xl border border-line bg-canvas p-5"><p className="text-[0.75rem] text-ink-500">{values.url || "example.com"}</p><p className="mt-1 text-[1.15rem] font-medium text-[#1a0dab]">{values.title || "Page title"}</p><p className="mt-1 text-sm leading-6 text-ink-600">{values.description || "Meta description preview"}</p></div>}
       </div>
-
-      {tool.slug === "seo-snippet-preview" && output === "preview" && <div className="mt-7 rounded-2xl border border-line bg-white p-5"><p className="truncate text-[0.82rem] text-[#202124]">{values.url || "https://example.com/page"}</p><p className="mt-1 text-[1.25rem] leading-7 text-[#1a0dab]">{values.title || "Example search result title"}</p><p className="mt-1 max-w-2xl text-[0.9rem] leading-6 text-[#4d5156]">{values.description || "Add a meta description to preview the text here. Search engines may choose different snippet text for a real query."}</p><p className="mt-3 text-xs text-ink-400">Visual approximation only. Search engines can rewrite titles and descriptions.</p></div>}
-
-      {output && output !== "preview" && <div className="mt-7"><div className="mb-2 flex items-center justify-between gap-3"><h3 className="font-display text-base font-semibold text-ink-950">Generated output</h3><button type="button" onClick={() => navigator.clipboard?.writeText(output)} className="rounded-lg border border-line px-3 py-1.5 text-xs font-semibold text-ink-700 hover:border-brand-300 hover:text-brand-700">Copy output</button></div><pre className="max-h-[30rem] overflow-auto whitespace-pre-wrap break-words rounded-2xl bg-ink-950 p-5 text-xs leading-6 text-ink-100">{output}</pre></div>}
-
-      {checks.length > 0 && <div className="mt-7" aria-live="polite"><h3 className="font-display text-base font-semibold text-ink-950">Results</h3><div className="mt-3 grid gap-3">{checks.map((check, index) => <div key={`${check.label}-${index}`} className={`rounded-xl border p-4 ${statusClasses(check.status)}`}><div className="flex flex-wrap items-center justify-between gap-2"><p className="text-sm font-semibold">{check.label}</p><span className="rounded-full bg-white/70 px-2.5 py-1 text-[0.65rem] font-bold uppercase tracking-wide">{label(check.status)}</span></div><p className="mt-1.5 text-sm leading-6 opacity-85">{check.detail}</p></div>)}</div></div>}
-
-      {result && Object.keys(result).some((key) => !["checks", "error"].includes(key)) && <details className="mt-5 rounded-xl border border-line bg-canvas p-4"><summary className="cursor-pointer text-sm font-semibold text-ink-800">Technical details</summary><pre className="mt-3 max-h-[28rem] overflow-auto whitespace-pre-wrap break-words text-xs leading-6 text-ink-600">{JSON.stringify(Object.fromEntries(Object.entries(result).filter(([key]) => !["checks", "error"].includes(key))), null, 2)}</pre></details>}
     </section>
   );
 }
