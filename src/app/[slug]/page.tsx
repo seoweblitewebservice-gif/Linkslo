@@ -40,7 +40,6 @@ export default async function SeoToolPage({ params }: Props) {
   if (!tool) notFound();
   const editorial = getSeoToolEditorial(tool);
   const depth = getSeoToolDepth(tool);
-  if (!editorial || !depth) notFound();
   const related = tool.related.map((item) => getSeoTool(item)).filter(Boolean);
 
   const faqJsonLd = {
