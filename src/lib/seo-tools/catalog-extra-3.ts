@@ -1,6 +1,4 @@
-import type { SeoToolDefinition } from "@/lib/seo-tools/catalog";
-
-export const EXTRA_SEO_TOOLS_3: SeoToolDefinition[] = [
+export const EXTRA_SEO_TOOLS_3 = [
   {
     slug: "https-checker",
     name: "HTTPS Checker",
