@@ -5,6 +5,10 @@ import { SITEMAP_TOOL_EDITORIAL } from "@/lib/seo-tools/content-sitemaps";
 import { STRUCTURED_TOOL_EDITORIAL } from "@/lib/seo-tools/content-structured";
 import { ONPAGE_TOOL_EDITORIAL } from "@/lib/seo-tools/content-onpage";
 import { SOCIAL_TOOL_EDITORIAL } from "@/lib/seo-tools/content-social";
+import { KEYWORD_BATCH_TOOL_EDITORIAL } from "@/lib/seo-tools/content-batch-keyword";
+import { LOCAL_ECOM_BATCH_TOOL_EDITORIAL } from "@/lib/seo-tools/content-batch-localecom";
+import { PERFORMANCE_BATCH_TOOL_EDITORIAL } from "@/lib/seo-tools/content-batch-performance";
+import { SECURITY_MOBILE_BATCH_TOOL_EDITORIAL } from "@/lib/seo-tools/content-batch-secmobile";
 
 const ALL_TOOL_EDITORIAL: Record<string, ToolEditorial> = {
   ...TECHNICAL_TOOL_EDITORIAL,
@@ -12,6 +16,10 @@ const ALL_TOOL_EDITORIAL: Record<string, ToolEditorial> = {
   ...STRUCTURED_TOOL_EDITORIAL,
   ...ONPAGE_TOOL_EDITORIAL,
   ...SOCIAL_TOOL_EDITORIAL,
+  ...KEYWORD_BATCH_TOOL_EDITORIAL,
+  ...LOCAL_ECOM_BATCH_TOOL_EDITORIAL,
+  ...PERFORMANCE_BATCH_TOOL_EDITORIAL,
+  ...SECURITY_MOBILE_BATCH_TOOL_EDITORIAL,
 };
 
 function fallbackEditorial(tool: SeoToolDefinition): ToolEditorial {
