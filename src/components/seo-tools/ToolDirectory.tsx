@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 import { Icon } from "@/components/ui/Icon";
 import type { SeoToolDefinition, SeoToolCategory } from "@/lib/seo-tools/catalog";
+import { toolIconFor, categoryTintFor } from "@/lib/seo-tools/tool-icons";
 
 const CATEGORY_DESCRIPTIONS: Record<SeoToolCategory, string> = {
   "Technical SEO": "Robots, canonicals, hreflang, redirects, status codes and indexability signals.",
@@ -56,7 +57,7 @@ export function ToolDirectory({ tools, categories }: { tools: SeoToolDefinition[
           <div className="mb-4 flex flex-wrap items-end justify-between gap-2"><div><h2 className="font-display text-xl font-semibold text-ink-950">{group}</h2><p className="mt-1 text-sm text-ink-500">{CATEGORY_DESCRIPTIONS[group]}</p></div><span className="text-xs font-semibold text-ink-400">{items.length} tool{items.length === 1 ? "" : "s"}</span></div>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {items.map((tool) => <Link key={tool.slug} href={`/${tool.slug}/`} className="group flex h-full flex-col rounded-2xl border border-line bg-white p-5 transition hover:-translate-y-0.5 hover:border-brand-300 hover:shadow-soft">
-              <div className="flex items-start justify-between gap-3"><span className="flex h-9 w-9 items-center justify-center rounded-xl bg-brand-50 text-brand-700"><Icon name={tool.category === "XML Sitemaps" || tool.category === "Structured Data" ? "document" : tool.category === "Social & SERP" ? "search" : "sliders"} size={17} /></span><span className="rounded-full bg-canvas px-2.5 py-1 text-[0.63rem] font-semibold uppercase tracking-wide text-ink-400">Free</span></div>
+              <div className="flex items-start justify-between gap-3"><span className={`flex h-10 w-10 items-center justify-center rounded-xl ${categoryTintFor(tool.category)}`}><Icon name={toolIconFor(tool.slug)} size={18} /></span><span className="rounded-full bg-canvas px-2.5 py-1 text-[0.63rem] font-semibold uppercase tracking-wide text-ink-400">Free</span></div>
               <h3 className="mt-4 font-display text-[1rem] font-semibold text-ink-950 transition group-hover:text-brand-700">{tool.name}</h3>
               <p className="mt-2 flex-1 text-[0.82rem] leading-6 text-ink-500">{tool.summary}</p>
               <span className="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-brand-700">Open tool <Icon name="arrow-right" size={13} /></span>
