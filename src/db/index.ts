@@ -34,10 +34,6 @@ function getPool(): Pool {
     connectionTimeoutMillis: 10_000,
     // Reclaim idle connections so a quiet instance does not hold them.
     idleTimeoutMillis: 30_000,
-    // Abort any single query running longer than 20s. Read paths already fall
-    // back to bundled content on error, so a slow database degrades to a
-    // slightly delayed page instead of an endlessly stuck one.
-    options: "-c statement_timeout=20000",
   });
   // Cache in every environment. The lazy proxies below call getPool() on each
   // property access, so skipping the cache in production created a brand-new
