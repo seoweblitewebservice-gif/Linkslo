@@ -19,258 +19,160 @@ export const BLOG_POSTS_BATCH_04: ArticleRow[] = [
       { question: "Can small companies do digital PR?", answer: "Yes. Small businesses can use local data, niche expertise, customer trends, operational insights and fast expert commentary. You do not need a national survey for every campaign." },
       { question: "How long does digital PR take?", answer: "A reactive expert comment can earn coverage quickly, while a research campaign may take weeks to collect data, analyze it, build assets and pitch. The timeline depends on the story and newsroom cycle." },
     ]),
-    body: `Digital PR became popular in SEO because one strong story can earn links from publications that would never accept a conventional guest post. That upside also created a bad habit: teams started designing stories for shock value first and usefulness second.
+    body: `Digital PR has a reputation problem in the SEO world. For every campaign that earns genuine editorial coverage, there are ten "stunts" — gimmicky surveys, manufactured controversies, and clickbait dressed up as research — that earn a brief spike of low-quality links and a lasting reputation for noise.
 
-The internet is now full of campaigns built around flimsy “studies,” tiny samples, arbitrary rankings and novelty maps whose methodology collapses the moment anyone asks a serious question.
+The distinction matters more than most link builders admit. A stunt gets links from sites that cover stunts. A genuine story gets links from publications your customers actually read. The first is easy to spot in a backlink profile: clusters of links from entertainment blogs and content farms, all using the same anchor, all published within 48 hours, none of them driving a single qualified visitor.
 
-You do not need that.
+This guide is about the other kind of digital PR: earning editorial backlinks through stories, data, and expertise that real publications want to cover — no gimmicks required.
 
-A sustainable digital PR program starts with a simple principle: give a journalist something they can use. That might be credible data, a fast expert quote, a tool, a visual asset, a local trend, a benchmark or a practical explanation of a confusing issue.
+## The short answer
 
-Backlinks are a possible result of being useful to the media. They should not be the only reason the story exists.
+- **News value earns links; novelty does not.** Data, insight, and genuine expertise get covered. Gimmicks get a day of traffic and nothing else.
+- **Journalists need sources, not pitches.** Be the quotable expert or the interesting dataset, and coverage follows.
+- **Methodology is the moat.** Transparent, defensible research gets cited. Vague "studies" get ignored by serious outlets.
+- **Trade press beats viral press.** Ten links from publications your buyers read outweigh a hundred from entertainment blogs.
+- **Relationships compound.** One good journalist relationship produces coverage for years. Stunts produce one-offs.
 
-## Start with information advantage
+## What journalists actually want
 
-Ask what your business knows that outsiders do not.
+Before planning any campaign, understand the job of the person you are pitching. A journalist needs:
 
-Examples:
+1. **Something new.** News, by definition. A finding, a change, a trend, an event — not a repackaged truism.
+2. **Evidence.** Data, documents, examples, expert quotes. Claims without evidence are deleted.
+3. **A reason their readers care.** "Why does this matter to our audience?" is the first question every editor asks.
+4. **Speed and ease.** Journalists work on deadlines. The easier you make the story — clean data, ready quotes, good visuals — the more likely it runs.
+5. **Exclusivity (sometimes).** Offering one outlet first dibs can secure serious coverage that a mass blast never would.
 
-- A software company sees product usage patterns.
-- A retailer sees seasonal buying behavior.
-- A logistics company sees delivery trends.
-- A property business sees inquiry and price movement.
-- A recruitment platform sees job demand.
-- A clinic sees appointment patterns that can be safely aggregated.
-- A finance tool sees invoice or payment behavior.
+Notice what is not on the list: cleverness. Journalists do not need your campaign to be cute. They need it to be true, timely, and useful to their readers.
 
-This information advantage can become a story if it is aggregated responsibly, analyzed carefully and connected to something people care about.
+## Story types that earn editorial links without stunts
 
-## The four digital PR story types that do not require gimmicks
+These formats work consistently across industries:
 
-### 1. Original data
+### Original research and surveys
 
-Use first-party or commissioned data to answer a question the market cannot easily answer elsewhere.
+The workhorse of digital PR. Survey your customers, analyze your internal data, or commission a poll — then publish findings with full methodology.
 
-The dataset does not need to be enormous. It needs to be suitable for the claim.
+What makes research citable:
 
-A survey of 500 small businesses can support some conclusions about those respondents. It cannot automatically prove a national trend without careful framing.
+- **A surprising or useful finding.** Lead with the number that makes someone stop scrolling.
+- **Transparent methodology.** Sample size, dates, collection method, limitations. Serious outlets check this.
+- **Clean presentation.** Charts, tables, and a press-ready summary. Make the journalist's job easy.
+- **A news hook.** Tie findings to something already in the news cycle — a policy change, a season, a trend.
 
-### 2. Expert commentary
+What kills research campaigns: tiny samples presented as definitive, leading questions, findings that conveniently promote the product, and methodology sections that would embarrass a freshman.
 
-Journalists often need someone who can explain a breaking development quickly.
+### Data analysis from your own operations
 
-A cybersecurity company can comment on a major breach. An employment lawyer can explain a legal change. A logistics expert can discuss port disruption. A local property agent can explain housing movement.
+Most companies sit on interesting data and never publish it. Booking patterns, pricing trends, usage statistics, support ticket themes, hiring data — aggregated and anonymized, this is original reporting that only you can produce.
 
-Speed and clarity matter more than a glossy campaign page.
+Examples that consistently earn coverage:
 
-### 3. Useful tools and resources
+- A job platform publishing salary trends by role and region.
+- A travel company analyzing booking lead times and price patterns.
+- A SaaS company reporting on adoption or usage benchmarks.
+- A retailer tracking category shifts over time.
 
-Calculators, trackers, templates, interactive maps and reference databases can become sources.
+The key: the data must be real, the sample must be meaningful, and the findings must be presented neutrally. The moment the "research" exists to prove your product is great, journalists smell it.
 
-A useful tool can continue attracting citations long after the launch campaign ends.
+### Expert commentary and reactive PR
 
-### 4. Public-data analysis
+You do not always need to create the news. Sometimes you need to explain it.
 
-Public datasets can support strong stories if the analysis adds something new.
+When a story breaks in your industry — a regulation, a major incident, a trend shift — the journalists covering it need expert voices. The companies that respond fast with clear, quotable analysis get cited. This is reactive PR, and it is one of the highest-ROI link activities available:
 
-Examples include government statistics, transport data, court data, company filings, public health datasets, labor statistics and regulatory records.
+- **Monitor the news** in your industry daily.
+- **Prepare your experts** — know who can speak on what, with headshots and bios ready.
+- **Respond within hours**, not days. The first good quote often wins.
+- **Be genuinely useful**, not promotional. Explain what happened and what it means. The link follows the value.
 
-Cite sources clearly and do not imply the raw data belongs to you.
+Register for journalist query services (HARO-style platforms) where reporters request expert sources. A thoughtful two-paragraph response takes fifteen minutes and regularly earns links from major publications.
 
-## Methodology is part of the pitch
+### Free tools and calculators
 
-Journalists are more likely to trust data they can understand.
+A genuinely useful free tool is a digital PR asset that keeps earning links for years. Cost calculators, assessment quizzes, comparison tools, planners — anything that solves a real problem for the publication's audience.
 
-Include:
+Tools work for PR because they are evergreen news: a journalist writing about your topic next year still needs something to link to, and your tool is still there.
 
-- Data source.
-- Date range.
-- Sample size.
-- Inclusion and exclusion criteria.
-- How calculations were made.
-- Limitations.
-- Contact details for questions.
+### Ranking and index content
 
-A methodology page is not boring admin. It is part of the credibility of the story.
+"Best cities for X," "most affordable Y," "state-by-state comparison of Z" — rankings and indexes earn coverage because they create local angles. Every city in the ranking is a local news story. Every industry publication covering the topic needs a source.
 
-## Build the asset before writing the press email
+Do them honestly: transparent criteria, real data, defensible methodology. Rankings that transparently favor the publisher's clients are transparent to journalists too.
 
-A common mistake is starting with a headline and then searching for data that supports it.
+## The outreach: pitching like a PR person, not a link builder
 
-Reverse the process.
+Digital PR outreach fails when it reads like link outreach. Journalists can tell the difference instantly.
 
-1. Identify a useful question.
-2. Gather appropriate data.
-3. Analyze honestly.
-4. Find the strongest defensible insight.
-5. Build the asset.
-6. Write the pitch around the insight.
+**Do:**
 
-If the data does not support an exciting conclusion, do not force one.
+- **Pitch the story, not the link.** Never mention links in a journalist pitch. You are offering a story; the link is the natural outcome of coverage.
+- **Personalize genuinely.** Reference their beat, their recent coverage, why this fits their readers specifically.
+- **Keep it short.** The pitch is a trailer, not the movie. Three to five sentences plus the asset.
+- **Make everything ready.** Data tables, high-res charts, expert availability, embargo terms. Friction kills coverage.
+- **Offer exclusives strategically.** One strong exclusive in a top outlet beats fifty identical pickups.
 
-## Journalists need a story, not your entire report
+**Do not:**
 
-Your landing page can contain the full methodology and charts. The email should surface the clearest angle.
+- **Mass-blast.** Fifty personalized pitches beat five thousand mail-merged ones.
+- **Follow up more than once.** One polite follow-up. Journalists remember pestering.
+- **Fake the news hook.** "In light of recent events" with no real connection is transparent.
+- **Send attachments unannounced.** Link to a press page or shared folder instead.
+- **Pitch under embargo and then blast widely.** Honor embargoes absolutely. Burning one journalist burns the relationship permanently.
 
-A strong pitch usually answers:
+## Stunts vs. stories: knowing the difference
 
-- What happened?
-- Why does it matter now?
-- What is the strongest number or finding?
-- Why is your source credible?
-- Where can the journalist verify the details?
+Sometimes the line feels blurry. Use this test:
 
-Keep the pitch concise.
+| | Stunt | Story |
+|---|---|---|
+| Core value | Novelty, shock, humor | Information, insight, utility |
+| Target coverage | Entertainment blogs, listicles | Trade press, news, industry publications |
+| Link quality | Low relevance, short-lived | High relevance, enduring |
+| Brand effect | "That was weird" | "These people know their stuff" |
+| Repeatability | Diminishing returns | Compounds with each campaign |
+| Risk | Reputational embarrassment | Low, if methodology is sound |
 
-## Segment media lists by angle
+If your campaign idea only works as a one-off joke, it is a stunt. If it produces an asset you would be proud to reference in a year, it is a story.
 
-One dataset can support several stories.
+This does not mean campaigns must be boring. Some of the best digital PR is genuinely fun — the difference is that the fun serves the information, not the other way around.
 
-Imagine a remote-work platform analyzes meeting patterns.
+## Building the internal capability
 
-Business media may care about productivity.
+One-off campaigns underperform. The companies that win at digital PR build it as a capability:
 
-HR publications may care about burnout.
+1. **A data pipeline.** Know what data you have, how to aggregate it safely, and how to refresh it. The second campaign is always easier than the first.
+2. **A press page.** Expert bios, headshots, company background, media contact, past coverage. Make quoting you effortless.
+3. **Journalist relationships.** Track who covers your beat, what they care about, and what you have sent them. Relationships, not lists.
+4. **A news calendar.** Industry events, regulatory dates, seasonal hooks, awareness days — plan campaigns around the calendar, not around quarters.
+5. **Measurement beyond links.** Coverage quality, referral traffic, brand search lift, share of voice. Links are one output of PR, not the only one.
 
-Technology media may care about software adoption.
+Start small: one solid research piece and a reactive commentary process. Prove the model, then scale it.
 
-Local media may care about regional differences.
+## Mistakes that kill digital PR campaigns
 
-Do not send the same subject line to all of them. Shape the angle around each audience.
+1. **Leading with the brand.** "Company X announces" is not a story. The finding is the story; the company is the source.
+2. **Weak methodology.** Small samples, biased questions, and vague methods get rejected by every serious outlet.
+3. **Pitching everyone.** Relevance beats volume. Thirty right journalists beat three thousand wrong ones.
+4. **Ignoring trade press.** Everyone chases national media; trade publications drive the links that actually matter for most B2B companies.
+5. **No news hook.** Great data with no reason to publish now sits unpublished. Tie it to the calendar.
+6. **Forgetting the follow-through.** Thank journalists who cover you. Share their pieces. The relationship is the asset.
 
-## Digital PR and backlinks
+## Where Linkslo fits in
 
-When coverage goes live, publications may:
+Digital PR needs real stories and real outreach — it cannot be faked at scale. Our [digital PR service](/backlinks/digital-pr-backlinks) builds campaigns around genuine data and expertise: research design, press-ready assets, and targeted journalist outreach. If you prefer to browse publisher placements directly, the [Linkslo marketplace](/marketplace) lists named publications with transparent terms.
 
-- Link to your research.
-- Mention the brand without linking.
-- Cite the data through another publication.
-- Use nofollow links.
-- Remove or change links later.
+## Final thoughts
 
-That is normal.
+Digital PR without stunts is slower, harder, and less flashy — and it produces the links that actually matter: editorial, relevant, enduring, from publications your customers read. Build real stories on real evidence, pitch them like a PR professional, and treat every journalist relationship as a long-term asset. The coverage compounds.
 
-Our [digital PR backlinks service](/backlinks/digital-pr-backlinks) is built around earning relevant coverage opportunities, not promising control over third-party editorial decisions.
+## Related resources
 
-## Unlinked mentions are not wasted coverage
-
-If a strong publication mentions your company without linking, the coverage still creates:
-
-- Brand exposure.
-- Search demand.
-- Trust.
-- Potential secondary citations.
-- A reason for future outreach.
-
-You can politely ask whether a source link can be added when it genuinely helps readers verify the data. Do not treat every unlinked mention as a complaint.
-
-## Reactive PR can outperform big campaigns
-
-Not every win needs a six-week research project.
-
-Create a system for fast commentary:
-
-- Identify three experts inside the business.
-- Define the topics each can speak about.
-- Prepare short bios and credentials.
-- Monitor relevant news.
-- Respond quickly with clear, quotable comments.
-
-Journalists value speed. A useful quote delivered in twenty minutes may earn more relevant coverage than an expensive campaign arriving after the story has moved on.
-
-## A practical data-story example
-
-Suppose a payroll platform has anonymized data on salary payment timing across thousands of businesses.
-
-Instead of publishing “The Best Cities for Workers,” it could ask a more useful question: which industries show the most variation in payroll timing around public holidays?
-
-The campaign could include:
-
-- Aggregate industry data.
-- Clear methodology.
-- Commentary from payroll experts.
-- Practical implications for finance teams.
-- Regional breakdowns where sample size supports them.
-
-That story has a real audience: HR, finance and small-business media.
-
-## What makes digital PR fail
-
-### Weak methodology
-
-If the calculation cannot survive basic scrutiny, the campaign can damage trust.
-
-### No real news angle
-
-A 4% change in an obscure metric may not matter to readers.
-
-### Brand-first framing
-
-“Company launches report” is rarely the story. The finding is the story.
-
-### Irrelevant media lists
-
-Sending a property report to hundreds of technology writers wastes everyone's time.
-
-### Fake authority
-
-Do not invent experts, survey participants or credentials.
-
-### Overclaiming
-
-If your data shows correlation, do not write headlines claiming causation.
-
-## How digital PR fits with other link tactics
-
-Digital PR is not a replacement for every form of link building.
-
-Use it alongside:
-
-- [Guest post backlinks](/backlinks/guest-post-backlinks) for controlled expert contributions.
-- [Contextual backlinks](/backlinks/contextual-backlinks) for page-specific relevance.
-- [Resource link building](/backlinks/resource-link-building) for useful evergreen assets.
-- [Competitor link building](/backlinks/competitor-link-building) to understand publications already citing similar brands.
-
-PR can create authority at the brand and asset level while other tactics support specific commercial pages.
-
-## Measuring digital PR beyond link count
-
-Track:
-
-- Unique referring domains.
-- Publication relevance.
-- Brand mentions.
-- Referral traffic.
-- Branded search changes.
-- Secondary citations.
-- Links to the campaign asset over time.
-- Assisted conversions.
-- Journalist relationships built.
-
-A campaign that earns ten highly relevant links and ongoing journalist contacts can be more useful than one that earns fifty links from syndicated copies.
-
-## Build a repeatable PR engine
-
-After each campaign, record:
-
-- Which angles earned replies.
-- Which journalists covered the story.
-- Which publications linked.
-- Which questions journalists asked.
-- Which data points were quoted.
-- Which assets continued earning links later.
-
-That turns PR into learning rather than a series of disconnected stunts.
-
-## The standard to use
-
-Before launching a campaign, ask one question:
-
-Would this information still be useful if the journalist never linked to us?
-
-If the answer is yes, you probably have a real story.
-
-If the answer is no, and the campaign exists only to manufacture a citation, improve the idea before sending it.`,
+- [What makes a high-quality backlink](/resources/what-makes-a-high-quality-backlink) — evaluating editorial links.
+- [Data-driven content backlinks](/resources/data-driven-content-backlinks) — building research assets.
+- [Expert roundups: backlinks without spam](/resources/expert-roundups-backlinks-without-spam) — another expertise-led tactic.
+- [Measure link building ROI](/resources/measure-link-building-roi) — measuring PR outcomes.
+`,
   },
   {
     slug: "broken-link-building-step-by-step",
@@ -288,207 +190,176 @@ If the answer is no, and the campaign exists only to manufacture a citation, imp
       { question: "Should I mention the broken link in the subject line?", answer: "You can, but the outreach should not sound automated. Show which page contains the issue and offer a relevant replacement without demanding a link." },
       { question: "What is the biggest broken-link-building mistake?", answer: "Pitching a weak commercial page as a replacement for a useful educational resource. The replacement has to make sense for the publisher's reader." },
     ]),
-    body: `Broken link building sounds almost too convenient: find a page that links to something dead, tell the owner, and suggest your page as the replacement.
+    body: `Broken link building is one of the oldest tactics in SEO, and it still works — but not the way most guides describe it. The classic pitch ("I found a broken link on your site, here's my content as a replacement") has been templated to death. Webmasters recognize it instantly, and the success rates quoted in old blog posts belong to 2014.
 
-The logic is solid. The execution is where most campaigns fall apart.
+The modern version is different. It is less about the broken link and more about the replacement: you are doing resource-page maintenance as a service, and your content has to genuinely deserve the spot. Done right, it earns some of the cleanest editorial links available — relevant, contextual, and permanent.
 
-People often find thousands of broken outbound links, scrape every contact address and send a template saying “I noticed a broken link on your page.” The replacement is then a commercial page that has little in common with the missing resource.
+This is the full process, step by step, with the parts most guides skip.
 
-That is not a service to the publisher. It is prospecting disguised as technical help.
+## The short answer
 
-The campaigns that work start with replacement quality.
+- **Broken link building = find dead outbound links on relevant pages, offer your working content as a replacement.**
+- **The replacement content is the whole game.** If your page is not clearly better than what died, do not bother pitching.
+- **Resource pages and link roundups are the best targets** — they exist to link out, and their owners want them maintained.
+- **Scale comes from process, not templates.** Systematic prospecting, genuine personalization, and good content win. Blast-and-pray does not.
+- **Expect 5-15% positive response rates** with good targeting — lower than the old myths, still worth it for the link quality.
 
-## Step 1: choose a topic where you can build the best replacement
+## How broken link building actually works
 
-Do not begin by crawling the entire web.
+The mechanics are simple:
 
-Pick a topic close to your expertise and target pages.
+1. Find pages in your niche that link out to external resources.
+2. Identify which of those outbound links are dead (404s, dead domains, removed pages).
+3. Create or identify content on your site that serves the same purpose as the dead page — genuinely.
+4. Contact the site owner, point out the dead link, and suggest your content as a replacement.
+5. They fix the link, replacing the dead URL with yours.
 
-For a cybersecurity company, that may be phishing prevention resources. For a travel brand, it might be destination planning tools. For a finance company, it could be budgeting templates.
+Why it works: you are solving a real problem. Dead links hurt the linking site — they degrade user experience and look neglected. A webmaster who maintains a resource page wants to know about dead links. You are doing them a favor, and your content gets considered on merit.
 
-Narrowing the topic makes it easier to build a resource worth linking to.
+Why the classic template fails now: webmasters get dozens of these emails. The ones that work are specific, helpful, and honest. The ones that fail are obviously templated, suggest irrelevant replacements, or — worst of all — point out "broken links" that are not actually broken.
 
-## Step 2: find dead resources with existing links
+## Step 1: Build your replacement content first
 
-Useful prospecting methods include:
+This is the step everyone skips, and it is why most campaigns fail. Before you prospect a single target, you need content worth linking to.
 
-- Competitor backlink reports.
-- Resource pages in your niche.
-- Old industry guides.
-- Discontinued tools.
-- Merged or rebranded companies.
-- Expired government or nonprofit resources.
+**The replacement test:** if the dead page magically came back to life, would a neutral reader still prefer your page? If not, your content is not ready.
 
-Look for URLs that once served a clear purpose and still have multiple relevant referring pages.
+What makes a good replacement:
 
-## Step 3: understand what the original resource did
+- **Same topic, same intent.** The dead page was linked for a reason. Your replacement must serve that reason — not a vaguely related sales page.
+- **Comprehensive and current.** The webmaster is doing maintenance. Offer them an upgrade, not a lateral move.
+- **Well-structured.** Clear headings, scannable, genuinely useful. Resource-page curators judge quickly.
+- **Non-promotional.** If your "replacement" is a product page with a thin content wrapper, curators will see through it.
 
-Use archives, old references and link context to understand why people linked to it.
+You do not always need to create new content. Often you already have a guide, tool, or resource that fits. Audit your existing content for replacement-worthy pages before creating anything new.
 
-Was it:
+**Pro move:** use the Wayback Machine to see what the dead page contained. Your replacement should cover the same ground — and then exceed it. Knowing exactly what died tells you exactly what to build.
 
-- A calculator?
-- A definition?
-- A checklist?
-- A data report?
-- A directory?
-- A downloadable template?
-- A how-to guide?
+## Step 2: Find pages with dead outbound links
 
-Your replacement needs to satisfy the same intent.
+There are three main prospecting approaches:
 
-## Step 4: create something better, not merely alive
+### Approach A: Resource pages in your niche
 
-If the original page was a detailed 2,000-word guide, replacing it with a 500-word commercial article will not persuade anyone.
+Search for resource and link pages:
 
-Improve the resource:
+- [topic] resources
+- [topic] useful links
+- [topic] recommended reading
+- inurl:resources [topic]
+- inurl:links [topic]
 
-- Update outdated data.
-- Add visuals.
-- Improve usability.
-- Explain methodology.
-- Make downloads easier.
-- Cover missing questions.
-- Remove unnecessary promotion.
+These pages exist to link out. Their owners are the most receptive audience for broken-link outreach, because maintaining the page is already their job.
 
-A publisher should be able to replace the dead link confidently.
+### Approach B: Competitor backlink forensics
 
-## Step 5: qualify referring pages
+Find dead pages in your niche that used to attract links:
 
-Not every backlink to the dead resource is worth pursuing.
+1. Identify resource-type content in your niche (guides, tools, statistics pages).
+2. Check which ones are now dead (domain expired, page removed).
+3. Find who still links to the dead URL using a backlink checker.
+4. Those linking pages are your prospects — they have a dead link and need a replacement.
 
-Check:
+This is the highest-converting approach because every prospect demonstrably has the exact problem you solve.
 
-- Is the page still indexed?
-- Is the content relevant?
-- Does it have real traffic or audience value?
-- Is the broken link visible in useful content?
-- Is the site maintained?
-- Would your replacement genuinely improve the page?
+### Approach C: Broken links on high-value pages
 
-This reduces outreach volume but improves fit.
+Find authoritative pages in your niche — guides, Wikipedia references, educational resources — and check their outbound links for dead ones. Tools that help:
 
-## Step 6: send useful outreach
+- **Check My Links** (Chrome extension) for quick page scans.
+- **[Broken link checker](/tools/broken-link-checker)** for scanning your own or prospect pages.
+- **Screaming Frog or Sitebulb** for crawling prospect domains at scale.
+- **Ahrefs/SEMrush** broken-link reports for finding dead pages with live backlinks.
 
-A good message identifies the exact page and broken reference, then offers your replacement as an option.
+Qualify ruthlessly. A dead link on a page nobody maintains is worthless — the webmaster will not respond. Look for signs of life: recent content, active social profiles, updated copyright dates.
 
-Do not pretend the publisher owes you a link because you found an error.
+## Step 3: Verify before you pitch
 
-Keep the tone practical: “This resource appears to be returning a 404. We recently published an updated guide covering the same topic. If useful, feel free to use it as a replacement.”
+Nothing kills credibility faster than reporting a "broken link" that works fine. False positives happen — pages that block crawlers, temporary outages, geo-restricted content, links that redirect.
 
-That is enough.
+Before adding any prospect to your outreach list:
 
-## Step 7: follow up once or twice
+1. **Click the link yourself.** In a browser, not just a crawler report.
+2. **Check it twice**, on different days if the campaign matters. Temporary outages resolve.
+3. **Confirm the context.** Read the surrounding content. Is your replacement genuinely relevant to that section of the page?
+4. **Check the site is maintained.** If nothing has been published in two years, move on.
 
-Editors miss messages. One concise follow-up is reasonable. A second can work for high-value prospects.
+This verification step is what separates campaigns that get 10% response rates from those that get marked as spam.
 
-Do not turn a helpful note into a seven-email sales sequence.
+## Step 4: Write outreach that gets answered
 
-## Step 8: track replacement rate, not only reply rate
+The webmaster's inbox is full of broken-link templates. Yours needs to be unmistakably human.
 
-Replies can be polite without producing links.
+**Structure that works:**
 
-Track:
+1. **Specific subject.** "Dead link on your [topic] resources page" — clear, honest, not clickbait.
+2. **Prove you looked.** Reference the page by name, the section, and the dead link specifically. "In your section on [X], the link to [dead site] returns a 404."
+3. **Be brief about the problem.** One or two sentences. They know what a dead link is.
+4. **Offer the replacement gently.** "We recently published [title], which covers [same ground]. Might be a useful replacement if you're updating the page." — suggest, do not demand.
+5. **No pressure, no follow-up barrage.** Thank them and sign off. One follow-up maximum.
 
-- Emails sent.
-- Replies.
-- Positive replies.
-- Links replaced.
-- Average authority/relevance of successful pages.
-- Referral traffic.
-- Time spent per successful link.
+**What not to do:**
 
-This tells you whether the tactic is efficient.
+- Do not use the "I was researching X for my own project and stumbled upon your page" fiction. Everyone knows it is a template.
+- Do not suggest replacements that are not genuinely equivalent. Recommending your CRM software as a replacement for a dead statistics page insults the recipient's intelligence.
+- Do not pitch multiple replacements in one email. One dead link, one suggestion.
+- Do not automate personalization tokens and call it personalization.
 
-## Where broken link building works best
+### Example (adapt, do not copy verbatim)
 
-The tactic is especially effective for evergreen resources:
+> Subject: Dead link on your content marketing resources page
+>
+> Hi [Name],
+>
+> I was going through your [Page Title] — the section on [topic] is one of the better roundups I have seen.
+>
+> Quick heads-up: the link to [Dead Site] in that section now returns a 404. Looks like the site went offline last year.
+>
+> We published [Your Title] recently, which covers [the same ground in more depth / with updated data]. Sharing in case it is useful as a replacement while you are maintaining the page.
+>
+> Either way, thanks for keeping the resource updated — it is genuinely helpful.
+>
+> [Your name]
 
-- Education.
-- Government references.
-- Nonprofit guides.
-- Technical documentation.
-- Research.
-- Industry glossaries.
-- Resource lists.
+Short, specific, honest, no pressure. That is the whole formula.
 
-Commercial pages are less likely replacements unless the original link was commercial too.
+## Step 5: Handle responses and track everything
 
-## Broken link building and resource pages
+Responses fall into patterns:
 
-Resource pages often contain old outbound links because they were built years ago and rarely maintained.
+- **"Thanks, fixed!"** — the win. Thank them back, and note the relationship for future outreach.
+- **"Thanks, but we'll find our own replacement."** — fine. You helped; they may remember you.
+- **"Who are you / why are you emailing me?"** — you were not specific enough. Review and improve.
+- **Silence** — normal. Most webmasters are busy. One follow-up, then move on.
 
-That makes them good prospects when your replacement is genuinely useful.
+Track per campaign: prospects contacted, dead links verified, responses, links earned, and link quality. Over time you will learn which prospect types convert best in your niche — resource pages on .edu domains, for example, often outperform generic blogs.
 
-Our [broken link building service](/backlinks/broken-link-building) and [resource link building service](/backlinks/resource-link-building) can be combined around the same asset.
+## Scaling without spamming
 
-## Example campaign
+Broken link building scales through better process, not louder outreach:
 
-Suppose a SaaS company publishes a free customer-onboarding checklist.
+1. **Build prospecting into a system.** Weekly scans of resource pages in your niche, a maintained list of dead-link opportunities, content mapped to each.
+2. **Create replacement content strategically.** When you spot a dead resource that many sites link to, building the definitive replacement is a campaign in itself.
+3. **Segment by value.** Spend your personalization effort on the best prospects — authoritative, maintained, relevant pages. Use lighter touches for the long tail.
+4. **Repurpose the content.** A great replacement guide also serves your audience, ranks on its own, and supports other campaigns. It is never single-use.
 
-It finds an old onboarding PDF from a discontinued consulting company with 120 referring domains.
+What does not scale: pretending to personalize at volume. Webmasters forward the worst examples to each other. Your domain's reputation is worth more than any single campaign.
 
-After filtering, 35 pages remain relevant and maintained.
+## Where Linkslo fits in
 
-The SaaS company creates a stronger replacement with:
+Broken link building needs genuinely good replacement content and careful prospecting — both of which take time. Our [broken link building service](/backlinks/broken-link-building) runs the full process: prospecting, verification, content matching, and human outreach. To check your own pages for dead outbound links first, run our [broken link checker](/tools/broken-link-checker).
 
-- Interactive checklist.
-- Downloadable PDF.
-- Examples by company size.
-- Updated screenshots.
-- Clear methodology.
+## Final thoughts
 
-It then contacts those 35 sites individually.
+Broken link building endures because it is built on a real exchange of value: you help webmasters maintain their pages, and your content earns consideration on merit. The template era is over — what works now is specificity, honesty, and replacement content that is genuinely better than what died. Build the content first, verify everything, write like a human, and the links follow.
 
-Even a 10–20% replacement rate would create several highly relevant links to a useful asset.
+## Related resources
 
-## Why mass broken-link outreach fails
-
-### The replacement is weak
-
-The sender focuses on the technical error rather than reader value.
-
-### The page is abandoned
-
-A five-year-old resource page may never be updated.
-
-### The dead link is irrelevant
-
-Some tools surface broken images, tracking links or old navigation rather than meaningful references.
-
-### Outreach is obviously automated
-
-Incorrect page names and vague language destroy trust.
-
-### The asset is too commercial
-
-Publishers are reluctant to replace an educational resource with a sales page.
-
-## Use internal links after earning the backlink
-
-The replacement asset does not have to be the final commercial destination.
-
-Earn links to the useful resource, then internally link to relevant product, service or category pages.
-
-This creates a natural path from information to commercial intent.
-
-## Should you redirect an old asset instead?
-
-If you already own a page with backlinks that becomes outdated, preserve its value carefully.
-
-Update it when possible. If it must be removed, redirect to the closest meaningful replacement rather than the homepage.
-
-Broken link building teaches an important lesson: dead resources lose value for both users and websites.
-
-## The quality test
-
-Before sending outreach, open the publisher's page and imagine you own it.
-
-Would you replace the dead link with your resource?
-
-If the answer is no, improve the asset or skip the prospect.
-
-That one question eliminates most bad broken-link campaigns.`,
+- [Resource page link building guide](/resources/resource-page-link-building-guide) — the broader resource-page strategy.
+- [What makes a high-quality backlink](/resources/what-makes-a-high-quality-backlink) — judging link quality.
+- [How to check backlinks of any website](/resources/how-to-check-backlinks-of-any-website) — the prospecting toolkit.
+- [Linkable assets guide](/resources/linkable-assets-guide) — building replacement-worthy content.
+`,
   },
   {
     slug: "resource-page-link-building-guide",
@@ -506,188 +377,156 @@ That one question eliminates most bad broken-link campaigns.`,
       { question: "Should I pay to be listed on a resource page?", answer: "Some directories and sponsorship resources charge fees. Evaluate the audience, relevance and disclosure. A paid inclusion should not be disguised as editorial endorsement." },
       { question: "Why do resource page pitches fail?", answer: "Usually because the asset is not actually useful, the page is outdated, or the sender does not explain how the resource improves the existing list." },
     ]),
-    body: `Resource page link building is one of the oldest outreach tactics, and it still works for the same reason it worked years ago: people curate useful things.
+    body: `Resource pages are the most underappreciated link opportunity in SEO. Thousands of them exist — on university sites, industry blogs, government portals, and niche publications — each one a curated list of links maintained by someone who wants it to be comprehensive. They link out by design. They are maintained by humans who appreciate good suggestions. And most link builders ignore them in favor of guest posts.
 
-Universities maintain student resources. Associations maintain member tools. Bloggers collect recommended guides. Government pages list public information. Companies maintain partner and customer resources.
+That neglect is your advantage. A single resource-page link from a relevant, authoritative page can outperform a dozen guest posts — and resource pages keep sending referral traffic for years because they rank for the exact queries your audience searches.
 
-The opportunity is simple: create something useful enough to deserve inclusion.
+This guide covers the full strategy: finding resource pages, evaluating them, creating link-worthy resources, and outreach that curators actually welcome.
 
-## What counts as a resource page?
+## The short answer
 
-A resource page is any page whose primary purpose is to organize helpful external or internal references for a particular audience.
+- **Resource pages are curated link lists** on relevant sites — "resources for X," "useful links," "recommended reading."
+- **They link out by design.** Unlike most pages, getting your link added is the page's purpose, not an imposition.
+- **The resource is everything.** Curators add pages their audience will thank them for. Be that page.
+- **.edu, .gov, and industry association resource pages** are the highest-value targets — and the hardest to earn.
+- **One good resource earns dozens of placements.** Build once, pitch many.
 
-Examples include:
+## Why resource pages work so well
 
-- “Useful resources for small businesses.”
-- “Recommended accessibility tools.”
-- “Student career resources.”
-- “Local homeowner guides.”
-- “Cybersecurity references.”
-- “Teacher lesson resources.”
+Think about the economics of a resource page from the curator's perspective. They created the page to be helpful. They want it comprehensive and current. But finding good resources takes time they do not have — they are teachers, librarians, bloggers, or association staff with full-time jobs.
 
-Not every list is valuable. Focus on pages that are maintained and genuinely curated.
+When you arrive with a genuinely useful resource, well-matched to their page, you are not asking for a favor. You are doing part of their job. That dynamic is completely different from guest post outreach, where you are asking for space on their site.
 
-## Build the resource before prospecting
+The links are also unusually good:
 
-The strongest assets usually fit one of these formats:
+- **Contextually relevant** — the page is literally about your topic.
+- **Surrounded by quality** — resource pages link to the best content in a niche, and your link sits in that company.
+- **Durable** — resource pages change slowly. Links persist for years.
+- **Traffic-driving** — people visit resource pages specifically to find links to click.
 
-- Calculator.
-- Template.
-- Checklist.
-- Glossary.
-- Research report.
-- Comprehensive guide.
-- Directory.
-- Interactive tool.
-- Dataset.
-- Downloadable worksheet.
+## Finding resource pages worth targeting
 
-A standard commercial blog post may be too ordinary unless it is exceptionally useful.
+Start with search operators, then expand systematically:
 
-## Prospecting methods
+- [topic] resources / [topic] useful resources
+- [topic] recommended reading / [topic] recommended sites
+- [topic] helpful links / [topic] resource guide
+- inurl:resources [topic] / intitle:resources [topic]
 
-Search engines can find pages using combinations of niche terms and footprints such as:
+Then go deeper:
 
-- resources
-- useful links
-- recommended tools
-- references
-- learning materials
-- guides
-- helpful websites
+1. **Mine competitor backlinks.** Find where competitors earned resource-page links and target the same pages with a better resource.
+2. **Follow curator footprints.** A librarian who maintains one resource page often maintains several. A blogger who curates a tools list may curate others.
+3. **Check .edu and .gov systematically.** Search site:.edu [topic] resources and site:.gov [topic] resources. These are the crown jewels — harder to earn, worth far more.
+4. **Industry associations and nonprofits.** They maintain resource libraries for members and the public, and they link generously to genuinely useful content.
+5. **"Best of" and roundup posts.** Bloggers' curated lists function as resource pages. They are easier to pitch than institutional pages.
 
-Competitor backlink analysis is also powerful. If several competitors are linked from the same curated page, the page may be open to other relevant resources.
+Build a real prospect list — 100 to 300 targets for a serious campaign — with notes on each page's focus, curator, and what would fit.
 
-## Qualify every page
+## Evaluating resource pages before you pitch
 
-Check:
+Not every resource page is worth pursuing. Score each prospect:
 
-- Is it still maintained?
-- Are links current?
-- Is your asset relevant?
-- Does the site have a real audience?
-- Is the page indexed?
-- Does the site accept useful external resources?
-- Would your inclusion improve the page?
+- **Relevance.** Is the page actually about your topic, or does it mention it in passing? A link from a tightly focused page beats one from a general links dump.
+- **Maintenance.** When was the page last updated? A page untouched since 2019 probably has no active curator — your pitch goes nowhere.
+- **Link quality.** What else does the page link to? If the company is good — authoritative, relevant resources — your link gains by association. If it links to spam, stay away.
+- **Authority and traffic.** Check the domain's standing and whether the page itself gets traffic. A resource page that ranks for [topic] resources sends real visitors.
+- **Outbound link count.** A page with 200 links dilutes each one. A curated list of 20 excellent resources concentrates value.
 
-Skip abandoned pages.
+Be honest in this evaluation. Ten excellent prospects beat a hundred mediocre ones, because your effort goes into the pitches that can actually convert.
 
-## Outreach should focus on the curator's audience
+## Building a resource worth adding
 
-A weak pitch says: “Please add my link.”
+This is where campaigns succeed or fail. Curators add resources their audience will thank them for. Ask yourself: would this curator be proud to add my page?
 
-A better pitch explains what the resource does and why it fits the existing list.
+**Resource types that get added:**
 
-If the page contains free budgeting tools and you built a transparent loan calculator, explain that fit directly.
+1. **Definitive guides.** The most comprehensive, current, clearly written guide on a specific subtopic. Depth and clarity win.
+2. **Free tools.** Calculators, generators, checkers, planners. Tools are the most-added resource type because they are useful on repeat visits.
+3. **Original data and statistics.** A statistics page with real numbers and sources gets linked from every article and resource page in the niche.
+4. **Templates and downloads.** Checklists, worksheets, templates — practical things people use.
+5. **Curated collections.** A well-organized collection of sub-resources (with permission and attribution) can itself become the go-to page.
+6. **Visual explainers.** Infographics, maps, and diagrams that make complex topics clear. Visuals get embedded and linked.
 
-Keep the message concise.
+**The curator test:** open your resource next to the three best resources already on the target page. Is yours clearly among the best? If it is merely equal, keep improving. Curators add upgrades, not lateral moves.
 
-## Resource pages and broken links
+One more thing: the resource must be free and ungated. A curator will not add a page that demands an email address. The open version earns the links; gate the advanced version if you must.
 
-Broken links create an opening because curators want their pages to stay useful.
+### Two resources, two outcomes
 
-If you find a dead resource, mention it and offer your asset only if it genuinely replaces the function.
+**Resource A:** A "guide" that is 800 words of generic advice wrapped around a product pitch, with three stock photos. It gets pitched to 200 resource pages and added to zero. Curators see through it in seconds.
 
-This is where [broken link building](/backlinks/broken-link-building) overlaps naturally with [resource link building](/backlinks/resource-link-building).
+**Resource B:** A free, interactive tool plus a 3,000-word guide explaining the methodology, with downloadable templates. It gets pitched to 80 carefully chosen resource pages and added to 25. Each of those pages sends traffic monthly and passes authority permanently.
 
-## Example: accessibility checklist
+Resource B took ten times the effort and produced a hundred times the result. That ratio is typical.
 
-A web design agency publishes a detailed accessibility launch checklist.
+## Outreach curators welcome
 
-It prospects:
+Curators are not webmasters defending against SEO spam — they are people maintaining helpful pages. Write to them accordingly.
 
-- University web teams.
-- Nonprofit accessibility pages.
-- Developer resources.
-- Design schools.
-- Government guidance pages where external resources are appropriate.
+**What works:**
 
-The agency does not pitch its web-design service. It pitches the checklist.
+1. **Show you read the page.** Reference it specifically — the section, the existing resources, what makes it good.
+2. **Explain the fit in one sentence.** "We built [resource], which covers [gap in their page] — thought it might fit your section on [X]."
+3. **Make evaluation instant.** Link directly to the resource. No PDFs, no signup walls, no friction.
+4. **Suggest the placement.** "It might fit well in your [section name] section" shows you thought about their page structure.
+5. **Keep it short.** Curators are busy. Four sentences can do it.
 
-If the checklist earns links, internal navigation can later guide readers to relevant services.
+**What fails:**
 
-## What makes an asset resource-worthy?
+- Generic "I found your page while researching" openers.
+- Suggesting resources that do not fit the page's topic or quality bar.
+- Pitching commercial pages disguised as resources.
+- Following up repeatedly. One follow-up, then let it go.
+- Asking for specific anchor text. Curators write their own descriptions — let them.
 
-It should be:
+The tone to aim for: a colleague sharing something useful, not a vendor asking for placement.
 
-- Accurate.
-- Easy to use.
-- Current.
-- Specific.
-- Better than obvious alternatives.
-- Non-promotional enough to be recommended.
+## The .edu and .gov playbook
 
-A page can include branding and calls to action, but the resource itself should deliver value before the sales message.
+Institutional resource pages deserve special attention because they are the highest-value targets and operate differently:
 
-## Paid resource pages
+- **Find the right curator.** It is usually a librarian, instructor, or program coordinator — a named person with a real job, not a marketing department.
+- **Match their standards.** Academic curators care about accuracy, sourcing, and neutrality. Your resource must meet those bars.
+- **Lead with educational value.** Frame the resource in terms of student or public benefit, not your business.
+- **Be patient.** Institutional processes are slow. A suggestion made in October might appear in January. That is fine — the link will outlive most others.
+- **Never offer anything in exchange.** Not money, not reciprocal links, not "partnerships." Institutional link schemes are career-ending for the curator. Keep it clean.
 
-Some associations and directories charge for listings. That can be legitimate.
+Scholarship pages, library guides, department resource lists, and extension program pages are all fair game — approached honestly.
 
-Ask:
+## Maintaining and compounding
 
-- Is the fee for membership or sponsorship?
-- Is the audience relevant?
-- Is the relationship disclosed?
-- Does the page receive real traffic?
-- Would you pay even without SEO value?
+Resource-page link building compounds if you treat it as ongoing:
 
-Do not buy every paid page simply because it links out.
+- **Monitor your placements.** If a page redesign drops your link, a polite note often restores it.
+- **Refresh the resource.** Updated content keeps curators happy and attracts new placements. Note the update date visibly.
+- **Expand to adjacent topics.** One successful resource proves the model. Build the next one for the adjacent subtopic.
+- **Track which pages convert.** Over time you will learn the curator profiles and page types that say yes — focus future effort there.
+- **Thank curators.** When someone adds your resource, say thanks. That relationship may yield the next placement too.
 
-## Resource-page metrics to track
+## Mistakes to avoid
 
-Track:
+1. **Pitching before the resource is ready.** The most common failure. Build first, pitch second.
+2. **Targeting dead pages.** Always check maintenance signals before pitching.
+3. **Ignoring the page's standards.** A generic resource pitched to a curated academic page wastes everyone's time.
+4. **Giving up after one campaign.** Resource pages get created constantly. New targets appear every month.
+5. **Forgetting mobile and accessibility.** Curators — especially institutional ones — care. A resource that fails basic accessibility will not get added to a university page.
 
-- Qualified prospects.
-- Outreach sent.
-- Inclusion rate.
-- Referring domains.
-- Referral traffic.
-- Links earned later without outreach.
-- Asset engagement.
+## Where Linkslo fits in
 
-A resource that continues earning links becomes more valuable over time.
+Resource pages need to be genuinely relevant — placement quality matters more than quantity. Our [resource link building service](/backlinks/resource-link-building) handles prospecting, evaluation, and curator outreach around content worth adding. If you are building the resource itself, our [linkable assets guide](/resources/linkable-assets-guide) covers what makes content citable.
 
-## Improve assets based on outreach feedback
+## Final thoughts
 
-If curators repeatedly say your guide is too broad, narrow it.
+Resource-page link building is the closest thing SEO has to a fair trade: you build something genuinely useful, and curators who need useful things add it. No tricks, no schemes, no begging. Build the best resource in your niche, find the curators who need it, write them a human email, and let the compound interest of durable, relevant links do the rest.
 
-If they want a printable version, add one.
+## Related resources
 
-If they already link to a better calculator, study why it is better.
-
-Outreach can become product research for the asset.
-
-## Avoid these mistakes
-
-### Pitching commercial pages
-
-A pricing page rarely belongs on a neutral resource list.
-
-### Generic “ultimate guides”
-
-If the guide says the same thing as the first ten search results, it is not a strong resource.
-
-### Abandoned pages
-
-Do not spend hours emailing websites that have not updated in years.
-
-### Mass personalization
-
-Mention the actual resource page and fit. Do not pretend to have read the entire website.
-
-## Internal linking after inclusion
-
-A resource link can strengthen a useful informational page. Connect that page to your commercial architecture with natural internal links.
-
-For example, a [guest post marketplace](/marketplace) may be linked from a guide explaining publisher selection, while a calculator could link to a relevant service category.
-
-## The simplest resource-page test
-
-Ask whether you would bookmark your own asset if another company made it.
-
-If yes, you probably have something worth pitching.
-
-If no, improve the resource before asking someone else to recommend it.`,
+- [Broken link building step by step](/resources/broken-link-building-step-by-step) — the companion tactic for resource pages.
+- [Linkable assets guide](/resources/linkable-assets-guide) — building resources worth citing.
+- [What makes a high-quality backlink](/resources/what-makes-a-high-quality-backlink) — evaluating link quality.
+- [Unlinked brand mentions](/resources/unlinked-brand-mentions-link-reclamation) — another way to earn links you deserve.
+`,
   },
   {
     slug: "backlink-audit-toxic-links-guide",
@@ -705,193 +544,160 @@ If no, improve the resource before asking someone else to recommend it.`,
       { question: "Does a low DR backlink hurt SEO?", answer: "Not by itself. New, small or niche sites can have low metrics and still be legitimate. Relevance and link context matter." },
       { question: "What should I check first in a backlink audit?", answer: "Start with unusual growth, anchor concentration, known paid or manipulative campaigns, hacked links, irrelevant site networks and suspicious redirects rather than sorting only by authority score." },
     ]),
-    body: `Backlink audits often become fear exercises.
+    body: `Every site with any history has backlinks it would rather not have. Old directory submissions, a vendor's "link package" from 2021, scraper sites, forum spam from a previous agency, links from domains that have since been repurposed — they accumulate quietly, and most site owners never look.
 
-A tool labels 700 links “toxic,” the report turns red, and someone assumes the domain is under attack. That reaction is understandable, but it is rarely a good audit method.
+Then one day rankings slip, or a manual action notice arrives, or an SEO audit reveals that 40% of the link profile comes from places nobody would defend. That is when the backlink audit happens — usually years later than it should have.
 
-No third-party tool knows exactly how a search engine evaluates every link. Risk scores can highlight patterns, but they are not verdicts.
+This guide covers how to audit your backlink profile properly: finding the links, judging which ones are actually harmful, and cleaning up safely without torching the good ones.
 
-A useful audit looks for explanations.
+## The short answer
 
-## Start with history
+- **Most "toxic" links are simply ignored by Google**, not penalized. Real harm comes from patterns, not individual links.
+- **Audit when:** rankings drop unexpectedly, you inherit a site, a previous vendor built links, or you are planning aggressive new link building.
+- **Manual actions are rare; algorithmic devaluation is common.** Bad links usually just stop counting — but the patterns behind them can cap your growth.
+- **Disavow is a last resort**, not a routine tool. Google says most sites never need it.
+- **The best cleanup is building good links.** A strong profile dilutes the bad; a weak one magnifies it.
 
-Before opening a spreadsheet, ask:
+## What "toxic backlinks" actually means
 
-- Did the site use an SEO agency in the past?
-- Were links purchased in bulk?
-- Were private blog networks used?
-- Did the site participate in large link exchanges?
-- Has the domain changed ownership?
-- Were old domains redirected?
-- Has the site received a manual action?
+The SEO industry uses "toxic" loosely. A link tool flags anything with a low score, and suddenly a harmless blog comment is a "toxic threat." Let's be precise about what can actually hurt:
 
-History tells you where to look.
+**Genuinely harmful patterns:**
 
-## Export multiple link sources where possible
+- **Link schemes at scale.** Paid link networks, PBNs, and bulk "guest post" packages with manipulative anchors. The pattern is the problem — dozens or hundreds of similar links appearing together.
+- **Hacked or injected links.** Links placed on your behalf (or against you) via compromised sites. Always remove or disavow these.
+- **Negative SEO attacks.** Rare, but real: someone builds spammy links to your site deliberately. Google is good at ignoring these, but large attacks warrant a disavow.
+- **Links from penalized neighborhoods.** Not guilt by association in the simplistic sense — but if your profile is dominated by links from deindexed spam networks, that is a pattern worth addressing.
 
-Use Search Console plus one or more backlink tools.
+**Usually harmless (despite what tools say):**
 
-Different tools discover different links. You do not need a perfect universal list, but cross-checking improves coverage.
+- **Low-quality directories.** Ugly, but generally ignored rather than penalized.
+- **Scraper sites.** They copy content and links automatically. Google understands this.
+- **Old forum profiles and blog comments.** Dated tactics, but a few will not hurt you.
+- **Foreign-language spam links.** Weird, but typically just ignored.
+- **Nofollowed junk.** Nofollow links from spammy sources carry essentially no risk.
 
-Normalize domains and remove obvious duplicates before analysis.
+The key insight: Google's systems have gotten very good at simply ignoring manipulative links. The era when a handful of bad links tanked a site is largely over. What still hurts is systematic manipulation — patterns that look like deliberate attempts to game rankings.
 
-## Review growth over time
+### Two audits, two outcomes
 
-Look for unusual spikes.
+**Audit A:** A site owner runs a tool, sees 300 "toxic" links flagged, and disavows all of them — including legitimate links the tool mis-scored. Rankings drop, because the disavow file just told Google to ignore real links. The "cleanup" caused the damage it was meant to prevent.
 
-A spike is not automatically bad. A viral story, acquisition, migration or major PR campaign can create sudden growth.
+**Audit B:** The same site gets a human review. Of 300 flagged links, 12 are from an old PBN package the previous agency bought, 8 are hacked-site injections, and the rest are harmless noise. The 20 genuinely bad links are disavowed; the rest are left alone. Rankings stabilize, and the new link-building campaign builds on a clean foundation.
 
-Ask what caused it.
+Audit B is slower and requires judgment. It is also the only one that works.
 
-Unexplained spikes from unrelated domains deserve deeper review.
+## The audit process, step by step
 
-## Audit anchor text at page level
+### Step 1: Pull the complete link data
 
-Domain-level anchor percentages can hide problems.
+Do not rely on a single source. Export backlinks from:
 
-Check whether one commercial page receives repeated exact-match anchors from low-quality or unrelated sites.
+- **Google Search Console** — the ground truth of what Google sees. Limited historical data, but authoritative.
+- **Ahrefs, Semrush, or Majestic** — broader discovery, historical data, and useful metrics.
+- **Bing Webmaster Tools** — occasionally surfaces links Google does not show.
 
-Compare:
+Merge and deduplicate by linking domain. You are auditing domains and patterns, not individual URLs — a spammy domain with 500 links counts as one problem, not 500.
 
-- Branded anchors.
-- URL anchors.
-- Exact commercial phrases.
-- Partial phrases.
-- Page titles.
-- Generic anchors.
+### Step 2: Segment the profile
 
-Read our [anchor text guide](/resources/anchor-text-ratios-natural-backlink-profile) for a deeper framework.
+Sort linking domains into buckets before judging anything:
 
-## Identify network patterns
+1. **Clearly legitimate.** Real sites, real content, editorial links. The majority, hopefully.
+2. **Low quality but harmless.** Directories, scrapers, old comments. Note them, do not panic.
+3. **Suspicious patterns.** Groups of similar sites, identical anchors, links that appeared in bursts.
+4. **Clearly manipulative.** PBNs, hacked sites, paid networks, obvious schemes.
+5. **Unknown.** Everything else — investigate before deciding.
 
-Suspicious patterns can include:
+This segmentation prevents the classic error of treating bucket 2 like bucket 4.
 
-- Many sites with nearly identical layouts.
-- Similar ownership signals.
-- Same outbound-link patterns.
-- Repeated article templates.
-- Same anchors across many domains.
-- Sites covering unrelated sponsored niches.
+### Step 3: Investigate the suspicious bucket
 
-One low-quality site is different from a coordinated network.
+For each suspicious domain or pattern, check:
 
-## Check redirects
+- **The linking page.** Visit it. Is it a real page with real content, or a link farm?
+- **The anchor text.** Exact-match commercial anchors at scale are the signature of manipulation.
+- **The timing.** Did 200 links appear in one month? Natural links accumulate irregularly.
+- **The relationship.** Do you know where this came from? A previous vendor, an old campaign, a partnership?
+- **The neighborhood.** What else does the linking site link to? If it is all casinos and payday loans, that tells you everything.
 
-Old domains can pass unexpected backlink history through redirects.
+Document what you find. If this ever becomes a reconsideration request, the documentation matters.
 
-Review:
+### Step 4: Decide — remove, disavow, or leave alone
 
-- Acquired domains.
-- Expired domains redirected to the site.
-- HTTP to HTTPS migrations.
-- Subdomain migrations.
-- Rebrands.
+For each genuinely problematic link or pattern:
 
-A suspicious backlink profile may be arriving through a redirect rather than direct links.
+**Remove first, disavow second.** If you can get the link taken down — contact the webmaster, remove the listing, cancel the vendor — do that. Removal is cleaner than disavow because the link actually disappears.
 
-## Low authority does not mean bad
+**Disavow what you cannot remove.** The disavow tool tells Google to ignore specific links. Use it for:
 
-A local club, small supplier, new startup or niche blogger may have low DR and still be a legitimate reference.
+- Links from PBNs and link networks you cannot get removed.
+- Hacked-site injections.
+- Large-scale negative SEO attacks.
+- Remnants of old manipulative campaigns.
 
-Do not remove real relationships because a metric is small.
+**Leave alone everything else.** This is the step people skip. The vast majority of flagged "toxic" links should simply be left alone. Google ignores them, and touching them risks collateral damage.
 
-## High authority does not mean safe
+### Step 5: Write the disavow file carefully
 
-A compromised high-authority site can host spam. An old domain can sell links aggressively. A large publication can have user-generated areas unrelated to its editorial quality.
+If disavow is warranted:
 
-Metrics are context, not absolution.
+- **Disavow at domain level** (domain:spamsite.com) for spam networks — cleaner than listing URLs.
+- **Comment every entry.** Note why each domain is disavowed and the date. Future you will thank present you.
+- **Be conservative.** When in doubt, leave it out. You can always add later; removing from disavow takes time to take effect.
+- **Upload in Search Console** and note the date. Disavow effects are not instant — allow weeks.
 
-## A practical review table
+### Step 6: Rebuild on the clean foundation
 
-| Link pattern | Likely action |
-|---|---|
-| Relevant small blog mention | Usually keep |
-| Real partner/supplier | Keep |
-| Old directory with no traffic | Usually low concern |
-| Hacked page injection | Investigate/removal if possible |
-| Paid exact-match network | High priority review |
-| Scraper copying your content | Usually low concern |
-| Sitewide unrelated footer links | Investigate |
-| Legitimate press syndication | Understand source/copies |
+Cleanup without rebuilding is half a job. A profile that is merely "not bad" does not rank — it needs to be actively good. The best time to start earning legitimate editorial links is immediately after cleanup, when every new link improves the ratio.
 
-## When to contact sites for removal
+## Manual actions vs. algorithmic issues
 
-If you clearly control or commissioned manipulative links, removal outreach can be reasonable.
+It helps to know which problem you have:
 
-Prioritize meaningful patterns rather than spending weeks emailing random scraper sites.
+**Manual action:** Google has reviewed your site and applied a penalty. You will see a notice in Search Console under Security & Manual Actions. These require a documented cleanup and a reconsideration request. They are rare and serious.
 
-Document attempts when relevant.
+**Algorithmic devaluation:** No notice, but rankings underperform what the content deserves. Manipulative links are being ignored rather than counted, so the profile is weaker than it looks. The fix is cleanup plus building real links — there is no reconsideration request for this.
 
-## Disavow carefully
+**Neither (most common):** The site simply needs better links. The "toxic" links are noise, and the real problem is that nothing good has been built. Audit honestly before assuming the worst.
 
-Disavowal is not a routine cleanup tool for making a link profile look prettier.
+Check Search Console first. If there is no manual action, you probably do not have a penalty — you have a link-building opportunity.
 
-Use it only when you have a strong reason and understand the implications.
+## How to check your backlinks
 
-If a manual action or serious historical manipulation is involved, consider experienced professional review before submitting broad disavow files.
+You cannot audit what you cannot see. For ongoing monitoring:
 
-## Audit new campaigns before they become problems
+- **Search Console Links report** — free, authoritative, check monthly.
+- **A backlink checker** — for discovery and historical analysis. Our [guide to checking any site's backlinks](/resources/how-to-check-backlinks-of-any-website) walks through the process.
+- **New-link alerts** — most major tools alert you when new links appear. A sudden spike of spammy links deserves immediate attention.
 
-A [monthly link building](/backlinks/monthly-link-building) program should maintain quality controls continuously.
+Set up alerts before you need them. Discovering a negative SEO attack six months late is much worse than catching it in week one.
 
-Track:
+## Preventing future problems
 
-- Source domain.
-- Target URL.
-- Anchor.
-- Link type.
-- Publication relevance.
-- Date acquired.
-- Campaign source.
+The best audit is the one you never need:
 
-It is easier to prevent a bad pattern than clean one later.
+1. **Vet every vendor.** Ask exactly where links will come from before paying. Vague answers mean bad links.
+2. **Never buy "link packages."** Bulk links at fixed prices are schemes by definition. Real editorial links cannot be packaged.
+3. **Monitor new links monthly.** Fifteen minutes a month catches problems early.
+4. **Keep records.** Document every link-building activity — vendor, dates, URLs. If you ever need a reconsideration request, this is gold.
+5. **Build good links continuously.** A strong, growing profile of editorial links is the best defense against everything.
 
-## Example: suspicious exact-match cluster
+## Where Linkslo fits in
 
-Suppose a finance site has 1,500 referring domains. Most look normal, but 80 sites added exact-match “best personal loans” anchors within two months.
+If your audit reveals remnants of old manipulative campaigns, the path forward is legitimate editorial links that dilute the bad and build real authority. Our [editorial backlinks service](/backlinks/editorial-backlinks) focuses on genuine placements, and the [Linkslo marketplace](/marketplace) lets you inspect every publisher before ordering — no mystery links, ever.
 
-Those 80 sites share similar layouts, publish gambling and supplements, and link to dozens of finance brands.
+## Final thoughts
 
-That cluster deserves attention even though it represents only a small percentage of the total profile.
+Backlink audits reward calm judgment over panic. Most flagged links are harmless noise; the real threats are patterns of manipulation, and those require human review to identify safely. Segment carefully, remove what you can, disavow conservatively, and then do the work that actually moves rankings: earning links worth having.
 
-The issue is pattern and intent, not raw count.
+## Related resources
 
-## What not to do
-
-### Delete every low-DR link
-
-You will remove legitimate niche and local references.
-
-### Trust one toxicity score blindly
-
-Tool scores are heuristics.
-
-### Panic over scraper links
-
-Many websites automatically copy content or feeds. Search engines see large amounts of this noise.
-
-### Ignore your own campaign history
-
-The highest-risk links are often the ones a previous SEO team intentionally built.
-
-## Build a healthier future profile
-
-After the audit, shift acquisition toward:
-
-- Relevant editorial links.
-- Stronger assets.
-- Real partnerships.
-- Digital PR.
-- Natural anchor variation.
-- Page-level relevance.
-
-Use [guest post backlinks](/backlinks/guest-post-backlinks), [contextual backlinks](/backlinks/contextual-backlinks) and [digital PR](/backlinks/digital-pr-backlinks) selectively rather than chasing raw volume.
-
-## The audit goal
-
-A backlink audit should answer: what parts of this profile are explainable, useful and defensible—and what patterns were created primarily to manipulate rankings?
-
-That is a much better question than “How many red links does the tool show?”`,
+- [How to check backlinks of any website](/resources/how-to-check-backlinks-of-any-website) — the audit toolkit.
+- [How to do a backlink audit step by step](/resources/how-to-do-a-backlink-audit-step-by-step) — the companion walkthrough.
+- [What makes a high-quality backlink](/resources/what-makes-a-high-quality-backlink) — knowing good from bad.
+- [Link building provider red flags](/resources/link-building-provider-red-flags) — avoiding the vendors who create these messes.
+`,
   },
   {
     slug: "competitor-backlink-gap-analysis",
@@ -909,186 +715,165 @@ That is a much better question than “How many red links does the tool show?”
       { question: "What is the best competitor link to copy?", answer: "A repeatable link from a relevant publication that cites multiple companies or resources in your category is often more useful than a one-off link based on a unique relationship." },
       { question: "Can competitor gap analysis help content planning?", answer: "Yes. If many strong links point to competitor research, calculators or guides, that can reveal asset formats your market naturally cites." },
     ]),
-    body: `Competitor backlink analysis is powerful because it answers a practical question: where are companies like mine getting referenced?
+    body: `Your competitors' backlink profiles are the most honest link-building strategy documents in existence. They show exactly which tactics work in your niche, which publishers link to companies like yours, and where the gaps are — the sites linking to competitors but not to you.
 
-The mistake is assuming every competitor link is a target.
+Most businesses never look. They build links by guessing: buying guest posts, submitting to directories, hoping something works. Meanwhile the answers sit in plain sight, in the link profiles of the three sites outranking them.
 
-Some backlinks come from acquisitions, founders, old sponsorships, private relationships, discontinued campaigns or spam. Copying them blindly wastes time.
+Competitor backlink gap analysis is the process of systematically extracting those answers. Done well, it produces a prioritized target list grounded in evidence rather than theory. Done badly, it produces a spreadsheet of links you should never replicate.
 
-A useful gap analysis focuses on repeatable patterns.
+## The short answer
 
-## Choose the right competitors
+- **A link gap = domains linking to competitors but not to you.** Those are your warmest prospects — they already link to businesses like yours.
+- **Analyze 3-5 competitors**, not one. Patterns across multiple profiles reveal what actually works in the niche.
+- **Do not copy blindly.** Some competitor links are junk, some are unreplicable (partnerships, PR), and some are actively harmful.
+- **Prioritize by relevance and attainability**, not by authority scores alone.
+- **The gap analysis is a starting point**, not a strategy. It tells you where to look, not what to do.
 
-Use a mix of:
+## Setting up the analysis
 
-- Search competitors ranking for your target terms.
-- Direct business competitors.
-- Smaller sites with similar authority.
-- One or two market leaders for strategic context.
+### Pick the right competitors
 
-Do not analyze only giant brands. Their link profiles may be impossible to replicate.
+Not your business competitors — your search competitors. The sites ranking for your money keywords, regardless of whether you compete with them offline.
 
-## Export referring domains, not just links
+Choose 3-5 that are:
 
-Start at domain level to reduce duplication.
+- **Ranking above you** for your most important keywords.
+- **Similar in type** — if you are a local business, analyze local competitors, not national publishers.
+- **Beatable.** A site with 50,000 referring domains teaches you less than one with 500 that you can realistically match.
+- **Diverse in approach.** If possible, pick competitors with different visible strategies — one strong in PR, one in content, one in partnerships.
 
-For each competitor, capture:
+Avoid analyzing sites whose links come from advantages you cannot replicate: Wikipedia-scale brands, decade-old domains with press empires, or companies with massive offline presence. Learn from them, but do not plan around them.
 
-- Referring domain.
-- Linked page.
-- Anchor text.
-- Link type.
-- First seen date.
-- Domain topic.
-- Estimated traffic/authority.
+### Pull the data
 
-Then merge the datasets.
+For each competitor plus your own site, export referring domains from a backlink tool (Ahrefs, Semrush, Majestic). You need domain-level data — individual URLs matter less at this stage.
 
-## Find domains linking to multiple competitors
+Most tools have a built-in "link intersect" or "gap" feature: enter your domain and 2-4 competitors, and it returns domains linking to competitors but not to you. That is your raw gap list. It will be large — hundreds or thousands of domains. The value is in the filtering.
 
-A publication that links to three competing tools but not yours is interesting.
+## Filtering: from raw list to target list
 
-It may publish:
+The raw gap list contains gold, garbage, and traps in roughly equal measure. Filter in stages:
 
-- Comparison articles.
-- Industry roundups.
-- Resource pages.
-- News coverage.
-- Research citations.
+**Stage 1: Remove the obvious junk.**
 
-Because it already references the category, relevance is proven.
+- Foreign-language spam networks and obvious PBNs.
+- Scraper and auto-generated sites.
+- Domains with no real content or traffic.
+- Link farms the competitor was foolish enough to use.
 
-## Classify the reason for each link
+If a competitor built spammy links, that is useful intelligence about their standards — not an invitation to follow.
 
-Create categories:
+**Stage 2: Remove the unreplicable.**
 
-- Guest contribution.
-- PR/media.
-- Product review.
-- Resource page.
-- Partner/integration.
-- Directory.
-- Sponsorship.
-- Community.
-- Research citation.
-- Unknown.
+- **Partnership and sponsorship links** you do not have (their suppliers, their investors, their events).
+- **PR-driven links** from news coverage of their specific announcements.
+- **Acquired or merged brands** linking within their corporate family.
+- **User-generated links** from their community (forum signatures, profiles) that required being their customer.
 
-This reveals strategy, not just domains.
+**Stage 3: Categorize what remains.**
 
-## Look at the linked pages
+Group the surviving domains by how the link was likely earned:
 
-If competitor links overwhelmingly point to calculators, studies and guides, that tells you what the market cites.
+| Category | Example | Replicability |
+|---|---|---|
+| Resource pages | Industry link lists | High — pitch your equivalent resource |
+| Editorial mentions | Press, trade publications | Medium — needs a story or PR |
+| Guest contributions | Author bylines | High — pitch the same publications |
+| Directory and citation listings | Industry directories | High — submit where legitimate |
+| Partnership pages | Supplier/partner lists | Medium — build real relationships |
+| Review and comparison sites | "Best X" roundups | Medium — earn through product quality |
+| Community links | Forums, Q&A, comments | Low-Medium — participate genuinely |
 
-You may discover that competitors are not earning links to product pages at all. They earn links to research, then use internal links to support commercial pages.
+**Stage 4: Score and prioritize.**
 
-That insight is more valuable than a list of 500 domains.
+For each remaining target, weigh:
 
-## Score repeatability
+1. **Relevance** to your business and audience — the heaviest factor.
+2. **Authority and traffic** of the linking domain and page.
+3. **Attainability** — how was the competitor's link earned, and can you earn the equivalent?
+4. **Link context** — editorial mention vs. buried directory listing.
 
-For each opportunity, ask:
+A simple scoring keeps this honest. The top of your list should be relevant, authoritative pages where you can see exactly how to earn the link.
 
-- Is the publication relevant?
-- Does it link to multiple companies in the category?
-- Can we create an asset or contribution that fits?
-- Is the relationship open to others?
-- Is the page maintained?
-- Is the link editorial rather than accidental?
+### Two analyses, two outcomes
 
-Rank opportunities by relevance and repeatability.
+**Analysis A:** A SaaS company runs a gap analysis, exports 800 domains, sorts by DR, and starts pitching the top 50. Most are PR links from funding announcements they cannot replicate, or enterprise partnership pages they do not qualify for. Three months of outreach produces nothing. The conclusion: "gap analysis does not work."
 
-## Example opportunity types
+**Analysis B:** The same company filters to 120 attainable targets, categorized by type. They find 30 resource pages linking to two competitors, 15 industry blogs accepting guest contributions, and 8 comparison sites where they are missing. They build one strong resource, pitch the resource pages, contribute to the blogs, and claim the comparison listings. Six months later, 40 new relevant links.
 
-### Comparison pages
+Analysis B took longer to set up and produced everything. The difference was entirely in the filtering.
 
-If a competitor is included in “best tools” content, improve your product evidence and pitch for consideration.
+## Turning gaps into campaigns
 
-### Guest posts
+A prioritized gap list naturally organizes into campaigns:
 
-If competitors contribute expert articles to a publication, review contributor guidelines and pitch a distinct angle.
+**Campaign 1: Resource page gaps.** Domains linking to competitors' resources but not yours. Build an equivalent-or-better resource, then pitch. This is the highest-converting gap category — see our [resource page guide](/resources/resource-page-link-building-guide) for the full playbook.
 
-### Research citations
+**Campaign 2: Guest contribution gaps.** Publications where competitors have bylines. Study what they wrote, pitch something better or complementary. Editors who accepted one competitor will consider another — the topic is proven.
 
-If journalists cite competitor data, build better research.
+**Campaign 3: Directory and listing gaps.** Legitimate industry directories, association pages, and citation sources where competitors appear and you do not. Low effort, real value — especially for local businesses.
 
-### Resource pages
+**Campaign 4: PR and mention gaps.** Publications that covered competitors. You cannot replicate their announcement, but you can earn your own coverage with a genuine story — data, expertise, or news of your own.
 
-If competitors are listed on curated resources, create something that deserves inclusion.
+**Campaign 5: Broken competitor links.** Competitors' dead pages that still have live backlinks. Build a better replacement and pitch the linking sites. The [broken link building guide](/resources/broken-link-building-step-by-step) covers this in detail.
 
-### Integration links
+Run these as parallel workstreams, not sequential steps. Different team members or vendors can own different campaigns.
 
-If competitors appear in partner marketplaces, investigate whether your product supports similar integrations.
+## What gap analysis cannot tell you
 
-## Use competitor gaps for outreach prioritization
+Honest limitations:
 
-Our [competitor link building service](/backlinks/competitor-link-building) uses this logic to identify domains already showing category interest.
+- **It shows links, not effort.** You see the link, not the relationship, campaign, or budget behind it. Some links took years to earn.
+- **It misses new opportunities.** By definition, gaps are places competitors already are. The uncontested opportunities — new publications, emerging communities, original research angles — do not appear in any gap report.
+- **It can anchor you to mediocrity.** If all your competitors build mediocre links, matching them makes you mediocre. Sometimes the right move is a tactic nobody in the niche uses yet.
+- **Data is incomplete.** No tool sees every link. Treat the analysis as directional, not exhaustive.
 
-You can also combine the gap with [guest post backlinks](/backlinks/guest-post-backlinks) and [resource link building](/backlinks/resource-link-building) depending on the opportunity type.
+Use gap analysis for the foundation — the obvious, evidence-backed targets. Then go beyond it with original campaigns competitors have not thought of.
 
-## Do not copy anchors
+## Repeating the analysis
 
-A competitor's anchor profile reflects its brand, age and history.
+Gap analysis is not a one-time project:
 
-Choose anchors based on your page and context. Read the [anchor text guide](/resources/anchor-text-ratios-natural-backlink-profile) before copying exact-match phrases.
+- **Quarterly refreshes** catch new competitor links and new opportunities.
+- **Track your close rate** per category. If resource pages convert at 15% and directories at 60%, allocate accordingly.
+- **Watch for competitor strategy shifts.** A competitor suddenly earning press links means they hired PR — consider whether you should too.
+- **Monitor new entrants.** A new site outranking you deserves its own gap analysis immediately.
 
-## Watch for bad competitor links
+Build the process once — the exports, the filters, the scoring — and each refresh gets faster.
 
-Competitors rank despite some links, not because of every link.
+## Tools and practical setup
 
-Skip:
+You do not need an enterprise stack:
 
-- Obvious link networks.
-- Unrelated sponsored sites.
-- Hacked pages.
-- Spam directories.
-- Artificial sitewide links.
+- **A backlink tool with gap/intersect features** (Ahrefs Content Gap equivalent for links, Semrush Backlink Gap). This is the core requirement.
+- **A spreadsheet** with your scoring columns. Fancy CRMs are optional.
+- **[How to check backlinks of any website](/resources/how-to-check-backlinks-of-any-website)** — our walkthrough of the manual process.
+- **A link monitoring alert** for each analyzed competitor, so new links surface automatically.
 
-A competitor backlink is not automatically an endorsement from search engines.
+Total cost: one backlink tool subscription and a few hours per quarter. The ROI on those hours is among the highest in link building.
 
-## A simple prioritization table
+## Mistakes to avoid
 
-| Opportunity | Relevance | Repeatability | Effort | Priority |
-|---|---:|---:|---:|---:|
-| Industry comparison page | High | High | Medium | High |
-| Founder friend's blog | Medium | Low | Low | Low |
-| Research citation | High | Medium | High | High |
-| Generic directory | Low | High | Low | Low |
-| Integration marketplace | High | High if compatible | Medium | High |
+1. **Copying without filtering.** Replicating a competitor's spam links alongside their good ones.
+2. **Sorting by DR only.** Authority without relevance is how you end up with links that do nothing.
+3. **Ignoring the unattainable.** Pitching PR links you cannot earn wastes months.
+4. **One-and-done analysis.** Competitor profiles change; your analysis should too.
+5. **Treating the gap list as the whole strategy.** It is the foundation, not the building.
 
-This prevents teams from chasing easy but weak links.
+## Where Linkslo fits in
 
-## Turn findings into a 90-day plan
+Gap analysis tells you which publishers matter; the next step is getting placed on them. The [Linkslo marketplace](/marketplace) lists named publishers across niches with transparent pricing — useful when your gap list points at publications that accept contributions. For systematic gap-closing campaigns, our [competitor link building service](/backlinks/competitor-link-building) runs the full process from analysis to outreach.
 
-After analysis, choose a small set of patterns.
+## Final thoughts
 
-Example:
+Competitor backlink gaps are the closest thing link building has to a cheat sheet — evidence of what works, written by the market itself. But the value is in the filtering and the follow-through, not the export. Analyze carefully, prioritize ruthlessly, earn each link on merit, and then go further than the gaps: the best links are the ones your competitors have not found yet.
 
-- 20 comparison/roundup prospects.
-- 10 resource pages.
-- 8 guest-contribution publications.
-- 5 integration partners.
-- 10 journalists citing competitor data.
+## Related resources
 
-Then build the assets and outreach needed for each group.
-
-## Measure gap closure carefully
-
-Do not aim to match the competitor's total referring domains.
-
-Track:
-
-- Relevant domains acquired.
-- Links to priority pages.
-- New publications entering your profile.
-- Search movement on supported pages.
-- Referral traffic.
-- Opportunities that generated repeat relationships.
-
-## The competitor analysis principle
-
-Do not ask, “How do I get this exact link?”
-
-Ask, “Why did this publication link to them, and can we create an equally legitimate reason to be referenced?”
-
-That question turns competitor research from imitation into strategy.`,
+- [How to check backlinks of any website](/resources/how-to-check-backlinks-of-any-website)
+- [Resource page link building guide](/resources/resource-page-link-building-guide)
+- [Broken link building step by step](/resources/broken-link-building-step-by-step)
+- [What makes a high-quality backlink](/resources/what-makes-a-high-quality-backlink)
+`,
   },
 ];

@@ -24,19 +24,33 @@ function getPool(): Pool {
     );
   }
 
-  const newPool = new Pool({ connectionString: databaseUrl });
-  if (process.env.NODE_ENV !== "production") {
-    globalForDb.__arenaNextJsPostgresqlPool = newPool;
-  }
+  // Timeouts are fail-safes, not performance tuning: without them a hung or
+  // unreachable database stalls the awaiting request forever (pg defaults to
+  // no connection timeout), which surfaced as pages that "get stuck" on click.
+  const newPool = new Pool({
+    connectionString: databaseUrl,
+    max: 10,
+    // Fail fast when the database is unreachable instead of hanging the page.
+    connectionTimeoutMillis: 10_000,
+    // Reclaim idle connections so a quiet instance does not hold them.
+    idleTimeoutMillis: 30_000,
+    // Abort any single query running longer than 20s. Read paths already fall
+    // back to bundled content on error, so a slow database degrades to a
+    // slightly delayed page instead of an endlessly stuck one.
+    options: "-c statement_timeout=20000",
+  });
+  // Cache in every environment. The lazy proxies below call getPool() on each
+  // property access, so skipping the cache in production created a brand-new
+  // pool (10 connections) per database call without ever closing it — leaking
+  // connections until Postgres refused new ones and page loads hung.
+  globalForDb.__arenaNextJsPostgresqlPool = newPool;
   return newPool;
 }
 
 function getDb(): NodePgDatabase {
   if (globalForDb.__arenaNextJsDrizzleDb) return globalForDb.__arenaNextJsDrizzleDb;
   const instance = drizzle(getPool());
-  if (process.env.NODE_ENV !== "production") {
-    globalForDb.__arenaNextJsDrizzleDb = instance;
-  }
+  globalForDb.__arenaNextJsDrizzleDb = instance;
   return instance;
 }
 
