@@ -51,26 +51,51 @@ export const BLOG_POSTS: ArticleRow[] = [
           "You can order a single, relevant placement on a small niche site for as little as $30–$50. A more realistic starting budget for a first real batch — enough to see whether the channel is worth expanding — is usually $200–$400 for three to five well-chosen placements.",
       },
     ]),
-    body: `Small businesses rarely have the budget for a full-scale digital PR programme, but most still need a handful of relevant, editorially placed links to support a competitive page. The question isn't whether guest posting works — it's which version of it fits a limited budget without turning into a stack of low-quality placements that do nothing for rankings or reputation.
+    body: `Every agency deck you'll ever see prices link building like it's a corporate sport: retainers starting at $3,000 a month, "campaigns" with kickoff calls, slide decks full of projections. If you run a small business, that number alone ends the conversation — and it's a shame, because you don't need a corporate budget to get genuine editorial links. You need a much smaller amount of money pointed at the right kind of placement.
 
-This guide compares nine ways small businesses actually buy guest posts today, what each is suited for, and where the trade-offs sit. If you want to skip straight to browsing real, price-listed sites rather than reading about them, our [guest post marketplace](/marketplace) lists thousands of publishers with authority, traffic and price shown upfront.
+The misconception that stops most small businesses isn't that guest posting is expensive. It's that there's only one version of it — the expensive one. In reality there are at least nine distinct ways to buy a guest post, and several of them were designed, accidentally or not, for buyers spending a few hundred dollars rather than a few thousand.
 
-## Why Guest Posting Still Matters for Small Budgets
+This guide walks through all nine: what each one actually is, what it's genuinely good for, where the trade-offs sit, and how to match the option to your situation. If you'd rather skip the reading and look at real sites with real prices, our [guest post marketplace](/marketplace) lists thousands of publishers with authority, traffic and price shown upfront.
+
+## The short answer
+
+- **A small business can start guest posting for $200–$400** — enough for three to five well-chosen placements on genuinely relevant sites.
+- **Single-domain marketplace orders give you the most control per dollar**, because you see the site, the metrics and the price before committing.
+- **Niche edits are the cheapest fast option** when an existing article already covers your topic well.
+- **Managed campaigns and retainers cost more per link** but make sense once you want the process handled for you.
+- **Whatever format you choose, relevance beats raw authority** — a smaller site your customers actually read outperforms a bigger one they don't.
+
+## Match the option to your situation
+
+Not every option below suits every buyer. A rough first cut:
+
+| Your situation | Start with |
+|---|---|
+| You want to see exactly what you're buying | Single-domain marketplace orders |
+| You need a link live this week | Niche edits |
+| You have no in-house writer | Content-included packages |
+| You're supporting one page that has no links yet | A bulk bundle of 3–5 placements |
+| Your customers are local | Local and regional placements |
+| You'd rather not manage the process at all | A managed campaign or monthly retainer |
+
+The rest of this guide fills in what each of those actually involves.
+
+## Why guest posting still matters on a small budget
 
 A single, well-placed guest post on a relevant site does three things a display ad or a directory listing can't: it puts your brand in front of an established audience, it signals topical relevance to search engines through the surrounding content, and it creates a durable asset that keeps working long after the invoice is paid.
 
-The catch is that "guest post" now covers everything from a $35 placement on a small niche blog to a $2,000 sponsored feature on a national outlet. Matching the right tier to your actual goal is most of the work, and it's worth reading our breakdown of [how much you should actually pay for a guest post](/resources/how-much-should-you-pay-for-a-guest-post) before you commit a budget.
+The catch is that "guest post" now covers everything from a $35 placement on a small niche blog to a $2,000 sponsored feature on a national outlet. Matching the right tier to your actual goal is most of the work, and it's worth reading our breakdown of [how much you should actually pay for a guest post](/resources/how-much-should-you-pay-for-a-guest-post) before you commit a budget — price and quality correlate loosely, and knowing the going rate per tier stops you overpaying for a mid-tier site dressed up as a premium one.
 
-### What a Small Business Should Actually Look For
+### What a small business should actually look for
 
 Before comparing services, it helps to be clear on what a placement needs to do for you:
 
-- Reach an audience that overlaps with your customers, even loosely.
-- Sit on a domain search engines already trust.
-- Carry a link that fits naturally inside the article, not bolted onto a bio line.
-- Come with enough information upfront — traffic, authority, niche — that you're not buying blind. Our guide on [how to vet a guest post site before you buy](/resources/vet-guest-post-site-before-you-buy) covers exactly what to check.
+- Reach an audience that overlaps with your customers, even loosely. A plumbing supplier linked from a home renovation blog reaches future customers; the same link from a generic "write for us" site reaches nobody.
+- Sit on a domain search engines already trust — one with real traffic and a real publishing history, not a shell built to sell links.
+- Carry a link that fits naturally inside the article, not bolted onto an author bio line nobody reads.
+- Come with enough information upfront — traffic, authority, niche — that you're not buying blind. Our guide on [how to vet a guest post site before you buy](/resources/vet-guest-post-site-before-you-buy) covers exactly what to check, and it takes about ten minutes per site once you know the pattern.
 
-## 1. Single-Domain Marketplace Orders
+## 1. Single-domain marketplace orders
 
 This is the most transparent option available today: you browse individual publisher listings, each with its own price, authority score, estimated traffic and turnaround time, and you order the exact one you want.
 
@@ -78,7 +103,9 @@ This is the most transparent option available today: you browse individual publi
 
 The main advantage is pricing clarity — you see the metrics and the cost before committing, rather than paying an agency to disclose the site after the invoice. The trade-off is that you're doing your own vetting on each order, which is why a checklist matters more here than with any other option on this list.
 
-## 2. Niche Edit Placements
+**Watch out for:** the temptation to sort by price alone. The cheapest listing in your niche is cheap for a reason often enough that it's worth the ten-minute vetting pass every time.
+
+## 2. Niche edit placements
 
 A [niche edit](/backlinks/niche-edit-backlinks) adds your link into an existing, already-indexed article instead of publishing something new. It's usually faster and sometimes cheaper than a fresh guest post because there's no new content to write or wait on.
 
@@ -86,51 +113,81 @@ A [niche edit](/backlinks/niche-edit-backlinks) adds your link into an existing,
 
 The risk to watch for is relevance drift — a five-year-old post edited to fit an unrelated product reads as exactly what it is. A well-matched niche edit on a topically close article can be just as effective as a new post, at a lower cost. We cover the full trade-off in [guest posting vs. niche edits](/resources/guest-posting-vs-niche-edits).
 
-## 3. Managed Guest Post Campaigns
+**Watch out for:** sellers who won't tell you which article the link goes into before you pay. A reputable seller shows you the exact page and the surrounding paragraph first.
+
+## 3. Managed guest post campaigns
 
 Here you hand over a target page and a budget, and an agency or freelancer handles publisher outreach, writing, and reporting. You typically don't see every option — you approve a shortlist or trust the provider's judgement.
 
 **Best for:** business owners who don't have time to review individual publisher metrics and would rather pay a bit more for a hands-off process.
 
-## 4. Content-Included Packages
+The premium here buys you time, not necessarily better links — a managed campaign on a $1,000 budget often produces roughly what you'd get ordering $700 of placements yourself, with the difference covering outreach labour and project management. That's a fair trade if your time is worth more than the saving, and a bad one if you enjoy the research.
+
+**Watch out for:** providers who won't disclose the actual domains before publishing. "Trust our network" is not a vetting process.
+
+## 4. Content-included packages
 
 Some sellers bundle the article itself into the price, writing 700–1,200 words to the publisher's house style so you don't have to brief a writer separately.
 
 **Best for:** businesses without an in-house writer, or ordering on unfamiliar topics where matching a publication's tone matters.
 
-## 5. Bulk Discount Bundles
+This option quietly solves the most common failure point in DIY guest posting: the article getting rejected because it reads like a sales page. A seller who writes for a publisher regularly knows what that editor accepts.
+
+**Watch out for:** recycled content. Ask whether the article is written fresh for your order — a few sellers cut costs by lightly rewriting the same article across multiple buyers.
+
+## 5. Bulk discount bundles
 
 Ordering three, five or ten placements at once from the same seller or marketplace often comes with a modest per-link discount, since it reduces the number of separate transactions and conversations needed.
 
 **Best for:** building out a first batch of links for a new page that currently has none, where getting several relevant placements live in the same window matters more than sourcing each one individually.
 
-## 6. Industry-Specific Publisher Networks
+The discount is real but modest — typically 10–20% — so treat a bundle as a convenience play rather than a bargain hunt. The bigger benefit is momentum: one round of approvals instead of five.
+
+**Watch out for:** bundles that force you onto sites you wouldn't pick individually. A bundle is only a deal if every site in it clears your normal bar.
+
+## 6. Industry-specific publisher networks
 
 Some marketplaces and agencies specialise in a single vertical — SaaS, finance, health, home services — and maintain relationships with publications in that space specifically.
 
 **Best for:** businesses in a niche with recognisable trade publications, where a generic marketplace might not surface the right sites.
 
-## 7. Local and Regional Placements
+The value here is curation: someone has already done the work of separating the genuine trade press from the generalist blogs that accept anything. In competitive verticals like finance or legal, that curation is worth paying for, because the difference between a real trade publication and a lookalike is hard to spot from metrics alone.
+
+**Watch out for:** networks that claim a vertical focus but list the same generalist sites as everyone else. Check a few listings before assuming the specialisation is real.
+
+## 7. Local and regional placements
 
 For businesses that serve a specific city or region, a link from a local news site, regional business journal or community blog can matter more than a generic higher-authority site with no geographic relevance.
 
 **Best for:** service businesses, local retailers and anyone whose customers search with a location attached.
 
-## 8. Freelance Outreach Specialists
+Local placements punch above their metrics because relevance is doing the heavy lifting — a link from the city's business journal tells search engines something a national generalist site can't, even at a lower authority score. They're also often cheaper, since local publishers don't price against national advertising markets.
+
+**Watch out for:** "local" sites that are actually national link networks with city names in the template. Real local publications have real local bylines and cover real local stories.
+
+## 8. Freelance outreach specialists
 
 Rather than a marketplace or agency, some businesses hire an individual freelancer to pitch publishers directly on their behalf, often at an hourly or per-placement rate.
 
 **Best for:** businesses with a specific, narrow list of target publications they want approached personally rather than through a standing seller relationship.
 
-## 9. Monthly Link Building Retainers
+This is the only option on the list that can reach sites which don't sell placements at all — a good outreach freelancer earns editorial links the way a PR person does, by pitching stories rather than buying slots. The results are less predictable, but the ceiling is higher.
+
+**Watch out for:** freelancers who promise specific domains upfront. Nobody can guarantee a named publication will say yes; anyone who promises it is selling something else.
+
+## 9. Monthly link building retainers
 
 A retainer folds guest posting into a broader monthly programme alongside reporting, strategy and sometimes other link types like digital PR or resource link building.
 
 **Best for:** businesses ready to treat link building as an ongoing function rather than a one-off project.
 
-## Comparing the Options at a Glance
+Retainers make sense once you've validated that the channel works for you — usually after one or two successful one-off batches. Committing monthly before that is putting the cart before the horse; you want evidence first, then a rhythm.
 
-| Option | Typical Cost Range | Speed | Best When |
+**Watch out for:** long lock-ins. A retainer that needs a six-month commitment before you've seen a single placement is asking you to underwrite their learning curve.
+
+## Comparing the options at a glance
+
+| Option | Typical cost range | Speed | Best when |
 |---|---|---|---|
 | Single-domain marketplace order | $40–$400 per link | 5–15 business days | You know which sites you want |
 | Niche edit | $30–$250 per link | 3–10 business days | You need speed over prominence |
@@ -142,35 +199,36 @@ A retainer folds guest posting into a broader monthly programme alongside report
 | Freelance outreach | Hourly or per-placement | Varies | You have a specific target list |
 | Monthly retainer | $500–$3,000+/month | Ongoing | You want a standing programme |
 
-## How to Budget Your First Guest Posting Campaign
+## How to budget your first guest posting campaign
 
 A common mistake with a first campaign is spreading a small budget too thin across too many placements, ending up with five links on marginal sites instead of two or three on genuinely good ones. Work backwards from the page you're trying to support:
 
-1. **Pick one priority page** — a service page, a comparison page, or a piece of cornerstone content — rather than spreading links across your whole site at once.
+1. **Pick one priority page** — a service page, a comparison page, or a piece of cornerstone content — rather than spreading links across your whole site at once. One page moving is worth more than five pages twitching.
 2. **Set a per-link quality floor**, not just a total budget. Deciding "nothing under a real, checkable audience" before you start browsing listings stops budget pressure from lowering your standards mid-search.
 3. **Reserve at least one placement for a higher-tier site**, even if it means fewer total links. One strong, relevant placement usually outperforms three marginal ones.
 4. **Leave room to react** — if a great, slightly pricier site turns up while you're browsing, having 15–20% of budget unallocated lets you take it without cutting into your other placements.
 
 A workable first run for many small businesses looks like $250–$400 spread across three to five placements: one from a stronger, higher-traffic site, and the rest from smaller but genuinely relevant niche publications.
 
-## Mistakes That Waste a Small Guest Posting Budget
-
-- **Chasing DA/DR without checking traffic.** A high authority score on a domain with almost no real visitors contributes far less than a modest score on a site people actually read.
-- **Ordering from unrelated niches because the price was low.** A cheap placement on a topic with no connection to your business is rarely worth it even at a low cost.
-- **Skipping the anchor text conversation.** Letting every placement default to the same commercial anchor phrase creates a pattern that looks manufactured rather than natural.
-- **Treating one placement as a complete strategy.** A single guest post rarely moves a competitive page on its own — it's one input among several.
-
-## A Worked Example: Spending $350 on a First Campaign
+## A worked example: spending $350 on a first campaign
 
 To make the budgeting advice above concrete, here's how a $350 first campaign might realistically break down for a small local services business targeting one commercial page:
 
-- **$150** on one established niche site directly in their industry, DA in the low 40s, with a genuinely engaged readership — this is the anchor placement.
-- **$120** split across two smaller but relevant niche blogs, DA in the 20s-30s, each with modest but real traffic in an adjacent topic area.
+- **$150** on one established niche site directly in their industry, DA in the low 40s, with a genuinely engaged readership — this is the anchor placement, the one doing most of the heavy lifting.
+- **$120** split across two smaller but relevant niche blogs, DA in the 20s–30s, each with modest but real traffic in an adjacent topic area — supporting relevance from different angles.
 - **$80** on a local or regional publication relevant to their service area, since local relevance often matters as much as raw authority for a business serving a specific region.
 
 That's three to four placements, a mix of authority levels, and a deliberate choice to put the largest single spend on the strongest, most relevant site rather than spreading it evenly. The exact numbers will shift depending on your industry and location, but the shape — one anchor placement plus a few supporting ones — holds up across most small business campaigns.
 
-## How to Track Whether It's Working
+## Mistakes that waste a small guest posting budget
+
+- **Chasing DA/DR without checking traffic.** A high authority score on a domain with almost no real visitors contributes far less than a modest score on a site people actually read. The number is a filter, not a verdict.
+- **Ordering from unrelated niches because the price was low.** A cheap placement on a topic with no connection to your business is rarely worth it even at a low cost — relevance is doing half the work of every link.
+- **Skipping the anchor text conversation.** Letting every placement default to the same commercial anchor phrase creates a pattern that looks manufactured rather than natural. Vary it: branded, generic, and the occasional exact match.
+- **Treating one placement as a complete strategy.** A single guest post rarely moves a competitive page on its own — it's one input among several, and it needs company.
+- **Buying before checking the site's recent content.** A domain can have decent historical metrics and a current front page full of unrelated sponsored posts. Always scroll the last month of publishing before ordering.
+
+## How to track whether it's working
 
 Before you order anything, decide what you'll actually check afterward. At minimum:
 
@@ -178,17 +236,28 @@ Before you order anything, decide what you'll actually check afterward. At minim
 - Note the publish date so you have a reference point for when to expect any ranking movement, which typically shows up over 6–12 weeks rather than immediately.
 - Keep a simple log of which site, which anchor text, and which package tier for each order, so a future campaign can learn from what worked.
 
-This doesn't need to be elaborate — a basic spreadsheet is enough for a small business running a handful of placements a quarter.
+This doesn't need to be elaborate — a basic spreadsheet is enough for a small business running a handful of placements a quarter. If you want a fuller picture of what to measure beyond rankings, our guide to [measuring link building ROI](/resources/measure-link-building-roi) covers the metrics that actually matter.
 
-## Scaling Up Once the First Batch Works
+## Scaling up once the first batch works
 
-If your first small campaign shows movement — more referral traffic, better rankings on the target page, or simply confirmation that the placements were genuine and well-received — the natural next step is deciding how to scale without losing the discipline that made the first batch work. The temptation at this stage is to increase volume quickly, but the businesses that get the most out of guest posting over time tend to scale the budget per placement before scaling the number of placements: moving from mostly small niche sites toward a mix that includes a few stronger, more established publications, rather than simply ordering more of the same tier. A steady monthly rhythm of three to five well-chosen placements, sustained over six months, generally outperforms an equivalent one-time burst of fifteen to twenty links ordered all at once, both because it looks more natural and because it gives you room to adjust based on what the first few months show you.
+If your first small campaign shows movement — more referral traffic, better rankings on the target page, or simply confirmation that the placements were genuine and well-received — the natural next step is deciding how to scale without losing the discipline that made the first batch work. The temptation at this stage is to increase volume quickly, but the businesses that get the most out of guest posting over time tend to scale the budget per placement before scaling the number of placements: moving from mostly small niche sites toward a mix that includes a few stronger, more established publications, rather than simply ordering more of the same tier.
 
-## Which Option Fits Your Business?
+A steady monthly rhythm of three to five well-chosen placements, sustained over six months, generally outperforms an equivalent one-time burst of fifteen to twenty links ordered all at once — both because it looks more natural and because it gives you room to adjust based on what the first few months show you. That's also the point where a [monthly link building programme](/backlinks/monthly-link-building) starts to make sense as a format, since the strategy work compounds once there's data to react to.
 
-If you're ordering your first few links and want to see exactly what you're paying for, start with single-domain marketplace orders — you can compare authority, traffic and price side by side before committing. If you need something live fast, a niche edit on a relevant existing article is usually the quickest legitimate route. And if link building needs to become a habit rather than a one-time task, a monthly retainer keeps the work moving without you managing every order.
+## Where Linkslo fits in
 
-Whichever format you choose, the same rule holds: a placement is only worth paying for if a real visitor to that site would find your link relevant, not just a search engine. Browse [real, price-listed guest post sites](/marketplace) with authority and traffic shown upfront, or [get in touch](/contact) if you'd rather talk through a plan first.`,
+Most of the options above — marketplace orders, niche edits, content-included packages — are available directly on the [Linkslo marketplace](/marketplace), where every listing shows its price, authority and traffic before you order. If you'd rather not run the vetting yourself, that work is already done on each listing.
+
+## Final thoughts
+
+You don't need an agency retainer to get value from guest posting — you need a short list of genuinely relevant sites, a per-link quality floor you actually enforce, and the discipline to buy fewer, better placements instead of more, cheaper ones. Start with three to five, learn what moves, then decide whether the channel deserves a bigger budget.
+
+## Related resources
+
+- [How much should you pay for a guest post?](/resources/how-much-should-you-pay-for-a-guest-post) — real pricing data by site tier, so you can sanity-check any quote.
+- [How to vet a guest post site before you buy](/resources/vet-guest-post-site-before-you-buy) — the ten-minute checklist for separating real publishers from link farms.
+- [Guest posting vs. niche edits](/resources/guest-posting-vs-niche-edits) — which format your budget should go toward first.
+- [How to choose a safe link building service](/resources/how-to-choose-a-safe-link-building-service) — red flags and green flags when someone else is doing the buying.`,
   },
 
   {
@@ -233,36 +302,57 @@ Whichever format you choose, the same rule holds: a placement is only worth payi
           "With practice, a solid pass takes about ten minutes per domain: a quick backlink profile scan, a look at three or four recent posts, and a search check for existing topical coverage. It's faster than it sounds once you know what you're looking for.",
       },
     ]),
-    body: `Domain Authority and Domain Rating are the first numbers most buyers look at when choosing a guest post site, and they're useful — as a filter, not as a verdict. Both metrics are modeled from backlink profiles, which means they can be inflated by exactly the kind of low-quality links a careful buyer is trying to avoid.
+    body: `Here's a scenario that plays out constantly: a buyer pays $200 for a guest post on a site showing DA 58, waits three months, and sees absolutely nothing — no referral traffic, no ranking movement, no sign anyone read the article. The site's metrics looked great on the listing. The problem is that metrics are the easiest thing on the internet to inflate, and DA is first in line.
 
-This is the checklist we run on every domain before it's listed on the [Linkslo marketplace](/marketplace), and it's the same process worth running yourself on any site you're considering, regardless of where you found it.
+The misconception underneath most bad buys is that an authority score is a quality verdict. It isn't. DA (Moz) and DR (Ahrefs) are estimates built from backlink data, and backlink data can be manufactured — which means the scores can be manufactured too. They're a reasonable starting filter and a terrible final decision.
 
-## Start With the Numbers, But Don't Stop There
+This guide is the checklist we run on every domain before it's listed on the [Linkslo marketplace](/marketplace), written so you can run it yourself on any site you're considering, wherever you found it. Ten minutes per domain once you know the pattern.
 
-DA (Moz) and DR (Ahrefs) estimate authority from backlink data using different methodologies, so the same site can show meaningfully different scores on each. Neither is issued by Google, and neither directly measures ranking potential — they measure the strength of a site's inbound link profile as that specific tool sees it.
+## The short answer
 
-Use them as a coarse filter: a site scoring near zero with almost no organic traffic is rarely worth pursuing regardless of price. Above that floor, the number stops being decisive on its own, and that's where the rest of this checklist takes over. If you're also weighing what a fair price looks like once a site clears these checks, our guide on [guest post pricing](/resources/how-much-should-you-pay-for-a-guest-post) breaks that down by tier.
+- **DA and DR are a filter, not proof of quality.** Use them to rule out obviously weak domains, then judge the rest on traffic and editorial signals.
+- **Traffic distribution matters more than traffic volume.** Spread across many pages means a real audience; concentrated on one old post means a dead site with a good number.
+- **Check bylines, cadence and the sponsorship ratio.** Named authors, steady publishing and mostly non-sponsored content mark a real publication.
+- **Relevance beats raw authority.** A DA 35 site in your industry outperforms a DA 60 generalist site with no connection to your business.
+- **Never buy a domain you can't see before paying.** "We reveal the site after payment" is a red flag, not a policy.
 
-### Traffic Distribution Matters More Than Traffic Volume
+## Why the number alone misleads
 
-A site showing 50,000 monthly visits sounds appealing until you check where that traffic goes. If it's concentrated on one old post that went viral in 2021 while everything else gets a handful of visits, a new guest post on that domain will likely sit in the quiet majority, not the exception.
+DA and DR estimate authority from backlink profiles using different methodologies, so the same site can show meaningfully different scores on each. Neither is issued by Google, and neither directly measures ranking potential — they measure the strength of a site's inbound link profile as that specific tool sees it.
+
+Here's the part that trips buyers up: a backlink profile is itself gameable. A domain can accumulate thousands of low-quality links — bulk directory submissions, foreign-language blog networks, expired-domain redirects — and watch its DA climb while its actual readership stays near zero. The score goes up; nothing else changes. If you're weighing what a fair price looks like once a site clears these checks, our guide on [guest post pricing](/resources/how-much-should-you-pay-for-a-guest-post) breaks that down by tier — but price only makes sense after quality is established.
+
+Use the scores as a coarse filter: a site scoring near zero with almost no organic traffic is rarely worth pursuing regardless of price. Above that floor, the number stops being decisive on its own, and the rest of this checklist takes over.
+
+## The ten-minute vetting process
+
+This is the actual sequence, in order. It gets faster with practice — the first few take twenty minutes, then pattern recognition kicks in.
+
+### Minutes 1–3: scan the backlink profile
+
+Pull the domain into any free-tier backlink checker and look at the shape of the profile, not just the totals. You're looking for obvious spam clusters: bulk links from unrelated foreign-language sites, gambling or pharma domains linking in volume, or a suspicious concentration of links from a handful of similar-looking blogs. A healthy profile is messy in a natural way — links from varied domains, varied anchor text, spread over time. A manufactured one has visible seams.
+
+### Minutes 3–6: read the last ten posts
+
+Open the site's blog or news page and scroll through the ten most recent articles. Check three things: dates (steady cadence over months, or a burst of 40 posts in one week?), bylines (named, consistent authors, or "Admin" on everything?), and topics (a coherent niche, or finance, health supplements and software in the same week?). This single step catches more bad buys than any metric ever will.
+
+### Minutes 6–8: check traffic distribution
+
+Look at where the site's estimated traffic actually goes. A site showing 50,000 monthly visits sounds appealing until you check and find it's concentrated on one old post that went viral in 2021 while everything else gets a handful of visits. A new guest post on that domain will sit in the quiet majority, not the exception.
 
 What to check:
 
 - Does traffic spread across dozens or hundreds of pages, or a handful?
 - Are recent posts (last 3–6 months) getting any visible traffic at all?
-- Does the site rank for terms beyond its own brand name?
+- Does the site rank for terms beyond its own brand name? A quick "site:domain.com" search alongside your industry term shows whether the publication has organically covered your space before you ever reached out.
 
-### Editorial Signals Worth Checking
+### Minutes 8–10: check the sponsorship ratio and link placement
 
-- **Bylines**: Real, consistent author names with some background, not "Admin" or "Staff" on every post.
-- **Publishing cadence**: A steady rhythm over months or years reads differently than a burst of 40 posts in one week.
-- **Comment and engagement patterns**: Even modest engagement suggests actual readers, not just crawlers.
-- **Content-to-sponsorship ratio**: A site publishing twelve sponsored posts a week across unrelated industries is optimising for link sales, not readership.
+Skim for how many recent posts are clearly sponsored, and where outbound links sit in the content. A site publishing twelve sponsored posts a week across unrelated industries is optimising for link sales, not readership. And a placement buried in a footer, sidebar or author bio carries a fraction of the value of one inside the article body — confirm where your link will actually sit before you pay for it.
 
-## A Quick Reference Checklist
+## Quick reference: signals and red flags
 
-| Signal | What to Look For | Red Flag |
+| Signal | What to look for | Red flag |
 |---|---|---|
 | DA / DR | Reasonable relative to niche and age | Extremely high score, near-zero traffic |
 | Traffic distribution | Spread across many pages | Concentrated on 1–2 old posts |
@@ -271,72 +361,84 @@ What to check:
 | Niche fit | Content overlaps your industry | Random, unrelated topics |
 | Link placement | In-body, contextual | Footer, sidebar, or author-bio only |
 | Outbound link pattern | Mostly organic, some sponsored | Nearly all posts are sponsored |
+| Domain history | Consistent topic over years | Recently repurposed (check the Wayback Machine) |
 
-## Free Tools You Can Use to Check These Signals Yourself
+That last row is worth a sentence: if a domain spent years as an unrelated site and suddenly pivoted to publishing guest posts, the historical metrics belong to a site that no longer exists. The Wayback Machine shows this in about thirty seconds.
 
-You don't need a paid SEO subscription to run most of this checklist:
+## Free tools that cover most of the checklist
 
-1. **A free-tier backlink checker** (most major SEO tool providers offer a limited free lookup) to scan the domain's inbound link profile for obvious spam clusters — bulk links from unrelated foreign-language sites, gambling or pharma domains linking in volume, or a suspicious concentration of links from a handful of similar-looking blogs.
-2. **The site's own search results**, using a "site:domain.com" search alongside your industry term, to see whether the publication has organically covered your space before you ever reached out.
-3. **A quick scroll through the last 10–15 published posts**, checking dates, bylines and whether the topics vary naturally or repeat the same sponsored pattern.
-4. **The Wayback Machine**, if you want to see whether a domain has a long history as a real site or was recently repurposed — a sudden change from years of unrelated content to a run of guest posts is a meaningful signal on its own.
+You don't need a paid SEO subscription for any of this:
 
-None of this takes long once it's a habit, and it catches the great majority of low-quality domains before you spend anything.
+1. **A free-tier backlink checker** (most major SEO tool providers offer a limited free lookup) for the profile scan described above.
+2. **The site's own search results**, using a "site:domain.com" search alongside your industry term, to check topical coverage.
+3. **The last 10–15 published posts**, for the dates, bylines and topic-variety check.
+4. **The Wayback Machine**, for the domain-history check when something feels off.
 
-## What We Check Before Listing a Site on Linkslo
+If you want a more automated pass over the technical side, our [backlink checker tools](/tools/broken-link-checker) and related SEO utilities can speed up parts of this — but the editorial judgement part, reading the actual posts, has no shortcut.
 
-Every publisher on our [guest post marketplace](/marketplace) goes through a version of this same process before it's listed with a price: a traffic and authority check, a scan for topical consistency across recent posts, and a review of how outbound links are actually placed in the content. Listings show real DA, DR, and traffic figures rather than a single opaque "quality score," specifically so you can apply your own judgment rather than trust a black box.
+## Real examples: a site worth buying vs. one to avoid
 
-## Real Examples: A Site Worth Buying vs. One to Avoid
-
-**Worth buying:** A mid-sized site in the home improvement space, DA in the low 40s, traffic spread across seasonal guides and product roundups, with a consistent posting cadence and named authors. A handful of its recent posts are sponsored, but most aren't, and the topics stay within its niche.
+**Worth buying:** A mid-sized site in the home improvement space, DA in the low 40s, traffic spread across seasonal guides and product roundups, with a consistent posting cadence and named authors. A handful of its recent posts are sponsored, but most aren't, and the topics stay within its niche. Nothing about it is perfect; everything about it is real.
 
 **Worth avoiding:** A domain showing DA in the high 50s with almost all of its estimated traffic concentrated on a single unrelated post from several years ago. Recent activity is a cluster of sponsored articles covering finance, health supplements, and software — unrelated to each other and to the site's original focus. The authority score looks appealing, but it's not attached to anything a real, ongoing audience would encounter.
 
 The second example is the pattern worth remembering: a strong number attached to a site that no longer resembles a publication.
 
-## Common Objections Sellers Give and What They Really Mean
-
-When you ask pointed questions about a site's traffic or editorial process, sellers respond in fairly predictable ways. It helps to know how to read between the lines:
-
-- **"Our traffic tool shows different numbers"** — reasonable if the gap is modest, since different tools estimate traffic differently. A gap of 10x or more is worth independent verification, not just taking the higher number.
-- **"We can't share the exact domain until payment"** — a significant red flag on an individual order. Reputable marketplace listings and direct publisher relationships show you the domain upfront specifically so you can vet it first.
-- **"This site doesn't do bylines for guest content"** — not necessarily disqualifying if everything else checks out, but worth weighing against otherwise-similar sites that do credit authors.
-- **"We guarantee permanent placement"** — a reasonable claim if backed by a stated replacement policy; a vague guarantee with no specifics is worth pressing on.
-
-## A Worked Example: Comparing Two Similarly Priced Listings
+## A worked comparison: two listings at $150
 
 Say you're choosing between two sites, both priced around $150 for a guest post. Site A shows DA 45, traffic concentrated on a handful of older posts, and a byline of "Editorial Team" on every recent article. Site B shows DA 38, traffic spread across dozens of recent posts, and named authors with visible history writing in your industry.
 
 On paper, Site A's higher DA looks like the better deal. In practice, Site B is very likely the stronger buy — the traffic pattern suggests an actual ongoing readership, and the named authors suggest a real editorial process rather than a rotating cast of ghost-written sponsored content. This is exactly the kind of case where running the full checklist changes the decision that DA alone would have made.
 
-## What to Do When a Site Fails Part of the Checklist
+## Common objections sellers give, translated
 
-Not every site needs to pass every check perfectly. A small, genuinely relevant niche blog might have modest traffic and no dramatic red flags — that's a reasonable buy at a price that matches its size. The checklist is most useful for catching sites that combine an impressive-looking number with clear signs the number doesn't reflect a real, active publication. When a site fails on relevance specifically — good metrics, but nothing to do with your industry — that's usually the clearest reason to pass, regardless of how the rest of the checklist looks.
+When you ask pointed questions about a site's traffic or editorial process, sellers respond in fairly predictable ways:
 
-## Building Your Own Vetting Habit Over Time
+- **"Our traffic tool shows different numbers"** — reasonable if the gap is modest, since tools estimate differently. A gap of 10x or more deserves independent verification, not just the higher number.
+- **"We can't share the exact domain until payment"** — a significant red flag on an individual order. Reputable listings show you the domain upfront specifically so you can vet it first.
+- **"This site doesn't do bylines for guest content"** — not disqualifying on its own if everything else checks out, but worth weighing against similar sites that do credit authors.
+- **"We guarantee permanent placement"** — reasonable if backed by a stated replacement policy; a vague guarantee with no specifics is worth pressing on.
 
-The checklist in this guide takes longer the first few times you run it and gets noticeably faster with practice, mostly because you start recognising patterns rather than checking each signal from scratch. After vetting a few dozen sites, most buyers develop a rough intuition — a site "feels" thin within the first thirty seconds of browsing its recent posts, well before any formal check confirms it. That intuition is worth trusting as a first filter, but it's still worth running the fuller checklist on anything you're about to spend real money on, since intuition can miss a well-disguised thin site just as easily as it can flag a genuinely good one incorrectly.
+## What to do when a site fails part of the checklist
 
-It's also worth keeping a short running list of sites you've vetted and rejected, along with the specific reason — this becomes useful both for your own future reference and for spotting whether a particular seller keeps offering you the same weak domains under slightly different framing.
+Not every site needs to pass every check perfectly. A small, genuinely relevant niche blog might have modest traffic and no dramatic red flags — that's a reasonable buy at a price that matches its size. The checklist is most useful for catching sites that combine an impressive-looking number with clear signs the number doesn't reflect a real, active publication.
 
-## How Vetting Standards Should Shift by Campaign Goal
+When a site fails on relevance specifically — good metrics, but nothing to do with your industry — that's usually the clearest reason to pass, regardless of how the rest of the checklist looks. And if you're still unsure whether guest posting as a channel is worth the effort at all, our piece on [whether guest posts still work for SEO](/resources/do-guest-posts-still-work-for-seo) separates the version of the practice that performs from the one that doesn't.
 
-Not every placement needs to clear the same bar. A link intended purely to build broad topical authority around your site can reasonably use a slightly lower vetting standard than a link going directly on your highest-priority commercial page, where a poor placement could actively work against you if the site turns out to be low quality. Being explicit about which standard applies to which order — rather than applying one blanket rule to every purchase — lets you stretch a budget further on lower-stakes links while still holding your most important placements to a stricter check. This is also a useful way to allocate time: spend the full ten-minute check on anything going to a priority page, and a faster pass on smaller supporting links where the downside of an occasional miss is limited.
+## Building the habit
 
-## Final Checklist Before You Click Buy
+The checklist takes longer the first few times and gets noticeably faster with practice, mostly because you start recognising patterns rather than checking each signal from scratch. After vetting a few dozen sites, most buyers develop a rough intuition — a site "feels" thin within the first thirty seconds of browsing its recent posts, well before any formal check confirms it.
 
-Before finalising any order, run through this short version of everything above: the site's DA/DR sits in a reasonable range for its niche and age; traffic is spread across multiple recent pages rather than one old post; recent content has real, consistent bylines; the topic overlaps genuinely with your industry; and the link will sit inside the article body rather than a footer or bio. If all five hold up, you're very likely buying a genuine placement rather than a footprint on a domain that used to matter, and you can move on to comparing it against the [pricing guidance](/resources/how-much-should-you-pay-for-a-guest-post) to make sure the number matches what you're actually getting.
+Trust that intuition as a first filter, but still run the fuller checklist on anything you're about to spend real money on — intuition misses well-disguised thin sites just as easily as it flags good ones incorrectly. It's also worth keeping a short running list of sites you've vetted and rejected, with the specific reason noted. That list becomes useful both for your own reference and for spotting whether a particular seller keeps offering you the same weak domains under slightly different framing.
 
-## Relevance Beats Raw Authority
+One more calibration point: not every placement needs to clear the same bar. A link going directly to your highest-priority commercial page deserves the full ten-minute check; a smaller supporting link can get a faster pass. Being explicit about which standard applies to which order stretches a budget further without lowering standards where they matter most.
 
-If a reasonable person browsing that site, with no interest in SEO, would plausibly click through to your page because it's useful to them, the placement is doing its job. If the only connection between the site and your business is a shared keyword, you're paying for a footprint on a domain, not an actual audience.
+## Reading a backlink profile like a human, not a tool
 
-This is why a DA 35 site squarely in your industry, with modest but real traffic, is often a better buy than a DA 60 general-interest site that happens to have space for a sponsored post — a pattern we cover in more detail in [do guest posts still work for SEO](/resources/do-guest-posts-still-work-for-seo).
+The profile scan in the ten-minute process deserves a little more detail, because it's where most buyers either over-trust the tool or under-read what it's showing them. Open the referring domains list and read it the way you'd read a CV — looking for the story, not just the totals.
 
-## The Bottom Line
+A natural profile has texture. You'll see links from sites of different sizes, in related-but-not-identical niches, with anchor text that varies the way real writers vary it: brand names, URL mentions, generic phrases like "this guide" or "read more," and only occasionally a keyword-rich anchor. The dates spread out over years. Some links come from pages you'd never have predicted, because real linking is a messy, human process.
 
-DA and DR earn their place as a first-pass filter, but the domains worth paying for are the ones that would still make sense to appear on even if link value didn't exist — sites with real readers, a consistent editorial process, and enough topical overlap with your business that the placement reads as a genuine recommendation rather than a purchase. Once you've found a site that clears this checklist, you can [browse similar vetted listings](/marketplace) with the same metrics shown upfront.`,
+A manufactured profile has seams. The referring domains look oddly similar to each other — same design templates, same publishing patterns, same vague "general blog" positioning. Anchor text repeats the same commercial phrases across dozens of domains. Large batches of links appear in the same month and then nothing for a year. Foreign-language domains link to an English-language site about an unrelated topic, in numbers that make no editorial sense.
+
+None of these signals is proof on its own. A legitimate site can have a weird month; a real publication can pick up odd links it never asked for. What you're looking for is the overall pattern across five or six of these signals at once. One anomaly is noise. Four is a story.
+
+There's also a useful asymmetry to remember: a clean-looking profile on a site with no real content is more suspicious than a messy profile on a site with obvious editorial effort. Links can be bought; a three-year archive of genuinely useful articles written by named humans is much harder to fake. When the profile and the content disagree, trust the content.
+
+## Where Linkslo fits in
+
+Every publisher on the [Linkslo marketplace](/marketplace) goes through a version of this same process before it's listed with a price: a traffic and authority check, a scan for topical consistency across recent posts, and a review of how outbound links are actually placed in the content. Listings show real DA, DR and traffic figures rather than a single opaque "quality score," so you can apply your own judgement instead of trusting a black box.
+
+## Final thoughts
+
+DA and DR earn their place as a first-pass filter, but the domains worth paying for are the ones that would still make sense to appear on even if link value didn't exist — sites with real readers, a consistent editorial process, and enough topical overlap with your business that the placement reads as a genuine recommendation rather than a purchase. Run the ten-minute check on every site before you spend, keep your rejected list, and let relevance — not the biggest number on the listing — make the final call.
+
+## Related resources
+
+- [How much should you pay for a guest post?](/resources/how-much-should-you-pay-for-a-guest-post) — real pricing data by site tier, for after a site clears this checklist.
+- [What is domain authority, and should you trust it?](/resources/what-is-domain-authority-and-should-you-trust-it) — a deeper look at what these scores actually measure.
+- [Do guest posts still work for SEO?](/resources/do-guest-posts-still-work-for-seo) — the version of guest posting that performs vs. the one that doesn't.
+- [How to choose a safe link building service](/resources/how-to-choose-a-safe-link-building-service) — red flags and green flags when someone else does the buying.`,
   },
 
   {
@@ -381,110 +483,135 @@ DA and DR earn their place as a first-pass filter, but the domains worth paying 
           "A reputable seller will tell you the exact article and let you review the surrounding context before the link goes live, rather than inserting it and reporting back afterward.",
       },
     ]),
-    body: `Guest posts and niche edits both end with the same outcome — a link to your page on someone else's site — but they get there in different ways, and the difference changes how you should budget for each.
+    body: `"Should we do guest posts or niche edits?" is one of the most common questions in link building, and it's usually asked as if the two are rival strategies competing for the same budget. They're not rivals. They're different tools that solve different problems — and most campaigns that perform well over time end up using both, in a ratio that shifts as the campaign matures.
 
-## What a Guest Post Actually Involves
+The confusion comes from the fact that both end with the same outcome: a link to your page on someone else's site. The difference is in how they get there, and that difference changes the cost, the speed, the prominence of the placement, and how much control you have over the context. This guide lays out each format honestly, then gives you a practical way to decide the split for your own budget.
+
+## The short answer
+
+| | Guest post | Niche edit |
+|---|---|---|
+| What it is | A brand-new article written for the placement | Your link inserted into an existing article |
+| Typical turnaround | 5–15 business days | 3–10 business days |
+| Typical cost | Often slightly higher | Often slightly lower |
+| Relevance control | High — you choose the topic | Depends on the existing article match |
+| Referral traffic potential | Higher (new, promoted content) | Lower (link sits in older content) |
+| Durability | Stable once published | Can be edited or removed later |
+| Best for | Anchoring a campaign with new pages | Fast, budget-friendly supporting volume |
+
+If you only remember one line from this guide: **guest posts anchor, niche edits fill in.** New priority pages usually deserve guest posts first; established pages that need incremental support are often better served by niche edits.
+
+## What a guest post actually involves
 
 A [guest post](/backlinks/guest-post-backlinks) is a new article, written to fit a publisher's editorial guidelines, submitted for approval, and published with your link embedded in the body. Because it's new content, it takes longer: someone has to write it, the publisher has to review and schedule it, and the whole process typically runs 5–15 business days from approval to live URL.
 
-The upside is control. You (or your seller) choose the topic, the surrounding context, and exactly how the link is framed. A well-written guest post can also drive real referral traffic on its own, independent of any SEO value.
+The upside is control. You (or your seller) choose the topic, the surrounding context, and exactly how the link is framed. A well-written guest post can also drive real referral traffic on its own, independent of any SEO value — particularly on sites that promote new content through newsletters or social channels.
 
-## What a Niche Edit Actually Involves
+The less obvious upside is topical precision. When you're supporting a page about something specific — a new product category, a service you just launched — you can shape the entire article around the exact angle that makes your link the natural citation. No existing article will ever match that fit, because no existing article was written with your page in mind.
+
+## What a niche edit actually involves
 
 A [niche edit](/backlinks/niche-edit-backlinks) — sometimes called a "curated link" or "link insertion" — adds your link into an article that's already published and already indexed. No new content is created; an editor finds a relevant paragraph in an existing post and inserts a sentence containing your link.
 
-This is usually faster, since there's no writing or editorial review of a full new article involved. It can also be cheaper, because the publisher's cost to fulfil the order is lower.
+This is usually faster, since there's no writing or editorial review of a full new article involved. It can also be cheaper, because the publisher's cost to fulfil the order is lower — the content, the rankings and the audience already exist.
 
-## Where Niche Edits Fall Short
+There's a subtle advantage here that's easy to miss: the article already has history. An existing post with its own traffic, its own inbound links and its own position in search results is a known quantity in a way a brand-new guest post isn't. When the topical match is genuinely good, you're attaching your link to a page that's already proven it can attract attention.
 
-The article wasn't written with your page in mind, so relevance depends entirely on how good the match is between the existing content and what you're linking to. A well-matched niche edit — your project management tool linked from a three-year-old "best productivity tools" post — reads naturally. A poorly matched one is obvious to any reader who clicks through.
+## Where niche edits fall short
 
-There's also a durability question: since you don't own the article, the publisher could update, rewrite or remove it later, taking your link along. Good sellers monitor this and replace lost links, but it's worth asking about upfront.
+The article wasn't written with your page in mind, so relevance depends entirely on how good the match is between the existing content and what you're linking to. A well-matched niche edit — your project management tool linked from a three-year-old "best productivity tools" post — reads naturally. A poorly matched one is obvious to any reader who clicks through, and obvious to search engines evaluating the context.
 
-## Side-by-Side Comparison
+There's also a durability question: since you don't own the article, the publisher could update, rewrite or remove it later, taking your link along. Good sellers monitor this and replace lost links within an agreed window, but it's worth asking about upfront rather than discovering it after the fact.
 
-| Factor | Guest Post | Niche Edit |
-|---|---|---|
-| Content | New article written for the placement | Inserted into existing article |
-| Typical turnaround | 5–15 business days | 3–10 business days |
-| Typical cost | Often slightly higher | Often slightly lower |
-| Relevance control | High — you choose the topic | Depends on existing article match |
-| Referral traffic potential | Higher (new, promoted content) | Lower (link sits in older content) |
-| Durability | Stable once published | Can be edited/removed later |
-| Best for | Anchoring a campaign, building brand presence | Fast, budget-friendly volume |
+And there's a ceiling on prominence. Your link is one addition to someone else's article, not the reason the article exists. For a flagship placement on your most important page, that difference matters.
 
-## A Closer Look at Cost Per Link Over Time
+## Where guest posts fall short
 
-The sticker price on a single order doesn't tell the whole story. Guest posts that include content writing carry a labour cost baked into the price, which is a one-time expense — once published, there's nothing more to pay for that link. Niche edits often look cheaper up front, but if a publisher's article gets updated or deprecated and your link needs replacing down the line, that's a second cost you weren't necessarily planning for.
+Guest posts have their own weaknesses, and they're worth naming since the format tends to get romanticised. The biggest one is time: writing, review, scheduling and publication stretch the process to weeks, which makes guest posts a poor fit when you need links live quickly.
 
-Over a 12-month campaign, a mix tends to average out: guest posts anchor the campaign with durable, on-topic placements, while niche edits add volume at a lower per-link cost, accepting a slightly higher chance that some will need monitoring or replacement.
+The second is cost. Content creation is labour, and labour shows up in the price — a guest post that includes writing typically runs noticeably higher than a niche edit on a comparable site. If you're buying in volume, that gap compounds.
 
-## How to Combine Both in a Single Campaign
+The third is less obvious: a guest post only performs if the article itself is good. A thin, generic article published on a decent site is still a thin, generic article — it just cost more to produce. The format doesn't rescue weak content; it amplifies whatever quality the writing brings.
 
-A workable split for a mid-sized campaign — say, ten links aimed at one priority page — often looks like this:
+## Cost per link over a full year
 
-- **Three to four guest posts** on the most relevant, higher-authority sites you can find, each written specifically to support the target page.
-- **Six to seven niche edits** spread across smaller or already-established articles that closely match the topic, filling out volume at a lower average cost.
+The sticker price on a single order doesn't tell the whole story. Guest posts that include content writing carry a labour cost baked into the price — a one-time expense, since once published there's nothing more to pay for that link. Niche edits often look cheaper up front, but if a publisher's article gets updated or deprecated and your link needs replacing down the line, that's a second cost you weren't necessarily planning for.
 
-This isn't a fixed formula — a page in a niche with very few relevant existing articles to edit into will lean more heavily on fresh guest posts by necessity, while a well-covered topic with lots of existing content might support a more even split.
+Over a 12-month campaign, a mix tends to average out: guest posts anchor the campaign with durable, on-topic placements, while niche edits add volume at a lower per-link cost, accepting a slightly higher chance that some will need monitoring or replacement. If you're planning the budget for either format, our [guest post pricing guide](/resources/how-much-should-you-pay-for-a-guest-post) gives real ranges by site tier.
 
-## Questions to Ask a Seller Before You Order Either
-
-- For a guest post: Who writes the article — you, or the seller — and how many revision rounds are included if the publisher requests changes?
-- For a niche edit: Which specific article will the link go into, and can you review it before the edit goes live?
-- For both: What happens if the placement is rejected, removed, or the publisher's policy changes after you've paid?
-- For both: Is there a written replacement or refund policy if the link disappears within an agreed monitoring window?
-
-A seller who can answer these clearly before you order is generally more reliable than one who treats the process as a black box.
-
-## How Anchor Text Differs Between the Two Formats
+## How anchor text differs between the two formats
 
 With a guest post, you're writing (or commissioning) the article from scratch, which means you control exactly where the anchor text sits and how many times your target page gets mentioned. This makes it easier to keep anchor text varied and natural-sounding across a campaign — branded mentions, generic phrases, and the occasional exact-match anchor, in a mix that reads like something a real writer would produce.
 
-With a niche edit, you're constrained by the existing article's structure. A good editor will find a sentence where your link fits naturally, but you have less control over the exact phrasing than you would writing fresh content. This isn't necessarily a downside — a link that's clearly been fitted into someone else's writing, using their sentence structure, can actually look more organic than a guest post with suspiciously on-brand phrasing throughout.
+With a niche edit, you're constrained by the existing article's structure. A good editor will find a sentence where your link fits naturally, but you have less control over the exact phrasing than writing fresh content. This isn't necessarily a downside — a link fitted into someone else's writing, using their sentence structure, can actually look more organic than a guest post with suspiciously on-brand phrasing throughout. For more on getting this balance right, see our guide to [natural anchor text ratios](/resources/anchor-text-ratios-natural-backlink-profile).
 
-## A Worked Example: Splitting a $500 Budget
+## When niche edits are clearly the better choice
 
-Consider a $500 budget aimed at supporting one commercial page that currently has no backlinks pointing to it. A reasonable split:
+There are situations where niche edits aren't just a budget compromise — they're genuinely the better format. If you're adding a citation-style link to a resource, a tool, or a piece of data that fits naturally into "further reading" style content that already exists across many sites, a niche edit often looks more natural than a purpose-written guest post would. Resource mentions are exactly the kind of thing that gets added to existing articles as they're updated over time, so the pattern matches how the web actually works.
 
-- **Two guest posts** (roughly $150 each, $300 total) on relevant niche sites, each written to introduce the page's topic naturally within useful, on-topic content.
+They're also the better choice when speed matters more than prominence — a product-adjacent page that needs supporting links this month, not next quarter — and when the topic is already well covered by existing content in your niche, so there are plenty of genuinely relevant articles to choose from.
+
+## When guest posts are clearly the better choice
+
+The reverse holds when you're introducing something genuinely new — a product launch, an original piece of research, a service offering that didn't exist when older articles in your niche were written. There's no existing article to edit into that would make sense; the only natural way to get coverage is through content written with that specific news in mind.
+
+This is also the case when you're launching into a brand-new topic area your business hasn't been associated with before, where there simply isn't a backlog of relevant existing articles anywhere to insert a link into. And for flagship placements on your highest-priority commercial pages, the control a guest post gives you over framing and context is usually worth the premium.
+
+## A practical split for a real campaign
+
+A workable starting point for a mid-sized campaign — say, ten links aimed at one priority page:
+
+- **Three to four guest posts** on the most relevant, higher-authority sites you can find, each written specifically to support the target page. These are the anchors.
+- **Six to seven niche edits** spread across smaller or already-established articles that closely match the topic, filling out volume at a lower average cost.
+
+This isn't a fixed formula. A page in a niche with very few relevant existing articles will lean more heavily on fresh guest posts by necessity, while a well-covered topic with lots of existing content might support a more even split. Think in terms of the page's lifecycle: new pages need guest posts first (nothing exists to edit into yet); established pages that already rank reasonably well are often better served by niche edits adding incremental authority at lower cost.
+
+## A worked example: splitting a $500 budget
+
+Consider a $500 budget aimed at supporting one commercial page that currently has no backlinks pointing to it:
+
+- **Two guest posts** (roughly $150 each, $300 total) on relevant niche sites, each written to introduce the page's topic naturally within useful, on-topic content. These establish the page's topical footing.
 - **Four niche edits** (roughly $50 each, $200 total) on well-matched existing articles, adding supporting volume at a lower cost per link.
 
-This gives the page six total links from six different domains — a healthier pattern than concentrating the same budget into two or three more expensive placements — while still anchoring the campaign with content written specifically for the purpose.
+That gives the page six total links from six different domains — a healthier pattern than concentrating the same budget into two or three more expensive placements — while still anchoring the campaign with content written specifically for the purpose. Before ordering either format, run each candidate site through our [vetting checklist](/resources/vet-guest-post-site-before-you-buy); the format decision matters less than the quality of the sites you pick.
 
-## When Niche Edits Are Clearly the Better Choice
+## Questions to ask a seller before you order either
 
-There are situations where niche edits aren't just a budget compromise — they're genuinely the better format. If you're adding a citation-style link to a resource, a tool, or a piece of data that fits naturally into "further reading" style content that already exists across many sites, a niche edit often looks more natural than a purpose-written guest post would, since resource mentions are exactly the kind of thing that gets added to existing articles as they're updated over time.
+- For a guest post: who writes the article — you or the seller — and how many revision rounds are included if the publisher requests changes?
+- For a niche edit: which specific article will the link go into, and can you review it before the edit goes live?
+- For both: what happens if the placement is rejected, removed, or the publisher's policy changes after you've paid?
+- For both: is there a written replacement or refund policy if the link disappears within an agreed monitoring window?
 
-## When Guest Posts Are Clearly the Better Choice
+A seller who answers these clearly before you order is generally more reliable than one who treats the process as a black box.
 
-The reverse holds when you're introducing something genuinely new — a product launch, an original piece of research, a service offering that didn't exist when older articles in your niche were written. There's no existing article to edit into that would make sense; the only natural way to get coverage is through content written with that specific news in mind. This is also the case for launching into a brand-new topic area your business hasn't been associated with before, where there simply isn't a backlog of relevant existing articles anywhere to insert a link into.
+## A note on referral traffic
 
-## Questions About Cost Aren't the Only Consideration
+It's easy to reduce this decision to pure cost-per-link, but the two formats also differ in how much referral traffic they're likely to send. A brand-new guest post on a site that actively promotes new content — through its own newsletter, social channels or homepage — can drive real visitors well beyond any SEO value. A niche edit added quietly to an old archive page is far less likely to be seen by anyone browsing the site currently, even though it may still carry authority in search engines' eyes. If referral traffic is part of your goal, weight the split toward guest posts; if it's purely about the link signal, the cheaper format stretches further.
 
-It's easy to reduce this decision to pure cost-per-link, but the two formats also differ in how much referral traffic they're likely to send. A brand-new guest post on a site that actively promotes new content — through its own newsletter, social channels, or homepage — can drive real visitors well beyond any SEO value. A niche edit added quietly to page four of an old archive is far less likely to be seen by anyone browsing the site currently, even though it may still carry authority in search engines' eyes.
+## Two campaigns, two splits: a concrete comparison
 
-## How These Formats Fit Into a Longer-Term Strategy
+To make the split decision less abstract, here are two realistic campaigns and how the guest post / niche edit ratio plays out differently in each.
 
-Over a full year of link building, the guest post versus niche edit question tends to answer itself once you're tracking a portfolio of pages rather than a single one. New, high-priority pages — a fresh product launch, a newly redesigned service page — generally deserve guest posts first, since there's no existing content anywhere that could be edited to support them. Older, established pages that already rank reasonably well but could use incremental authority are often better served by niche edits, since the marginal gain from another well-matched existing article tends to be worth more than its lower cost would suggest. Thinking in terms of a page's lifecycle — new versus established — is often a more useful lens than trying to pick one format as generally superior to the other.
+**Campaign A: a new SaaS feature page, zero existing links, $800 budget.** The page is two weeks old. There is no existing content anywhere written about this specific feature, because it didn't exist a month ago — so niche edits can only attach to loosely related older articles about the general category. The right split here leans heavily toward guest posts: four guest posts (around $150 each, $600 total) on relevant software and productivity sites, each written to introduce the feature in context, plus two niche edits ($100 each, $200 total) on well-matched existing "best tools" articles for supporting volume. The guest posts do the heavy lifting of establishing topical relevance; the niche edits add domain diversity cheaply.
 
-## A Final Word on Mixing Sellers
+**Campaign B: an established local services page, 20 existing links, $800 budget.** The page already ranks on page two for its main term. The niche is well covered by existing content — dozens of local and industry articles mention related services. Here the split flips: two guest posts ($150 each, $300 total) on the strongest available regional and industry sites to add fresh, prominent placements, and eight to ten niche edits ($50–60 each, $500 total) spread across genuinely relevant existing articles. The page doesn't need its relevance established; it needs incremental authority from many directions, and niche edits deliver that at a lower cost per link.
 
-Many buyers default to sourcing every link, guest post or niche edit alike, from a single agency or seller for convenience. There's nothing wrong with that once you trust the relationship, but it's worth knowing that most experienced buyers eventually diversify — using a marketplace for guest posts where they want visibility into exact metrics before ordering, and a specialist niche edit provider where speed and existing-article fit matter more than browsing options themselves. Diversifying sellers also naturally diversifies the pool of domains your links come from, which tends to look healthier than a link profile where every placement traces back to the same handful of relationships. It also means a single seller having a bad quarter, or quietly lowering their editorial standards, doesn't put your entire link building programme at risk at once.
+Same budget, opposite splits — because the pages are at different stages. That's the lifecycle lens in practice: new pages need the format that creates context, established pages need the format that adds volume efficiently. Most buyers who struggle with this decision are trying to pick a permanent default instead of asking what stage their page is at right now.
 
-## Putting It All Together
+## Where Linkslo fits in
 
-There's no universally correct answer to guest posting versus niche edits — the right choice depends on whether the page you're supporting is new or established, how much control you need over the exact content and anchor text, and how your budget is best allocated across a handful of strong placements versus a larger number of supporting ones. Most campaigns that perform well over time end up using both, in a ratio that shifts as pages mature from newly published to well-established. Starting with a clear view of what stage each of your priority pages is at makes this decision considerably easier than trying to pick one format as the default for every situation, and checking [current pricing](/resources/how-much-should-you-pay-for-a-guest-post) for both formats before you commit a budget helps confirm the split still makes sense once real numbers are on the table.
+You can compare live pricing for both formats side by side on the [Linkslo marketplace](/marketplace) — [guest post placements](/backlinks/guest-post-backlinks) and [niche edits](/backlinks/niche-edit-backlinks) are listed with their metrics shown upfront, so the split you plan here can be checked against real numbers before you commit.
 
-## How to Decide Where Your Budget Goes First
+## Final thoughts
 
-If you're starting from zero links on a page and want the strongest possible first impression, a guest post gives you more control over context and framing. If you already have some coverage and need to add volume efficiently, niche edits stretch a budget further without sacrificing much, provided the article match is genuinely relevant — see our [checklist for vetting any site](/resources/vet-guest-post-site-before-you-buy) before ordering either format.
+There's no universally correct answer to guest posting versus niche edits — the right choice depends on whether the page you're supporting is new or established, how much control you need over the content and anchor text, and how your budget divides across a handful of strong placements versus a larger number of supporting ones. Most campaigns that perform well over time use both, in a ratio that shifts as pages mature.
 
-Most effective campaigns don't pick one exclusively — they use guest posts to establish a handful of strong, well-framed placements on priority pages, then fill in supporting volume with niche edits on well-matched existing content.
+## Related resources
 
-## A Simple Rule of Thumb
-
-Ask what the link needs to do. If it needs to anchor a new page with no existing coverage, write something new. If it needs to add incremental relevance to a page that already has some links, a well-matched niche edit is usually the more efficient spend. You can compare live pricing for both formats side by side on the [marketplace](/marketplace), or [talk to a strategist](/contact) if you'd rather have the split planned out for you.`,
+- [How much should you pay for a guest post?](/resources/how-much-should-you-pay-for-a-guest-post) — real pricing data by site tier for both formats.
+- [How to vet a guest post site before you buy](/resources/vet-guest-post-site-before-you-buy) — the ten-minute checklist, applicable to either format.
+- [Natural anchor text ratios](/resources/anchor-text-ratios-natural-backlink-profile) — how to vary anchors across a mixed campaign.
+- [How to choose a safe link building service](/resources/how-to-choose-a-safe-link-building-service) — what to ask any seller before ordering.`,
   },
 
   {
@@ -529,100 +656,138 @@ Ask what the link needs to do. If it needs to anchor a new page with no existing
           "Not directly. Higher-priced sites sometimes have longer editorial queues because of higher submission volume, while some mid-priced sites turn placements around faster simply because they publish more frequently.",
       },
     ]),
-    body: `Ask five people what a guest post should cost and you'll get five different numbers, and all of them might be right — for the specific site they had in mind. Pricing in this market isn't arbitrary, but it also isn't standardised, which makes it easy for a buyer to either overpay for a low-value site or underpay expectations for a genuinely strong one.
+    body: `Ask five people what a guest post should cost and you'll get five different numbers — and all of them might be right, for the specific site each person had in mind. Pricing in this market isn't arbitrary, but it isn't standardised either. That combination makes it easy to overpay for a low-value site or to balk at a fair price for a genuinely strong one, simply because you have no frame of reference.
 
-Here's what actually moves the number, based on the pricing patterns across thousands of active listings on our [guest post marketplace](/marketplace).
+This guide gives you that frame of reference: what actually moves the price, the real ranges by site tier drawn from thousands of active marketplace listings, and a practical way to set your own ceiling before you start browsing. Prices shift over time, so treat the numbers as current patterns rather than permanent fixtures — but the structure of how pricing works changes much more slowly than the numbers themselves.
 
-## The Core Drivers of Guest Post Pricing
+## The short answer
 
-### Domain Authority and Domain Rating
+| Site tier | Typical price per guest post |
+|---|---|
+| Small niche blog (DA 15–35, under 5k monthly visits) | $30–$100 |
+| Established niche site (DA 30–55, 5k–50k visits) | $80–$250 |
+| Strong industry publication (DA 50–70, 50k–250k visits) | $200–$600 |
+| Major outlet (DA 70+, 250k+ visits) | $500–$2,000+ |
 
-These remain the most visible inputs, and sellers price around them because buyers ask about them first. But authority alone doesn't set price — it sets a rough tier that traffic and niche then adjust up or down. Our guide to [vetting a site before you buy](/resources/vet-guest-post-site-before-you-buy) explains why the number alone isn't the full picture.
+Three rules of thumb: price tracks traffic more closely than authority scores; niche and commercial intent shift every tier up or down; and a price that looks too good for the claimed metrics deserves a closer look, not a faster checkout.
 
-### Organic Traffic
+## What actually drives the price
 
-Two sites with identical DA can have wildly different traffic, and traffic tends to matter more to price than the authority score itself. A site pulling in tens of thousands of monthly visits justifies a higher price than a similarly-scored site getting a few hundred.
+### Domain authority and domain rating
 
-### Niche and Commercial Intent
+These remain the most visible inputs, and sellers price around them because buyers ask about them first. But authority alone doesn't set price — it sets a rough tier that traffic and niche then adjust up or down. A DA 50 site with declining traffic often prices below a DA 40 site with growing traffic, because sellers ultimately price against demand. Our guide to [vetting a site before you buy](/resources/vet-guest-post-site-before-you-buy) explains why the number alone isn't the full picture — and the same logic applies to pricing.
 
-Finance, legal, SaaS and health sites typically command higher prices than general lifestyle or hobby blogs at the same authority level, because advertisers in those niches have historically paid more for placements — the guest post market reflects that broader ad-value pattern.
+### Organic traffic
 
-### Link Type
+Two sites with identical DA can have wildly different traffic, and traffic tends to matter more to price than the authority score itself. A site pulling in tens of thousands of monthly visits justifies a higher price than a similarly scored site getting a few hundred — partly because the link carries more weight, and partly because the placement itself reaches more real readers. When two listings confuse you, compare their traffic first and their DA second.
 
-Dofollow links generally cost more than nofollow, since they pass a stronger authority signal. Some publishers only offer nofollow due to their own editorial policy, which typically shows up as a lower price for the placement.
+### Niche and commercial intent
 
-### Content Requirements
+Finance, legal, SaaS and health sites typically command higher prices than general lifestyle or hobby blogs at the same authority level, because advertisers in those niches have historically paid more for placements. The guest post market reflects that broader ad-value pattern: where commercial intent is high, publisher inventory is priced accordingly. This also means a small niche site in a high-value vertical can out-price a larger general-interest site — the tier table above is a starting point, not a law.
 
-If the price includes the publisher (or seller) writing the article, expect a premium over a listing where you supply your own draft. Word count minimums and topic restrictions can also affect price, and some publishers charge extra for expedited turnaround if you need a placement live faster than their normal editorial queue would allow.
+### Link attributes
 
-## Typical Price Ranges by Site Tier
+Dofollow links generally cost more than nofollow, since they pass a stronger authority signal. Some publishers only offer nofollow due to their own editorial policy, which typically shows up as a lower price for the placement. That discount is legitimate — you're buying a different product — but make sure you know which one you're getting before comparing prices across listings.
 
-| Site Tier | Typical DA Range | Typical Monthly Traffic | Typical Price |
+### Content and turnaround requirements
+
+If the price includes the publisher or seller writing the article, expect a premium over a listing where you supply your own draft. Word count minimums and topic restrictions can also affect price, and some publishers charge extra for expedited turnaround if you need a placement live faster than their normal editorial queue allows. When comparing two prices, check whether you're comparing like with like on the writing.
+
+## Typical price ranges by site tier
+
+| Site tier | Typical DA range | Typical monthly traffic | Typical price |
 |---|---|---|---|
 | Small niche blog | 15–35 | Under 5,000 | $30–$100 |
 | Established niche site | 30–55 | 5,000–50,000 | $80–$250 |
 | Strong industry publication | 50–70 | 50,000–250,000 | $200–$600 |
 | Major outlet / high-traffic site | 70+ | 250,000+ | $500–$2,000+ |
 
-These ranges overlap deliberately — a small niche site in a high-value vertical like finance can out-price a larger general-interest site, and a big outlet with declining relevance can sometimes be found cheaper than its authority score implies.
+These ranges overlap deliberately. A small niche site in a high-value vertical like finance can out-price a larger general-interest site, and a big outlet with declining relevance can sometimes be found cheaper than its authority score implies. The table tells you the neighbourhood; the specific listing tells you the address.
 
-## Real Listing Patterns Across Price Tiers
+## What listings actually look like at each tier
 
 Browsing a large, price-listed marketplace makes the pattern easier to see than any single average number. At the lower end, a niche hobby or local-interest site with a few thousand monthly visitors commonly lists in the $30–$70 range — reasonable for a supporting link on a page that doesn't need a flagship placement. In the middle tier, an established site with a genuine, specific audience — a regional business publication, a well-run SaaS review blog — tends to sit in the $150–$300 range, reflecting both its traffic and the narrower, more valuable audience it reaches. At the top, sites with six-figure monthly traffic and strong topical authority justify $500 and up, often because the referral traffic alone would cost more to replicate through paid channels.
 
-## How Seasonal Demand Affects Pricing
+The useful habit here is not memorising numbers but calibrating your eye: after browsing fifty listings with metrics and prices side by side, overpriced and underpriced outliers start to stand out on their own. That calibration is worth more than any pricing table, including this one.
 
-Guest post pricing isn't static throughout the year. Demand tends to rise ahead of major shopping periods as e-commerce and retail-adjacent businesses push harder for visibility, and again early in the calendar year as companies deploy annual marketing budgets. Publishers with limited editorial capacity sometimes raise prices or extend turnaround times during these windows simply because submission volume increases. If your campaign timeline is flexible, ordering slightly outside these peak periods can mean faster turnaround at a similar price.
+## How seasonal demand affects pricing
 
-## Negotiating Bulk Rates: What's Realistic
+Guest post pricing isn't static through the year. Demand tends to rise ahead of major shopping periods as e-commerce and retail-adjacent businesses push harder for visibility, and again early in the calendar year as companies deploy annual marketing budgets. Publishers with limited editorial capacity sometimes raise prices or extend turnaround times during these windows simply because submission volume increases.
 
-Individual marketplace listings are usually fixed-price — the seller has already priced the placement against that domain's metrics, and there's limited room to negotiate a single order. Where negotiation is more realistic is volume: ordering five, ten, or more placements from the same seller, or committing to a recurring monthly volume, often opens the door to a modest per-link discount, typically in the 10–20% range. It's reasonable to ask; it's not reasonable to expect a steep discount on a single one-off order from a site with genuinely strong metrics.
+If your campaign timeline is flexible, ordering slightly outside these peak periods can mean faster turnaround at a similar price. It's a small edge, but on a multi-placement order it adds up — and the sites you want are the same sites everyone else wants during a peak.
 
-## How Payment Method Affects Price and Trust
+## Negotiating: what's realistic
 
-Most marketplace transactions run through standard payment processors, which gives buyers a layer of dispute protection that direct bank transfers to an individual seller don't. Sellers accepting only untraceable payment methods for a first-time order are worth extra caution regardless of how attractive the listed price looks — reputable marketplaces and agencies use payment methods that leave both parties with a paper trail and some recourse if a placement doesn't materialise as described. This matters more than it might seem, since a placement dispute with no payment trail generally leaves the buyer with little recourse beyond simply not ordering from that seller again.
+Individual marketplace listings are usually fixed-price — the seller has already priced the placement against that domain's metrics, and there's limited room to negotiate a single order. Where negotiation is more realistic is volume: ordering five, ten or more placements from the same seller, or committing to recurring monthly volume, often opens the door to a modest per-link discount, typically in the 10–20% range.
 
-## Regional Pricing Differences Worth Knowing
+It's reasonable to ask; it's not reasonable to expect a steep discount on a single one-off order from a site with genuinely strong metrics. And a seller who drops the price 50% the moment you hesitate is telling you something about how the original price was set.
 
-Guest post pricing also varies by the primary market a site serves. Publications with a US or UK audience, particularly in commercially competitive niches, tend to price at the higher end of their tier compared to similarly-sized sites serving other regions, largely reflecting differences in average advertiser spend across those markets. This isn't a rule to game — a genuinely relevant site in a lower-cost region can still be an excellent buy — but it explains part of why two sites with near-identical DA and traffic numbers sometimes carry noticeably different price tags.
+## How payment method affects price and trust
 
-## A Simple Framework for Setting Your Own Ceiling
+Most marketplace transactions run through standard payment processors, which gives buyers a layer of dispute protection that direct bank transfers to an individual seller don't. Sellers accepting only untraceable payment methods for a first-time order are worth extra caution regardless of how attractive the listed price looks — reputable marketplaces and agencies use payment methods that leave both parties with a paper trail and some recourse if a placement doesn't materialise as described.
 
-Rather than asking "is this price fair in general," a more useful question is "what would I pay to reach this specific audience through any channel." If a site's estimated monthly traffic in your niche would cost a comparable amount to reach through paid advertising, the guest post price starts to look reasonable by comparison — with the added benefit that the placement keeps working indefinitely rather than stopping the moment an ad budget runs out. This framing tends to produce more consistent decisions than comparing raw DA numbers across unrelated niches.
+This matters more than it might seem. A placement dispute with no payment trail generally leaves the buyer with little recourse beyond not ordering from that seller again. The cheapest listing on the internet is expensive if the link never goes live.
 
-## What Happens When You Overpay (and How to Avoid It)
+## Regional pricing differences worth knowing
 
-Overpaying for a guest post rarely means losing money outright — you still get a real placement, most of the time. What you lose is efficiency: the same budget could have bought two or three placements on equally relevant, slightly lower-tier sites instead of one on a premium site, and for most link building goals, several relevant links outperform one, particularly earlier in a campaign when a page has few or no backlinks yet. Before paying a premium price, it's worth checking whether that budget would go further split across a couple of solid mid-tier sites — a comparison our [marketplace](/marketplace) makes easy since every listing shows price alongside authority and traffic.
+Publications with a US or UK audience, particularly in commercially competitive niches, tend to price at the higher end of their tier compared to similarly sized sites serving other regions — largely reflecting differences in average advertiser spend across those markets. This isn't a rule to game: a genuinely relevant site in a lower-cost region can still be an excellent buy. But it explains part of why two sites with near-identical DA and traffic numbers sometimes carry noticeably different price tags, and it means cross-regional comparison needs a mental adjustment, not a straight read.
 
-## Tracking Price Trends Over Time
+## A framework for setting your own ceiling
 
-Because guest post pricing isn't centrally set, it drifts gradually as publisher traffic changes, as niches become more or less commercially competitive, and as the overall supply of sellers in a space shifts. A site that was reasonably priced a year ago might now be under- or over-priced relative to its current traffic, which is one more reason a snapshot DA number matters less than checking current, live metrics before every order rather than relying on a price you remember from a previous campaign. Buyers who track pricing across a handful of go-to niches over time tend to develop a much sharper sense of what's a genuinely good deal versus an inflated one than any general pricing guide, including this one, can offer on its own.
+Rather than asking "is this price fair in general," a more useful question is: **what would I pay to reach this specific audience through any other channel?** If a site's estimated monthly traffic in your niche would cost a comparable amount to reach through paid advertising, the guest post price starts to look reasonable by comparison — with the added benefit that the placement keeps working indefinitely rather than stopping the moment an ad budget runs out.
 
-## Why Transparent, Live-Priced Marketplaces Change the Calculation
+This framing tends to produce more consistent decisions than comparing raw DA numbers across unrelated niches. It also naturally handles the relevance question: a highly relevant smaller site is "worth" more to you than a larger irrelevant one, because the alternative cost of reaching that specific audience is higher.
 
-A meaningful share of the historical confusion around guest post pricing came from opacity — buyers paying an agency a flat rate per link with no visibility into what the agency itself paid the publisher, or what the site's actual metrics were at the time. A marketplace model where every listing shows its own authority, traffic and price side by side removes most of that guesswork, since you're comparing real, current numbers rather than trusting a middleman's summary. It doesn't eliminate the need for judgment — you still have to decide which metrics matter most for your specific page — but it means the judgment is based on visible data rather than a quoted number you have no way to verify independently.
+A practical way to run this: list the pages you want to support, decide roughly how many links each needs, and set a per-tier budget using the ranges in this guide as a starting point. A page competing for a genuinely difficult keyword justifies leaning toward the higher end of the "established niche" or "strong industry publication" tiers; a lower-priority supporting page can be served well by smaller, cheaper — but still genuinely relevant — sites. Doing this exercise once, in writing, before browsing listings produces better spending decisions than reacting to individual site prices as you come across them.
 
-## Putting a Number on Your Own Campaign
+## When a price looks too good
 
-Rather than asking "what does a guest post cost" in the abstract, the more useful exercise is pricing out your own specific campaign: list the pages you want to support, decide roughly how many links each needs, and set a per-tier budget using the ranges in this guide as a starting point. A page competing for a genuinely difficult keyword usually justifies leaning toward the higher end of the "established niche" or "strong industry publication" tiers, while a lower-priority supporting page can be served well by smaller, cheaper sites. Doing this exercise once, in writing, before you start browsing listings tends to produce better spending decisions than reacting to individual site prices as you come across them.
+A guest post at $15–$20 on a site claiming DA 50+ and six-figure traffic is worth extra scrutiny before ordering. Check the traffic distribution and recent post engagement rather than assuming the price alone confirms or denies the site's value. Some listings are simply underpriced by a seller who hasn't updated rates — those are genuine bargains. Others are inflated metrics on a thin site — those are traps. The ten-minute [vetting checklist](/resources/vet-guest-post-site-before-you-buy) is the fastest way to tell which one you're looking at.
 
-## Where to Go From Here
+## What overpaying actually costs you
 
-Once you have a rough budget and tier in mind, the fastest way to see how far it goes is to look at live listings rather than estimates — real prices shift week to week as publisher traffic and demand change. Our [marketplace](/marketplace) shows current authority, traffic and price together for every listed site, so you can check your budget against what's actually available today rather than planning around numbers that may already be out of date by the time you're ready to order. And if a page's needs turn out to be more about speed and volume than a handful of flagship placements, it's worth reading through the [guest post versus niche edit comparison](/resources/guest-posting-vs-niche-edits) before finalising how that budget gets split.
+Overpaying for a guest post rarely means losing money outright — you still get a real placement, most of the time. What you lose is efficiency: the same budget could have bought two or three placements on equally relevant, slightly lower-tier sites instead of one on a premium site. For most link building goals, several relevant links outperform one, particularly earlier in a campaign when a page has few or no backlinks yet.
 
-## When a Price Looks Too Good
+Before paying a premium price, it's worth checking whether that budget would go further split across a couple of solid mid-tier sites. And if speed and volume matter more than flagship placements for this particular page, it's worth reading the [guest post versus niche edit comparison](/resources/guest-posting-vs-niche-edits) before finalising how the budget gets split — the cheaper format might cover the need.
 
-A guest post at $15–$20 on a site claiming DA 50+ and six-figure traffic is worth extra scrutiny before ordering. Check the traffic distribution and recent post engagement rather than assuming the price alone confirms or denies the site's value — some listings are simply underpriced by a seller who hasn't updated rates, and some are inflated metrics on a thin site.
+## Why transparent, live-priced marketplaces change the calculation
 
-## What You're Really Paying For
+A meaningful share of the historical confusion around guest post pricing came from opacity — buyers paying an agency a flat rate per link with no visibility into what the agency itself paid the publisher, or what the site's actual metrics were at the time. A marketplace model where every listing shows its own authority, traffic and price side by side removes most of that guesswork: you're comparing real, current numbers rather than trusting a middleman's summary.
 
-Beyond the number itself, a guest post price is buying three things: the audience the domain has already built, the trust search engines have already assigned it, and the editorial process that makes the placement look — and function — like a genuine recommendation rather than a paid insert.
+It doesn't eliminate the need for judgement — you still have to decide which metrics matter most for your specific page — but the judgement is based on visible data rather than a quoted number you have no way to verify independently. That visibility is also what makes the pricing patterns in this guide checkable: you can confirm or contradict every range here against live listings in about twenty minutes.
 
-When comparing two similarly priced sites, the tie-breaker is usually relevance: the site closer to your actual industry, even at a slightly lower traffic number, tends to be the better buy — a trade-off we cover in more depth in [guest posting vs. niche edits](/resources/guest-posting-vs-niche-edits).
+## What you're really paying for
 
-## A Practical Budgeting Approach
+Beyond the number itself, a guest post price buys three things: the audience the domain has already built, the trust search engines have already assigned it, and the editorial process that makes the placement look — and function — like a genuine recommendation rather than a paid insert.
 
-Rather than setting a flat per-link budget, decide what tier of site actually matters for the page you're building links to. A competitive commercial page usually justifies at least a few placements from the "established niche" or "strong industry publication" tiers. A lower-priority supporting page can often be served well by smaller, cheaper, but still genuinely relevant sites. You can [browse live listings by price and authority](/marketplace) to see exactly where your budget lands today.`,
+When comparing two similarly priced sites, the tie-breaker is usually relevance: the site closer to your actual industry, even at a slightly lower traffic number, tends to be the better buy. Price tells you what the market thinks a placement is worth; relevance tells you what it's worth to you. Those are different numbers, and the second one is the one that matters.
+
+## What $100, $300 and $1,000 actually buy you
+
+Numbers in a table are useful; a concrete picture of what each budget level looks like in practice is more useful. Here's what each tier typically gets you, described as a buyer would experience it.
+
+**At $100**, you're shopping among small niche blogs and modest local or industry sites — DA in the 20s to mid-30s, a few thousand monthly visits, a real but narrow audience. The placement is genuine: a real article on a real site, with your link in the body. What you don't get is reach — a handful of referral visits at most — or significant authority transfer. This tier is for supporting links: rounding out a profile, adding topical relevance from a closely matched niche, or giving a new page its first few links. Bought carefully, with the vetting checklist applied, $100 placements are the workhorses of most campaigns.
+
+**At $300**, you enter the established-niche tier: sites with DA in the 40s–50s, tens of thousands of monthly visits, recognisable names within their industry. The article gets read — not by millions, but by hundreds or thousands of the right people. Referral traffic becomes a real secondary benefit, and the authority signal is meaningfully stronger. This is the tier where most of a serious campaign's budget tends to concentrate: strong enough to move a competitive page, affordable enough to buy several.
+
+**At $1,000**, you're buying into major outlets and high-traffic publications — household names in their vertical, six-figure traffic, editorial processes with actual gatekeepers. The link carries weight, but honestly, at this tier you're often buying audience and credibility as much as SEO value: a placement your sales team can mention, your homepage can reference, and your prospects might actually see. The SEO value is real, but the price reflects more than the link alone.
+
+The mistake isn't buying at any of these tiers — it's buying at the wrong tier for the job. A $1,000 placement on a page that needed three $300 links is overspending; three $100 links on a page that needed one $300 anchor is underspending disguised as thrift. Match the tier to the page's competitive reality, not to your comfort with the number.
+
+## Where Linkslo fits in
+
+The [Linkslo marketplace](/marketplace) shows current authority, traffic and price together for every listed site, so you can check any budget against what's actually available today rather than planning around numbers that may already be out of date. If you're working out what a first campaign should cost overall, our [link building budget guide](/resources/link-building-budget-guide) walks through the full planning exercise.
+
+## Final thoughts
+
+Guest post pricing looks chaotic from the outside, but it follows a legible pattern once you know the inputs: traffic first, authority second, niche and intent adjusting every tier. Set your ceiling from what the audience is worth to you, verify the site before you verify the price, and let live listings — not remembered numbers — be the final check.
+
+## Related resources
+
+- [How to vet a guest post site before you buy](/resources/vet-guest-post-site-before-you-buy) — the ten-minute quality checklist to run before any order.
+- [Guest posting vs. niche edits](/resources/guest-posting-vs-niche-edits) — how to split a budget across the two formats.
+- [Link building budget guide](/resources/link-building-budget-guide) — planning a full campaign budget from scratch.
+- [Affordable guest posting services for small businesses](/resources/affordable-guest-posting-services-small-business) — nine ways to buy placements on a limited budget.`,
   },
 
   {
@@ -667,100 +832,141 @@ Rather than setting a flat per-link budget, decide what tier of site actually ma
           "Most sites see initial movement within 6–12 weeks of a placement going live and getting indexed, though competitive keywords and newer sites often take longer for the full effect to show up in rankings.",
       },
     ]),
-    body: `Every year brings a fresh round of "guest posting is dead" posts, and every year, sites keep getting genuine editorial placements and keep seeing them contribute to rankings. Both things can be true at once, because "guest posting" describes two very different practices that happen to share a name.
+    body: `Every year brings a fresh round of "guest posting is dead" posts, and every year, sites keep getting genuine editorial placements and keep seeing them contribute to rankings. Both things can be true at once, because "guest posting" describes two very different practices that happen to share a name — and the people declaring it dead are almost always describing only one of them.
 
-## The Version That Stopped Working
+If you've been wondering whether to keep spending on guest posts or move the budget elsewhere, this guide separates the version of the practice that stopped working from the version that still works, explains what actually changed over the last decade, and gives you a concrete way to judge whether any given placement belongs to the first category or the second.
+
+## The short answer
+
+- **Guest posting as a category still works.** What's dead is the low-quality, high-volume version: thin articles on link-farm networks with no real readership.
+- **Editorial placements on real, relevant publications** — pitched, written and published through a genuine editorial process — remain one of the more durable ways to build authority.
+- **The bar for "relevant" is higher than it used to be.** Tenuous keyword connections no longer justify a placement; the site's topical focus and the article's context both need to make sense.
+- **Anchor text variety matters more.** Heavy exact-match commercial anchors read as manipulation; natural, varied anchors reflect how real writers link.
+- **Judge each placement individually.** "Would this article make sense here without my link?" is the single most useful test.
+
+## The version that stopped working
 
 Somewhere in the last decade, guest posting scaled into an industry of its own — networks of thin sites built specifically to host sponsored articles, syndicated across dozens of near-identical domains, stuffed with exact-match anchor text, and sold in bulk packages priced by volume rather than relevance.
 
-Search engines caught up to this pattern. Sites in these networks lost authority, got deindexed, or simply stopped passing meaningful value, and the links pointing from them followed. If your mental model of "guest posting" is this version, it's fair to say it stopped working — because it did.
+Search engines caught up to this pattern. Sites in these networks lost authority, got deindexed, or simply stopped passing meaningful value, and the links pointing from them followed. If your mental model of "guest posting" is this version, it's fair to say it stopped working — because it did, and good riddance. Nobody's rankings were built on a foundation worth keeping there.
 
-## The Version That Still Works
+## The version that still works
 
 A genuinely different practice runs alongside it: pitching a real, relevant publication with a real audience, writing something that publication's editors would accept even without a link attached, and getting it published through the same editorial process any other contributor goes through.
 
-This version hasn't stopped working because it was never a scheme to begin with — it's closer to what digital PR and content marketing teams call "earned media," except you're doing some of the earning by writing the piece yourself rather than waiting for a journalist to notice you. Our [guide to vetting guest post sites](/resources/vet-guest-post-site-before-you-buy) is built specifically to help you tell these two versions apart before you order.
+This version hasn't stopped working because it was never a scheme to begin with — it's closer to what digital PR and content marketing teams call "earned media," except you're doing some of the earning by writing the piece yourself rather than waiting for a journalist to notice you. The link is a byproduct of a genuine editorial decision, not the reason the article exists.
 
-## What Actually Changed
+Our [guide to vetting guest post sites](/resources/vet-guest-post-site-before-you-buy) is built specifically to help you tell these two versions apart before you order — because the entire question of "does it still work" reduces, in practice, to "which version are you buying."
 
-### The Bar for "Relevant" Got Higher
+## What actually changed
 
-A tenuous keyword connection used to be enough to justify a placement. Now, the site's overall topical focus and the specific article's context both need to make sense together, or the placement contributes little beyond a passing mention.
+### The bar for "relevant" got higher
 
-### Anchor Text Patterns Get More Scrutiny
+A tenuous keyword connection used to be enough to justify a placement. A software company could publish on a general lifestyle blog because the article mentioned "productivity" once, and it counted. Now, the site's overall topical focus and the specific article's context both need to make sense together, or the placement contributes little beyond a passing mention. Relevance went from a box to tick to the main thing being evaluated.
 
-Heavy use of exact-match commercial anchors ("best accounting software" linked from every guest post) reads as manipulation more clearly today than it once did. Natural, varied anchor text — including branded and generic phrases — better reflects how real writers actually link.
+### Anchor text patterns get more scrutiny
 
-### Site-Level Signals Matter More Than Individual Links
+Heavy use of exact-match commercial anchors ("best accounting software" linked from every guest post) reads as manipulation more clearly today than it once did. Natural, varied anchor text — including branded and generic phrases — better reflects how real writers actually link. This is one of the easiest things to get right and one of the most common things campaigns get wrong, because exact-match anchors feel productive even as they paint a target on the profile. Our guide to [natural anchor text ratios](/resources/anchor-text-ratios-natural-backlink-profile) shows what a believable mix looks like.
 
-A single strong placement on a thin, low-quality domain contributes less than the same placement would on a site with a genuine editorial history, because search engines increasingly evaluate the linking site's overall trustworthiness, not just the presence of a link. This is part of why the checklist approach — looking at the whole site, not just one article — matters more now than a narrower focus on the specific page a link will sit on.
+### Site-level signals matter more than individual links
 
-## What Google Has Actually Said About Guest Posting
+A single strong placement on a thin, low-quality domain contributes less than the same placement would on a site with a genuine editorial history, because search engines increasingly evaluate the linking site's overall trustworthiness, not just the presence of a link. This is part of why the checklist approach — looking at the whole site, not just the one page a link will sit on — matters more now than a narrower focus on individual URLs.
 
-Google's own guidance has been consistent for years: guest posting is fine as a way to reach an audience and share expertise, but guest posts written primarily to build links, especially at scale with keyword-rich anchor text, fall under link scheme guidance the same as any other artificial link-building pattern. The distinction Google draws isn't about the format — it's about intent and execution. A single well-written article on a relevant site, published because an editor thought their readers would benefit, sits entirely outside that guidance. A templated article distributed to fifty loosely related sites with identical anchor text does not.
+## What Google has actually said
 
-## Case Pattern: Recovering From a Bad Link Building Phase
+Google's own guidance has been consistent for years: guest posting is fine as a way to reach an audience and share expertise, but guest posts written primarily to build links — especially at scale, with keyword-rich anchor text — fall under link scheme guidance the same as any other artificial link-building pattern.
 
-A common pattern we see: a site accumulated a batch of low-quality guest post links years ago — network sites, unrelated niches, aggressive exact-match anchors — and rankings have been flat or declining since. Recovery in these cases usually isn't about undoing the old links one by one; disavowing the worst offenders removes some drag, but the bigger lever is building a new layer of genuinely relevant, editorially placed links on top. Search engines re-evaluate a site's overall link profile over time, and a site that shifts from mostly low-quality links to a growing share of high-relevance ones tends to see the trend reverse gradually, not overnight.
+The distinction Google draws isn't about the format. It's about intent and execution. A single well-written article on a relevant site, published because an editor thought their readers would benefit, sits entirely outside that guidance. A templated article distributed to fifty loosely related sites with identical anchor text does not. If you're ever unsure which side of the line a planned campaign falls on, that comparison is the test — and it's a test most buyers can apply honestly to their own plans.
 
-## How to Tell if a Placement Is Worth Doing
+## Why volume alone never really worked
 
-Run through these questions before ordering:
+It's worth separating two claims: "bulk low-quality guest posting no longer works" and "it never worked in the first place." The evidence points more toward the second. Even in the earlier years of aggressive guest post networks, the sites that saw the most durable gains weren't the ones buying the most links — they were the ones getting a smaller number of placements on genuinely relevant, reasonably trafficked sites.
+
+What changed is that the gap between the two approaches widened and got easier for search engines to detect. The underlying principle — real relevance beats artificial volume — was true even when enforcement was weaker. The algorithm didn't invent a new rule; it got better at applying an old one.
+
+## How to tell if a placement is worth doing
+
+Before ordering any guest post, run through these questions:
 
 - Would this article make sense on this site even if my link weren't in it?
-- Does the site have other content in this general topic area?
-- Is the anchor text natural in context, or does it read as inserted?
+- Does the site have other content in this general topic area, or would my article be the odd one out?
+- Is the anchor text natural in context, or does it read as inserted for SEO purposes?
 - Would a real reader of this site plausibly click through to my page?
+- Does the site show signs of a real editorial process — named authors, consistent publishing, actual engagement?
 
-If the honest answer to most of these is yes, the placement belongs to the version of guest posting that still works.
+If the honest answer to most of these is yes, the placement belongs to the version of guest posting that still works. If you're answering "not really" to three or more, you're looking at the other version regardless of what the listing promises.
 
-## Building a Sustainable Guest Posting Cadence
+## A quick comparison
 
-Rather than a single burst of placements, a steadier cadence — a handful of genuinely good links each month rather than fifty in one week — tends to read more naturally to search engines and is easier to sustain from a budget and quality-control standpoint. It also gives you room to adjust: if a batch of placements doesn't perform as expected, a slower cadence means you've committed less budget before noticing and can course-correct. Many established sites settle into a rhythm of three to six placements per month once a campaign matures past its initial phase, adjusting up or down based on how competitive their target keywords turn out to be.
+| Signal | Still works | Stopped working |
+|---|---|---|
+| Site content | Real, varied, topically coherent | Mostly sponsored posts only |
+| Anchor text | Natural, varied | Exact-match, repetitive |
+| Topical fit | Genuine overlap with your industry | Loose or forced connection |
+| Publishing pattern | Steady over time | Sudden bulk publishing |
+| Audience | Real, even if small | None beyond link buyers |
+| Editorial process | Named authors, real review | "Admin" bylines, instant approval |
 
-## Why Volume Alone Never Really Worked, Even Before Search Engines Caught Up
+## Auditing your own existing guest post links
 
-It's worth separating two different claims: "bulk low-quality guest posting no longer works" and "it never worked in the first place." The evidence points more toward the second. Even in the earlier years of aggressive guest post networks, the sites that saw the most durable gains weren't the ones buying the most links — they were the ones getting a smaller number of placements on genuinely relevant, reasonably trafficked sites. What changed is that the gap between the two approaches widened, and got easier for search engines to detect. The underlying principle — real relevance beats artificial volume — was true even when enforcement was weaker.
-
-## How to Audit Your Own Existing Guest Post Links
-
-If you've been building links for a while and aren't sure how much of your existing profile falls into the "still works" category versus the "stopped working" category, a basic audit covers:
+If you've been building links for a while and aren't sure how much of your existing profile falls into the "still works" category versus the "stopped working" category, a basic audit is worth the afternoon:
 
 1. **Pull your full backlink list** from any major SEO tool that tracks your site's inbound links.
 2. **Sort by referring domain** and spot-check the ones you don't immediately recognise — visit the page the link sits on and ask whether it reads as a genuine article or a thin sponsored insert.
 3. **Flag domains with clear red flags** — sites with a burst of unrelated sponsored content, no real bylines, or traffic concentrated in a way that doesn't match a real audience.
-4. **Decide case by case** whether flagged links are worth disavowing, or simply left alone if they're not causing active harm — a large volume of very old, weak links is usually lower priority than a smaller number of clearly manipulative recent ones.
+4. **Decide case by case** whether flagged links are worth disavowing or simply left alone. A large volume of very old, weak links is usually lower priority than a smaller number of clearly manipulative recent ones — and our guide to [toxic backlinks and disavows](/resources/toxic-backlinks-how-to-find-and-disavow-them) walks through that decision in detail.
 
-This kind of audit is also useful before starting a new campaign, since it tells you what your existing profile actually looks like rather than assuming.
+This kind of audit is also useful before starting a new campaign, since it tells you what your existing profile actually looks like rather than leaving you to assume.
 
-## What a Healthy Link Profile Looks Like Today
+## What a healthy link profile looks like today
 
-A link profile that holds up well tends to show variety — different domains, different niches adjacent to your own, a mix of guest posts, mentions, and naturally earned links, with anchor text that varies rather than repeating the same commercial phrase. It also tends to grow gradually rather than in sudden spikes, which is one more reason a steady monthly cadence outperforms an aggressive short burst, even when the total number of links ends up similar.
+A link profile that holds up well tends to show variety — different domains, niches adjacent to your own, a mix of guest posts, mentions and naturally earned links, with anchor text that varies rather than repeating the same commercial phrase. It also tends to grow gradually rather than in sudden spikes.
 
-## Why This Debate Keeps Resurfacing Every Year
+That gradual growth is one more reason a steady monthly cadence outperforms an aggressive short burst, even when the total number of links ends up similar. Many established sites settle into a rhythm of three to six placements per month once a campaign matures past its initial phase, adjusting up or down based on how competitive their target keywords turn out to be. A slower cadence also means committing less budget before noticing something isn't performing, which makes course correction cheaper.
 
-Part of the reason "guest posting is dead" resurfaces annually is that the low-quality version genuinely does keep getting built, and genuinely does keep failing, giving each new cohort of marketers a fresh example to point to. Meanwhile, the sites quietly getting real value from genuine editorial placements rarely write blog posts about it, since there's no compelling headline in "we got a relevant link on a good site and it modestly helped." The visible failures are louder than the quiet successes, which skews the public conversation more pessimistic than the underlying reality warrants. That asymmetry is worth keeping in mind any time a sweeping claim about an entire tactic being "dead" starts circulating — the claim is usually true of one version of the tactic and false of another, and the interesting work is figuring out which version you're actually looking at.
+## A common recovery pattern
 
-## What This Means for Your Own Campaign Decisions
+A pattern we see regularly: a site accumulated a batch of low-quality guest post links years ago — network sites, unrelated niches, aggressive exact-match anchors — and rankings have been flat or declining since. Recovery in these cases usually isn't about undoing the old links one by one. Disavowing the worst offenders removes some drag, but the bigger lever is building a new layer of genuinely relevant, editorially placed links on top.
 
-None of this is an argument for guest posting at any cost or in any volume — it's an argument for being specific about which version of the practice you're actually running. Before greenlighting a campaign, it's worth asking whether the plan would survive being described honestly to the publisher's own editorial team: "we'd like to place a link on your site because it's relevant to your readers" describes the version that still works; "we'd like to place fifty links across fifty similar sites this month with the same anchor text" describes the version that doesn't. Most buyers already know intuitively which description fits their plan — the checklist in this guide is mainly there to make that intuition explicit before money changes hands, so a campaign gets evaluated on the same terms search engines are likely to apply, rather than on hope that volume alone will carry it.
+Search engines re-evaluate a site's overall link profile over time, and a site that shifts from mostly low-quality links to a growing share of high-relevance ones tends to see the trend reverse gradually, not overnight. If this describes your situation, start with the audit above, clean up the worst of it, and then build the new layer properly — the [vetting checklist](/resources/vet-guest-post-site-before-you-buy) exists for exactly this second phase.
 
-## A Closing Thought on Durability
+## Why this debate resurfaces every year
 
-Links built the way this guide describes tend to age well, in the sense that they don't need constant defending or monitoring for penalty risk the way aggressive, low-quality link building often does. A genuinely relevant placement on a real publication is simply a normal part of that site's content — it doesn't become more suspicious over time the way a network link does as search engines get better at pattern detection. That durability is, in the end, the real argument for doing guest posting the slower, more selective way: not just that it works better today, but that it doesn't come with an expiration date attached. When you're ready to find placements that meet this bar, [browse real, vetted listings](/marketplace) rather than starting from a cold outreach list, or read our full [pricing breakdown](/resources/how-much-should-you-pay-for-a-guest-post) to plan a budget that matches the quality you're aiming for.
+Part of the reason "guest posting is dead" resurfaces annually is that the low-quality version genuinely does keep getting built, and genuinely does keep failing — giving each new cohort of marketers a fresh example to point to. Meanwhile, the sites quietly getting real value from genuine editorial placements rarely write blog posts about it, since there's no compelling headline in "we got a relevant link on a good site and it modestly helped."
 
-## A Quick Comparison
+The visible failures are louder than the quiet successes, which skews the public conversation more pessimistic than the underlying reality warrants. That asymmetry is worth keeping in mind any time a sweeping claim about an entire tactic being "dead" starts circulating. The claim is usually true of one version of the tactic and false of another — and the interesting work is figuring out which version you're actually looking at, not picking a side in the debate.
 
-| Signal | Still Works | Stopped Working |
-|---|---|---|
-| Site has real, varied content | Yes | Mostly sponsored posts only |
-| Anchor text | Natural, varied | Exact-match, repetitive |
-| Topical fit | Genuine overlap | Loose or forced connection |
-| Publishing pattern | Steady over time | Sudden bulk publishing |
-| Audience | Real, even if small | None beyond link buyers |
+## What this means for your campaign decisions
 
-## The Bottom Line
+None of this is an argument for guest posting at any cost or in any volume. It's an argument for being specific about which version of the practice you're actually running. Before greenlighting a campaign, ask whether the plan would survive being described honestly to the publisher's own editorial team: "we'd like to place a link on your site because it's relevant to your readers" describes the version that still works; "we'd like to place fifty links across fifty similar sites this month with the same anchor text" describes the version that doesn't.
 
-Guest posting as a category didn't stop working — the low-effort, high-volume version of it did, and that's the version most "guest posting is dead" arguments are actually describing. Editorial placements on genuine, relevant publications remain one of the more durable ways to build both authority and real audience exposure, provided each one is chosen the way you'd choose where to submit an article if links weren't part of the equation at all. When you're ready to find sites that meet that bar, our [marketplace](/marketplace) lists real, price-checked publishers with authority and traffic shown upfront — or [reach out](/contact) if you'd like a strategist to build the shortlist for you.`,
+Most buyers already know intuitively which description fits their plan. The checklist in this guide is mainly there to make that intuition explicit before money changes hands — so a campaign gets evaluated on the same terms search engines are likely to apply, rather than on hope that volume alone will carry it.
+
+## A realistic first campaign for someone starting from scratch
+
+Theory is useful; a concrete starting plan is more useful. If you're building your first guest posting campaign and want it to belong firmly to the version that still works, here's what a sensible first quarter looks like.
+
+**Month one: audit and shortlist.** Before buying anything, audit what you already have using the process described above, and build a shortlist of 15–20 candidate sites using the vetting checklist. Don't order yet. The goal this month is developing your eye — by the fifteenth site, you'll be rejecting bad ones in under a minute and the shortlist will be genuinely strong.
+
+**Month two: three anchor placements.** Order three guest posts on the best sites from your shortlist — relevant, real readership, natural anchor text, each article genuinely useful to the host site's audience. These are your anchors: the placements everything else supports. Note the publish dates and give them time; nothing meaningful happens in week one.
+
+**Month three: supporting volume and review.** Add three to five smaller supporting placements — niche edits on well-matched existing articles work well here — while you review how the month-two anchors are settling in. Check that links are live as promised, note any early ranking movement (expect little this early — the 6–12 week window is real), and decide whether the channel deserves a bigger budget based on evidence rather than hope.
+
+Total first-quarter spend for this shape of campaign typically lands between $600 and $1,500 depending on the tiers you choose — real money, but a fraction of an agency retainer, and every dollar of it goes to placements you personally vetted. If the anchors show movement by month three or four, you have your answer about whether to scale. If they don't, you also have your answer, and you've spent hundreds learning it instead of thousands.
+
+## Where Linkslo fits in
+
+When you're ready to find placements that meet the bar described here, [browse real, vetted listings](/marketplace) with authority and traffic shown upfront, rather than starting from a cold outreach list. If you need help thinking through what a sensible first campaign looks like, our [pricing breakdown](/resources/how-much-should-you-pay-for-a-guest-post) helps you plan a budget that matches the quality you're aiming for.
+
+## Final thoughts
+
+Guest posting as a category didn't stop working — the low-effort, high-volume version did, and that's the version most "guest posting is dead" arguments are actually describing. Editorial placements on genuine, relevant publications remain one of the more durable ways to build both authority and real audience exposure. And links built this way tend to age well: a genuinely relevant placement on a real publication is simply a normal part of that site's content, with no expiration date attached.
+
+## Related resources
+
+- [How to vet a guest post site before you buy](/resources/vet-guest-post-site-before-you-buy) — the ten-minute checklist for judging any placement.
+- [What makes a high-quality backlink](/resources/what-makes-a-high-quality-backlink) — the underlying quality factors, beyond any single tactic.
+- [How much should you pay for a guest post?](/resources/how-much-should-you-pay-for-a-guest-post) — real pricing data by site tier.
+- [Toxic backlinks: how to find and disavow them](/resources/toxic-backlinks-how-to-find-and-disavow-them) — cleaning up the low-quality version.`,
   },
 ];

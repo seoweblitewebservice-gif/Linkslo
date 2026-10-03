@@ -22,7 +22,7 @@ A link can introduce a new audience to your brand. It can help a useful resource
 
 That is why modern link building is better understood as **building useful references around pages that deserve to be referenced**.
 
-This guide explains what link building is, where it fits into SEO, how to evaluate opportunities, and how to build a campaign without turning the work into a numbers game.
+This guide explains what link building is, where it fits into SEO, how to [evaluate opportunities](/resources/how-to-choose-backlinks), and how to build a campaign without turning the work into a numbers game.
 
 ## Link building: the key takeaway
 
@@ -85,7 +85,7 @@ External links are only one path into a page.
 
 Related articles, category pages and navigation should also help users reach important resources naturally.
 
-A strong campaign connects external authority with a coherent internal site structure.
+A strong campaign connects external authority with a [coherent internal site structure](/resources/internal-linking-for-seo-guide).
 
 ## What makes a backlink worth investigating?
 
@@ -141,7 +141,7 @@ That is a healthier starting point.
 
 ## DA, DR and authority scores: useful, but not Google scores
 
-Third-party SEO platforms created metrics such as Domain Authority and Domain Rating to help marketers compare websites.
+Third-party SEO platforms created metrics such as [Domain Authority and Domain Rating](/resources/what-is-domain-authority-and-should-you-trust-it) to help marketers compare websites.
 
 They can be useful screening tools.
 
@@ -180,7 +180,7 @@ This works best when the destination provides something specific: original data,
 
 ### Guest contributions
 
-A guest article can put expertise in front of another publication's audience.
+A [guest article](/resources/guest-posting-for-seo-still-worth-it-in-2026) can put expertise in front of another publication's audience.
 
 The article should stand on its own. If the entire piece exists only to carry an awkward keyword-rich link, both the reader and editor can usually tell.
 
@@ -188,7 +188,7 @@ When money or another commercial relationship is involved, link treatment and di
 
 ### Digital PR
 
-Digital PR uses stories, research, data, expert commentary and timely angles to earn coverage.
+[Digital PR](/resources/digital-pr-vs-guest-posts-which-builds-better-links) uses stories, research, data, expert commentary and timely angles to earn coverage.
 
 The best campaigns give journalists something they can actually use.
 
@@ -341,7 +341,7 @@ Search engines have to discover and process pages and links. The target page als
 
 A new link may be crawled quickly or slowly. Rankings may move, remain stable or change for reasons unrelated to that placement.
 
-Evaluate campaigns over meaningful periods and keep a baseline.
+Evaluate campaigns over meaningful periods and keep a baseline — our guide to [how long backlinks take to affect rankings](/resources/how-long-do-backlinks-take-to-impact-rankings) sets out realistic timelines.
 
 Record impressions, clicks, average position, referral visits, conversions and the target page's broader query visibility.
 
@@ -376,6 +376,10 @@ Ask:
 
 If the final answer is no, investigate further.
 
+## Where Linkslo fits in
+
+Understanding link building is the first step; building the right links is the second. The [Linkslo marketplace](/marketplace) lets you browse named publishers with transparent pricing, so you can apply the evaluation approach in this guide to real opportunities.
+
 ## Final thoughts
 
 Good link building is not a hunt for the largest possible number of backlinks.
@@ -387,6 +391,13 @@ That requires content, technical SEO, prospect research, editorial judgment, out
 Start with the destination. Understand the audience. Evaluate publications in context. Use metrics as clues rather than verdicts.
 
 When those pieces line up, link building becomes easier to explain—and much harder to reduce to a misleading promise about rankings.
+
+## Related resources
+
+- [How to Choose Backlinks](/resources/how-to-choose-backlinks) — the quality checklist for evaluating opportunities.
+- [What Makes a High-Quality Backlink](/resources/what-makes-a-high-quality-backlink) — the evaluation framework in depth.
+- [Internal Linking for SEO](/resources/internal-linking-for-seo-guide) — connecting external authority with site structure.
+- [How Long Do Backlinks Take to Impact Rankings](/resources/how-long-do-backlinks-take-to-impact-rankings) — realistic timelines.
 `
 },
 {
@@ -454,7 +465,7 @@ It probably does not belong in an unrelated entertainment article just because t
 
 ## Check 1: topical relevance
 
-Relevance is not binary.
+Relevance is not binary. Our [backlink quality framework](/resources/what-makes-a-high-quality-backlink) covers this evaluation in depth.
 
 A domain can cover many subjects, and a highly focused domain can still publish an irrelevant individual article.
 
@@ -613,7 +624,7 @@ For a directory or resource page, review the surrounding entries.
 
 ## Check 8: link attributes
 
-A clickable link can use different rel attributes, including sponsored, nofollow or UGC.
+A clickable link can use different rel attributes, including [sponsored](/resources/dofollow-vs-nofollow-backlinks-seo), nofollow or UGC.
 
 These attributes communicate information about the relationship behind the link.
 
@@ -625,7 +636,7 @@ A relevant sponsored mention on a publication your customers read can have clear
 
 The link attribute is one part of the placement, not the entire value proposition.
 
-## Check 9: anchor text
+## Check 9: [anchor text](/resources/what-is-anchor-text-and-how-should-you-use-it)
 
 Read the sentence aloud.
 
@@ -680,7 +691,7 @@ The publication with the more relevant audience may create better referral traff
 
 ## Check 12: price versus what you are actually receiving
 
-A low price is not automatically good value.
+A low price is not automatically good value. For pricing context, see [how much you should pay for a guest post](/resources/how-much-should-you-pay-for-a-guest-post).
 
 A high price is not automatically premium.
 
@@ -717,7 +728,7 @@ That is better than pretending a domain is objectively “82 out of 100” becau
 
 ## Red flags worth investigating
 
-A red flag is a reason to investigate, not always an automatic rejection.
+A [red flag](/resources/link-building-provider-red-flags) is a reason to investigate, not always an automatic rejection.
 
 Examples include:
 
@@ -736,7 +747,7 @@ The more red flags appear together, the less attractive the opportunity becomes.
 
 ## What about “toxic backlinks”?
 
-The word toxic is often used too casually.
+The word [toxic](/resources/toxic-backlinks-how-to-find-and-disavow-them) is often used too casually.
 
 A low-quality site linking to you does not automatically create an emergency.
 
@@ -857,6 +868,10 @@ Before approving a backlink, answer these questions:
 
 If you can answer those clearly, you have a much stronger basis for a decision.
 
+## Where Linkslo fits in
+
+Checklists work best when you can verify the answers. The [Linkslo marketplace](/marketplace) shows publisher details, audience information, and pricing before you order — so every check in this guide can be run against real listings.
+
 ## Final thoughts
 
 Choosing backlinks is not about finding perfect websites.
@@ -870,6 +885,13 @@ Start with relevance. Read the site. Inspect the actual placement. Understand th
 That process takes longer than sorting a spreadsheet by DR.
 
 It also produces decisions you can defend when someone asks the most important question: **Why did we want this link in the first place?**
+
+## Related resources
+
+- [What Makes a High-Quality Backlink](/resources/what-makes-a-high-quality-backlink) — the evaluation framework behind this checklist.
+- [Vet a Guest Post Site Before You Buy](/resources/vet-guest-post-site-before-you-buy) — the full site-vetting process.
+- [15 Provider Red Flags](/resources/link-building-provider-red-flags) — warning signs before you spend.
+- [How Much Should You Pay for a Guest Post](/resources/how-much-should-you-pay-for-a-guest-post) — pricing context.
 `
 },
 {
@@ -1077,7 +1099,7 @@ Editors are busy.
 
 A pitch does not need a life story.
 
-Introduce yourself, explain why the topic fits, summarize the idea and provide evidence that you can write it.
+Introduce yourself, explain why the topic fits, summarize the idea and provide evidence that you can write it. Our [outreach email guide](/resources/guest-post-outreach-email-that-gets-replies) breaks down what actually gets replies.
 
 Personalization should be meaningful.
 
@@ -1137,7 +1159,7 @@ Google provides guidance on qualifying paid links, and advertising regulators ma
 
 Do not ask an editor to disguise a commercial relationship as an independent editorial endorsement.
 
-## Anchor text in guest posts
+## [Anchor text](/resources/what-is-anchor-text-and-how-should-you-use-it) in guest posts
 
 Anchor text should describe the destination in normal language.
 
@@ -1301,7 +1323,7 @@ Not every guest post will produce every outcome.
 
 The point is to measure the campaign according to its purpose.
 
-## Guest posting versus digital PR
+## Guest posting versus [digital PR](/resources/digital-pr-vs-guest-posts-which-builds-better-links)
 
 The tactics overlap but are not identical.
 
@@ -1319,7 +1341,7 @@ Many campaigns use both.
 
 A guest post creates a new article.
 
-A niche edit adds a reference to an existing page.
+A [niche edit](/resources/niche-edits-guide-existing-content-links) adds a reference to an existing page.
 
 A relevant existing article can be attractive because the context is already established, but the edit must genuinely improve the page.
 
@@ -1365,9 +1387,13 @@ A marketplace can make discovery faster by putting publisher options and data in
 
 It should not make the decision for you.
 
-Use filters to narrow the field, then open the websites and review them.
+Use filters to narrow the field, then open the websites and [review them](/resources/vet-guest-post-site-before-you-buy).
 
 Linkslo's [marketplace](/marketplace) can help compare available opportunities by the information shown for each listing. Treat that as the start of evaluation, not the end.
+
+## Where Linkslo fits in
+
+Finding the right publications is the hardest part of guest posting. The [Linkslo marketplace](/marketplace) lists named publishers with editorial focus and pricing visible, and [guest post backlinks](/backlinks/guest-post-backlinks) covers managed placement options.
 
 ## Final thoughts
 
@@ -1386,6 +1412,13 @@ Then measure the contribution as marketing, content distribution, relationship b
 That approach is slower than buying anonymous volume.
 
 It is also much closer to why credible publications accept outside contributions in the first place.
+
+## Related resources
+
+- [Guest Posting vs Niche Edits](/resources/guest-posting-vs-niche-edits) — choosing between the two tactics.
+- [Outreach Emails That Get Replies](/resources/guest-post-outreach-email-that-gets-replies) — the pitching playbook.
+- [Vet a Guest Post Site Before You Buy](/resources/vet-guest-post-site-before-you-buy) — publisher evaluation.
+- [Digital PR vs Guest Posts](/resources/digital-pr-vs-guest-posts-which-builds-better-links) — the earned-coverage alternative.
 `
 },
 {
@@ -1533,7 +1566,7 @@ If every intentional campaign points to the homepage while your important resour
 
 ## Step 2: find broken backlink destinations
 
-This is one of the most actionable parts of an audit.
+This is one of the most actionable parts of an audit. See [link reclamation](/resources/link-reclamation-redirects-404-backlinks) for the full recovery playbook.
 
 Export linked pages that return 404 or redirect through unnecessary chains.
 
@@ -1668,7 +1701,7 @@ Do not treat every unimpressive site as evidence of a penalty.
 
 ## Step 9: understand third-party toxicity scores
 
-SEO tools may label links as toxic, suspicious or risky using their own rules.
+SEO tools may label links as [toxic](/resources/toxic-backlinks-how-to-find-and-disavow-them), suspicious or risky using their own rules.
 
 These labels can be useful prompts for investigation.
 
@@ -1776,7 +1809,7 @@ Avoid mass actions based on fear.
 
 ## The disavow question
 
-Disavow tools are advanced mechanisms, not routine cleaning buttons.
+[Disavow tools](/resources/backlink-audit-toxic-links-guide) are advanced mechanisms, not routine cleaning buttons.
 
 Google has repeatedly indicated that most sites do not need to use the disavow tool for ordinary spammy links.
 
@@ -1818,7 +1851,7 @@ The audit should influence strategy.
 
 ## Competitor backlink audits
 
-Competitor data is useful for discovering ideas.
+[Competitor backlink data](/resources/competitor-backlink-analysis-how-to-find-link-gaps) is useful for discovering ideas.
 
 It is not a shopping list.
 
@@ -1911,6 +1944,10 @@ Before closing the audit, confirm that you reviewed:
 
 The output should tell someone what to do next.
 
+## Where Linkslo fits in
+
+An audit tells you what to fix and what to build next. When the audit points to gaps worth filling, the [Linkslo marketplace](/marketplace) lets you add vetted editorial placements deliberately — instead of repeating the patterns the audit flagged.
+
 ## Final thoughts
 
 A backlink audit should reduce uncertainty.
@@ -1930,6 +1967,13 @@ Protect valuable links.
 Fix broken destinations.
 
 And when a problem genuinely requires action, base that action on evidence and current official guidance—not on the scariest number in a dashboard.
+
+## Related resources
+
+- [Toxic Backlinks: Find and Disavow](/resources/toxic-backlinks-how-to-find-and-disavow-them) — handling harmful links.
+- [Link Reclamation Guide](/resources/link-reclamation-redirects-404-backlinks) — recovering lost link value.
+- [Competitor Backlink Analysis](/resources/competitor-backlink-analysis-how-to-find-link-gaps) — finding link gaps.
+- [How to Check Backlinks of Any Website](/resources/how-to-check-backlinks-of-any-website) — the tools and methods.
 `
 },
 {
@@ -1974,7 +2018,7 @@ The goal is to make the website understandable.
 
 ## Internal links versus backlinks
 
-A backlink comes from another website.
+A backlink comes from another website. For the full comparison of how the two work together, see [internal links vs backlinks](/resources/internal-links-vs-backlinks-what-matters-more).
 
 An internal link comes from your own.
 
@@ -2037,7 +2081,7 @@ Internal links and sitemaps solve different problems, but together they support 
 
 ## What is an orphan page?
 
-An orphan page has no meaningful internal links pointing to it.
+An orphan page has no meaningful internal links pointing to it. An [internal link checker](/tools/internal-link-checker) can surface orphans across a site.
 
 It may still be discoverable through a sitemap or external backlink, but users navigating the site cannot easily reach it.
 
@@ -2070,7 +2114,7 @@ This is better than adding an unrelated “Read more” box simply to increase l
 
 ## Anchor text for internal links
 
-Anchor text is the clickable wording.
+[Anchor text](/resources/what-is-anchor-text-and-how-should-you-use-it) is the clickable wording.
 
 For internal links, be descriptive.
 
@@ -2257,7 +2301,7 @@ Tools identify patterns. You decide whether the pattern is a problem.
 
 ## Fix broken internal links first
 
-Broken links waste user attention.
+Broken links waste user attention. A [broken link checker](/tools/broken-link-checker) finds them quickly.
 
 They are also usually straightforward to fix.
 
@@ -2429,6 +2473,10 @@ The external reference becomes an entry point into a coherent topic area rather 
 
 That is a better use of the link than obsessing over the single destination in isolation.
 
+## Where Linkslo fits in
+
+Internal linking multiplies the value of every external link pointing at your site. Once your internal structure is sound, the [Linkslo marketplace](/marketplace) helps you earn the external references worth distributing.
+
 ## Final thoughts
 
 Internal linking is not a trick.
@@ -2448,6 +2496,13 @@ Give new pages inbound links from older relevant content.
 And review the structure from a user's perspective, not only from a crawler report.
 
 When the site makes sense to people, the internal-linking strategy usually becomes much easier to design.
+
+## Related resources
+
+- [Internal Links vs Backlinks](/resources/internal-links-vs-backlinks-what-matters-more) — how the two work together.
+- [What Is Anchor Text](/resources/what-is-anchor-text-and-how-should-you-use-it) — the clickable wording guide.
+- [Broken Link Checker](/tools/broken-link-checker) — find broken links fast.
+- [Internal Link Checker](/tools/internal-link-checker) — analyse your internal link structure.
 `
 }
 ] as const;
