@@ -1,11 +1,19 @@
 import { db } from "@/db";
 import { leads } from "@/db/schema";
 import { EMAIL_PATTERN } from "@/lib/format";
+import { isRateLimited, requestIp } from "@/lib/rate-limit";
 
 export const dynamic = "force-dynamic";
 
 export async function POST(request: Request) {
   try {
+    if (isRateLimited(`leads:${requestIp(request)}`, 20)) {
+      return Response.json(
+        { ok: false, message: "Too many requests. Please wait a minute and try again." },
+        { status: 429 },
+      );
+    }
+
     const payload = (await request.json()) as Record<string, string | undefined>;
     const name = (payload.name ?? "").trim();
     const email = (payload.email ?? "").trim();

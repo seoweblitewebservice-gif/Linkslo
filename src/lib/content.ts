@@ -6,9 +6,6 @@ export const BRAND = {
   legalName: "Linkslo Technologies",
   tagline: "Backlink & link building platform",
   email: "team@linkslo.com",
-  phone: "+44 20 7946 0812",
-  addressLines: ["Kalverstraat 112", "1012 PK Amsterdam", "The Netherlands"],
-  foundedYear: 2018,
 };
 
 export type NavItem = {

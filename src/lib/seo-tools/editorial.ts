@@ -87,4 +87,16 @@ export function getSeoToolEditorial(tool: SeoToolDefinition) {
   return ALL_TOOL_EDITORIAL[tool.slug] ?? fallbackEditorial(tool);
 }
 
+/**
+ * Whether a tool has hand-written editorial. Tools without it share the
+ * generic fallback sections (whyItMatters / interpretation / commonProblems /
+ * fixes are word-for-word identical across all fallback tools), so they are
+ * kept out of organic indexing until dedicated content is written — the tool
+ * itself stays fully usable. Adding an entry to ALL_TOOL_EDITORIAL flips a
+ * tool back to indexable automatically.
+ */
+export function hasDedicatedEditorial(slug: string): boolean {
+  return Object.prototype.hasOwnProperty.call(ALL_TOOL_EDITORIAL, slug);
+}
+
 export const SEO_TOOL_EDITORIAL_COUNT = Object.keys(ALL_TOOL_EDITORIAL).length;

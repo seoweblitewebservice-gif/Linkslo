@@ -479,7 +479,20 @@ export function generateGigRows(count = GIG_COUNT): GigInsert[] {
     const country = topic.fixedCountry ?? COUNTRIES[(serviceIndex * 3 + localIndex * 7 + cycle * 2) % COUNTRIES.length];
     const language = LANGUAGE_BY_COUNTRY.get(country) ?? "English";
     const objective = OBJECTIVES[(serviceIndex + localIndex * 3 + cycle) % OBJECTIVES.length];
-    const seller = sellerFor(serviceIndex * 13 + localIndex * 7, service.nav);
+    // Linkslo operates the marketplace directly: listings must not invent
+    // seller identities, ratings, review counts or order history. Keep the
+    // same neutral values the named-domain listings use (see site-generator).
+    const seller = {
+      name: "Linkslo",
+      handle: "linkslo",
+      initials: "LS",
+      country: "International",
+      level: "Platform listing",
+      languages: language,
+      responseHours: 0,
+      sinceYear: 0,
+      bio: "Linkslo-operated marketplace listing. Publisher availability and editorial approval are confirmed before fulfilment.",
+    };
     const action = TITLE_ACTIONS[service.group] ?? "deliver";
     const qualityAngle = QUALITY_ANGLES[localIndex % QUALITY_ANGLES.length];
     const pageTarget = PAGE_TARGETS[Math.floor(localIndex / QUALITY_ANGLES.length)];
@@ -497,15 +510,7 @@ export function generateGigRows(count = GIG_COUNT): GigInsert[] {
       qualityAngle,
       pageTarget,
     );
-    const reviews = reviewsFor(
-      index,
-      topic,
-      industry,
-      country,
-      objective.label,
-      uniqueBrief,
-      seller.name,
-    );
+    const reviews: never[] = [];
     const faqs = faqsFor(
       index,
       topic,
@@ -514,9 +519,11 @@ export function generateGigRows(count = GIG_COUNT): GigInsert[] {
       objective.label,
       uniqueBrief,
     );
-    const rating = index % 17 === 0 ? 47 : index % 7 === 0 ? 48 : 49;
-    const orderCount = 6 + ((index * 47 + serviceIndex * 13 + localIndex * 5) % 1_180);
-    const reviewCount = Math.max(2, Math.round(orderCount * (0.18 + (index % 9) / 100)));
+    // No invented social proof: ratings, review counts and order history stay
+    // at zero until genuine activity exists.
+    const rating = 0;
+    const orderCount = 0;
+    const reviewCount = 0;
 
     const included = service.included.slice(0, 5).map(
       (item, itemIndex) =>
@@ -562,7 +569,7 @@ export function generateGigRows(count = GIG_COUNT): GigInsert[] {
       sellerLanguages: seller.languages,
       sellerResponseHours: seller.responseHours,
       sellerSinceYear: seller.sinceYear,
-      verified: true,
+      verified: false,
       rating,
       reviewCount,
       ordersCompleted: orderCount,

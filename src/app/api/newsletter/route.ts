@@ -1,11 +1,19 @@
 import { db } from "@/db";
 import { subscribers } from "@/db/schema";
 import { EMAIL_PATTERN } from "@/lib/format";
+import { isRateLimited, requestIp } from "@/lib/rate-limit";
 
 export const dynamic = "force-dynamic";
 
 export async function POST(request: Request) {
   try {
+    if (isRateLimited(`newsletter:${requestIp(request)}`, 10)) {
+      return Response.json(
+        { ok: false, message: "Too many signup attempts. Please wait a minute and try again." },
+        { status: 429 },
+      );
+    }
+
     const payload = (await request.json()) as { email?: string };
     const email = (payload.email ?? "").trim().toLowerCase();
 

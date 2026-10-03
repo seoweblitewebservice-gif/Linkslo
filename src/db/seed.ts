@@ -283,14 +283,10 @@ const CASE_STUDY_ROWS: (typeof caseStudies.$inferInsert)[] = [
   },
 ];
 
-const TESTIMONIAL_ROWS: (typeof testimonials.$inferInsert)[] = [
-  { name: "Hanna Brecht", role: "Head of Growth", company: "Peregrine Cloud", quote: "The vetting is the part that saved us. We stopped arguing internally about which sites were safe and started shipping campaigns in the same week we planned them.", rating: 5, initials: "HB", accent: "brand" },
-  { name: "Tomás Ferreira", role: "SEO Director", company: "Lumina Commerce", quote: "Filtering by market and relevance instead of raw metrics changed our results. Fewer placements, better pages, and reporting our CFO can follow without a translation layer.", rating: 5, initials: "TF", accent: "sky" },
-  { name: "Rachel Aiken", role: "Founder", company: "Sandbar Studio", quote: "As a two-person agency we needed a workspace per client, not a spreadsheet. Campaign tracking and exportable reports made us look considerably bigger than we are.", rating: 5, initials: "RA", accent: "amber" },
-  { name: "Jonas Meyer", role: "Performance Lead", company: "Fahrwerk Group", quote: "Their team pushed back on two placements we wanted and explained exactly why. That single conversation earned more trust than any pitch deck.", rating: 5, initials: "JM", accent: "violet" },
-  { name: "Amara Diallo", role: "Content Manager", company: "Nordwell Health", quote: "The content briefs came with real search intent analysis. Our writers finally stopped guessing what the page needed to cover.", rating: 4, initials: "AD", accent: "brand" },
-  { name: "Liam Corrigan", role: "Ecommerce Manager", company: "Highfield Supply", quote: "Delivery estimates were accurate, invoices were clean, and the dashboard told me what was live without an email thread. That is most of what I wanted.", rating: 5, initials: "LC", accent: "sky" },
-];
+/* Testimonials are only shown when they come from real customers.
+   Never seed fictional names, companies, roles or quotes here — an empty
+   catalogue renders no testimonial section instead of invented social proof. */
+const TESTIMONIAL_ROWS: (typeof testimonials.$inferInsert)[] = [];
 
 const FAQ_ROWS: (typeof faqs.$inferInsert)[] = [
   { question: "What does Linkslo actually do?", answer: "Linkslo provides backlink and publisher-placement services, including guest posts, contextual links, digital PR, resource outreach and local citation support. Availability and final editorial approval depend on the specific service and publisher.", topic: "Services", sortOrder: 1 },
@@ -358,7 +354,22 @@ async function runSeed() {
   if (caseRows[0].n === 0) {
     await db.insert(caseStudies).values(CASE_STUDY_ROWS).onConflictDoNothing();
   }
-  if (testimonialRows[0].n === 0) {
+  // One-time cleanup: remove the fictional testimonials that shipped with the
+  // original seed. Only the known invented names are removed, so genuine
+  // customer testimonials added later are never touched.
+  await db
+    .delete(testimonials)
+    .where(
+      inArray(testimonials.name, [
+        "Hanna Brecht",
+        "Tomás Ferreira",
+        "Rachel Aiken",
+        "Jonas Meyer",
+        "Amara Diallo",
+        "Liam Corrigan",
+      ]),
+    );
+  if (testimonialRows[0].n === 0 && TESTIMONIAL_ROWS.length > 0) {
     await db.insert(testimonials).values(TESTIMONIAL_ROWS).onConflictDoNothing();
   }
 }

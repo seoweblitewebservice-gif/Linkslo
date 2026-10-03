@@ -4,6 +4,9 @@ import { getService } from "@/lib/backlinks";
 import { EMAIL_PATTERN, normaliseDomain } from "@/lib/format";
 import { getGigBySlug } from "@/lib/gigs/data";
 import { sendOrderNotificationEmail } from "@/lib/mail";
+import { verifyPayPalCapture } from "@/lib/paypal";
+import { isRateLimited, requestIp } from "@/lib/rate-limit";
+import { eq } from "drizzle-orm";
 
 export const dynamic = "force-dynamic";
 
@@ -18,6 +21,13 @@ function makeReference() {
 
 export async function POST(request: Request) {
   try {
+    if (isRateLimited(`orders:${requestIp(request)}`, 10)) {
+      return Response.json(
+        { ok: false, message: "Too many order attempts. Please wait a minute and try again." },
+        { status: 429 },
+      );
+    }
+
     const payload = (await request.json()) as Record<string, string | undefined>;
     const serviceSlug = (payload.serviceSlug ?? "").trim();
     const gigSlug = (payload.gigSlug ?? "").trim();
@@ -51,6 +61,44 @@ export async function POST(request: Request) {
 
     if (Object.keys(errors).length || (!gig && !service) || !selectedPackage) {
       return Response.json({ ok: false, errors }, { status: 422 });
+    }
+
+    // A single PayPal payment must not fund two orders.
+    const duplicate = await db
+      .select({ id: serviceOrders.id })
+      .from(serviceOrders)
+      .where(eq(serviceOrders.paypalOrderId, paypalOrderId))
+      .limit(1);
+    if (duplicate.length > 0) {
+      return Response.json(
+        { ok: false, errors: { paypalOrderId: "This PayPal payment has already been used for an order." } },
+        { status: 409 },
+      );
+    }
+
+    // The browser only reports the PayPal order id, so confirm with PayPal that
+    // it was actually captured for this package price before creating the order.
+    // Fail closed: without a verified capture no order is created.
+    const verification = await verifyPayPalCapture(paypalOrderId, selectedPackage.price);
+    if (!verification.ok) {
+      if (verification.reason === "unconfigured") {
+        console.error("PayPal verification is not configured: set PAYPAL_CLIENT_SECRET.");
+        return Response.json(
+          { ok: false, message: "Payment verification is not configured. Please contact support to complete your order." },
+          { status: 503 },
+        );
+      }
+      console.warn("PayPal verification failed", { paypalOrderId, reason: verification.reason });
+      return Response.json(
+        {
+          ok: false,
+          errors: {
+            paypalOrderId:
+              "We could not verify this PayPal payment. If you were charged, contact support — otherwise please complete the payment again.",
+          },
+        },
+        { status: 402 },
+      );
     }
 
     const reference = makeReference();

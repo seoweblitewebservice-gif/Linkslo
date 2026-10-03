@@ -35,4 +35,4 @@ export type DeliveryFile = {
 };
 
 /** The email address treated as the store owner/admin for order management and notifications. */
-export const ADMIN_EMAIL = "seoweblitewebservice@gmail.com";
+export const ADMIN_EMAIL = process.env.ADMIN_EMAIL || "seoweblitewebservice@gmail.com";
