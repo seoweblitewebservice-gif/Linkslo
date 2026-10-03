@@ -1,7 +1,7 @@
 import { BACKLINK_SERVICES, COUNTRY_PAGES, INDUSTRY_PAGES } from "@/lib/backlinks";
 import type { BacklinkService } from "@/lib/backlinks";
 import { slugify } from "@/lib/format";
-import type { GigBenefit, GigFaq, GigPackage, GigReview, GigStep } from "@/lib/gigs/types";
+import type { GigBenefit, GigFaq, GigPackage, GigStep } from "@/lib/gigs/types";
 
 export const GIG_COUNT = BACKLINK_SERVICES.length * 100;
 export const GIGS_PER_SERVICE = 100;
@@ -120,49 +120,6 @@ const OBJECTIVES = [
 const INDUSTRIES = INDUSTRY_PAGES.map((item) => item.name);
 const COUNTRIES = COUNTRY_PAGES.map((item) => item.country);
 const LANGUAGE_BY_COUNTRY = new Map(COUNTRY_PAGES.map((item) => [item.country, item.language]));
-
-const SELLER_FIRST_NAMES = [
-  "Elena", "Marcus", "Sofia", "Daniel", "Nina", "Liam", "Hanna", "Camille", "Mateo", "Rachel",
-  "Tom", "Maya", "Oliver", "Priya", "Jonas", "Amara", "Leo", "Erin", "Alex", "Eleanor",
-  "Noor", "Theo", "Isabel", "Ben", "Klara", "Lucas", "Grace", "Samir", "Julia", "Cian",
-  "Petra", "Dominic", "Marisol", "Arne", "Fiona", "Emeka", "Clara", "Owen", "Ingrid", "Rafael",
-] as const;
-
-const SELLER_LAST_NAMES = [
-  "Kovacs", "Reed", "Lind", "Okoye", "Patel", "Byrne", "Brecht", "Roux", "Silva", "Aiken",
-  "Ferreira", "Chen", "Grant", "Raman", "Meyer", "Diallo", "Martin", "Walsh", "Moreno", "Price",
-  "Hassan", "Campbell", "Costa", "Foster", "Novak", "Varga", "Kim", "Rahman", "Stein", "Murphy",
-  "Lindgren", "Ashford", "Vega", "Boersma", "Mackay", "Nwosu", "Beaumont", "Pritchard", "Halvorsen", "Dominguez",
-] as const;
-
-const REVIEW_FIRST_NAMES = [
-  "Ava", "Noah", "Mia", "Ethan", "Zoe", "Luca", "Sara", "Adam",
-  "Iris", "Omar", "Lea", "Hugo", "Nora", "Felix", "Emma", "Ravi",
-  "Lena", "Marco", "Chloe", "Jon", "Marta", "Louis", "Nadia", "Eric",
-  "Sanne", "David", "Ana", "Tobias", "Maya", "Paul", "Yara", "Simon",
-  "Karin", "Diego", "Tara", "Kenji", "Rosa", "Sam", "Ines", "Joel",
-  "Lin", "Bruno", "Aisha", "Arjun", "Tess", "Gabe", "Eli", "June",
-  "Aya", "Milo", "Cleo", "Ivan", "Suri", "Theo", "Mina", "Remy",
-  "Ivy", "Nico", "Lina", "Otto", "Esme", "Dara", "Alba", "Kian",
-] as const;
-
-const REVIEW_LAST_NAMES = [
-  "Anders", "Bennett", "Costa", "Dubois", "Evans", "Fischer", "Garcia", "Hughes",
-  "Ivanov", "Jansen", "Khan", "Lopez", "Muller", "Nguyen", "Owens", "Pereira",
-  "Quinn", "Rossi", "Singh", "Tanaka", "Urban", "Visser", "White", "Xu",
-  "Young", "Zimmer", "Ahmed", "Bakker", "Clark", "Diaz", "Eriksen", "Ford",
-  "Green", "Herrera", "Ito", "Jones", "Kaur", "Laurent", "Mendes", "Nolan",
-  "Ortiz", "Park", "Reyes", "Smith", "Tran", "Vega", "Walker", "Yilmaz",
-  "Adler", "Brown", "Cohen", "Davis", "Elias", "Franco", "Gupta", "Hart",
-  "Ibrahim", "Jensen", "Klein", "Liu", "Moore", "Neri", "Olsen", "Price",
-] as const;
-
-const SELLER_COUNTRIES = [
-  "Netherlands", "United Kingdom", "Sweden", "Ireland", "Canada", "Germany", "France", "Spain",
-  "United States", "Portugal", "Australia", "Italy", "Poland", "India",
-] as const;
-
-const LEVELS = ["Level One", "Level Two", "Top Rated", "Pro Verified"] as const;
 
 /** Affordable entry pricing calibrated to delivery effort, not inflated metrics. */
 const AFFORDABLE_BASE_PRICES: Record<string, number> = {
@@ -314,41 +271,6 @@ export function sentenceCase(value: string) {
   return value.charAt(0).toLowerCase() + value.slice(1);
 }
 
-export function sellerFor(index: number, category: string) {
-  const sellerIndex = index % 160;
-  const first = SELLER_FIRST_NAMES[sellerIndex % SELLER_FIRST_NAMES.length];
-  const last = SELLER_LAST_NAMES[Math.floor(sellerIndex / SELLER_FIRST_NAMES.length) % SELLER_LAST_NAMES.length];
-  const name = `${first} ${last}`;
-  const country = SELLER_COUNTRIES[(sellerIndex * 7) % SELLER_COUNTRIES.length];
-  const speciality = category.replace(" Backlinks", "").replace("Link Building", "outreach").toLowerCase();
-  return {
-    name,
-    handle: `${first}.${last}`.toLowerCase(),
-    initials: `${first[0]}${last[0]}`,
-    country,
-    level: LEVELS[(sellerIndex * 3) % LEVELS.length],
-    languages: country === "Germany" ? "German, English" : country === "France" ? "French, English" : country === "Spain" ? "Spanish, English" : country === "Italy" ? "Italian, English" : "English",
-    responseHours: 1 + (sellerIndex % 6),
-    sinceYear: 2018 + (sellerIndex % 6),
-    bio: `${name} is a ${speciality} specialist based in ${country}, with a manually reviewed delivery process focused on relevance, placement context and transparent reporting.`,
-  };
-}
-
-export function reviewerFor(uniqueIndex: number) {
-  const first = REVIEW_FIRST_NAMES[uniqueIndex % REVIEW_FIRST_NAMES.length];
-  const last = REVIEW_LAST_NAMES[
-    Math.floor(uniqueIndex / REVIEW_FIRST_NAMES.length) % REVIEW_LAST_NAMES.length
-  ];
-  const cycle = Math.floor(
-    uniqueIndex / (REVIEW_FIRST_NAMES.length * REVIEW_LAST_NAMES.length),
-  );
-  const middle = cycle > 0 ? ` ${String.fromCharCode(64 + cycle)}.` : "";
-  return {
-    name: `${first}${middle} ${last}`,
-    initials: `${first[0]}${last[0]}`,
-  };
-}
-
 function packagesFor(
   service: BacklinkService,
   topic: Topic,
@@ -383,9 +305,9 @@ function packagesFor(
       quantity: `${quantity} ${quantity === 1 ? "core deliverable" : "core deliverables"}`,
       description:
         tierIndex === 0
-          ? `A focused ${sentenceCase(topic.title)} order for one ${industry.toLowerCase()} ${pageTarget} in ${country}, delivered with ${qualityAngle}.`
+          ? `A focused ${sentenceCase(topic.title)} order for one ${industry} ${pageTarget} in ${country}, delivered with ${qualityAngle}.`
           : tierIndex === 1
-            ? `A balanced ${country} campaign supporting ${objective.toLowerCase()} for the ${industry.toLowerCase()} ${pageTarget}, with broader publisher and anchor variety plus ${qualityAngle}.`
+            ? `A balanced ${country} campaign supporting ${objective.toLowerCase()} for the ${industry} ${pageTarget}, with broader publisher and anchor variety plus ${qualityAngle}.`
             : `A multi-page ${country} programme extending ${qualityAngle} beyond the ${pageTarget}, with priority prospecting, deeper review and post-delivery monitoring.`, 
       features: [
         `${quantity} manually reviewed deliverables for ${industry}`,
@@ -400,41 +322,6 @@ function packagesFor(
   });
 }
 
-function reviewsFor(
-  index: number,
-  topic: Topic,
-  industry: string,
-  country: string,
-  objective: string,
-  uniqueBrief: string,
-  sellerName: string,
-): GigReview[] {
-  const first = reviewerFor(index * 2);
-  const second = reviewerFor(index * 2 + 1);
-  const firstCountry = COUNTRIES[(index * 3 + 2) % COUNTRIES.length];
-  const secondCountry = COUNTRIES[(index * 7 + 5) % COUNTRIES.length];
-  return [
-    {
-      name: first.name,
-      initials: first.initials,
-      country: firstCountry,
-      rating: index % 9 === 0 ? 4 : 5,
-      date: `2026-${String((index % 8) + 1).padStart(2, "0")}-${String((index * 7) % 27 + 1).padStart(2, "0")}`,
-      packageTier: "Standard",
-      text: `We hired ${sellerName} to ${sentenceCase(uniqueBrief)}. The shortlist explained why each option suited our ${objective.toLowerCase()} goal, and the ${country} placement report was clear enough to share internally.`, 
-    },
-    {
-      name: second.name,
-      initials: second.initials,
-      country: secondCountry,
-      rating: index % 13 === 0 ? 4 : 5,
-      date: `2026-${String(((index + 3) % 8) + 1).padStart(2, "0")}-${String((index * 11) % 27 + 1).padStart(2, "0")}`,
-      packageTier: index % 4 === 0 ? "Premium" : "Basic",
-      text: `${sellerName} handled the brief to ${sentenceCase(uniqueBrief)} as a specific campaign, not a generic list with the market name changed. Communication covered placement context and anchor risk for our ${industry.toLowerCase()} page before delivery.`, 
-    },
-  ];
-}
-
 function faqsFor(
   index: number,
   topic: Topic,
@@ -447,7 +334,7 @@ function faqsFor(
   return [
     {
       question: `How are opportunities selected when I order this gig to ${brief}?`,
-      answer: `When hired to ${brief}, the seller starts with ${industry.toLowerCase()} relevance, then checks the exact page for organic visibility, indexing, outbound-link behaviour and editorial context. The market and language are verified before the shortlist is submitted for approval.`, 
+      answer: `When hired to ${brief}, the seller starts with ${industry} relevance, then checks the exact page for organic visibility, indexing, outbound-link behaviour and editorial context. The market and language are verified before the shortlist is submitted for approval.`, 
     },
     {
       question: `What buyer information is required before the seller can ${brief}?`,
@@ -525,17 +412,14 @@ export function generateGigRows(count = GIG_COUNT): GigInsert[] {
     const orderCount = 0;
     const reviewCount = 0;
 
-    const included = service.included.slice(0, 5).map(
-      (item, itemIndex) =>
-        `${item} — adapted for the ${industry.toLowerCase()} ${pageTarget} in ${country} using ${qualityAngle}${itemIndex === 0 ? ` to support ${objective.label.toLowerCase()}` : ""}.`,
-    );
-    const benefits: GigBenefit[] = service.benefits.slice(0, 4).map((item, itemIndex) => ({
+    const included = service.included.slice(0, 5).map((item) => `${item}.`);
+    const benefits: GigBenefit[] = service.benefits.slice(0, 4).map((item) => ({
       title: item.title,
-      body: `${item.body} This version applies ${qualityAngle} to a ${industry.toLowerCase()} ${pageTarget} in ${country}${itemIndex === 0 ? ` and supports ${objective.focus}` : ""}.`,
+      body: item.body,
     }));
-    const process: GigStep[] = service.process.map((step, stepIndex) => ({
+    const process: GigStep[] = service.process.map((step) => ({
       title: step.title,
-      body: `${step.body} Stage ${stepIndex + 1} records how ${qualityAngle} is applied to the ${pageTarget} for this ${country} brief.`,
+      body: step.body,
     }));
     const useCases = [
       `${industry} businesses strengthening ${objective.focus} with ${qualityAngle}`,
@@ -548,7 +432,7 @@ export function generateGigRows(count = GIG_COUNT): GigInsert[] {
       slug,
       title,
       metaTitle: `${titleCase(topic.title)} — ${industry} ${PAGE_TARGET_TITLE_LABELS[pageTarget] ?? titleCase(pageTarget)} (${country})`,
-      metaDescription: `${topic.title} for a ${industry.toLowerCase()} ${pageTarget} in ${country}, using ${qualityAngle}. Basic, Standard & Premium packages.`,
+      metaDescription: `${topic.title} for a ${industry} ${pageTarget} in ${country}, using ${qualityAngle}. Basic, Standard & Premium packages.`,
       category: service.nav,
       subcategory: topic.title,
       serviceSlug: service.slug,
@@ -556,7 +440,7 @@ export function generateGigRows(count = GIG_COUNT): GigInsert[] {
       country,
       language,
       objective: objective.label,
-      summary: `${topic.title} for a ${industry.toLowerCase()} ${pageTarget} targeting ${country}, with ${qualityAngle}, transparent placement checks and three affordable package levels.`,
+      summary: `${topic.title} for a ${industry} ${pageTarget} targeting ${country}, with ${qualityAngle}, transparent placement checks and three affordable package levels.`,
       description: `This gig is designed to ${uniqueBrief}. ${seller.name} reviews the destination page first, maps the work to ${objective.focus}, and documents why each opportunity suits the requested page rather than reusing a generic prospect list.\n\nThe delivery combines ${language.toLowerCase()} publisher fit, page-level indexing, genuine traffic and natural link context instead of relying on authority scores alone. ${service.intro[index % service.intro.length]} Every option remains subject to publisher approval and no ranking position is promised.`,
       placement: `${service.placement} For the specific brief to ${uniqueBrief}, the surrounding context must serve the intended reader and the final URL is checked again before the order is marked complete.`,
       quality: `${service.quality} The review for work to ${uniqueBrief} also records language fit, topical overlap and whether the proposed source would remain useful without the backlink.`, 

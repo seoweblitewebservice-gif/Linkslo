@@ -47,6 +47,7 @@ async function seedGigs() {
         rating: backlinkGigs.rating,
         reviewCount: backlinkGigs.reviewCount,
         verified: backlinkGigs.verified,
+        included: backlinkGigs.included,
       })
       .from(backlinkGigs)
       .where(isNull(backlinkGigs.domain))
@@ -54,6 +55,11 @@ async function seedGigs() {
       .limit(1);
     const first = firstRows[0];
     const generatorFirst = generatorRows[0];
+    // Copy templates change over time (e.g. the repetitive "adapted for the …"
+    // suffixes were removed from the generated "what you receive" items). The
+    // marker below forces a one-time reseed so stored copy matches the current
+    // generator output.
+    const hasLegacyCopy = (generatorFirst?.included ?? "").includes("adapted for the");
     const alreadyCurrent =
       result.count === TOTAL_GIG_COUNT &&
       first?.slug === expectedFirstSlug &&
@@ -66,7 +72,8 @@ async function seedGigs() {
       generatorFirst?.sellerName === "Linkslo" &&
       generatorFirst?.rating === 0 &&
       generatorFirst?.reviewCount === 0 &&
-      generatorFirst?.verified === false;
+      generatorFirst?.verified === false &&
+      !hasLegacyCopy;
 
     if (alreadyCurrent) return;
 
