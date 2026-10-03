@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import { Icon } from "@/components/ui/Icon";
 import { Button } from "@/components/ui/primitives";
 import { PayPalCheckoutButton } from "@/components/forms/PayPalCheckoutButton";
@@ -109,18 +109,7 @@ export function OrderForm({
   }
 
   if (status === "success") {
-    return (
-      <div className="rounded-2xl border border-brand-200 bg-brand-50/60 p-8 text-center">
-        <span className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-brand-600 text-white"><Icon name="check" size={22} /></span>
-        <h2 className="mt-4 font-display text-[1.25rem] font-semibold text-ink-950">Order brief received</h2>
-        <p className="mt-2 font-mono text-[0.78rem] font-semibold tracking-wide text-brand-700">{reference}</p>
-        <p className="mx-auto mt-3 max-w-md text-[0.9rem] leading-relaxed text-ink-600">{message}</p>
-        <div className="mt-6 flex flex-wrap justify-center gap-3">
-          <Button href="/track-order" icon="arrow-right">Track this order</Button>
-          <Button href="/marketplace" variant="outline">Browse more gigs</Button>
-        </div>
-      </div>
-    );
+    return <OrderSuccess reference={reference} message={message} />;
   }
 
   const inputClass = (name: string) =>
@@ -202,6 +191,48 @@ export function OrderForm({
         </>
       )}
     </form>
+  );
+}
+
+/** Post-order actions: dashboard for signed-in buyers, email nudge for guests. */
+function OrderSuccess({ reference, message }: { reference: string; message: string }) {
+  const [signedIn, setSignedIn] = useState<boolean | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    fetch("/api/auth/me", { cache: "no-store" })
+      .then((res) => res.json())
+      .then((data) => {
+        if (!cancelled) setSignedIn(Boolean(data?.user));
+      })
+      .catch(() => {
+        if (!cancelled) setSignedIn(false);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  return (
+    <div className="rounded-2xl border border-brand-200 bg-brand-50/60 p-8 text-center">
+      <span className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-brand-600 text-white"><Icon name="check" size={22} /></span>
+      <h2 className="mt-4 font-display text-[1.25rem] font-semibold text-ink-950">Order brief received</h2>
+      <p className="mt-2 font-mono text-[0.78rem] font-semibold tracking-wide text-brand-700">{reference}</p>
+      <p className="mx-auto mt-3 max-w-md text-[0.9rem] leading-relaxed text-ink-600">{message}</p>
+      <div className="mt-6 flex flex-wrap justify-center gap-3">
+        {signedIn ? (
+          <Button href="/dashboard" icon="arrow-right">View in your dashboard</Button>
+        ) : (
+          <Button href="/login" icon="arrow-right">Create an account to track orders</Button>
+        )}
+        <Button href="/marketplace" variant="outline">Browse more gigs</Button>
+      </div>
+      {signedIn === false && (
+        <p className="mx-auto mt-4 max-w-md text-[0.78rem] leading-5 text-ink-500">
+          We also sent your order confirmation to your email — keep the reference above safe.
+        </p>
+      )}
+    </div>
   );
 }
 

@@ -6,6 +6,7 @@ import { getGigBySlug } from "@/lib/gigs/data";
 import { sendOrderNotificationEmail } from "@/lib/mail";
 import { verifyPayPalCapture } from "@/lib/paypal";
 import { isRateLimited, requestIp } from "@/lib/rate-limit";
+import { getCurrentUser } from "@/lib/user-auth";
 import { eq } from "drizzle-orm";
 
 export const dynamic = "force-dynamic";
@@ -103,9 +104,13 @@ export async function POST(request: Request) {
 
     const reference = makeReference();
 
+    // Link the order to the buyer's account when signed in. Guest checkout
+    // must never fail because of auth, so any error here falls back to "".
+    const sessionUser = await getCurrentUser().catch(() => null);
+
     await db.insert(serviceOrders).values({
       reference,
-      userId: "",
+      userId: sessionUser?.id ?? "",
       serviceSlug: gig?.serviceSlug ?? service!.slug,
       gigSlug: gig?.slug ?? "",
       serviceName: gig?.title ?? service!.nav,
@@ -139,7 +144,9 @@ export async function POST(request: Request) {
     return Response.json({
       ok: true,
       reference,
-      message: `Payment confirmed. Your order is now being processed. Save reference ${reference} and use it with ${customerEmail} on the Track Order page.`,
+      message: sessionUser
+        ? `Payment confirmed. Your order is now being processed. Track it anytime from your dashboard.`
+        : `Payment confirmed. Your order is now being processed. Save reference ${reference} — we also emailed it to ${customerEmail}.`,
     });
   } catch (error) {
     console.error("backlink order failed", error);
