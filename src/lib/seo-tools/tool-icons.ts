@@ -1,0 +1,157 @@
+import type { GlyphName } from "@/components/ui/Icon";
+import type { SeoToolCategory } from "@/lib/seo-tools/catalog";
+
+/** Per-tool glyph for the /tools directory cards. Every tool gets a
+ *  meaningful icon instead of the old one-icon-per-category fallback. */
+export const TOOL_ICONS: Record<string, GlyphName> = {
+  // Technical SEO
+  "robots-txt-tester": "shield",
+  "robots-txt-validator": "check",
+  "robots-txt-generator": "quill",
+  "canonical-url-checker": "link",
+  "canonical-tag-generator": "document",
+  "hreflang-checker": "globe",
+  "hreflang-generator": "globe",
+  "redirect-checker": "arrow-right",
+  "redirect-chain-checker": "layers",
+  "redirect-loop-checker": "arrow-up-right",
+  "http-status-code-checker": "gauge",
+  "indexability-checker": "search",
+  "noindex-checker": "close",
+  "meta-robots-checker": "sliders",
+  "x-robots-tag-checker": "document",
+  "url-structure-checker": "link",
+  "meta-robots-generator": "quill",
+  // XML Sitemaps
+  "sitemap-validator": "check",
+  "sitemap-url-checker": "link",
+  "sitemap-index-checker": "layers",
+  "sitemap-lastmod-checker": "clock",
+  "sitemap-generator": "document",
+  // Structured Data
+  "schema-validator": "check",
+  "json-ld-validator": "document",
+  "schema-markup-generator": "quill",
+  "faq-schema-generator": "quote",
+  "article-schema-generator": "document",
+  "organization-schema-generator": "users",
+  "breadcrumb-schema-generator": "layers",
+  "local-business-schema-generator": "pin",
+  "website-schema-generator": "globe",
+  "video-schema-generator": "play",
+  // On-Page SEO
+  "internal-link-checker": "link",
+  "internal-link-analyzer": "chart",
+  "external-link-checker": "arrow-up-right",
+  "broken-link-checker": "close",
+  "anchor-text-analyzer": "chart",
+  "heading-checker": "menu",
+  "image-alt-checker": "spark",
+  "image-seo-checker": "spark",
+  "meta-title-checker": "star",
+  "meta-description-checker": "quote",
+  "meta-tag-checker": "sliders",
+  "seo-slug-checker": "link",
+  "seo-page-analyzer": "gauge",
+  // Social & SERP
+  "og-tag-checker": "megaphone",
+  "twitter-card-checker": "megaphone",
+  "seo-snippet-preview": "search",
+  "serp-title-pixel-checker": "target",
+  "meta-description-pixel-checker": "quote",
+  // Keyword & Content
+  "keyword-density-checker": "chart",
+  "readability-score-checker": "gauge",
+  "word-count-analyzer": "document",
+  "content-length-checker": "sliders",
+  "heading-keyword-alignment-checker": "target",
+  "keyword-in-title-checker": "star",
+  "keyword-in-url-checker": "link",
+  "content-to-html-ratio-checker": "chart",
+  "paragraph-length-analyzer": "menu",
+  "sentence-complexity-checker": "quote",
+  "passive-voice-detector": "search",
+  "transition-words-checker": "arrow-right",
+  "thin-content-signals-checker": "filter",
+  "content-structure-analyzer": "layers",
+  "duplicate-content-text-checker": "document",
+  "content-outline-generator": "quill",
+  "faq-section-generator": "quote",
+  "howto-outline-generator": "compass",
+  "comparison-page-outline-generator": "layers",
+  "semantic-entity-checklist": "check",
+  // Local SEO
+  "google-business-profile-checker": "pin",
+  "nap-consistency-checker": "check",
+  "local-schema-presence-checker": "document",
+  "local-landing-page-checker": "target",
+  "service-area-page-outline-generator": "compass",
+  "local-citation-checklist": "quote",
+  "map-embed-checker": "pin",
+  "local-review-schema-checker": "star",
+  "opening-hours-schema-checker": "clock",
+  "local-faq-generator": "users",
+  // Performance
+  "page-weight-checker": "gauge",
+  "image-weight-hint-checker": "spark",
+  "render-blocking-hint-checker": "close",
+  "lazy-load-image-checker": "clock",
+  "core-web-vitals-guide": "chart",
+  "font-loading-checker": "quill",
+  "third-party-script-checker": "layers",
+  "caching-header-checker": "shield",
+  "compression-hint-checker": "filter",
+  "critical-css-hint-checker": "sliders",
+  "preconnect-hint-checker": "arrow-up-right",
+  "mobile-performance-checklist": "check",
+  "lcp-element-hint-checker": "target",
+  "cls-risk-checker": "gauge",
+  "performance-budget-generator": "wallet",
+  // Security & HTTPS
+  "https-checker": "shield",
+  "mixed-content-checker": "filter",
+  "security-headers-checker": "shield",
+  "hsts-checker": "clock",
+  "ssl-certificate-hint-checker": "badge",
+  // Mobile & Accessibility
+  "viewport-meta-checker": "target",
+  "mobile-friendly-signals-checker": "check",
+  "lang-attribute-checker": "globe",
+  "aria-label-hint-checker": "users",
+  "prefers-color-scheme-hint-checker": "spark",
+  // E-commerce SEO
+  "product-schema-presence-checker": "document",
+  "offer-schema-checker": "wallet",
+  "breadcrumb-presence-checker": "layers",
+  "pagination-rel-checker": "arrow-right",
+  "product-title-length-checker": "star",
+  "out-of-stock-signal-checker": "close",
+  "review-schema-checker": "star",
+  "price-in-schema-checker": "wallet",
+  "sku-presence-checker": "badge",
+  "add-to-cart-button-checker": "target",
+};
+
+/** Subtle per-category tile tint for the icon badge on directory cards. */
+export const CATEGORY_ICON_TINT: Record<SeoToolCategory, string> = {
+  "Technical SEO": "bg-emerald-50 text-emerald-700",
+  "XML Sitemaps": "bg-sky-50 text-sky-700",
+  "Structured Data": "bg-violet-50 text-violet-700",
+  "On-Page SEO": "bg-amber-50 text-amber-700",
+  "Social & SERP": "bg-rose-50 text-rose-700",
+  "Keyword & Content": "bg-teal-50 text-teal-700",
+  "Local SEO": "bg-orange-50 text-orange-700",
+  "Performance": "bg-indigo-50 text-indigo-700",
+  "Security & HTTPS": "bg-red-50 text-red-700",
+  "Mobile & Accessibility": "bg-cyan-50 text-cyan-700",
+  "E-commerce SEO": "bg-fuchsia-50 text-fuchsia-700",
+  "Link Analysis": "bg-lime-50 text-lime-700",
+};
+
+export function toolIconFor(slug: string): GlyphName {
+  return TOOL_ICONS[slug] ?? "sliders";
+}
+
+export function categoryTintFor(category: SeoToolCategory): string {
+  return CATEGORY_ICON_TINT[category] ?? "bg-brand-50 text-brand-700";
+}
