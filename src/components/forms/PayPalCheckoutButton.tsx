@@ -36,8 +36,10 @@ export type PayPalCheckoutButtonProps = {
 /**
  * Renders a live PayPal "Buy Now" button. Order creation and capture both
  * happen client-side against PayPal's SDK using the public client ID loaded
- * in the root layout, so no server secret is required. On approval the buyer
- * is redirected to `successHref` with the PayPal order id attached.
+ * in the root layout. On approval the buyer is redirected to `successHref`
+ * with the PayPal order id attached; the server then verifies the capture
+ * against the PayPal REST API (requires PAYPAL_CLIENT_SECRET) before an
+ * order is created.
  */
 export function PayPalCheckoutButton({ amount, itemName, successHref, className = "" }: PayPalCheckoutButtonProps) {
   const containerId = `paypal-btn-${useId().replace(/[:]/g, "")}`;

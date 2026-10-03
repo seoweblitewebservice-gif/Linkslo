@@ -95,10 +95,4 @@ export function startingPrice(service: BacklinkService) {
   return Math.min(...service.packages.map((pkg) => pkg.price));
 }
 
-export function averageRating(service: BacklinkService) {
-  if (!service.reviews.length) return 5;
-  const total = service.reviews.reduce((sum, review) => sum + review.rating, 0);
-  return total / service.reviews.length;
-}
-
 export type { BacklinkService, IndustryPage, CountryPage };

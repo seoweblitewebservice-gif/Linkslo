@@ -220,6 +220,23 @@ export default async function MarketplaceGigPage({ params }: Props) {
               </ul>
             </Card>
 
+            <Card className="p-6 sm:p-8">
+              <h2 className="font-display text-[1.25rem] font-semibold text-ink-950">What we need from you to start</h2>
+              <p className="mt-2 text-[0.86rem] text-ink-500">Share these with your order so delivery can begin without back-and-forth:</p>
+              <ol className="mt-5 space-y-4">
+                {[
+                  ["Target URL", "The exact page the placement should support. We review it for indexing, traffic and topical fit before prospecting."],
+                  ["Anchor preferences", "Your preferred anchor text and any anchors to avoid. Final anchor distribution is mapped to the selected package."],
+                  ["Publisher notes", "Any publishers to prefer or exclude, plus language or market requirements for the placement."],
+                ].map(([title, body], index) => (
+                  <li key={title} className="flex gap-4">
+                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-brand-50 text-[0.7rem] font-semibold text-brand-700">{index + 1}</span>
+                    <div><h3 className="text-[0.9rem] font-semibold text-ink-950">{title}</h3><p className="mt-1 text-[0.84rem] leading-relaxed text-ink-500">{body}</p></div>
+                  </li>
+                ))}
+              </ol>
+            </Card>
+
             <section>
               <h2 className="mb-4 font-display text-[1.25rem] font-semibold text-ink-950">Compare packages</h2>
               <div className="overflow-x-auto rounded-2xl border border-line bg-white shadow-soft">
@@ -237,10 +254,73 @@ export default async function MarketplaceGigPage({ params }: Props) {
               <h2 className="mb-4 font-display text-[1.25rem] font-semibold text-ink-950">Questions about this gig</h2>
               <FaqAccordion items={gig.faqs.map((faq, index) => ({ id: index + 1, question: faq.question, answer: faq.answer, topic: gig.subcategory }))} />
             </section>
+
+            <section>
+              <h2 className="mb-4 font-display text-[1.25rem] font-semibold text-ink-950">Buyer reviews</h2>
+              {gig.reviews.length > 0 ? (
+                <div className="space-y-4">
+                  {gig.reviews.map((review) => (
+                    <Card key={`${review.name}-${review.date}`} className="p-5">
+                      <div className="flex items-center gap-3">
+                        <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-canvas font-display text-[0.8rem] font-semibold text-ink-700">
+                          {review.initials}
+                        </span>
+                        <div className="min-w-0">
+                          <p className="truncate text-[0.86rem] font-semibold text-ink-950">{review.name} <span className="font-normal text-ink-400">· {review.country}</span></p>
+                          <p className="mt-0.5 flex items-center gap-1.5 text-[0.72rem] text-ink-400">
+                            <span className="flex items-center gap-0.5" aria-label={`${review.rating} out of 5 stars`}>
+                              {[1, 2, 3, 4, 5].map((star) => (
+                                <Icon key={star} name="star" size={12} className={star <= review.rating ? "text-amber-500" : "text-ink-200"} />
+                              ))}
+                            </span>
+                            {review.date} · {review.packageTier} package
+                          </p>
+                        </div>
+                      </div>
+                      <p className="mt-3 text-[0.86rem] leading-relaxed text-ink-600">{review.text}</p>
+                    </Card>
+                  ))}
+                </div>
+              ) : (
+                <Card className="p-6 text-center">
+                  <p className="font-display text-[1rem] font-semibold text-ink-950">No reviews yet</p>
+                  <p className="mx-auto mt-2 max-w-md text-[0.84rem] leading-relaxed text-ink-500">
+                    Verified buyer reviews appear here after completed orders. We only publish reviews from genuine fulfilled orders — never generated or incentivised feedback.
+                  </p>
+                </Card>
+              )}
+            </section>
           </div>
 
           <aside className="space-y-5 lg:sticky lg:top-24">
             <GigPackagePanel gigSlug={gig.slug} title={gig.title} packages={gig.packages} />
+            <Card className="p-5">
+              <p className="text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-ink-400">Delivered by</p>
+              <div className="mt-3 flex items-center gap-3">
+                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-ink-950 font-display text-[0.95rem] font-semibold text-white">
+                  {gig.sellerInitials}
+                </span>
+                <div>
+                  <p className="font-display text-[1rem] font-semibold text-ink-950">{gig.sellerName}</p>
+                  <Badge tone="brand" className="mt-1">{gig.sellerLevel}</Badge>
+                </div>
+              </div>
+              <p className="mt-3 text-[0.8rem] leading-relaxed text-ink-500">{gig.sellerBio}</p>
+              <dl className="mt-4 space-y-2 border-t border-line pt-4 text-[0.78rem]">
+                <div className="flex items-center justify-between gap-3">
+                  <dt className="text-ink-400">Languages</dt>
+                  <dd className="font-medium text-ink-700">{gig.sellerLanguages}</dd>
+                </div>
+                <div className="flex items-center justify-between gap-3">
+                  <dt className="text-ink-400">Placement review</dt>
+                  <dd className="font-medium text-ink-700">Manual, every order</dd>
+                </div>
+                <div className="flex items-center justify-between gap-3">
+                  <dt className="text-ink-400">Publisher network</dt>
+                  <dd className="font-medium text-ink-700">No PBNs</dd>
+                </div>
+              </dl>
+            </Card>
             <Card className="p-5">
               <h2 className="font-display text-[1rem] font-semibold text-ink-950">Order support</h2>
               <p className="mt-3 text-[0.8rem] leading-relaxed text-ink-500">

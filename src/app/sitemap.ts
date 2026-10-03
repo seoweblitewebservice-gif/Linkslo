@@ -4,6 +4,7 @@ import { BACKLINK_SERVICES, COUNTRY_PAGES, INDUSTRY_PAGES } from "@/lib/backlink
 import { getArticles } from "@/lib/queries";
 import { getGigSitemapRows } from "@/lib/gigs/data";
 import { SEO_TOOLS } from "@/lib/seo-tools/catalog";
+import { hasDedicatedEditorial } from "@/lib/seo-tools/editorial";
 
 const BASE = "https://www.linkslo.com";
 
@@ -34,15 +35,22 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/tools/link-building-budget-calculator",
     "/tools/outreach-email-generator",
     "/tools/da-vs-dr-checker",
+    "/tools/link-gap-scout",
   ].map((path) => ({
     url: `${BASE}${path}`,
     changeFrequency: "weekly" as const,
     priority: path === "" ? 1 : path === "/backlinks" ? 0.95 : path.startsWith("/tools/") ? 0.7 : 0.8,
   }));
 
+  // Only tools with dedicated editorial go in the sitemap. Tools using the
+  // generic fallback share identical editorial sections, so they are noindex
+  // (see generateMetadata in src/app/[slug]/page.tsx) and excluded here until
+  // real content is written for them.
+  const indexableTools = SEO_TOOLS.filter((tool) => hasDedicatedEditorial(tool.slug));
+
   return [
     ...staticRoutes,
-    ...SEO_TOOLS.map((tool) => ({
+    ...indexableTools.map((tool) => ({
       url: `${BASE}/${tool.slug}/`,
       changeFrequency: "monthly" as const,
       priority: 0.72,

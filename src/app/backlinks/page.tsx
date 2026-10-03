@@ -3,13 +3,12 @@ import Link from "next/link";
 import { PageHero } from "@/components/site/PageHero";
 import { Icon } from "@/components/ui/Icon";
 import { Reveal } from "@/components/ui/motion";
-import { Badge, Button, Card, SectionHeading, Stars } from "@/components/ui/primitives";
+import { Badge, Button, Card, SectionHeading } from "@/components/ui/primitives";
 import {
   BACKLINK_SERVICES,
   COUNTRY_PAGES,
   INDUSTRY_PAGES,
   SERVICE_GROUPS,
-  averageRating,
   servicesByGroup,
   startingPrice,
 } from "@/lib/backlinks";
@@ -101,7 +100,6 @@ export default function BacklinksHubPage() {
                           {service.summary}
                         </p>
                         <div className="mt-3 flex flex-wrap items-center gap-2 text-[0.72rem] text-ink-400">
-                          <Stars rating={averageRating(service)} size={12} />
                           <span>100 specialist gigs</span>
                           <span>·</span>
                           <span>300 package options</span>

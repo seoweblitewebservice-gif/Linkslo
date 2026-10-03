@@ -25,8 +25,12 @@ Copy `.env.example` to `.env` on the server and fill in real values:
 
 ```
 DATABASE_URL=postgresql://user:password@host:5432/dbname
-NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_live_xxxxxxxx
-CLERK_SECRET_KEY=sk_live_xxxxxxxx
+ADMIN_PASSWORD=<a-long-random-password>
+ADMIN_SESSION_SECRET=<a-long-random-secret>
+PAYPAL_CLIENT_SECRET=<your-paypal-rest-api-secret>
+RESEND_API_KEY=<your-resend-api-key>
+RESEND_FROM_EMAIL=Linkslo Orders <orders@linkslo.com>
+ADMIN_EMAIL=seoweblitewebservice@gmail.com
 ```
 
 Never commit a real `.env` file to git or include it in a zip you share.
@@ -51,13 +55,17 @@ The product catalogue (8,886 gigs, articles, case studies, FAQs, etc.) seeds
 itself automatically the first time the site receives a request — no manual
 seed command needed.
 
-## 4. Google sign-in (Clerk)
+## 4. PayPal server secret (required for checkout)
 
-1. Sign up free at [clerk.com](https://clerk.com) and create an application.
-2. Enable "Google" as a sign-in method (one click, works immediately —
-   no Google Cloud Console setup needed).
-3. Copy the **Publishable key** and **Secret key** from the Clerk dashboard
-   into your `.env` file (see step 2).
+The order API verifies every PayPal capture server-side before saving an
+order, so `PAYPAL_CLIENT_SECRET` must be set or checkout returns an error:
+
+1. Go to https://developer.paypal.com/dashboard/applications and open the
+   REST API app whose client ID matches the one in `src/lib/paypal.ts`.
+2. Copy its **Secret** into your `.env` file as `PAYPAL_CLIENT_SECRET`.
+
+Note: customer accounts / Google sign-in were removed — buyers track orders
+via the Track Order page using their order reference and email.
 
 ## 5. Build and run
 

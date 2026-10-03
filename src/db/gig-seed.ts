@@ -1,4 +1,4 @@
-import { sql } from "drizzle-orm";
+import { isNull, sql } from "drizzle-orm";
 import { db } from "@/db";
 import { backlinkGigs } from "@/db/schema";
 import { GIG_COUNT, generateGigRows } from "@/lib/gigs/generator";
@@ -39,7 +39,27 @@ async function seedGigs() {
     // The seed sentinel intentionally includes the neutral Linkslo-operated values.
     // This forces older databases containing generated seller identities, ratings,
     // review counts or order history to refresh once after the cleanup release.
+    // Both listing kinds are checked: named-domain gigs (first row) and the
+    // generated service gigs (first domain-less row).
+    const generatorRows = await tx
+      .select({
+        sellerName: backlinkGigs.sellerName,
+        rating: backlinkGigs.rating,
+        reviewCount: backlinkGigs.reviewCount,
+        verified: backlinkGigs.verified,
+        included: backlinkGigs.included,
+      })
+      .from(backlinkGigs)
+      .where(isNull(backlinkGigs.domain))
+      .orderBy(backlinkGigs.id)
+      .limit(1);
     const first = firstRows[0];
+    const generatorFirst = generatorRows[0];
+    // Copy templates change over time (e.g. the repetitive "adapted for the …"
+    // suffixes were removed from the generated "what you receive" items). The
+    // marker below forces a one-time reseed so stored copy matches the current
+    // generator output.
+    const hasLegacyCopy = (generatorFirst?.included ?? "").includes("adapted for the");
     const alreadyCurrent =
       result.count === TOTAL_GIG_COUNT &&
       first?.slug === expectedFirstSlug &&
@@ -48,7 +68,12 @@ async function seedGigs() {
       first?.rating === 0 &&
       first?.reviewCount === 0 &&
       first?.ordersCompleted === 0 &&
-      first?.verified === false;
+      first?.verified === false &&
+      generatorFirst?.sellerName === "Linkslo" &&
+      generatorFirst?.rating === 0 &&
+      generatorFirst?.reviewCount === 0 &&
+      generatorFirst?.verified === false &&
+      !hasLegacyCopy;
 
     if (alreadyCurrent) return;
 

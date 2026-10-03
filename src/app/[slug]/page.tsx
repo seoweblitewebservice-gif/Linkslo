@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 import { ToolRunner } from "@/components/seo-tools/ToolRunner";
 import { PageHero } from "@/components/site/PageHero";
 import { getSeoTool, SEO_TOOLS } from "@/lib/seo-tools/catalog";
-import { getSeoToolEditorial } from "@/lib/seo-tools/editorial";
+import { getSeoToolEditorial, hasDedicatedEditorial } from "@/lib/seo-tools/editorial";
 import { getSeoToolDepth } from "@/lib/seo-tools/depth";
 
 export const dynamicParams = false;
@@ -20,11 +20,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const tool = getSeoTool(slug);
   if (!tool) return { title: "Tool not found", robots: { index: false, follow: true } };
+  // Tools with only generic fallback editorial stay out of the index until
+  // dedicated content is written (see hasDedicatedEditorial).
+  const indexable = hasDedicatedEditorial(tool.slug);
   return {
     title: `${tool.name} - Free Technical SEO Tool`,
     description: tool.metaDescription,
     alternates: { canonical: `/${tool.slug}/` },
-    robots: { index: true, follow: true },
+    robots: { index: indexable, follow: true },
     openGraph: { title: `${tool.name} | Linkslo`, description: tool.metaDescription, type: "website", url: `/${tool.slug}/` },
     twitter: { card: "summary", title: `${tool.name} | Linkslo`, description: tool.metaDescription },
   };
