@@ -44,6 +44,17 @@ export async function POST(request: Request) {
     return Response.json({ ok: true });
   } catch (error) {
     console.error("auth login failed", error);
+    if (isMissingTableError(error)) {
+      return Response.json(
+        { ok: false, message: "Accounts are being set up right now. Please try again in a few minutes." },
+        { status: 503 },
+      );
+    }
     return Response.json({ ok: false, message: "Something went wrong. Please try again." }, { status: 500 });
   }
+}
+
+function isMissingTableError(error: unknown): boolean {
+  const message = error instanceof Error ? error.message : String(error ?? "");
+  return /relation "(users|user_sessions)" does not exist/i.test(message);
 }
