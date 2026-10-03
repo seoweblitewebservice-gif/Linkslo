@@ -6,6 +6,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { Logo } from "@/components/brand/Logo";
 import { Icon } from "@/components/ui/Icon";
 import { Button } from "@/components/ui/primitives";
+import { AuthNav } from "@/components/auth/AuthNav";
 import { PRIMARY_NAV } from "@/lib/content";
 
 export function Header() {
@@ -126,9 +127,7 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <Button href="/track-order" size="sm" icon="arrow-right">
-            Track Order
-          </Button>
+          <AuthNav />
           <button
             type="button"
             onClick={() => setMobileOpen((value) => !value)}
@@ -275,11 +274,11 @@ export function Header() {
             </nav>
 
             <div className="mt-auto flex flex-col gap-3 pb-8">
-              <Button href="/track-order" size="lg" fullWidth icon="arrow-right">
-                Track your order
+              <Button href="/login" size="lg" fullWidth variant="outline">
+                Sign in / Create account
               </Button>
               <p className="text-center text-[0.78rem] text-ink-400">
-                No account or registration required
+                Track all your orders from your dashboard
               </p>
             </div>
           </div>

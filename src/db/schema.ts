@@ -8,6 +8,7 @@ import {
   timestamp,
   uniqueIndex,
 } from "drizzle-orm/pg-core";
+import { randomBytes } from "crypto";
 
 /** Marketplace inventory: vetted publishing opportunities. */
 export const publishers = pgTable(
@@ -266,6 +267,35 @@ export const authorityScans = pgTable("authority_scans", {
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
 });
 
+/** Self-hosted buyer accounts (email + password, bcrypt-hashed). No OAuth. */
+export const users = pgTable(
+  "users",
+  {
+    id: text("id")
+      .primaryKey()
+      .$defaultFn(() => crypto.randomUUID()),
+    name: text("name").notNull(),
+    email: text("email").notNull(),
+    passwordHash: text("password_hash").notNull(),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (table) => ({
+    emailIdx: uniqueIndex("users_email_idx").on(table.email),
+  }),
+);
+
+/** Opaque session tokens for buyer accounts. The token itself is the PK. */
+export const userSessions = pgTable("user_sessions", {
+  id: text("id")
+    .primaryKey()
+    .$defaultFn(() => randomBytes(32).toString("hex")),
+  userId: text("user_id")
+    .notNull()
+    .references(() => users.id, { onDelete: "cascade" }),
+  expiresAt: timestamp("expires_at", { withTimezone: true }).notNull(),
+  createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+});
+
 export type Publisher = typeof publishers.$inferSelect;
 export type BacklinkGig = typeof backlinkGigs.$inferSelect;
 export type Project = typeof projects.$inferSelect;
@@ -276,3 +306,5 @@ export type CaseStudy = typeof caseStudies.$inferSelect;
 export type Testimonial = typeof testimonials.$inferSelect;
 export type Faq = typeof faqs.$inferSelect;
 export type ServiceOrder = typeof serviceOrders.$inferSelect;
+export type SiteUser = typeof users.$inferSelect;
+export type SiteUserSession = typeof userSessions.$inferSelect;

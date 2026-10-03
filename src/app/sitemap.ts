@@ -36,6 +36,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/tools/outreach-email-generator",
     "/tools/da-vs-dr-checker",
     "/tools/link-gap-scout",
+    "/login",
   ].map((path) => ({
     url: `${BASE}${path}`,
     changeFrequency: "weekly" as const,
