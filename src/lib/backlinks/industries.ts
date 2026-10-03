@@ -28,10 +28,7 @@ export const INDUSTRY_PAGES: IndustryPage[] = [
       { question: "Are review site links worth it if they are nofollow?", answer: "Yes, for traffic and category visibility rather than authority. Buyers use those platforms directly, and their listings shape how your category is described elsewhere, including in AI summaries." },
       { question: "How many links does a new SaaS product need?", answer: "There is no fixed number. What matters is closing the gap to the products currently ranking for your priority terms, which is why we start with a competitor gap analysis rather than selling a package blind." },
     ],
-    reviews: [
-      { name: "Nils Ackermann", role: "Head of Growth", country: "Germany", rating: 5, date: "2026-02-20", tier: "SaaS Link Mix", text: "Our integrations page had eleven partners and we were listed in two of their directories. They fixed that in three weeks and it cost us nothing but their time." },
-      { name: "Dana Whitfield", role: "Demand Gen Lead", country: "United States", rating: 5, date: "2026-01-25", tier: "Category Leadership", text: "Links went to our comparison templates rather than the homepage, which nobody had suggested before. Those pages were where the revenue was hiding." },
-    ],
+    reviews: [],
   },
   {
     slug: "finance",
@@ -60,10 +57,7 @@ export const INDUSTRY_PAGES: IndustryPage[] = [
       { question: "Why is finance link building more expensive?", answer: "Because the publishers are more selective, the content requires subject expertise and often legal review, and fewer sites accept financial placements at all. Cheap finance links almost always come from sites that will accept anything." },
       { question: "Do you work with crypto or high-risk lenders?", answer: "Crypto is handled as a separate category with its own publisher set. We decline payday and unregulated lending outright, as most quality publishers will not accept those placements regardless of budget." },
     ],
-    reviews: [
-      { name: "Rupert Caldwell", role: "Compliance Manager", country: "United Kingdom", rating: 5, date: "2026-02-07", tier: "Coverage Campaign", text: "Every draft came with the claims flagged for our sign-off before submission. That process alone put them ahead of two previous agencies." },
-      { name: "Astrid Sorensen", role: "Marketing Head", country: "Denmark", rating: 4, date: "2026-03-05", tier: "DA 50+ Campaign", text: "They rejected four publishers we suggested because the sites hosted unattributed advice. Slower, but the right call for a regulated brand." },
-    ],
+    reviews: [],
   },
   {
     slug: "crypto",
@@ -92,10 +86,7 @@ export const INDUSTRY_PAGES: IndustryPage[] = [
       { question: "Can you help with exchange listing announcements?", answer: "We can distribute and pitch genuine announcements, but we avoid the coordinated placement bursts common around listings. That pattern is recognisable and rarely holds value once the news cycle passes." },
       { question: "Are crypto links riskier than other sectors?", answer: "The sector itself is not the risk; the inventory quality is. Careful screening produces links that behave like any other technology placement. Bulk crypto packages are where the problems appear." },
     ],
-    reviews: [
-      { name: "Yusuf Demir", role: "Protocol Lead", country: "Turkey", rating: 5, date: "2026-02-15", tier: "Data Campaign", text: "Our on-chain analysis got picked up by three publications that have never accepted a paid placement from us. That is the whole point." },
-      { name: "Lena Fischer", role: "Head of Marketing", country: "Switzerland", rating: 4, date: "2026-01-06", tier: "Premium Three", text: "They turned down most of the sites our previous agency used and explained why each one was a risk. Fewer links, considerably better ones." },
-    ],
+    reviews: [],
   },
   {
     slug: "technology",
@@ -124,10 +115,7 @@ export const INDUSTRY_PAGES: IndustryPage[] = [
       { question: "Do open source references count as backlinks?", answer: "They do, and they are often overlooked. Documentation, README files and project wikis frequently link to tools and guides, and those references are durable and highly relevant." },
       { question: "Which pages should technology links point to?", answer: "Documentation, technical guides and solution pages generally outperform the homepage. Those are the pages engineers actually need, which makes the link look natural to both readers and search engines." },
     ],
-    reviews: [
-      { name: "Brendan Kilroy", role: "CTO", country: "Ireland", rating: 5, date: "2026-02-23", tier: "Campaign of Five", text: "They interviewed two of our engineers before writing anything. The resulting articles passed editorial review at publications that had rejected our previous submissions twice." },
-      { name: "Mei Ling Chan", role: "Product Marketing", country: "Singapore", rating: 5, date: "2026-03-01", tier: "Resource Sprint", text: "Our compatibility matrix page had never been promoted. It now sits on six reference lists and drives steady technical traffic." },
-    ],
+    reviews: [],
   },
   {
     slug: "gaming",
@@ -156,10 +144,7 @@ export const INDUSTRY_PAGES: IndustryPage[] = [
       { question: "How important are community platforms?", answer: "Very, for reach and sentiment, though many apply nofollow. We treat them as audience channels first and link sources second, and we never post promotional material in communities that prohibit it." },
       { question: "What works best for indie studios with small budgets?", answer: "Development stories and data. They cost nothing beyond your team's time to explain, and gaming press covers them readily because most studios never share that detail." },
     ],
-    reviews: [
-      { name: "Tomas Novak", role: "Studio Director", country: "Czech Republic", rating: 5, date: "2026-02-10", tier: "Data Campaign", text: "We shared anonymised play-session data and it ran on four gaming sites within a fortnight. No budget could have bought that coverage." },
-      { name: "Jade Robinson", role: "Community Manager", country: "Australia", rating: 4, date: "2026-03-15", tier: "Active Presence", text: "They understood which subreddits would tolerate a studio presence and which would not. That judgement saved us an embarrassing mistake." },
-    ],
+    reviews: [],
   },
   {
     slug: "travel",
@@ -188,10 +173,7 @@ export const INDUSTRY_PAGES: IndustryPage[] = [
       { question: "Are travel blogger placements worth it?", answer: "The good ones are. An independent writer with a loyal readership in your destination is valuable; a blog that publishes fifteen sponsored posts a month is not. The difference is visible in their archive." },
       { question: "Can you get tourism board links?", answer: "Often, if you operate legitimately in the region. Many boards maintain operator directories with a formal application process that most businesses never complete." },
     ],
-    reviews: [
-      { name: "Paolo Ricci", role: "Hotel Group Marketing", country: "Italy", rating: 5, date: "2026-01-10", tier: "City Authority", text: "The regional tourism board listing took six weeks of paperwork they handled entirely. It sends bookings directly, not just link value." },
-      { name: "Aisha Mwangi", role: "Tour Operator", country: "Kenya", rating: 5, date: "2026-02-03", tier: "Campaign of Five", text: "Placements went live four months before our season started, which felt early until the bookings arrived ahead of last year's pace." },
-    ],
+    reviews: [],
   },
   {
     slug: "real-estate",
@@ -220,10 +202,7 @@ export const INDUSTRY_PAGES: IndustryPage[] = [
       { question: "How do we build links for multiple branches?", answer: "Each branch gets its own local prospect set and its own landing page target. Sending every regional link to one head office page wastes the geographic signal entirely." },
       { question: "Is local press realistically reachable?", answer: "Yes, more than most sectors, because regional newsrooms cover property closely and are short of data. Local transaction analysis is usually enough to open the conversation." },
     ],
-    reviews: [
-      { name: "Grace Thornton", role: "Agency Principal", country: "United Kingdom", rating: 5, date: "2026-02-27", tier: "Multi-Location", text: "Six offices, six separate link sets, six landing pages. Our previous provider sent everything to the homepage for two years." },
-      { name: "Diego Herrera", role: "Developer", country: "Spain", rating: 4, date: "2026-01-07", tier: "Single Release", text: "The planning approval announcement got picked up by two regional outlets. Modest coverage, but exactly the local relevance we needed." },
-    ],
+    reviews: [],
   },
   {
     slug: "automotive",
@@ -252,10 +231,7 @@ export const INDUSTRY_PAGES: IndustryPage[] = [
       { question: "Is EV content a genuine opportunity?", answer: "Yes. Editorial demand still outstrips supply on charging infrastructure, real-world range and grid impact, and well-researched content is accepted readily." },
       { question: "What about owner forums?", answer: "Valuable for referral traffic and community credibility, provided contributions are genuinely helpful. Automotive forums are among the most hostile to obvious marketing, so restraint matters." },
     ],
-    reviews: [
-      { name: "Henrik Lund", role: "Fleet Manager", country: "Denmark", rating: 5, date: "2026-03-09", tier: "Analysis + Outreach", text: "The competitor analysis showed our rivals were all on the same six trade sites and nowhere else. We went after the gaps instead." },
-      { name: "Sarah Beaulieu", role: "Dealer Group Marketing", country: "Canada", rating: 4, date: "2026-01-28", tier: "City Authority", text: "Local sponsorship listings and regional press worked better than the national motoring placements we had been buying." },
-    ],
+    reviews: [],
   },
   {
     slug: "ecommerce",
@@ -284,10 +260,7 @@ export const INDUSTRY_PAGES: IndustryPage[] = [
       { question: "When should seasonal outreach begin?", answer: "Gift guide pitching starts three to four months before the season. Editors finalise selections early, and approaching them in the same month the content publishes is far too late." },
       { question: "Are affiliate roundups useful?", answer: "They send buyers and often carry followed links, but they are commercial placements rather than editorial endorsements. We balance them with genuine editorial coverage rather than relying on them." },
     ],
-    reviews: [
-      { name: "Marta Kowalczyk", role: "Ecommerce Director", country: "Poland", rating: 5, date: "2026-02-19", tier: "Relevance Cluster", text: "Links went to our category guides instead of product URLs, which I questioned at first. Category rankings moved and the products followed." },
-      { name: "Oliver Bennett", role: "Retail Marketing Manager", country: "United Kingdom", rating: 5, date: "2026-03-22", tier: "Momentum", text: "They started gift guide outreach in July. Eleven inclusions by November, which we would never have managed starting in October." },
-    ],
+    reviews: [],
   },
   {
     slug: "fashion",
@@ -316,10 +289,7 @@ export const INDUSTRY_PAGES: IndustryPage[] = [
       { question: "Do we need a sustainability angle?", answer: "Not necessarily, but if you have genuine provenance detail it is one of the strongest available angles, because editors covering the topic struggle to find brands willing to share specifics." },
       { question: "How far ahead do fashion editors plan?", answer: "Typically two to four months for seasonal features, longer for print. Outreach timed to the season itself has already missed the window." },
     ],
-    reviews: [
-      { name: "Camille Fontaine", role: "Brand Director", country: "France", rating: 5, date: "2026-01-19", tier: "Attribution Audit", text: "Thirty-eight sites were using our lookbook images with no credit. Fourteen added links, several from publications we had pitched unsuccessfully." },
-      { name: "Nadia Haddad", role: "Founder", country: "Netherlands", rating: 5, date: "2026-03-06", tier: "Data Campaign", text: "Our factory audit data became the story. Three sustainability publications covered it and one still references us monthly." },
-    ],
+    reviews: [],
   },
   {
     slug: "education",
@@ -348,10 +318,7 @@ export const INDUSTRY_PAGES: IndustryPage[] = [
       { question: "How long does education outreach take?", answer: "Longer than commercial outreach. Academic and institutional staff respond on their own schedule, often three to six weeks. Campaigns here are planned across a term rather than a month." },
       { question: "Is edtech treated differently?", answer: "Somewhat. Edtech products can appear in teaching technology roundups and review platforms as well as resource lists, which gives more routes than a traditional education provider has." },
     ],
-    reviews: [
-      { name: "Dr. Naomi Feldman", role: "Programme Lead", country: "United States", rating: 5, date: "2026-02-12", tier: "Institutional Outreach", text: "Our free assessment toolkit is now on seven university guides. They insisted we improve the documentation first, which was the right call." },
-      { name: "Ewan Sinclair", role: "Edtech Founder", country: "United Kingdom", rating: 4, date: "2026-03-11", tier: "Curated Campaign", text: "Slow going compared to our previous commercial campaigns, exactly as described. The placements have not moved since, which is the point." },
-    ],
+    reviews: [],
   },
   {
     slug: "legal",
@@ -380,10 +347,7 @@ export const INDUSTRY_PAGES: IndustryPage[] = [
       { question: "Are legal directories worth paying for?", answer: "Professional bodies and accreditation directories, yes. Generic paid legal directories that list any firm willing to pay, generally not. The distinction is whether inclusion requires verification." },
       { question: "What is the strongest angle for a small firm?", answer: "Local expertise and legislative commentary. Regional journalists need practitioners who will explain a change in plain terms on a deadline, and that access is genuinely valuable to them." },
     ],
-    reviews: [
-      { name: "Eleanor Vance", role: "Managing Partner", country: "United Kingdom", rating: 5, date: "2026-02-06", tier: "Coverage Campaign", text: "Every draft went through our compliance review before submission without us having to ask. Two partners are now regular sources for the regional business desk." },
-      { name: "Mateusz Lewandowski", role: "Firm Marketing Lead", country: "Poland", rating: 4, date: "2026-01-23", tier: "Citation Cleanup", text: "They removed us from four low-quality legal directories and explained the reasoning. Counter-intuitive advice from a link building provider." },
-    ],
+    reviews: [],
   },
   {
     slug: "business",
@@ -412,10 +376,7 @@ export const INDUSTRY_PAGES: IndustryPage[] = [
       { question: "What content works for B2B placements?", answer: "Operational detail and data. Trade editors reject strategy platitudes but accept practical material about how something is actually done, particularly with numbers attached." },
       { question: "How do we compete with larger consultancies?", answer: "By being more specific. Large firms publish general thought leadership; a focused practitioner view on a narrow problem is easier to place and more useful to readers." },
     ],
-    reviews: [
-      { name: "Ingeborg Haugen", role: "Managing Director", country: "Norway", rating: 5, date: "2026-03-03", tier: "Momentum", text: "They chose a trade magazine with twelve thousand readers over a business site with two million. Three enquiries came from that single article." },
-      { name: "Charles Mbeki", role: "Consultancy Partner", country: "South Africa", rating: 5, date: "2026-01-30", tier: "Analysis + Outreach", text: "The gap analysis found four industry associations we qualified to join. Membership links plus actual business development." },
-    ],
+    reviews: [],
   },
   {
     slug: "marketing",
@@ -444,10 +405,7 @@ export const INDUSTRY_PAGES: IndustryPage[] = [
       { question: "Should agencies build links to their own site?", answer: "Yes, and many neglect it entirely while serving clients. Your own profile is the strongest proof of capability a prospect can check, and they do check." },
       { question: "Do case studies work as link assets?", answer: "Only with real numbers and enough methodological detail to be credible. Vague success stories without figures get ignored by editors and prospects alike." },
     ],
-    reviews: [
-      { name: "Tara Donnelly", role: "Agency Founder", country: "Ireland", rating: 5, date: "2026-02-24", tier: "Data Campaign", text: "We published our own failed campaign data and it ran in four industry publications. Nobody else in our space would admit to that." },
-      { name: "Sebastian Vogt", role: "Martech Marketing Lead", country: "Germany", rating: 4, date: "2026-03-17", tier: "Campaign of Five", text: "Two of our article pitches were rejected outright before one landed. They were honest that marketing editors are the toughest audience." },
-    ],
+    reviews: [],
   },
   {
     slug: "health",
@@ -476,10 +434,7 @@ export const INDUSTRY_PAGES: IndustryPage[] = [
       { question: "Can you work with supplement or wellness brands?", answer: "Where claims are evidence-supported and legally compliant in your market, yes. We decline work promoting unproven treatments, and reputable health publishers would reject those placements anyway." },
       { question: "Why are health placements more expensive?", answer: "Because of the review step, the writer expertise required and the smaller pool of publishers that meet the standard. Cheap health links almost always come from sites that publish anything." },
     ],
-    reviews: [
-      { name: "Dr. Marcus Dwyer", role: "Clinic Owner", country: "Australia", rating: 5, date: "2026-02-14", tier: "DA 50+ Campaign", text: "Every article was reviewed by a clinician before submission. Two claims were removed that we had been making in our own marketing for years." },
-      { name: "Lucia Ferrari", role: "Health Brand Manager", country: "Italy", rating: 5, date: "2026-03-26", tier: "Premium Three", text: "They refused three publishers on our list for publishing unsupported claims. Fewer placements, but ones we can stand behind publicly." },
-    ],
+    reviews: [],
   },
   {
     slug: "fitness",
@@ -508,10 +463,7 @@ export const INDUSTRY_PAGES: IndustryPage[] = [
       { question: "What works for a single-location gym?", answer: "Local sources and community involvement. Regional press, club listings, event sponsorship and coaching directories outperform national fitness placements for a business serving one catchment area." },
       { question: "Is athlete or member data usable?", answer: "Yes, when properly anonymised and aggregated. Participation trends and performance patterns make genuinely interesting stories that fitness and sports desks cover readily." },
     ],
-    reviews: [
-      { name: "Jonas Berger", role: "Gym Group Owner", country: "Austria", rating: 5, date: "2026-01-26", tier: "City Authority", text: "Local club directories and two regional sponsorship listings brought more members than the national fitness placements we tried previously." },
-      { name: "Keisha Barnes", role: "Nutrition Brand Lead", country: "United States", rating: 4, date: "2026-03-13", tier: "Campaign of Five", text: "They rewrote our claims to match what the studies actually showed. The articles were accepted first time, which had never happened before." },
-    ],
+    reviews: [],
   },
   {
     slug: "food",
@@ -540,10 +492,7 @@ export const INDUSTRY_PAGES: IndustryPage[] = [
       { question: "Is food photography a link asset?", answer: "One of the strongest. Food images are reused constantly without credit, so attribution recovery is unusually productive, and offering images for editorial use opens doors that text pitches do not." },
       { question: "Do recipe links still carry value?", answer: "Yes, when the recipe is genuinely original and tested. Republished aggregator content does not, but a properly developed recipe with original photography gets cited by writers for years." },
     ],
-    reviews: [
-      { name: "Giulia Bianchi", role: "Restaurant Owner", country: "Italy", rating: 5, date: "2026-02-18", tier: "Single Location", text: "Regional dining guides and two supplier pages. Simple work, done properly, and bookings from search improved within two months." },
-      { name: "Patrick O'Dwyer", role: "Beverage Brand Manager", country: "Ireland", rating: 5, date: "2026-01-14", tier: "Attribution Audit", text: "Twenty-two uncredited uses of our product photography. Nine became links after a polite email each. Nothing else we do is that efficient." },
-    ],
+    reviews: [],
   },
   {
     slug: "home-garden",
@@ -572,9 +521,6 @@ export const INDUSTRY_PAGES: IndustryPage[] = [
       { question: "Do trade publications matter for consumer brands?", answer: "More than most expect. Builders, landscapers and installers influence purchasing decisions, and trade titles are far less crowded with marketing pitches than consumer media." },
       { question: "What is the strongest asset in this sector?", answer: "Real project photography with cost and material detail attached. Publishers need images and homeowners need numbers, and very few brands supply both together." },
     ],
-    reviews: [
-      { name: "Heather Mulligan", role: "Marketing Manager", country: "United Kingdom", rating: 5, date: "2026-03-08", tier: "Momentum", text: "Our renovation cost data has been cited by nine publications since September. It took a day to compile from records we already had." },
-      { name: "Bram de Wit", role: "Garden Centre Owner", country: "Netherlands", rating: 4, date: "2026-02-21", tier: "Single Location", text: "Seasonal timing was the lesson. They started outreach in January for spring, which felt premature and turned out to be exactly right." },
-    ],
+    reviews: [],
   },
 ];
