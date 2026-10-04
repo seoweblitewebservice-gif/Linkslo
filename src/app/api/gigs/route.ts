@@ -2,6 +2,10 @@ import { queryGigs, type GigSortKey } from "@/lib/gigs-query";
 
 export const dynamic = "force-dynamic";
 
+const PUBLIC_CACHE_HEADERS = {
+  "Cache-Control": "public, max-age=0, s-maxage=300, stale-while-revalidate=600",
+};
+
 export async function GET(request: Request) {
   try {
     const params = new URL(request.url).searchParams;
@@ -18,9 +22,12 @@ export async function GET(request: Request) {
       page: Number(params.get("page") ?? 1),
       pageSize: Number(params.get("pageSize") ?? 24),
     });
-    return Response.json({ ok: true, ...result });
+    return Response.json({ ok: true, ...result }, { headers: PUBLIC_CACHE_HEADERS });
   } catch (error) {
     console.error("backlink gig query failed", error);
-    return Response.json({ ok: false, items: [], total: 0 }, { status: 500 });
+    return Response.json(
+      { ok: false, items: [], total: 0 },
+      { status: 500, headers: { "Cache-Control": "no-store" } },
+    );
   }
 }
